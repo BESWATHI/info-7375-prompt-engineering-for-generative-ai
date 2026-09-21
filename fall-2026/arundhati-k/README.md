@@ -1,3 +1,3 @@
 # arundhati-k
 
-A place for the public work of Arundhati Kandelkar — INFO 7375, Fall 2026.
+A place for the public work of Arundhati K — INFO 7375, Fall 2026.
