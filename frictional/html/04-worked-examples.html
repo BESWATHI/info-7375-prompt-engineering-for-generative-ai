@@ -1,0 +1,141 @@
+<h1 id="worked-examples-a-thin-log-and-a-strong-one">Worked Examples: A Thin Log and a Strong One</h1>
+<p><strong>What this page is.</strong> Two Frictional logs for the same Assignment, scored row by row on the <a href="https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/blob/main/prerequisites/frictional.md">official rubric</a>. One earns 2/10. One earns 10/10. Read this page before your first submission — it is the fastest way to see what <em>specific and sufficient</em> means.</p>
+<p><strong>Both students shipped working code.</strong> On the 60% implementation share they would score within a few points of each other. The Frictional gap is 8 of 10 — most of a letter grade once it is scaled.</p>
+<blockquote style="border-left:4px solid #8a8a8a;margin:1em 0;padding:0.6em 1em;background:#f7f7f7;">
+<p><strong>These are constructed teaching examples, not real student work.</strong> They were written to illustrate the rubric. No student wrote either one.</p>
+</blockquote>
+<hr style="border:0;border-top:1px solid #d9d9d9;margin:2em 0;" />
+<h2 id="the-assignment-both-students-did">The Assignment both students did</h2>
+<p><a href="https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/blob/main/assignments/assignment-01-randomness-and-prompt-contracts.md">Assignment 01 — Randomness and Prompt Contracts</a>: probability normalization, temperature controls, sampling and failure checks in Python; a baseline and a revised prompt contract with explicit inputs, output format and validation; development and held-out runs with raw results preserved and actual Claude runs distinguished from fixtures.</p>
+<hr style="border:0;border-top:1px solid #d9d9d9;margin:2em 0;" />
+<h2 id="log-a--210">Log A — 2/10</h2>
+<blockquote style="border-left:4px solid #8a8a8a;margin:1em 0;padding:0.6em 1em;background:#f7f7f7;">
+<p><strong>FRICTIONAL.md</strong></p>
+<p><strong>10/12</strong> — Started the assignment. Implemented normalization and temperature and got sampling working. It was a bit confusing at first but I figured it out.</p>
+<p><strong>10/14</strong> — Wrote the baseline and revised contracts. Used Claude to help with the sampling code. Ran the cases and the revised one did better. Temperature was tricky but it works now. Pushed everything. Overall I learned a lot about prompt contracts.</p>
+</blockquote>
+<h3 id="scoring">Scoring</h3>
+<table style="border-collapse:collapse;width:100%;margin:1em 0;">
+<thead>
+<tr>
+<th style="border:1px solid #c7c7c7;padding:8px 10px;text-align:left;background:#f2f2f2;vertical-align:top;">Row</th>
+<th style="border:1px solid #c7c7c7;padding:8px 10px;text-align:left;background:#f2f2f2;vertical-align:top;">Score</th>
+<th style="border:1px solid #c7c7c7;padding:8px 10px;text-align:left;background:#f2f2f2;vertical-align:top;">Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Your attempts</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">1</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Names activities but no expectation anywhere. Nothing was predicted, so nothing can have been violated.</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Friction and response</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">0</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">"A bit confusing," "tricky." Categories of experience, not experiences. No object, no check, no response.</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Human and AI contributions</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">1</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Claude is disclosed, which is honest and worth something. "Help with the sampling code" does not say what was accepted, changed, or rejected.</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Learning and uncertainty</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">0</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">"Learned a lot" is content-free and nothing is named as unresolved.</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Traceable process</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">0</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Two dates, no commits, no test names, no preserved runs. Nothing a reviewer can open.</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;"><strong>Total</strong></td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;"><strong>2</strong></td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>"The revised one did better" is the line to notice.</strong> Better on which set? The Assignment separates development from held-out precisely so that sentence has to pick one. This log reports a result whose meaning depends entirely on a distinction it never makes.</p>
+<p><strong>The point of Log A:</strong> this student may have done every bit of the work. That is the problem. They submitted an artifact indistinguishable from a generated one and a log indistinguishable from a generated one. The 2 is not an accusation — it is the honest statement that the evidence does not support more.</p>
+<hr style="border:0;border-top:1px solid #d9d9d9;margin:2em 0;" />
+<h2 id="log-b--1010">Log B — 10/10</h2>
+<blockquote style="border-left:4px solid #8a8a8a;margin:1em 0;padding:0.6em 1em;background:#f7f7f7;">
+<p><strong>FRICTIONAL.md</strong></p>
+<p><strong>10/12</strong> — <em>I tried / expected:</em> Implemented normalization and temperature scaling, then ran the same prompt at temperature 0 twice as a sanity check. Expected byte-identical output.
+<em>What happened:</em> Two different completions. I assumed I had left a seed unset or was scaling after sampling instead of before, and spent about half an hour checking both.
+<em>What I did:</em> Neither. Greedy decoding still has to break ties between equal-probability tokens, and on this prompt there is a tie early enough to change the rest of the completion. Recorded both outputs in <code>runs/temp0-a.json</code> and <code>temp0-b.json</code> rather than picking one.
+<em>What Claude or another person contributed:</em> Nothing yet.
+<em>What I understand now / still do not understand:</em> Understand that temperature 0 constrains the sampling rule, not the output, and that "deterministic" was my assumption rather than a property I had checked. Do not understand how often ties actually occur — I found one by accident and have no way to count them.
+<em>Evidence and next step:</em> <code>test_temp_zero_is_not_guaranteed_identical</code>; commit <code>test: record observed variation at temperature 0</code>. Next: the contracts.</p>
+<p><strong>10/14</strong> — <em>I tried / expected:</em> Wrote the baseline contract, then a revised one with an explicit output schema and a validation step. Predicted the revised contract would win on both dev and held-out.
+<em>What happened:</em> It won on dev — 17/20 against 12/20 — and lost on held-out, 11/20 against 13/20. I re-ran held-out twice assuming I had loaded the wrong file.
+<em>What I did:</em> I had not. Two of the three revisions were written while looking at the dev failures, so the contract encodes the shape of those specific failures. The third revision — the output schema — helps on both sets. Reported all four numbers and named which revision I think generalizes and why.
+<em>What Claude or another person contributed:</em> Nothing on this entry; the revisions were mine.
+<em>What I understand now / still do not understand:</em> Understand that I was tuning against the set I was measuring on, and that the dev/held-out split exists to catch exactly the move I made without noticing. Do not know how many revisions is too many before dev stops being informative at all.
+<em>Evidence and next step:</em> <code>runs/dev-baseline.json</code>, <code>runs/dev-revised.json</code>, <code>runs/heldout-*.json</code> all preserved; commit <code>fix: report held-out regression instead of the dev improvement</code>.</p>
+<p><strong>10/15</strong> — <em>I tried / expected:</em> Asked Claude how to make the temperature-0 behaviour reproducible for the write-up. Expected a seeding recipe.
+<em>What happened:</em> I got one. It also proposed presenting the run as deterministic once seeded.
+<em>What I did:</em> <strong>Accepted</strong> the seeding recipe for the test harness, because pinned runs make the tests meaningful. <strong>Rejected</strong> the framing — seeding makes <em>my</em> run repeatable, it does not make the decoder deterministic, and reporting it as determinism would state a property the system does not have. Kept both unseeded outputs in the conclusion as the evidence for the repeatability limit, and used seeding only inside tests.
+<em>What Claude or another person contributed:</em> Claude — recipe accepted for the harness, framing rejected with reason. Transcript excerpt in <code>evidence/claude-seeding-1015.md</code>.
+<em>What I understand now / still do not understand:</em> Understand that repeatability and determinism are different claims and that seeding buys the first one only. Still unresolved: whether a seeded run is honest evidence for anything beyond "my harness is stable."
+<em>Evidence and next step:</em> commit <code>test: seed the harness without claiming determinism</code>.</p>
+<p><strong>10/16 (retrospective, written 10-17)</strong> — <em>I tried / expected:</em> Final pass; expected only README edits.
+<em>What happened:</em> Two of the rows I had described as Claude runs in the conclusion are fixtures I wrote while the API call was failing. The numbers are fine; the labels were wrong, and the conclusion read as if four live runs supported it when two do.
+<em>What I did:</em> Relabelled both in <code>runs/</code> and rewrote the conclusion sentence to say two live runs and two fixtures. The claim is weaker and it is now true.
+<em>What Claude or another person contributed:</em> Nothing.
+<em>What I understand now / still do not understand:</em> Understand why the brief asks for the fixture distinction explicitly — I blurred it without intending to, in the write-up rather than in the code. Do not know how to make the labelling automatic so it cannot drift again.
+<em>Evidence and next step:</em> commit <code>fix: relabel two fixtures misreported as live runs</code>; VERIFICATION.md limits section.</p>
+</blockquote>
+<h3 id="scoring-1">Scoring</h3>
+<table style="border-collapse:collapse;width:100%;margin:1em 0;">
+<thead>
+<tr>
+<th style="border:1px solid #c7c7c7;padding:8px 10px;text-align:left;background:#f2f2f2;vertical-align:top;">Row</th>
+<th style="border:1px solid #c7c7c7;padding:8px 10px;text-align:left;background:#f2f2f2;vertical-align:top;">Score</th>
+<th style="border:1px solid #c7c7c7;padding:8px 10px;text-align:left;background:#f2f2f2;vertical-align:top;">Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Your attempts</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">2</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Every entry states what was tried and what was expected. The 10/14 prediction is specific enough to be <em>wrong</em> in an informative direction, which is what makes it worth 2.</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Friction and response</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">2</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Four frictions, each anchored to an object — two different temperature-0 completions, 17/20 vs 11/20, the determinism framing, two mislabelled runs — each with what was done next.</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Human and AI contributions</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">2</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Claude's contribution is bounded precisely: recipe accepted for one use, framing rejected with a reason, transcript preserved. The three entries with no AI use say so.</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Learning and uncertainty</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">2</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Something changed in every entry and every entry names something still open. "I was tuning against the set I was measuring on" is the strongest line in the log.</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Traceable process</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">2</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Every entry cites a test, a commit subject, or a preserved run file. The retrospective entry is marked.</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;"><strong>Total</strong></td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;"><strong>10</strong></td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;"></td>
+</tr>
+</tbody>
+</table>
+<hr style="border:0;border-top:1px solid #d9d9d9;margin:2em 0;" />
+<h2 id="what-actually-separates-them">What actually separates them</h2>
+<p>Log B is not longer because the student worked harder or wrote better. It took roughly twelve minutes across four sessions. It is longer because it is <strong>anchored</strong>: every claim points at a specific object in the actual work.</p>
+<p>Three moves do nearly all of the work, and you can copy all three:</p>
+<ol type="1">
+<li><strong>Write the expectation before the run.</strong> You cannot record a violated prediction if you never recorded a prediction — and this Assignment already asks you to preserve the original expectation.</li>
+<li><strong>Name the object, not the category.</strong> Not "temperature was tricky" — <code>17/20 against 12/20 on dev, 11/20 against 13/20 on held-out</code>, <code>test_temp_zero_is_not_guaranteed_identical</code>.</li>
+<li><strong>Say what you did with the help.</strong> Accepted, changed, or rejected. Log B's highest-value entry is the one where Claude's recipe was useful and its framing was worth refusing.</li>
+</ol>
+<p>Before you submit, take any sentence in your log and ask whether a classmate who never opened your repository could have written it. If they could, you have written about the Assignment. Write about what happened instead.</p>

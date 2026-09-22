@@ -1,0 +1,108 @@
+<h1 id="what-to-write-in-frictionalmd">What to Write in FRICTIONAL.md</h1>
+<p><strong>What this page is.</strong> The seven entry prompts in <a href="https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/blob/main/prerequisites/frictional.md">prerequisites/frictional.md</a>, what each one is actually asking for, and which rubric row it feeds.</p>
+<p><strong>The short version.</strong> Short dated entries, written while you work. One entry per work session. Fragments are fine; the log is not prose. Three or four entries for a ten-day Assignment is normal.</p>
+<p><strong>The one thing that decides your score.</strong> Specificity. Every row of the rubric awards 2 for <em>specific and sufficient</em>, 1 for <em>vague or incomplete</em>, 0 for <em>absent</em>. Nearly every point lost in this component is lost to vagueness, not to dishonesty or to bad results.</p>
+<hr style="border:0;border-top:1px solid #d9d9d9;margin:2em 0;" />
+<h2 id="the-prompt-to-rubric-map">The prompt-to-rubric map</h2>
+<p>The entry prompts are not arbitrary. Each one feeds a rubric row.</p>
+<table style="border-collapse:collapse;width:100%;margin:1em 0;">
+<thead>
+<tr>
+<th style="border:1px solid #c7c7c7;padding:8px 10px;text-align:left;background:#f2f2f2;vertical-align:top;">Entry prompt</th>
+<th style="border:1px solid #c7c7c7;padding:8px 10px;text-align:left;background:#f2f2f2;vertical-align:top;">Rubric row</th>
+<th style="border:1px solid #c7c7c7;padding:8px 10px;text-align:left;background:#f2f2f2;vertical-align:top;">Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">I tried / expected</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Your attempts</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">2</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">What happened · What I did</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Friction and response</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">2</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">What Claude or another person contributed</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Human and AI contributions</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">2</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">What I understand now / still do not understand</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Learning and uncertainty</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">2</td>
+</tr>
+<tr>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Date and what I was working on · Evidence and next step</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">Traceable process</td>
+<td style="border:1px solid #c7c7c7;padding:8px 10px;vertical-align:top;">2</td>
+</tr>
+</tbody>
+</table>
+<p>Use the prompts that fit the episode, covering the rubric across the Assignment — that is what
+<a href="https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/blob/main/prerequisites/frictional.md">prerequisites/frictional.md</a> asks for. Skipping a prompt for the whole
+Assignment is volunteering a zero.</p>
+<hr style="border:0;border-top:1px solid #d9d9d9;margin:2em 0;" />
+<h2 id="prompt-by-prompt">Prompt by prompt</h2>
+<h3 id="date-and-what-i-was-working-on">Date and what I was working on</h3>
+<p>The date you did the work, and the goal for that session. If you are writing the entry later than the
+session it describes, label it: <code>2026-10-03 (retrospective, written 10-05)</code>. Labelling costs nothing, and
+an unmarked retrospective that reads as contemporaneous is a fabrication problem, not a style problem.</p>
+<h3 id="i-tried--expected--your-attempts">I tried / expected → <em>Your attempts</em></h3>
+<p>The attempt, and the prediction that went with it. The prediction is the part people skip and it is half the row.</p>
+<blockquote style="border-left:4px solid #8a8a8a;margin:1em 0;padding:0.6em 1em;background:#f7f7f7;">
+<p>Weak: <em>Worked on the sampling code.</em></p>
+<p>Strong: <em>Implemented temperature scaling, then ran the same prompt at temperature 0 twice as a sanity check. Expected byte-identical output.</em></p>
+</blockquote>
+<p>An attempt that failed earns the same 2 points as one that worked. This row scores whether you can say what
+you were doing and what you thought would happen.</p>
+<h3 id="what-happened--friction-and-response-first-half">What happened → <em>Friction and response</em> (first half)</h3>
+<p>The place the work resisted. <strong>Name the object.</strong> "It was confusing" names a category of experience, not an
+experience.</p>
+<blockquote style="border-left:4px solid #8a8a8a;margin:1em 0;padding:0.6em 1em;background:#f7f7f7;">
+<p>Weak: <em>Temperature was confusing at first.</em></p>
+<p>Strong: <em>Two different completions at temperature 0. I assumed a missing seed or scaling applied after sampling, and checked both.</em></p>
+</blockquote>
+<p>A check you ran counts here too, even when it found nothing.</p>
+<h3 id="what-i-did--friction-and-response-second-half">What I did → <em>Friction and response</em> (second half)</h3>
+<p>What you did about it, including approaches you abandoned and why. Dead ends are worth more than the fix,
+because a dead end you can describe is proof you were somewhere.</p>
+<blockquote style="border-left:4px solid #8a8a8a;margin:1em 0;padding:0.6em 1em;background:#f7f7f7;">
+<p><em>Neither. Greedy decoding still breaks ties between equal-probability tokens. Recorded both outputs in <code>runs/</code> rather than picking one.</em></p>
+</blockquote>
+<h3 id="what-claude-or-another-person-contributed--human-and-ai-contributions">What Claude or another person contributed → <em>Human and AI contributions</em></h3>
+<p>Who or what helped, what it produced, and what you <strong>accepted, changed, rejected, or still do not
+understand</strong>. That last clause is the graded part. Naming the tool without naming the disposition is a 1,
+not a 2. Prompt excerpts are enough — the rubric says complete chat transcripts are unnecessary.</p>
+<blockquote style="border-left:4px solid #8a8a8a;margin:1em 0;padding:0.6em 1em;background:#f7f7f7;">
+<p>Weak: <em>Used Claude for the sampling code.</em></p>
+<p>Strong: <em>Asked Claude for a seeding recipe. Accepted it for the test harness; rejected its framing that a seeded run is deterministic, because seeding makes my run repeatable and says nothing about the decoder.</em></p>
+</blockquote>
+<h3 id="what-i-understand-now--still-do-not-understand--learning-and-uncertainty">What I understand now / still do not understand → <em>Learning and uncertainty</em></h3>
+<p>What changed, and what is still open, plus your next question or step. <strong>"Nothing is unresolved" is almost
+never true</strong> and reads as the least credible available answer.</p>
+<blockquote style="border-left:4px solid #8a8a8a;margin:1em 0;padding:0.6em 1em;background:#f7f7f7;">
+<p><em>Understand that temperature 0 constrains the sampling rule, not the output. Do not know how often ties actually occur — I found one by accident and have no way to count them.</em></p>
+</blockquote>
+<h3 id="evidence-and-next-step--traceable-process">Evidence and next step → <em>Traceable process</em></h3>
+<p>The link between this entry and something inspectable: a commit hash or subject, a test name, a preserved
+run file, a prompt excerpt.</p>
+<blockquote style="border-left:4px solid #8a8a8a;margin:1em 0;padding:0.6em 1em;background:#f7f7f7;">
+<p><em><code>test_temp_zero_is_not_guaranteed_identical</code>; commit <code>test: record observed variation at temperature 0</code>. Next: the contracts.</em></p>
+</blockquote>
+<hr style="border:0;border-top:1px solid #d9d9d9;margin:2em 0;" />
+<h2 id="how-much-to-write">How much to write</h2>
+<p>An entry is three to six lines. A ten-day Assignment usually produces three to five entries. If an entry is running past a paragraph per field you are writing an essay about your process instead of logging it.</p>
+<p>The floor that works: <strong>one entry per work session, dated, with the prompts that fit answered, even when the answer is short.</strong> "Nothing resisted today; ran the tests, all passed, checked the endpoint case by hand" is a legitimate entry and will not cost you points.</p>
+<h2 id="before-you-submit">Before you submit</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Every entry is dated, and retrospective entries are labelled</label></li>
+<li><label><input type="checkbox" />At least one entry names a specific object — a value, a test, a line, a filename — not a category</label></li>
+<li><label><input type="checkbox" />At least one thing that did not work is written down, with why you moved off it</label></li>
+<li><label><input type="checkbox" />Every AI and human contribution says what you accepted, changed, or rejected</label></li>
+<li><label><input type="checkbox" />Something is named as still unresolved</label></li>
+<li><label><input type="checkbox" />Entries point at commits, tests, or outputs a reviewer can open</label></li>
+<li><label><input type="checkbox" /><code>FRICTIONAL.md</code> is in <code>fall-2025/first-name-last-initial/assignment-XX/</code> and the Canvas version matches</label></li>
+</ul>
