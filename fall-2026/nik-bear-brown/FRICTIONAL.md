@@ -115,12 +115,13 @@ Every push to GitHub is listed at the bottom with its date and commit note.
   - Fixed the plural bug and saved the report as `figma/roles-2026-09-23.md`.
   - Wrote the recipe into `figma/README.md`: purpose, inputs, steps, a human gate with three next actions (apply, network, skip), the first run's results, what it can and can't verify, and three open TODOs.
   - Gave the folder README an index.
+  - Kept the two relevant postings, both Designer Advocate roles, in `figma/professor-bear-figma.json` alongside a readable `figma/professor-bear-figma.md`. A second small script, `figma/pick_postings.py`, copies chosen postings out of the day's file and uses the same word lists as the scan. The pay first came out as "Range:$153,000—$317,000" with its spaces lost, and each posting's text was one long escaped string in the JSON. Both were fixed before pushing: pay now reads "$153,000–$317,000 (annual base)," and the text is stored as one line per paragraph or bullet.
 - **What Claude or another person contributed:** Claude Code wrote the script and the recipe draft, ran the scan, caught the plural bug by comparing against its own earlier search, and checked the missing employment-type field. The question, and what kind of work I want, are mine. So is the decision the recipe leaves open.
 - **What I understand now / still do not understand:** The board answers the question honestly, and the answer is "not here." That makes this a networking question, not an application question, which is the 3-3-2 argument applied to my own search. Still open:
   - whether the word lists are right (the draft suggests adding "ambassador," "speaker," and "design education");
   - where, if anywhere, Figma announces contract or university work.
 - **Evidence and next step:**
-  - Evidence: `figma/find_roles.py`, `figma/roles-2026-09-23.md`, the recipe in `figma/README.md`, and the saved board `figma/figma-jobs-2026-09-23.json`.
+  - Evidence: `figma/find_roles.py`, `figma/roles-2026-09-23.md`, `figma/pick_postings.py`, `figma/professor-bear-figma.json` and `.md`, the recipe in `figma/README.md`, and the saved board `figma/figma-jobs-2026-09-23.json`.
   - Next: review the word lists; decide the next action for the two advocate roles; build the day-over-day diff.
 
 ---
@@ -136,7 +137,8 @@ Where to check each claim in this log. Commits in this repository are listed in 
 | Fix logged, evidence table, standing push approval | [`9512602`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/9512602) — `FRICTIONAL.md`, `CLAUDE.md`, `greenhouse-watch-demo/README.md` |
 | Whole session logged, CV attested | [`e95cf63`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/e95cf63) — `FRICTIONAL.md`, `facts/professor-bear-cv.json`, `CLAUDE.md` |
 | All JSON indented for reading | [`ad0d76e`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/ad0d76e) — `figma/figma-jobs-2026-09-23.json`, both demo snapshots, `CLAUDE.md` |
-| The Figma advocate / flexible-work recipe | `figma/README.md` (recipe), `figma/find_roles.py` (the scan), `figma/roles-2026-09-23.md` (first run) |
+| Recipe started, scan added | [`0130421`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/0130421) — `figma/README.md`, `figma/find_roles.py`, `figma/roles-2026-09-23.md` |
+| The Figma advocate / flexible-work recipe | `figma/README.md` (recipe), `figma/find_roles.py` (the scan), `figma/roles-2026-09-23.md` (first run), `figma/professor-bear-figma.json` + `.md` (the relevant postings) |
 | CV facts checked by me | `facts/professor-bear-cv.json`: `attested: true`, 2026-09-23, "accurate, no errors; more to add later" |
 | The Fall assignment rewrite | `course/assignments/reallocation-engine-recipe-build.md` in the-reallocation-engine (local, not yet committed) |
 | The scoring-report fix and its test | [`015843d`](https://github.com/nikbearbrown/the-reallocation-engine/commit/015843d5047dbadff05068495e4c5db5cd9945f4) in the-reallocation-engine — `.claude/skills/greenhouse-watch/scripts/greenhouse_watch.py`, `tests/test_greenhouse_watch.py`, `logs/RUN_LOG.md` |
@@ -157,3 +159,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-23 | docs(fall-2026): log the whole session in Frictional and attest the CV facts |
 | 2026-09-23 | style(fall-2026): indent every JSON file so students can read and check it |
 | 2026-09-23 | feat(fall-2026): start the Figma advocate and flexible-work recipe with a checkable scan |
+| 2026-09-23 | feat(fall-2026): keep the relevant Figma postings in professor-bear-figma.json and .md |

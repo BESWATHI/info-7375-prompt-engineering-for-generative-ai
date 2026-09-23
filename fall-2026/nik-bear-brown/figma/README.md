@@ -69,7 +69,8 @@ Professor Bear teaches AI, builds AI course tutors, and runs workshops. The ques
 1. **Save today's board** with the two commands above. This is the only step that touches the network.
 2. **Scan it:** `python3 figma/find_roles.py figma/figma-jobs-YYYY-MM-DD.json > figma/roles-YYYY-MM-DD.md`. The scan runs offline and uses only Python's standard library. Every row shows the matched words in context.
 3. **Compare with the last scan.** `[TODO: DEV]` There's no diff step yet. For now, compare the new `roles-*.md` with the previous one by eye, or use `greenhouse-watch` to see which postings are new.
-4. **Gate (human):** read every row and give each one a next action: **apply** (the terms fit), **network** (the team fits but the terms don't, so talk to people instead of applying), or **skip**. Only a person clears this gate.
+4. **Keep the relevant postings:** `python3 figma/pick_postings.py figma/figma-jobs-YYYY-MM-DD.json figma/professor-bear-figma <id> <id> …`. This copies the chosen postings into `professor-bear-figma.json` (indented, for checking) and `professor-bear-figma.md` (for reading). Each posting keeps its terms, pay, the words the scan matched, and the full text as plain lines. Which ids to keep is the person's choice.
+5. **Gate (human):** read every row and give each one a next action: **apply** (the terms fit), **network** (the team fits but the terms don't, so talk to people instead of applying), or **skip**. Only a person clears this gate.
 
 ### Output
 
@@ -91,6 +92,8 @@ The next-action column is left for the person.
 **Verified vs. judged.**
 - **Record:** every count and quote above comes from the saved file through `find_roles.py`.
 - **Judgment:** "the closest fit" and the next step below. Those are a reading of the records, not records.
+
+**Kept as relevant** (in `professor-bear-figma.json` and `.md`): *Designer Advocate* (6176134004) and *Designer Advocate, Partnerships* (6114301004).
 
 **Next action (judgment, for Professor Bear to decide):** **network, don't apply.** The team whose work sounds closest, Figma's Advocacy team (named in the Designer Advocate posting), is visible on this board. The flexible terms aren't. If contract or university work exists, it would come through a conversation with that team, not through this board.
 
@@ -114,4 +117,6 @@ The next-action column is left for the person.
 |---|---|
 | `find_roles.py` | the scan: offline, standard library only, prints Markdown |
 | `roles-2026-09-23.md` | the first run's full report, every row with its context |
+| `pick_postings.py` | copies chosen postings into a readable JSON + Markdown pair |
+| `professor-bear-figma.json` · `professor-bear-figma.md` | **the relevant postings**: the two Designer Advocate roles from 2026-09-23, with stated terms, pay, matched words, and full text |
 | `figma-jobs-2026-09-23.json` | the saved board the report was made from |
