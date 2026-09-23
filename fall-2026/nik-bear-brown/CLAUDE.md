@@ -43,7 +43,8 @@ Every push that touches this folder adds a row to the `## GitHub pushes` table, 
 
 ## Pushing from this folder
 
-- **Push only when Professor Bear says to.** Authorization covers that push, not later ones.
+- **Standing approval (granted by Professor Bear, 2026-09-23):** after any substantive change to this folder, commit and push it to `main` without asking again, once the log is updated and the validator passes. This covers **only** `fall-2026/nik-bear-brown/`. Anything outside it (the rest of this repo, the-reallocation-engine, other repos) still needs his word for each push.
+- Git on his machine is already authenticated. Never ask for, accept, or write down a GitHub token.
 - Stage **only** `fall-2026/nik-bear-brown/`. The repo often has other uncommitted instructor edits; never sweep them in.
 - Run `python3 scripts/validate_course.py` from the repo root before committing.
 - End the commit message with the co-author line the session specifies.

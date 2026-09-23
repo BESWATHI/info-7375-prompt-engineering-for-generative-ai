@@ -82,7 +82,7 @@ The first run for an example student showed a match with justification lines of 
 - The title rule is credited once, but the report printed "+3.0" for every past job title that matched.
 - The small bonus for "at least one skill matched" (+0.5) was added to the score but never printed.
 
-A reader who checked the math would stop trusting the tool, and they would be right to. The fix (in `the-reallocation-engine`, `.claude/skills/greenhouse-watch/scripts/greenhouse_watch.py`):
+A reader who checked the math would stop trusting the tool, and they would be right to. The fix, [commit `015843d`](https://github.com/nikbearbrown/the-reallocation-engine/commit/015843d5047dbadff05068495e4c5db5cd9945f4) in the-reallocation-engine (`.claude/skills/greenhouse-watch/scripts/greenhouse_watch.py`):
 - repeat title matches now read "already counted, +0";
 - the +0.5 bonus now gets its own line;
 - a new test, `test_justification_lines_sum_to_score`, fails on the old code (lines 10.0, score 7.5) and passes on the new one. All 23 skill tests pass.
