@@ -9,6 +9,7 @@
 **What it records so far.** One working session on 2026-09-23, in three parts.
 - **The assignment.** An audit of the Reallocation Engine against an old version of its student assignment turned up paths that no longer exist, commands that don't run on a fresh copy, and a scoring signal that counts for nothing. That led to a rewritten 100-point assignment: a recipe plus a rough working prototype, framed around the 3-3-2 split.
 - **The demo.** Turning the CV into a facts file, and running the engine's job-board watcher on Figma with that CV. That part hit three points of friction. The first match looked wrong because it was wrong. The results didn't add up to the score because of a real bug. And the demo's first choice of résumé got replaced mid-session.
+- **The dream-job recipe.** The folder README now holds an eight-step recipe (Figma first, then similar companies, gaps in my CV) mapped onto Assignment 2, with a first gap table built from quoted posting lines and quoted CV facts.
 - **My own question.** A first recipe asking whether Figma has advocate or education work on flexible terms. The board's answer is no: both advocate roles are full-time, nothing mentions universities, and nothing is part-time or contract. So it's a networking question.
 
 Every push to GitHub is listed at the bottom with its date and commit note.
@@ -124,6 +125,34 @@ Every push to GitHub is listed at the bottom with its date and commit note.
   - Evidence: `figma/find_roles.py`, `figma/roles-2026-09-23.md`, `figma/pick_postings.py`, `figma/professor-bear-figma.json` and `.md`, the recipe in `figma/README.md`, and the saved board `figma/figma-jobs-2026-09-23.json`.
   - Next: review the word lists; decide the next action for the two advocate roles; build the day-over-day diff.
 
+### 2026-09-23 — The dream-job recipe, in steps, for Assignment 2
+
+- **Date and what I was working on:** Turning the Figma work into a general recipe for finding advocate and education jobs: Figma first, later similar companies, then gaps in my CV. I also wanted it to feed Assignment 2 ("Plan Your Madison Project Like a Pro": dream job, gap analysis, PRD, architecture).
+- **I tried / expected:** A step list I could follow, with the Figma steps already filled in.
+- **What happened:**
+  - The folder README now carries the recipe in eight steps:
+    0. the CV as facts;
+    1. watch one company;
+    2. gap analysis;
+    3. similar companies;
+    4. gaps across roles;
+    5. credibility work;
+    6. networking;
+    7. apply only when the terms fit;
+    8. log every run.
+  - Each step is marked done, first pass, or planned, and says which Assignment 2 part it feeds.
+  - For Part 1, *Designer Advocate, Partnerships* is suggested as the dream job, as a judgment: it's the only role that builds certification and enablement programs and works at workshops. Its top three technical requirements are quoted from the posting.
+  - For Part 2, a five-row gap table. A word search of the CV facts found **no** mention of Figma, design systems, tokens, prototyping, certification, enablement, or talks. It did find the Coursera course, the 700+ learner course, the 25+ AI course assistants, the workshops, and conference papers.
+  - One claim in Claude's first draft was wrong and was fixed before pushing: the table called me a "full-time" Associate Teaching Professor, but the CV doesn't state hours.
+- **What I did:** Directed the recipe's shape (Figma first; then similar companies; then gaps in the CV) and asked for anything from Assignment 2 that would make a better recipe.
+- **What Claude or another person contributed:** Claude Code drafted the steps, mapped them onto the assignment, pulled the posting requirements and the CV matches as records, and proposed the gap judgments, the Madison ideas, and a three-agent architecture with an n8n outline. All are labeled as proposals. The "why this role" sentence, the hiring-manager research, confirming the gaps, and the PRD are left for me.
+- **What I understand now / still do not understand:** The gap that matters most here isn't a skill. It's the terms: full-time with 25% travel against a teaching job. Skills gaps can be closed with credibility work; the terms gap needs a conversation. Still open:
+  - whether the CV undersells public speaking (the original CV names a YouTube channel the facts file doesn't carry);
+  - which n8n nodes hold up against n8n's own documentation.
+- **Evidence and next step:**
+  - Evidence: `README.md` (the recipe and the Assignment 2 table), `figma/professor-bear-figma.json` (the posting quotes), `facts/professor-bear-cv.json` (the CV quotes).
+  - Next: write the "why this role" sentence; confirm the gaps; build the Figma board for Assignment 2 by September 25.
+
 ---
 
 ## Evidence
@@ -138,6 +167,8 @@ Where to check each claim in this log. Commits in this repository are listed in 
 | Whole session logged, CV attested | [`e95cf63`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/e95cf63) — `FRICTIONAL.md`, `facts/professor-bear-cv.json`, `CLAUDE.md` |
 | All JSON indented for reading | [`ad0d76e`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/ad0d76e) — `figma/figma-jobs-2026-09-23.json`, both demo snapshots, `CLAUDE.md` |
 | Recipe started, scan added | [`0130421`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/0130421) — `figma/README.md`, `figma/find_roles.py`, `figma/roles-2026-09-23.md` |
+| Relevant postings kept | [`986f39d`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/986f39d) — `figma/professor-bear-figma.json`, `.md`, `figma/pick_postings.py` |
+| The dream-job recipe | `README.md`: eight steps, gap table, Assignment 2 mapping |
 | The Figma advocate / flexible-work recipe | `figma/README.md` (recipe), `figma/find_roles.py` (the scan), `figma/roles-2026-09-23.md` (first run), `figma/professor-bear-figma.json` + `.md` (the relevant postings) |
 | CV facts checked by me | `facts/professor-bear-cv.json`: `attested: true`, 2026-09-23, "accurate, no errors; more to add later" |
 | The Fall assignment rewrite | `course/assignments/reallocation-engine-recipe-build.md` in the-reallocation-engine (local, not yet committed) |
@@ -160,3 +191,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-23 | style(fall-2026): indent every JSON file so students can read and check it |
 | 2026-09-23 | feat(fall-2026): start the Figma advocate and flexible-work recipe with a checkable scan |
 | 2026-09-23 | feat(fall-2026): keep the relevant Figma postings in professor-bear-figma.json and .md |
+| 2026-09-23 | docs(fall-2026): add the dream-job recipe in steps with a first gap analysis for Assignment 2 |
