@@ -2,8 +2,9 @@
   "_comment": "Professor Bear's CV as structured facts. Personal information removed: no contact details, no profile or product URLs, no DOIs, no other people's names (co-instructors, co-authors, PIs), no grant tracking numbers. Everything else is transcribed from the CV as given on 2026-09-23. The job-matching résumé in ../greenhouse-watch-demo/resumes/professor-bear.json is derived from this file.",
   "source": "CV pasted by its owner, 2026-09-23",
   "converted_by": "Claude Code",
-  "attested": false,
-  "attestation_note": "Transcribed by Claude Code; not yet checked line by line by its owner.",
+  "attested": true,
+  "attested_date": "2026-09-23",
+  "attestation_note": "Read by its owner on 2026-09-23: accurate, no errors. More will be added later.",
 
   "person": {
     "name": "Professor Bear",

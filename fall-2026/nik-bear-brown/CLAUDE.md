@@ -55,4 +55,4 @@ This repo is public.
 - The person here is **"Professor Bear."**
 - No contact details, profile links, DOIs, grant tracking numbers, or other people's names, in the facts file, the résumé, the reports, or the log.
 - No absolute local paths (`/Users/…`) in anything committed. Run tools with relative paths.
-- `facts/professor-bear-cv.json` stays `attested: false` until he checks it himself.
+- `facts/professor-bear-cv.json` was attested by Professor Bear on 2026-09-23. Any later edit to it resets `attested` to `false` until he reads it again.

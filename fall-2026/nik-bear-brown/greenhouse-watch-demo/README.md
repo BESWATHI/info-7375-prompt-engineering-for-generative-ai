@@ -91,5 +91,5 @@ A reader who checked the math would stop trusting the tool, and they would be ri
 
 - **Only two data points.** Two snapshots four days apart. The live fetch happened once, on 2026-09-23; every run in this folder replays a saved snapshot offline. "Daily" has not been scheduled or tested.
 - **One board, one company.** The skill also reads Ashby and SmartRecruiters boards; this demo does not exercise them.
-- **The CV-to-JSON conversion was done by Claude Code** and has not been checked line by line by its owner (`attested: false`). A different reading of the CV would produce different skills and different matches.
+- **The CV-to-JSON conversion was done by Claude Code.** Its owner read the full facts file on 2026-09-23 and found it accurate. The shorter résumé used for matching, and especially its skills list, is Claude's selection from that file and hasn't been separately reviewed (`attested: false`). A different selection would produce different matches.
 - **Keyword matching is not fit.** A score of 6.5 means seven words matched, not that the job is a good one.

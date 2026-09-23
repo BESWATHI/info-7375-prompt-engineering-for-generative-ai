@@ -6,11 +6,62 @@
 
 **Why read it.** It's a real example of the log, not a constructed one. It shows the instructor's own work run through the same record students keep.
 
-**What it records so far.** One working session on 2026-09-23: turning the CV into a facts file, and running the Reallocation Engine's job-board watcher on Figma with that CV. The session hit three points of friction. The first match looked wrong because it was wrong. The results didn't add up to the score because of a real bug. And the demo's first choice of résumé got replaced mid-session. Every push to GitHub is listed at the bottom with its date and commit note.
+**What it records so far.** One working session on 2026-09-23, in two parts.
+- **The assignment.** An audit of the Reallocation Engine against an old version of its student assignment turned up paths that no longer exist, commands that don't run on a fresh copy, and a scoring signal that counts for nothing. That led to a rewritten 100-point assignment: a recipe plus a rough working prototype, framed around the 3-3-2 split.
+- **The demo.** Turning the CV into a facts file, and running the engine's job-board watcher on Figma with that CV. That part hit three points of friction. The first match looked wrong because it was wrong. The results didn't add up to the score because of a real bug. And the demo's first choice of résumé got replaced mid-session.
+
+Every push to GitHub is listed at the bottom with its date and commit note.
 
 ---
 
 ## Entries
+
+### 2026-09-23 — Auditing the Reallocation Engine and rewriting its assignment as a recipe plus a working prototype
+
+- **Date and what I was working on:** Getting a detailed picture of the Reallocation Engine repository as it stands, using the original 25-point "Mode Design" assignment as the lens, and then turning that into this term's version of the assignment.
+- **I tried / expected:** I expected the old assignment to still describe the repo, with maybe a stale path or two.
+- **What happened:** It had drifted a long way.
+  - **Wrong paths:** the assignment sends students to `modes/` and `modes/RUN_LOG.md`, and neither exists. Modes are now called *recipes* and live in `recipes/`. Student recipes go in `recipes/cases/<term>/`. Students log runs in `logs/runs/` and are not allowed to edit `logs/RUN_LOG.md`.
+  - **Already superseded:** there was already a 100-point Summer 2026 successor ("Mode Build"), and this term's live assignment is Greenhouse Watch.
+  - **Claims that checked out:** the 80 Days company table has 30,370 rows (the claim was "30K+"), the occupation table has 1,016 rows ("1,000+"), and the Playwright posting-liveness checker exists.
+  - **Problems the check turned up:**
+    - The role-quality signal has weight 0.0 in the scorer, so the "Cognitive Pivot" layer changes no Apply / Consider / Skip decision.
+    - Only samples of the SEC Form D data ship with the repo.
+    - `npm run bls:local-wage` fails on a fresh copy: it asks for a requirements file that isn't in the repo.
+    - `scripts/sec/validate-h1b-join-sample.py` fails on a fresh copy: it needs a data file that is gitignored and not shipped.
+    - `DOMAIN.md` lists both of those as runnable today.
+    - `npm run score` overwrites two tracked example files unless it is given `--out-dir`. Running it did exactly that, and the files were restored.
+    - The repo's CI calls test scripts in `scripts/test/` that don't exist.
+    - The Greenhouse Watch brief links a `course/prerequisites/` folder that isn't in that repo.
+    - `status.md` was last updated in June.
+  - **Recent skills:** checked across the engine and Madison. The engine's only recent addition is `greenhouse-watch` (added Sep 17, extended Sep 19 to Ashby and SmartRecruiters boards). Madison has had no new skills since its last commit on Jul 2.
+- **What I did:**
+  - Had the old assignment rewritten as a 100-point, Fall 2026 assignment, `course/assignments/reallocation-engine-recipe-build.md` in the-reallocation-engine.
+  - It calls everything a *recipe* now; "mode" survives only in a footnote explaining the rename.
+  - The deliverable is **a recipe plus a rough working prototype.** The prototype must read real repo data, write both a JSON log and a Markdown report, label every value as record, model judgment, or your input, handle two named failure cases, and have an offline test. The easiest path is to feed the engine's existing scorer rather than rewrite it.
+  - **A new opening section** explains what the engine is: the information-asymmetry problem, the fluency trap, the five kinds of evidence (two of them gates that can veto a role outright), and how the book, scripts, and recipes fit together.
+  - **A "Facts about the engine that will bite you" list** covers the eight problems above. The "Before you start" commands include only ones seen to run on a fresh copy.
+  - **The 3-3-2 argument** from my February 2026 essay: three hours networking, three building credibility, two researching and applying. The engine automates the research inside the "2," points the networking hours at funded sponsors with no open posting, and building the prototype *is* credibility work.
+  - The essay's survey statistics are deliberately **not** carried in as facts. Students must trace any such number to its primary source or label it an assumption.
+  - Each result must now say its next action (apply, network, or skip).
+  - The domain justification must say which part of the two hours the recipe takes over.
+  - A new example recipe, `network-targets`, turns the engine's rejects into a networking list.
+- **What Claude or another person contributed:** Claude Code (Opus 5.5) audited the repo, ran every check, found and restored the overwritten files, and drafted the assignment. I set the direction:
+  - a detailed summary first;
+  - then the 100-point version;
+  - rename everything to recipe;
+  - require a rough working prototype;
+  - add context on what the engine does;
+  - frame it with the 3-3-2 argument. The tool can help most with the "2," so students can run a 3-3-2 day instead of applying all day, every day.
+
+  The rubric weights (20 recipe, 20 prototype, 15 justification, 10 worked run, 15 presentation, 20 quartile) were Claude's proposal and are not yet confirmed.
+- **What I understand now / still do not understand:** The engine's real product is time. Every skip it justifies is time moved back to networking and building. Still open:
+  - the rubric weights;
+  - whether role quality should carry weight in the scorer;
+  - fixing `DOMAIN.md`, the missing CI scripts, and the broken prerequisite links in the engine repo.
+- **Evidence and next step:**
+  - Evidence: the assignment is at `course/assignments/reallocation-engine-recipe-build.md` in the-reallocation-engine. It is **not committed there yet**; that repo still needs my go-ahead for each push.
+  - Next: confirm the weights and push the assignment; fix `DOMAIN.md` and the CI scripts.
 
 ### 2026-09-23 — greenhouse-watch demo on Figma, and the CV as facts
 
@@ -37,7 +88,7 @@
   - commit the scoring fix in the-reallocation-engine and record it here, with links, as evidence;
   - give standing approval to push this folder after every substantive change, now written into `CLAUDE.md`. No token was needed: git on my machine was already authenticated.
 
-  I have not yet checked the CV conversion line by line; both JSON files say `attested: false`.
+  Later the same day I read `facts/professor-bear-cv.json` in full: accurate, no errors, and I will add more to it later. It is now marked `attested: true`. The job-matching résumé derived from it stays `attested: false`, because its skills list is Claude's selection from the CV and I have not reviewed that separately.
 - **What I understand now / still do not understand:** A keyword scheme is honest but narrow. It explains every match, and it can't see that "teaches, runs workshops, builds AI tutors" describes an advocate. Its misses are exactly the roles I'd pick by hand, so the scheme is where students have to do the thinking. Still open:
   - whether the default scheme's rule of dropping every Director role is right for anyone but students;
   - how much a daily watch catches that a weekly one misses (only two snapshots so far).
@@ -55,6 +106,9 @@ Where to check each claim in this log. Commits in this repository are listed in 
 |---|---|
 | Demo, CV facts, first log | [`bfdb402`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/bfdb402) — `greenhouse-watch-demo/`, `facts/professor-bear-cv.json`, `FRICTIONAL.md` |
 | Figma jobs archive, folder rules | [`1192ab5`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/1192ab5) — `figma/figma-jobs-2026-09-23.json`, `figma/README.md`, `CLAUDE.md` |
+| Fix logged, evidence table, standing push approval | [`9512602`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/9512602) — `FRICTIONAL.md`, `CLAUDE.md`, `greenhouse-watch-demo/README.md` |
+| CV facts checked by me | `facts/professor-bear-cv.json`: `attested: true`, 2026-09-23, "accurate, no errors; more to add later" |
+| The Fall assignment rewrite | `course/assignments/reallocation-engine-recipe-build.md` in the-reallocation-engine (local, not yet committed) |
 | The scoring-report fix and its test | [`015843d`](https://github.com/nikbearbrown/the-reallocation-engine/commit/015843d5047dbadff05068495e4c5db5cd9945f4) in the-reallocation-engine — `.claude/skills/greenhouse-watch/scripts/greenhouse_watch.py`, `tests/test_greenhouse_watch.py`, `logs/RUN_LOG.md` |
 | The live board fetches | `greenhouse-watch-demo/snapshots/figma-2026-09-23.json` (19:54 UTC) and `figma/figma-jobs-2026-09-23.json` (20:01 UTC), both Figma's unchanged API response |
 | The runs and their reasons | `greenhouse-watch-demo/runs/` and `greenhouse-watch-demo/whole-board/`: one JSON record and one Markdown report per run |
@@ -70,3 +124,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-23 | feat(fall-2026): add greenhouse-watch Figma demo, Professor Bear CV facts, and Frictional log |
 | 2026-09-23 | feat(fall-2026): add dated Figma jobs archive and folder CLAUDE.md for Frictional logging |
 | 2026-09-23 | docs(fall-2026): log the greenhouse-watch fix with commit evidence and standing push approval |
+| 2026-09-23 | docs(fall-2026): log the whole session in Frictional and attest the CV facts |
