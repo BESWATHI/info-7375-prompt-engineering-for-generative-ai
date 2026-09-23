@@ -76,6 +76,7 @@ Every push to GitHub is listed at the bottom with its date and commit note.
   - Wrote the CV as `facts/professor-bear-cv.json`, with contact details, links, DOIs, grant numbers, and other people's names removed, and derived the matching résumé from it.
   - Linked the duplicate board downloads to the two snapshots instead of storing four copies.
   - After the first push, added `CLAUDE.md` to this folder. It tells Claude Code to log every substantive change here in this file and add a line per push, and it spells out what counts as substantive, so the log stays complete without my having to ask each time.
+  - Noticed on GitHub that the CV displayed nicely but the Figma jobs file was one 1.5 MB line. It isn't JSONL. It is ordinary JSON that Greenhouse sends minified, and the skill saved the exact bytes. Since the point of this folder is that students read and check it, I had every JSON file here reformatted indented: the Figma archive and both demo snapshots. The data was checked identical before and after, and the demo re-runs give the same results (152 at baseline; then 11 new, 0 relevant). `CLAUDE.md` now requires readable JSON for everything in this folder.
   - Started `figma/`, a dated archive of Figma's open jobs. The first file, `figma-jobs-2026-09-23.json`, is a fresh live fetch at 20:01 UTC: 160 jobs, the same set as the 19:54 UTC snapshot. Nothing changed in those seven minutes, which is expected; the archive's value comes from the days that follow.
 - **What Claude or another person contributed:** Claude Code (Opus 5.5) ran every command, wrote the files, traced the scoring bug to its two causes, wrote the fix and the test, and drafted this entry. I chose the direction:
   - build something simple in my folder;
@@ -85,6 +86,7 @@ Every push to GitHub is listed at the bottom with its date and commit note.
   - keep this log, one line per push;
   - have a folder `CLAUDE.md` make updating this log automatic for any substantive change;
   - keep a `figma/` folder of the current jobs as JSON, named by date;
+  - reformat all JSON as readable, because the point is for students to read it and check it;
   - commit the scoring fix in the-reallocation-engine and record it here, with links, as evidence;
   - give standing approval to push this folder after every substantive change, now written into `CLAUDE.md`. No token was needed: git on my machine was already authenticated.
 
@@ -107,10 +109,11 @@ Where to check each claim in this log. Commits in this repository are listed in 
 | Demo, CV facts, first log | [`bfdb402`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/bfdb402) — `greenhouse-watch-demo/`, `facts/professor-bear-cv.json`, `FRICTIONAL.md` |
 | Figma jobs archive, folder rules | [`1192ab5`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/1192ab5) — `figma/figma-jobs-2026-09-23.json`, `figma/README.md`, `CLAUDE.md` |
 | Fix logged, evidence table, standing push approval | [`9512602`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/9512602) — `FRICTIONAL.md`, `CLAUDE.md`, `greenhouse-watch-demo/README.md` |
+| Whole session logged, CV attested | [`e95cf63`](https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/commit/e95cf63) — `FRICTIONAL.md`, `facts/professor-bear-cv.json`, `CLAUDE.md` |
 | CV facts checked by me | `facts/professor-bear-cv.json`: `attested: true`, 2026-09-23, "accurate, no errors; more to add later" |
 | The Fall assignment rewrite | `course/assignments/reallocation-engine-recipe-build.md` in the-reallocation-engine (local, not yet committed) |
 | The scoring-report fix and its test | [`015843d`](https://github.com/nikbearbrown/the-reallocation-engine/commit/015843d5047dbadff05068495e4c5db5cd9945f4) in the-reallocation-engine — `.claude/skills/greenhouse-watch/scripts/greenhouse_watch.py`, `tests/test_greenhouse_watch.py`, `logs/RUN_LOG.md` |
-| The live board fetches | `greenhouse-watch-demo/snapshots/figma-2026-09-23.json` (19:54 UTC) and `figma/figma-jobs-2026-09-23.json` (20:01 UTC), both Figma's unchanged API response |
+| The live board fetches | `greenhouse-watch-demo/snapshots/figma-2026-09-23.json` (19:54 UTC) and `figma/figma-jobs-2026-09-23.json` (20:01 UTC), both Figma's API response, indented for reading, with the data unchanged |
 | The runs and their reasons | `greenhouse-watch-demo/runs/` and `greenhouse-watch-demo/whole-board/`: one JSON record and one Markdown report per run |
 
 ---
@@ -125,3 +128,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-23 | feat(fall-2026): add dated Figma jobs archive and folder CLAUDE.md for Frictional logging |
 | 2026-09-23 | docs(fall-2026): log the greenhouse-watch fix with commit evidence and standing push approval |
 | 2026-09-23 | docs(fall-2026): log the whole session in Frictional and attest the CV facts |
+| 2026-09-23 | style(fall-2026): indent every JSON file so students can read and check it |

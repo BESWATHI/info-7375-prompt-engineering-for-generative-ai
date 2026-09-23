@@ -49,6 +49,13 @@ Every push that touches this folder adds a row to the `## GitHub pushes` table, 
 - Run `python3 scripts/validate_course.py` from the repo root before committing.
 - End the commit message with the co-author line the session specifies.
 
+## Every JSON file is readable
+
+The point of this folder is that students can open any file on GitHub, read it, and check it. So **every JSON file here is indented (2 spaces, UTF-8 characters kept as written, one trailing newline)**, never minified onto one line.
+- **Downloads and API responses:** reformat them before committing. Parse the file, write it back indented, and confirm the parsed data is identical before and after. Only the whitespace changes, never the data.
+- **Say so where it matters.** Where a file is evidence of what a server sent, its README says it was indented for reading and the data is unchanged.
+- **Check before every commit:** `find . -name '*.json' -type f` should show no file with 0 lines.
+
 ## Privacy
 
 This repo is public.

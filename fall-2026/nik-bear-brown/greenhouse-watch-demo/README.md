@@ -26,7 +26,7 @@
 | `runs/` | **The two-day watch.** Run 1 is the baseline from the 09-19 snapshot. Run 2 reads the 09-23 snapshot and reports only what is new. Each run has a JSON record (for the agent) and a Markdown report (for you). |
 | `whole-board/` | **The whole-board view.** One dry run with an empty "already seen" list, so all 160 postings count as new. This shows what the scheme flags and what it misses. |
 
-The `raw-*.json` files in `runs/` and `whole-board/` are links to the matching snapshot. The skill saves a copy of the board response on every run, and these copies are byte-identical to the snapshot, so they are linked instead of duplicated.
+The two snapshots are indented for reading. Figma's API sends one minified line; the data was checked identical before and after, and re-running both runs on the indented files gives the same results. The `raw-*.json` files in `runs/` and `whole-board/` are links to the matching snapshot. The skill saves a copy of the board response on every run, and those copies hold the same data as the snapshot, so they are linked instead of duplicated.
 
 ## How to reproduce it
 
