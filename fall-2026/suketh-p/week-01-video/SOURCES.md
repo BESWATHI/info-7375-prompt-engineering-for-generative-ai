@@ -142,7 +142,7 @@ is the `[MINE]` checklist under the table, and only I fill it in.
 | `components/ShiftedNotChanged.tsx` (7 scenes) | Written by Claude | Parameterized scenes that take every figure as a prop; `ShiftComposer` (2026-09-24) wraps the toolkit composer with a disclosure pill | Read the props contract; confirmed the beat sheet supplies and overrides every figure-bearing default — and corrected an over-broad claim in the paperwork, §5.8 |
 | Visual QC (5 rounds on the first build; re-run on every re-render since) | Run by Claude | Reads the sampled frames, not just the gate report | Reviewed the contact sheets; two defects were found this way that no gate reported |
 | This file, `FACTCHECK.md`, `SHOTLIST.md`, `CHECKS-REPORT.md`, `BUILD-PROMPT.md`, `PROMPTS.md`, `README.md`, `REFINEMENTS.md`, and the dated entries of `FRICTIONAL.md` and `REVIEW.md` | Drafted by Claude | Paperwork keyed to the specific laws in the SKILL.md and the brief | Checked against the artifact — imperfectly: §5.16–§5.20 are errors in these files that survived earlier checks |
-| `FRICTIONAL.md` / `REVIEW.md` — `[MINE]` sections | **Not AI.** Deliberately left blank | — | Mine to write after watching the cut; the assistant does not write them |
+| `[MINE]` sections of `FRICTIONAL.md`, `REVIEW.md` and this file | The dated record of my own actions was compiled by Claude from my messages; the reflection is **not AI** and **not yet written** | — | Mine to write; the assistant does not write it |
 
 **What I decided — these are mine:** the concept (max-subtraction, the option Claude
 recommended from its shortlist of three); the video going to Canvas only, with everything
@@ -151,10 +151,11 @@ no push access; asking for the audit that found §5.16–§5.20 before submittin
 access was granted, having the stale copies deleted and the corrected version posted
 straight to `main`; and the decision to submit.
 
-**`[MINE]` — what I personally re-ran or read.** Before submitting I list here only what I
-actually did myself, for example: *ran `verify_claims.py` and compared it with
-`run-output.txt`; ran the 29 tests; watched the cut with sound; read `beat_sheet.json`.*
-Anything I did not do stays off this list.
+**`[MINE]` — what I personally re-ran or read.** Nothing is listed here yet, so **no
+personal re-run or read-through is claimed**: every check in the table above was run by
+Claude in the session. Only what I actually do myself goes here — for example, running
+`verify_claims.py` and comparing it with `run-output.txt`, running the 29 tests, watching
+the cut with sound, or reading `beat_sheet.json`.
 
 ## 5. Corrections applied (DOUBLE-CHECK LAW)
 

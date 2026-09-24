@@ -42,8 +42,9 @@ supply the actual experience."* Where an entry says "I tried", "I expected" or "
 describes a step of the build session, **not** something I personally did, believed or
 checked. The **What this showed** paragraphs are observations about the work, not claims
 about my understanding. What I personally attempted, checked, decided and understood
-appears **only** in the `[MINE]` sections, in my own words; the assistant does not write
-them. Nothing in this file claims an approval, a test result, or an understanding that did
+appears **only** in the `[MINE]` sections. There, the dated record of my own actions was
+compiled by Claude from my messages; the reflection is mine to write, and the assistant
+does not write it. Nothing in this file claims an approval, a test result, or an understanding that did
 not occur.
 
 ---
@@ -669,23 +670,41 @@ pull request's first commit, so the pull request and `main` carry the same histo
 
 ---
 
-## `[MINE — to complete after watching the cut]`
+## `[MINE]` — my part
 
-These are the entries the rubric wants from me, not from the assistant — its *Your
-attempts*, *Human and AI contributions* and *Learning and uncertainty* rows. I complete them
-after watching the full cut with sound, and before I submit:
+### What I did — the record
 
-- **What I personally attempted, checked or re-ran**, as opposed to what Claude ran in the
-  session. Only what I actually did. `SOURCES.md` §4 has the matching checklist.
-- **The change I requested after watching, and how it improved understanding rather than
-  appearance.** Timestamp, the problem in plain language, what I asked for, and what the
-  re-render fixed. (The prerequisite asks for exactly this, and
-  [`REVIEW.md`](REVIEW.md) is where the timestamped version goes.)
+**Compiled by Claude from my own messages in the build sessions**, with the times those
+messages were sent (EDT, from the session log). These are facts about what I did, not a
+reflection, and not a claim about anything I did outside the sessions.
+
+| When | What I did |
+|---|---|
+| 2026-09-15 09:42 | Cloned the `brutalist.art` toolkit into the project folder myself, and asked for the assignment to be done by following every piece of the course material, including the instructor's videos |
+| 2026-09-15 09:46 | Chose the concept: the max-subtraction, the option Claude recommended from its shortlist |
+| 2026-09-18 17:18 | Sent the instructor's AI-policy video and asked for a better version, "till I submit" |
+| 2026-09-20 13:30 | Asked for another pass toward the best version |
+| 2026-09-24 09:58 | Sent the rubric and asked for the work to be refined against the assignment again |
+| 2026-09-24 10:49 | Set the posting rule: everything except the video goes to `fall-2026/suketh-p` on GitHub, for every refinement; the video goes to Canvas only |
+| 2026-09-24 10:54 | Stopped the work to ask for an analysis of how to submit before anything was pushed |
+| 2026-09-24 11:09 | Approved going ahead with the fork-and-pull-request route, after one more refinement pass |
+| 2026-09-24 11:13 | Switched the session's model to Claude Opus 5.5 |
+| 2026-09-24 11:26 | Asked for a list of every refinement made since the start — now `REFINEMENTS.md` |
+| 2026-09-24 17:13 | Sent the instructor's push-permission announcements and asked for a deeper look at whether the assignment had been done and submitted right. That request found the errors in `SOURCES.md` §5.16–§5.20 |
+| 2026-09-24 18:00 | Had the stale pre-fix copies deleted and the corrected version posted to git, and asked for the final Canvas submission |
+
+### Still to be written by me — not yet done
+
+The rest is reflection, and the course AI policy is explicit that the assistant must not
+invent it: *"do not ask AI to invent your struggle or understanding."* **None of it has
+been written yet.** As posted, this log contains no account of my own understanding:
+
+- **What I personally re-ran or checked**, as opposed to what Claude ran in the session
+  (`SOURCES.md` §4 has the matching checklist, also still empty).
+- **The change I would request after watching the cut with sound**, with its timestamp —
+  the timestamped version goes in [`REVIEW.md`](REVIEW.md).
 - **My unaided explanation of why the cancellation is exact but the floats still differ.**
-  Written without re-reading B04 or B06.
-- **What changed in my understanding, in my own words** — not a paraphrase of the "What this
-  showed" notes above, which are Claude's.
-- **What I still cannot defend.** The brief warns a TA may ask me to explain any part of
-  the video, the beat sheet, or the build. Claude wrote the Remotion components and every
-  evidence script (`SOURCES.md` §4). Which parts can I explain without notes, and which can
-  I not yet?
+- **What changed in my understanding, in my own words** — not a paraphrase of the "What
+  this showed" notes above, which are Claude's.
+- **What I still cannot defend.** Claude wrote the Remotion components and every evidence
+  script (`SOURCES.md` §4). Which parts can I explain to a TA without notes?

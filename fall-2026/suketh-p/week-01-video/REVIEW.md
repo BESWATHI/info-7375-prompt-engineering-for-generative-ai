@@ -511,3 +511,6 @@ cut with sound and answer, in my own words:
 
 Until that pass is written here, the honest status of this film is **reviewed for defects,
 not yet reviewed for teaching**.
+
+**As posted (2026-09-24): not yet written.** No human watch-through with sound is recorded,
+so the status above stands.

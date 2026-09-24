@@ -156,10 +156,10 @@ second copy of a figure that could drift; the counts below are computed from the
 
 Honest about the gap, because the policy asks for it:
 
-- **The `[MINE]` sections in `FRICTIONAL.md`, `REVIEW.md` and `SOURCES.md` §4 are empty.**
-  They hold the student's own attempts, checks, reflection and post-watch review, and the
-  Frictional rubric asks for real experience. They were deliberately not written by the
-  assistant.
+- **The reflective parts of the `[MINE]` sections are not yet written.** `FRICTIONAL.md`
+  now carries a dated record of the student's own actions, compiled by Claude from the
+  student's messages. The student's own checks, post-watch review and understanding —
+  what the Frictional rubric asks for — were deliberately not written by the assistant.
 - **No human has yet watched the full cut with sound and judged whether it teaches.**
   Every check above verifies correctness and consistency; none of them can verify that.
 - **One GATE T warning remains**: terracotta on cream is 2.74:1 and brand-locked. It is
