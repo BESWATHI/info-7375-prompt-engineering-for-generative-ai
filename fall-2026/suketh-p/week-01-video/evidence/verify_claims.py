@@ -1,6 +1,8 @@
 """verify_claims.py — every number shown in "Shifted, Not Changed".
 
-Author: Suketh Produtoor (INFO 7375, Week 1)
+Submitted by Suketh Produtoor (INFO 7375, Week 1). Written by Claude in
+Claude Code build sessions the submitter directed — SOURCES.md §4 records
+who did what, and what the submitter personally re-ran.
 Concept: Chapter 1, "The subtraction that changes nothing important".
 
 This script exists so that no figure in the video is taken on trust. Each

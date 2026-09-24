@@ -1,6 +1,8 @@
 """doc_consistency.py — do the documents still agree with the artifact?
 
-Author: Suketh Produtoor (INFO 7375, Week 1)
+Submitted by Suketh Produtoor (INFO 7375, Week 1). Written by Claude in
+Claude Code build sessions the submitter directed — SOURCES.md §4 records
+who did what, and what the submitter personally re-ran.
 
 This submission has eleven documents and went through nine rounds of edits.
 Five separate times a number in the paperwork drifted from the thing it
@@ -41,7 +43,7 @@ REEL = pathlib.Path(__file__).resolve().parent.parent
 CURRENT_STATE = ["README.md", "CHECKS-REPORT.md", "SHOTLIST.md",
                  "BUILD-PROMPT.md", "FACTCHECK.md", "SOURCES.md", "PROMPTS.md"]
 # Dated logs. Exempt by design — see the module docstring.
-DATED_LOGS = ["REVIEW.md", "FRICTIONAL.md"]
+DATED_LOGS = ["REVIEW.md", "FRICTIONAL.md", "REFINEMENTS.md"]
 
 # A corrections ledger quotes the value it is correcting. Scanning it would
 # flag the very figures it exists to record as wrong — the same reasoning that
@@ -111,6 +113,11 @@ def main() -> int:
     scan(r"\d+ FAIL · \d+ WARN · \d+ PASS", "GATE T tally", {str(t["gate_t"])})
     # "13 tests" is the repo's own validator, not this suite — allow it.
     scan(r"\b\d+ tests\b", "test count", {f"{t['tests']} tests", "13 tests"})
+    # Body-beat word counts, written as a bold "a / b / c / d / e / f" list.
+    # B05's count changed on 2026-09-24 (34 -> 31) and nothing would have
+    # noticed the stale list; now it is derived like everything else.
+    scan(r"(?<=\*\*)\d+(?: / \d+){5}(?=\*\*)", "body word counts",
+         {" / ".join(str(n) for n in t["body_words"])})
 
     # The dated logs must each carry a correct current-state header.
     for name in DATED_LOGS:

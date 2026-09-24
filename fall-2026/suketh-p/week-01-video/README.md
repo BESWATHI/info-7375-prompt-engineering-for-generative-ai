@@ -8,10 +8,11 @@
 | **Course** | INFO 7375 — Prompt Engineering for Generative AI |
 | **Concept** | Chapter 1, Part 2 — **the max-subtraction**: why `probabilities()` subtracts the largest score before exponentiating |
 | **Why this one** | It is the smallest idea in the chapter — one subtraction — and the only candidate that pairs a provable core (the factor cancels exactly) with a failure you can actually run (the raw exponential raises `OverflowError`), which let me explain it completely inside three minutes instead of touring the chapter. |
-| **Runtime** | **3:15** (195.16 s), 11 beats, 1920×1080 |
+| **Runtime** | **3:16** (195.72 s of narration; the file probes at 196.0 s), 11 beats, 1920×1080 |
 | **Final file** | `Produtoor_Suketh_INFO7375_Week01_Video.zip` → **Canvas**. The MP4 is not committed here — see *Where the video is*. |
 | **Audience** | A classmate who has read Chapter 1 Part 1 and can follow arithmetic, but has not run the code yet |
-| **Status** | Reviewed local final — **not published**. No YouTube upload, per the brief. |
+| **Status** | Local final — **not published**; no YouTube upload, per the brief. Reviewed by Claude frame by frame (`REVIEW.md`); **my own watch-through is still to be written** (`[MINE]`). |
+| **Who did what** | Claude (Claude Code) wrote the scripts, scenes, beat sheet and these documents; I directed it and made the decisions listed in [`SOURCES.md`](SOURCES.md) §4. |
 | **Narration** | **Synthetic** — Kokoro `am_onyx`, generated locally. Not my voice, not the instructor's. See [`SOURCES.md`](SOURCES.md) §1. |
 | **Cost** | $0.00 — free pipeline only, no API key, no paid service |
 
@@ -20,10 +21,11 @@
 ## Where the video is
 
 **The MP4 is not in this repository.** It is submitted on Canvas as
-`Produtoor_Suketh_INFO7375_Week01_Video.zip` (1920×1080, h264+aac, 3:15, 8.5 MB).
+`Produtoor_Suketh_INFO7375_Week01_Video.zip` (1920×1080, h264+aac, 3:16, 9.0 MB).
 
 This folder carries everything else — beat sheet, evidence scripts and their recorded
-runs, fact-check, build prompt, review log, Frictional log, Remotion source. The split is
+runs, fact-check, build prompt, review log, Frictional log, and a description of the
+Remotion source (`components/README.md`; the `.tsx` itself is not vendored). The split is
 deliberate: [`youtube/README.md`](../../../youtube/README.md) says *"Large media is not
 committed by default"*, and everything here is text a reviewer can read, run and diff.
 `captions/*.srt` is included so the spoken content is searchable without the video.
@@ -48,8 +50,9 @@ sentence, then refuses the slogan usually attached to it.
 3. **B04 — why it is allowed.** `exp(−m/T)` is a common factor top and bottom. It cancels
    on screen. Algebra, not a numerical trick.
 4. **B06 — the honest receipt.** I expected the shifted and direct paths to return
-   identical floats. They differ by `1.1102230246251565e-16` — one machine epsilon, in two
-   digit positions out of fifty-three. Identical in algebra; in floating point merely
+   identical floats. They differ by `1.1102230246251565e-16` — exactly 2⁻⁵³, **half** of
+   Python's `sys.float_info.epsilon`: the two answers are adjacent floats, one step apart,
+   in two digit positions out of fifty-three. Identical in algebra; in floating point merely
    indistinguishable.
 5. **B07 — what this does *not* establish.** `probabilities([0, -800])` returns
    `[1.0, 0.0]` — an **exact zero** for an outcome whose true share is ≈ `1e-348`. The
@@ -81,7 +84,7 @@ quietly disagreeing with the video:
 
 ```bash
 python3 evidence/boundary_analysis.py        # the derivation and the remedy
-python3 -m unittest discover -s evidence -v  # 28 tests
+python3 -m unittest discover -s evidence -v  # 29 tests
 python3 evidence/mutation_check.py           # do those tests bite? 4/4 mutations caught
 python3 evidence/gate_t_typecheck.py         # GATE T: contrast, type floor, figure wiring
 python3 evidence/cross_check.py              # same figures under every python3.N on PATH
@@ -89,7 +92,7 @@ python3 evidence/doc_consistency.py          # do the 11 documents still match t
 ```
 
 `cross_check.py` answers a question the paperwork originally conceded. Every figure —
-including the seeded counts and the machine-epsilon difference — is **byte-identical
+including the seeded counts and the 2⁻⁵³ difference — is **byte-identical
 across CPython 3.10.19, 3.12.7, 3.13.3 and 3.14.6**, and 3.14.6 is the interpreter
 Chapter 1 records *its* run on. Scope, stated at the size of the evidence: four
 interpreters, **one** platform and architecture. IEEE-754 says this should hold
@@ -111,26 +114,27 @@ from this folder or from the posted `fall-2026/suketh-p/week-01-video/` folder w
 |---|---|
 | `README.md` | This file |
 | `beat_sheet.json` | The reviewed narration + visual plan. Measured `actual_duration_s` per beat. |
-| `final/` | The rendered MP4 (1920×1080, h264+aac, 195.16s) and its `.srt` captions |
+| `captions/*.srt` | 113 cues, word-aligned. The MP4 is the Canvas deliverable. |
 | `evidence/verify_claims.py` | Regenerates every on-screen number from the course reference code |
 | `evidence/run-output.txt` | The recorded run those numbers came from |
 | `evidence/boundary_analysis.py` | Derives the cliff in closed form; measures what it costs; demonstrates the log-space remedy |
-| `evidence/test_verify_claims.py` | 28 tests that fail if any on-screen number drifts |
-| `evidence/mutation_check.py` | Chapter 1 Assessment 10 — perturbs the code to prove those 28 tests actually bite (4/4 caught) |
+| `evidence/test_verify_claims.py` | 29 tests that fail if any on-screen number drifts — one reads the film's on-screen text against the recorded run |
+| `evidence/mutation_check.py` | Chapter 1 Assessment 10 — perturbs the code to prove those 29 tests actually bite (4/4 caught) |
 | `evidence/gate_t_typecheck.py` | **Implements GATE T**, which the toolkit declares mandatory but does not ship. WCAG contrast, type floor, word budget, figure-wiring → `TYPECHECK.md` |
 | `evidence/cross_check.py` | Runs every displayed figure under **every `python3.N` on PATH** and reports whether they agree |
 | `evidence/doc_consistency.py` | Derives the facts live and asserts the current-state docs still agree. Dated logs are exempt by design; their headers are checked instead |
 | `evidence/make_srt.py` | Builds the caption sidecar from the toolkit's aligned word clock |
 | `TYPECHECK.md` | GATE T result: 0 FAIL · 1 WARN · 29 PASS |
-| `components/ShiftedNotChanged.tsx` | My six Remotion scenes (belongs in the toolkit checkout) |
-| `FACTCHECK.md` | 16 claims · verdict · source · fix. Two narration fixes applied pre-audio. |
+| `components/README.md` | Why the seven reel-local Remotion scenes (written by Claude) are not vendored here, where they live, and excerpts cut from the real file |
+| `REFINEMENTS.md` | **Every refinement from first draft to submission, on one page, mapped to the rubric** — start here |
+| `FACTCHECK.md` | 21 rows · verdict · source · fix |
 | `SOURCES.md` | Sources, third-party licences, synthetic-narration disclosure, what Claude contributed |
-| `FRICTIONAL.md` | Dated honest log: four install failures, the boundary finding I did not expect, four doctrine/tooling gaps |
+| `FRICTIONAL.md` | Dated log of the build sessions, organised by Claude — install failures, the boundary finding, doctrine/tooling gaps, and the errors found before submitting — plus my `[MINE]` sections |
 | `CHECKS-REPORT.md` | PROOF GATE: 11 SHOW / 0 HOLD / 0 PUNT, teaching-arc and law compliance |
 | `SHOTLIST.md` | Typed work order, lane histogram, typing budget |
-| `PROMPTS.md` | The two on-screen prompts verbatim; records that there are no open slots |
+| `PROMPTS.md` | The three on-screen prompts verbatim (none was ever sent); records that there are no open slots |
 | `BUILD-PROMPT.md` | The single paste-ready prompt that rebuilds the film end to end |
-| `REVIEW.md` | Timestamped review of the rendered cut and the change I requested |
+| `REVIEW.md` | Timestamped review rounds of the rendered cut (Claude's); my watch-through and requested change go in its `[MINE]` section |
 
 Generated artifacts — `mp3/`, `media/`, `clips/`, `_qc/`, `pantry/` — are **not committed**.
 All are reproducible from `beat_sheet.json` via `BUILD-PROMPT.md`.
@@ -138,7 +142,7 @@ All are reproducible from `beat_sheet.json` via `BUILD-PROMPT.md`.
 ## How to rebuild the video from this folder
 
 Requires an external [`brutalist.art`](https://github.com/nikbearbrown/brutalist.art)
-checkout — the media engine stays outside this repository, per `AGENTS.md`. The six
+checkout — the media engine stays outside this repository, per `AGENTS.md`. The seven
 Remotion components this film uses live in that checkout at
 `runtime/remotion/src/ShiftedNotChanged.tsx` and are registered in `Root.tsx` under the
 folder `ShiftedNotChanged`.
@@ -181,9 +185,11 @@ patched by hand; the mp3 durations are the clock.
 - **Starting material:** Chapter 1 and `lessons/01-randomness-and-first-prompts/code/main.py`
   by Nik Bear Brown (INFO 7375). The reference implementation is imported, never modified.
 - **Media toolkit:** [`brutalist.art`](https://github.com/nikbearbrown/brutalist.art) @ `ba2d0e0`.
-- **AI assistance:** Claude Opus 5 via Claude Code — read the doctrine, diagnosed the
-  install, wrote the verification script and the Remotion components, authored the beat
-  sheet, and ran the build. It also found the underflow boundary the film ends on. Full
+- **AI assistance:** Claude Opus 5 via Claude Code (2026-09-15 to 2026-09-24), and Claude
+  Opus 5.5 for the final pass on 2026-09-24 — read the doctrine, diagnosed the install,
+  wrote every evidence script and Remotion component, authored the beat sheet and these
+  documents, and ran the build. It also found the underflow boundary the film ends on, and,
+  in the final audit, the errors in its own earlier work (`SOURCES.md` §5.16–§5.20). Full
   breakdown in [`SOURCES.md`](SOURCES.md) §4 and [`FRICTIONAL.md`](FRICTIONAL.md).
 - **Voice:** Kokoro-82M `am_onyx`, local. Disclosed on the outro card.
 - **Type:** EB Garamond (SIL OFL 1.1).

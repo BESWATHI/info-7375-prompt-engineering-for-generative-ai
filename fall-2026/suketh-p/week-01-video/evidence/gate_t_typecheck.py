@@ -1,6 +1,8 @@
 """gate_t_typecheck.py — the mandatory gate that does not ship.
 
-Author: Suketh Produtoor (INFO 7375, Week 1)
+Submitted by Suketh Produtoor (INFO 7375, Week 1). Written by Claude in
+Claude Code build sessions the submitter directed — SOURCES.md §4 records
+who did what, and what the submitter personally re-ran.
 
 `skills/make/ai-explainer/SKILL.md` says:
 

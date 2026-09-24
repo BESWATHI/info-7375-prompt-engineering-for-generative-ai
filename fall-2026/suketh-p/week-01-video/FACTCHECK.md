@@ -1,20 +1,22 @@
 # FACTCHECK — week-01-shifted-not-changed
 
-Status: **GATE F — all 19 rows PASS. Two narration fixes applied before audio (rows 5 and 14); rows 17–18 added 2026-09-18; row 14 corrected and row 19 added 2026-09-24.**
+Status: **GATE F — all 21 rows PASS. Two narration fixes applied before audio (rows 5 and 14); rows 17–18 added 2026-09-18; row 14 corrected, rows 19–20 added 2026-09-24; row 13 corrected and row 21 added later on 2026-09-24.**
 
 Figures reach the screen as beat-sheet props, which override the components' schema
 defaults (see `SOURCES.md` §5.8). Every claim the film makes is either (a) an arithmetic result reproducible by
 `evidence/verify_claims.py` against the course's unmodified reference implementation, or
-(b) a statement the chapter itself makes. There is no third category: this reel shows no
-screenshots, no generated imagery, no Claude transcript, and no constructed illustration.
+(b) a statement the chapter itself makes. The reel shows **no Claude response**, no
+screenshots and no generated imagery. It **does** show a reconstructed Claude interface in
+B00, B05 and B09. Every one of those beats carries an on-screen disclosure pill, and no
+prompt shown in them was ever sent (row 20; `SOURCES.md` §3, §5.16).
 
 **Primary sources.**
 `S1` = [`chapters/01-randomness-and-first-prompts.md`](../../../chapters/01-randomness-and-first-prompts.md)
 `S2` = [`lessons/01-randomness-and-first-prompts/code/main.py`](../../../lessons/01-randomness-and-first-prompts/code/main.py) (imported unmodified)
-`S3` = [`evidence/run-output.txt`](evidence/run-output.txt) — recorded run, Python 3.12.7 (CPython), macOS 26.6.2 arm64, 2026-09-15
+`S3` = [`evidence/run-output.txt`](evidence/run-output.txt) — recorded run, Python 3.12.7 (CPython), macOS 26.6.2 arm64, 2026-09-15 (re-run 2026-09-24 under macOS 27.0: byte-identical except the platform line)
 `S4` = CPython `sys.float_info` / `math` on the same interpreter
-`S5` = [`evidence/boundary-output.txt`](evidence/boundary-output.txt) — recorded run of `boundary_analysis.py`, 2026-09-18
-`S6` = [`evidence/mutation-output.txt`](evidence/mutation-output.txt) — recorded run of `mutation_check.py`, 2026-09-18
+`S5` = [`evidence/boundary-output.txt`](evidence/boundary-output.txt) — recorded run of `boundary_analysis.py`; first recorded 2026-09-18, file last written 2026-09-24, and a re-run reproduces it byte for byte
+`S6` = [`evidence/mutation-output.txt`](evidence/mutation-output.txt) — recorded run of `mutation_check.py`, 2026-09-24 (29 tests)
 `S7` = [`evidence/crosscheck-output.txt`](evidence/crosscheck-output.txt) — recorded run of `cross_check.py` across four interpreters, 2026-09-24
 
 | # | Beat | Claim (as spoken / shown) | Verdict | Source / derivation | Fix if needed |
@@ -31,13 +33,15 @@ screenshots, no generated imagery, no Claude transcript, and no constructed illu
 | 10 | B03 | "The denominator can never fall below 1" | ✓ PASS | Follows from row 8: the peak contributes exactly 1 and all other weights are ≥ 0. S3 claim 4 checks five cases including `[0, -1e9]`, all `>= 1: True` | — |
 | 11 | B04 | `exp(−m/T)` is a common factor in numerator and every denominator term, so it cancels | ✓ PASS | S1 §"The subtraction that changes nothing important" — the chapter's own derivation, re-set as a scene | — |
 | 12 | B04 | "That is algebra, not a numerical trick" | ✓ PASS | S1 distinguishes exactly this: "The cancellation above establishes equality in the mathematical expression. A numerical test compares values represented by a computer." | — |
-| 13 | B06 | Shifted and direct paths differ by `1.1102230246251565e-16` | ✓ PASS | S3 claim 2 `max_abs_difference`. Equals 2⁻⁵³ = machine epsilon for float64 | — |
+| 13 | B06 | Shifted and direct paths differ by `1.1102230246251565e-16` — "exactly 2\*\*-53 — adjacent floats, one step apart" | ✓ PASS (after fix) | S3 claim 2 `max_abs_difference`. Equals 2⁻⁵³ exactly — **half** of Python's `sys.float_info.epsilon` (2⁻⁵²) — and one ulp of the largest probability; each differing pair is two adjacent floats (`math.nextafter`) | **FIXED 2026-09-24**: gloss and narration said "one machine epsilon", which Python defines as 2⁻⁵², twice this. `SOURCES.md` §5.17 |
 | 14 | B06 | The two vectors differ in exactly two digit positions out of fifty-three | ✓ PASS | Both strings are 62 chars containing **53 digit characters**; differing indices are 19 and 60 (verified by character comparison) | **FIXED**: draft narration said the two paths return "the same numbers". Measured, they do not. Rewritten to "identical in algebra, indistinguishable in floating point" — see `SOURCES.md` §5 |
 | 15 | B07 | `probabilities([0, -800])` returns `[1.0, 0.0]` — an exact zero for an outcome whose true share is ≈ `1e-348`; the cliff is at `-746` (`-745` still returns `5e-324`) | ✓ PASS | S3 claim 5, four cases. `true_value_log10 = z/ln(10)`; `5e-324` is the smallest denormal | — |
 | 16 | B07/B08 | The claim earned is "overflow-safe", **not** "numerically stable" | ✓ PASS | S1 instructs exactly this: "Keep the tested claim narrower than the slogan 'numerically stable'", and "not a proof that every imaginable numeric input is handled perfectly" | Quote shown on screen, attributed to Chapter 1 |
 | 17 | B07 | The cliff is `−1075 · ln 2 = −745.133219102`, and −746 is the first integer past it | ✓ PASS | `S5` = [`evidence/boundary-output.txt`](evidence/boundary-output.txt). binary64's smallest subnormal is 2⁻¹⁰⁷⁴; under round-to-nearest anything below half of that (2⁻¹⁰⁷⁵) has no nearer neighbour than zero, so `exp(z) == 0.0` once `z < ln(2⁻¹⁰⁷⁵)`. Bisection of the real boundary agrees to 9 dp | Added 2026-09-18 — upgrades row 15 from a swept result to a predicted one |
-| 19 | B02 | The same `[1000, 1000]` that raises `OverflowError` returns `[0.5, 0.5]` once the max is subtracted | ✓ PASS | `S3` claim 3 — `shifted_result_is_half_half: True`, an exact equality. S1 makes this its canonical test: "The lesson tests this choice with equal large scores, [1000, 1000], and expects [0.5, 0.5]" | Added 2026-09-24 — the film previously showed the break with no payoff |
 | 18 | evidence only (not in the film) | Past the cliff, two outcomes 100 nats apart both report as `0.0`; log space keeps them ranked | ✓ PASS | `S5` — `probabilities([0,−800,−900])` → `[1.0, 0.0, 0.0]` vs log space `[0.0, −800.0, −900.0]`. The log-space form reproduces the reference to 1e-12 on `[1,2,3]` | Deliberately NOT a beat — one concept per the brief; it lives in `boundary_analysis.py` |
+| 19 | B02 | The same `[1000, 1000]` that raises `OverflowError` returns `[0.5, 0.5]` once the max is subtracted | ✓ PASS | `S3` claim 3 — `shifted_result_is_half_half: True`, an exact equality. S1 makes this its canonical test: "The lesson tests this choice with equal large scores, [1000, 1000], and expects [0.5, 0.5]" | Added 2026-09-24 — the film previously showed the break with no payoff |
+| 20 | B00, B05, B09 | The composer beats show no Claude response, and are labelled as reconstructed | ✓ PASS (after fix) | B00 `output` is now `[]`; all three render through `ShiftComposer` with a disclosure pill present from the first frames; model chip reads "Claude", not a version | **FIXED 2026-09-24**: B00 had shown three authored answer lines under "Fable 5" — a fabricated transcript the brief says fails the assignment. See `SOURCES.md` §5.16 |
+| 21 | B06 | "Had I called them equal, I would have been wrong in the last place of two numbers" | ✓ PASS (after fix) | Two of the three entries differ, each by one step (one ulp at its own magnitude); the third is identical. Checked by `math.nextafter` and by comparing IEEE-754 bit patterns | **FIXED 2026-09-24**: said "wrong by exactly one bit"; the first pair differs in two bits (`…1010` vs `…1001`). `SOURCES.md` §5.17 |
 
 ## Claims deliberately NOT made
 
@@ -74,8 +78,8 @@ the course reference by walking up, or via `INFO7375_REF`):
 ```bash
 python3 evidence/verify_claims.py          # rows 1–16
 python3 evidence/boundary_analysis.py      # rows 17–18, the derivation and the remedy
-python3 -m unittest discover -s evidence   # 28 tests; every row above, as an assertion
-python3 evidence/mutation_check.py         # do those 28 tests actually bite? 4/4 caught
+python3 -m unittest discover -s evidence   # 29 tests; every row above, as an assertion
+python3 evidence/mutation_check.py         # do those 29 tests actually bite? 4/4 caught
 python3 evidence/gate_t_typecheck.py       # GATE T: §8.6 re-checks every figure above
 python3 evidence/cross_check.py            # every figure, under every python3.N on PATH
 ```
@@ -85,6 +89,7 @@ Assessment 10 by perturbing the function under test and reporting which assertio
 survive. It is the reason row 17 exists at all — it showed that a suite can be green and
 still be blind, which is the same distinction this film is about.
 
-Reviewed 2026-09-15; rows 17–18 added and the verification block re-run 2026-09-18.
-Signed on the evidence above; the human review of the rendered cut is recorded separately
-in `REVIEW.md`.
+Drafted and checked by Claude in the build sessions: 2026-09-15; rows 17–18 added
+2026-09-18; rows 19–21 and the row-13 correction 2026-09-24, when the verification block
+was re-run. This is an evidence check, not a sign-off. The human review of the rendered
+cut is the `[MINE]` section of `REVIEW.md`, still to be written.

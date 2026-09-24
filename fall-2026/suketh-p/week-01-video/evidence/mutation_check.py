@@ -1,6 +1,8 @@
 """mutation_check.py — do the tests actually bite?
 
-Author: Suketh Produtoor (INFO 7375, Week 1)
+Submitted by Suketh Produtoor (INFO 7375, Week 1). Written by Claude in
+Claude Code build sessions the submitter directed — SOURCES.md §4 records
+who did what, and what the submitter personally re-ran.
 
 A green suite is evidence for its stated properties and nothing more. Chapter 1
 makes this its Challenge assessment:
@@ -10,7 +12,7 @@ makes this its Challenge assessment:
      assertion to pass. Do not alter the reference. Explain the bug, identify
      the surviving assertion, and add a different test that exposes the defect."
 
-This script does that for the 28 tests defending the video. Each mutation is a
+This script does that for the test suite defending the video. Each mutation is a
 plausible small defect. For each one it records which tests DIED (caught it)
 and which SURVIVED (passed anyway) — and a surviving assertion is the
 interesting result, not a failure of the exercise.

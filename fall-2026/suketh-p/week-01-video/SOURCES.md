@@ -1,8 +1,8 @@
 # SOURCES.md — "Shifted, Not Changed"
 
-**Author:** Suketh Produtoor · INFO 7375, Week 1
+**Submitted by:** Suketh Produtoor · INFO 7375, Week 1 — drafted by Claude; who did what is §4
 **Reel:** `week-01-shifted-not-changed`
-**Built:** 2026-09-15
+**Built:** 2026-09-15 · revised 2026-09-18, 2026-09-20, 2026-09-24
 
 Per [`prerequisites/brutalist-video-sources.md`](../../../prerequisites/brutalist-video-sources.md):
 what I used, what I made, what Claude contributed, and every third-party asset with its
@@ -52,7 +52,8 @@ Every figure the film renders is supplied as a **prop** from `beat_sheet.json`. 
 - **Script:** [`evidence/verify_claims.py`](evidence/verify_claims.py) — standard library
   only, offline, imports the course reference implementation by path.
 - **Recorded output:** [`evidence/run-output.txt`](evidence/run-output.txt)
-- **Environment of record:** Python 3.12.7 (CPython), macOS 26.6.2 arm64.
+- **Environment of record:** Python 3.12.7 (CPython), macOS 26.6.2 arm64. Re-run on
+  2026-09-24 under macOS 27.0: the output is byte-identical except the platform line.
 
 | Shown in | Figure | Claim it supports |
 |---|---|---|
@@ -61,7 +62,7 @@ Every figure the film renders is supplied as a **prop** from `beat_sheet.json`. 
 | B03 | `[-2, -1, 0]`; `0.1353352832`, `0.3678794412`, `1.0`; total `1.5032147244` | the intermediates the shift rewrites |
 | B03 | `0.0900305732`, `0.2447284711`, `0.6652409558` | matches the chapter's published T = 1.0 table to 10 dp |
 | B06 | both 62-character vectors, differing at indices 19 and 60 | shifted path vs direct exponentiation, full precision |
-| B06 | `1.1102230246251565e-16` | measured max absolute difference between the two paths |
+| B06 | `1.1102230246251565e-16` | measured max absolute difference between the two paths — exactly `2**-53`, half of `sys.float_info.epsilon`; each differing pair is two adjacent floats (`math.nextafter`) |
 | B07 | `9.85967654375977e-305`, `5e-324`, `0.0`, `0.0` | `probabilities([0, n])` for n = −700, −745, −746, −800 |
 | B08 | `~1e-348` | the true share of the outcome that returns a hard `0.0` |
 | B07 | `−1075 · ln 2 = −745.133219102`, `−746` | the cliff in closed form — derived, then confirmed by bisection to 9 dp. Source: [`evidence/boundary-output.txt`](evidence/boundary-output.txt) |
@@ -71,55 +72,89 @@ Every figure the film renders is supplied as a **prop** from `beat_sheet.json`. 
 ```bash
 python3 evidence/verify_claims.py             # prints every claim beside its value
 python3 evidence/boundary_analysis.py         # derives the cliff; shows what it costs
-python3 -m unittest discover -s evidence -v   # 28 tests; fail if any figure drifts
+python3 -m unittest discover -s evidence -v   # 29 tests; fail if any figure drifts
 python3 evidence/mutation_check.py            # proves those tests bite (4/4 caught)
 python3 evidence/gate_t_typecheck.py          # GATE T -> TYPECHECK.md (0 FAIL)
 python3 evidence/cross_check.py               # every figure, every python3.N on PATH
 python3 evidence/doc_consistency.py           # the docs vs the artifact (0 mismatches)
 ```
 
-**Captions.** `final/week-01-shifted-not-changed.srt` — 112 cues. Timing comes from the
+**Captions.** `final/week-01-shifted-not-changed.srt` — 113 cues. Timing comes from the
 toolkit's `align.py` word clock (faster-whisper word-level timing, sequence-aligned to the
 known narration; 11 beats aligned, 0 fallback), converted to an SRT by
 `evidence/make_srt.py`. The public toolkit ships the aligner but not the SRT writer, which
 lived in the removed publishing module — so that script is mine. Captions are a sidecar,
 never burned in.
 
-**Nothing in this film is a constructed illustration**, so there is nothing to label as
-constructed. The exponent axis in B02 is drawn to scale from the two real figures on it
-(709.78 against a score of 1000); it is a diagram of measured values, not an invented
-distribution. Chapter 1's own hypothetical answer-key counterexample is **not** used, and
-no Claude conversation transcript is shown, quoted, or reconstructed anywhere in the reel.
+**What in this film is reconstructed, and how it is labelled.** The brief requires:
+*"Label constructed illustrations as constructed … If you show a Claude response, it must
+be a real one you actually got, with the date."*
+
+- **B00, B05, B09 show a reconstructed Claude interface.** These are the toolkit's composer
+  scene, not screenshots and not transcripts. **No prompt shown in them was ever sent to a
+  model** — B00's and B05's were written as on-screen content for the beat sheet
+  (`PROMPTS.md`, §5.19). Each carries an on-screen pill from its first frames:
+  **RECONSTRUCTED INTERFACE · NOT A CLAUDE TRANSCRIPT** (B00, B05) and
+  **SUGGESTED PROMPT · NOT YET RUN — YOURS TO TRY** (B09). The model chip reads a generic
+  "Claude", not a specific model version.
+- **No Claude response appears anywhere in the film.** B00 no longer shows answer lines
+  (see §5.16), and B06's output is the recorded run of `verify_claims.py`, labelled
+  on screen as a recorded run of that script.
+- **The exponent axis in B02** is drawn to scale from two real figures (709.78 against a
+  score of 1000). It is a diagram of measured values, not an invented distribution.
+- **Chapter 1's hypothetical answer-key counterexample is not used.**
 
 ## 4. What Claude contributed — portion by portion
 
-The [AI policy](../../../prerequisites/ai-policy.md) requires identifying **which portions**
-were AI-assisted and **describing the usage method**. Prose is too vague for that, so this
-is per artifact. Claude Opus 5 via Claude Code, NEU access, one session 2026-09-15 plus an
-iteration pass 2026-09-18. No direct API credits.
+The [AI policy](../../../prerequisites/ai-policy.md) requires stating *"what Claude
+contributed and what you personally attempted, checked, revised, and decided."* Prose is
+too vague for that, so this is per artifact.
 
-| Artifact | AI-assisted? | How I used it (the method) | What I checked myself |
+**Model and sessions (from the session log).** Claude Opus 5 (`claude-opus-5`) via Claude
+Code, NEU access, in sessions on 2026-09-15, 2026-09-18, 2026-09-20 and 2026-09-24; Claude
+Opus 5.5 (`claude-opus-5-5`) from 15:13 UTC on 2026-09-24. No direct API credits.
+
+**How I used it.** My prompts were goal-level — do this assignment to the brief and the
+course material; refine it toward full marks (with the instructor's AI-policy video); post
+everything but the video to GitHub under `fall-2026/suketh-p/`; take a deeper look before
+submitting. The decisions that were mine are listed under the table. Everything in the
+table's third column is **Claude's own working method**, paraphrased — none of it is a
+prompt I typed.
+
+**Read the fourth column carefully.** It records checks **Claude ran in the session**, with
+their recorded outputs. It is *not* a claim that I repeated them. What I personally re-ran
+is the `[MINE]` checklist under the table, and only I fill it in.
+
+| Artifact | AI-assisted? | How it was produced | Checked in the session — by Claude |
 |---|---|---|---|
-| Concept choice | Shortlist AI, decision mine | Asked for candidates from Chapter 1's own list with an argument for each, then rejected the 665.24-vs-630 option as the one the cohort would converge on | Read Chapter 1 end to end; confirmed max-subtraction is the smallest of the three |
-| `evidence/verify_claims.py` | Written by Claude | "Import the reference unmodified; print each claim beside the value it actually returns; round nothing" | Ran it; every probability cross-checked against Chapter 1's published T=1.0 table |
-| The boundary finding (`[0,-800]` → `0.0`) | **Found by Claude** | After it established the denominator can never underflow, I asked the mirror question about the numerator; it swept the small end | Re-ran the sweep; confirmed −745 returns `5e-324` and −746 returns `0.0` |
-| The derivation (`−1075·ln 2`) | Derived by Claude | Asked "is −746 arbitrary, or predictable from the float64 format?" | Confirmed by bisection to 9 dp; checked `2**-1074` and `2**-1075` independently |
-| `evidence/boundary_analysis.py` | Written by Claude | Asked it to derive the cliff, measure what the boundary costs, and demonstrate the log-space remedy | Ran it; verified the remedy reproduces the reference to 1e-12 on `[1,2,3]` |
-| `evidence/test_verify_claims.py` (28 tests) | Written by Claude | "One job per check; name the beat each test defends; no aggregate 'it works' test" | Ran them, then ran the mutation check below to confirm they bite |
-| `evidence/gate_t_typecheck.py` | Written by Claude | "The SKILL.md calls GATE T mandatory and the script is missing — implement the parts you can check honestly, and state what you cannot" | Ran it; it failed on first run and found the disclosure contrast defect. Verified the WCAG maths by hand against the palette hexes |
-| `evidence/mutation_check.py` | Written by Claude | Asked it to implement Chapter 1's Assessment 10 against my own suite | Ran it; **it corrected a claim I had accepted** — see §5.5 |
-| `evidence/doc_consistency.py` | Written by Claude | "Five numbers have drifted between the docs and the artifact and I found every one by accident — write the check that should have existed from the start" | Ran it; it immediately found a sixth stale figure in this very submission (recorded in §5.14). Checked that it exempts the dated logs and the corrections ledger rather than policing their history |
-| `evidence/cross_check.py` | Written by Claude | "FACTCHECK concedes the figures might not reproduce on another interpreter — that is testable, so test it and report the scope honestly" | Ran it; confirmed 3.14.6 (the chapter's own) was among those tested, and checked the scope wording does not overreach to other architectures |
-| `evidence/make_srt.py` + captions | Written by Claude | Asked it to close the gap left by the toolkit's removed publishing module | Spot-checked cue timing against the audio |
+| Concept choice | Shortlist AI, decision mine | Claude shortlisted three candidates from the brief's own list with an argument for each, and recommended against 665.24-vs-630 as the one a cohort would converge on; I picked its recommendation | Read Chapter 1 end to end; confirmed max-subtraction is the smallest of the three |
+| `evidence/verify_claims.py` | Written by Claude | Imports the reference unmodified; prints each claim beside the value it actually returns; rounds nothing | Ran it; every probability cross-checked against Chapter 1's published T=1.0 table |
+| The boundary finding (`[0,-800]` → `0.0`) | **Found by Claude** | After establishing that the denominator can never underflow, Claude asked the mirror question about the numerator itself, and swept the small end | Re-ran the sweep; confirmed −745 returns `5e-324` and −746 returns `0.0` |
+| The derivation (`−1075·ln 2`) | Derived by Claude | Claude asked whether −746 is arbitrary or predictable from the float64 format, and derived it | Confirmed by bisection to 9 dp; checked `2**-1074` and `2**-1075` independently |
+| `evidence/boundary_analysis.py` | Written by Claude | Derives the cliff, measures what the boundary costs, and demonstrates the log-space remedy | Ran it; verified the remedy reproduces the reference to 1e-12 on `[1,2,3]` |
+| `evidence/test_verify_claims.py` (29 tests) | Written by Claude | One job per check; each test names the beat it defends; no aggregate 'it works' test | Ran them, then ran the mutation check below to confirm they bite |
+| `evidence/gate_t_typecheck.py` | Written by Claude | The SKILL.md calls GATE T mandatory and the script is missing, so Claude implemented the parts that can be checked honestly and stated what cannot be | Ran it; it failed on first run and found the disclosure contrast defect. The WCAG maths was re-computed independently of the script on 2026-09-24 from the palette hexes: 1.98, 2.74 and 4.37 all reproduce |
+| `evidence/mutation_check.py` | Written by Claude | Implements Chapter 1's Assessment 10 against the suite | Ran it; **it corrected a claim the paperwork had made** — see §5.5 |
+| `evidence/doc_consistency.py` | Written by Claude | Five numbers had drifted between the docs and the artifact, each found by accident; this is the check that should have existed from the start | Ran it; it immediately found a sixth stale figure in this very submission (recorded in §5.14). Checked that it exempts the dated logs and the corrections ledger rather than policing their history |
+| `evidence/cross_check.py` | Written by Claude | FACTCHECK conceded the figures might not reproduce on another interpreter; that is testable, so this tests it and reports the scope | Ran it; confirmed 3.14.6 (the chapter's own) was among those tested, and checked the scope wording does not overreach to other architectures |
+| `evidence/make_srt.py` + captions | Written by Claude | Closes the gap left by the toolkit's removed publishing module | Cue count, total span and first/last cue checked against the narration (the script prints all three) |
 | `beat_sheet.json` | Authored by Claude | SHOW blocks first, narration second, per SHOW-DON'T-TELL LAW | Read every narration line against `evidence/run-output.txt` |
-| `components/ShiftedNotChanged.tsx` (6 scenes) | Written by Claude | Asked for parameterized scenes that take every figure as a prop | Read the props contract; confirmed the beat sheet supplies and overrides every figure-bearing default — and corrected my own over-broad wording, §5.8 |
-| Visual QC (5 rounds) | Run by Claude | Asked it to read the sampled frames, not just the gate report | Reviewed the contact sheets; two defects were found this way that no gate reported |
-| This file, `FACTCHECK.md`, `SHOTLIST.md`, `CHECKS-REPORT.md`, `BUILD-PROMPT.md` | Drafted by Claude | Asked for paperwork keyed to the specific laws in the SKILL.md | Checked each claim against the artifact it describes |
-| `FRICTIONAL.md` / `REVIEW.md` — `[MINE]` sections | **Not AI.** Deliberately left blank | — | Mine to write after watching the cut; I will not have the assistant invent my reflection |
+| `components/ShiftedNotChanged.tsx` (7 scenes) | Written by Claude | Parameterized scenes that take every figure as a prop; `ShiftComposer` (2026-09-24) wraps the toolkit composer with a disclosure pill | Read the props contract; confirmed the beat sheet supplies and overrides every figure-bearing default — and corrected an over-broad claim in the paperwork, §5.8 |
+| Visual QC (5 rounds on the first build; re-run on every re-render since) | Run by Claude | Reads the sampled frames, not just the gate report | Reviewed the contact sheets; two defects were found this way that no gate reported |
+| This file, `FACTCHECK.md`, `SHOTLIST.md`, `CHECKS-REPORT.md`, `BUILD-PROMPT.md`, `PROMPTS.md`, `README.md`, `REFINEMENTS.md`, and the dated entries of `FRICTIONAL.md` and `REVIEW.md` | Drafted by Claude | Paperwork keyed to the specific laws in the SKILL.md and the brief | Checked against the artifact — imperfectly: §5.16–§5.20 are errors in these files that survived earlier checks |
+| `FRICTIONAL.md` / `REVIEW.md` — `[MINE]` sections | **Not AI.** Deliberately left blank | — | Mine to write after watching the cut; the assistant does not write them |
 
-**What I did that is not in the table:** chose the concept, set the honesty constraints
-(no channel branding, no impersonation, no fabricated run), decided what the evidence
-supports, and own the decision to submit.
+**What I decided — these are mine:** the concept (max-subtraction, the option Claude
+recommended from its shortlist of three); the video going to Canvas only, with everything
+else on GitHub under `fall-2026/suketh-p/`; the fork-and-pull-request route when there was
+no push access; asking for the audit that found §5.16–§5.20 before submitting; once push
+access was granted, having the stale copies deleted and the corrected version posted
+straight to `main`; and the decision to submit.
+
+**`[MINE]` — what I personally re-ran or read.** Before submitting I list here only what I
+actually did myself, for example: *ran `verify_claims.py` and compared it with
+`run-output.txt`; ran the 29 tests; watched the cut with sound; read `beat_sheet.json`.*
+Anything I did not do stays off this list.
 
 ## 5. Corrections applied (DOUBLE-CHECK LAW)
 
@@ -233,6 +268,101 @@ corrections logged here.
     from their sources only by link depth and the video note. The guard was verified by
     reintroducing the original rule and confirming it catches all four changed lines.
 
+16. **The film showed a fabricated Claude response, and this file said it did not.** B00
+    opened on a Claude composer with **three answer lines** beneath the prompt —
+    "changes — every intermediate weight / cannot change — the normalized distribution /
+    still broken — the small end returns a hard 0.0" — under a model chip reading
+    **"Fable 5"**. I wrote those lines as a summary of the film and the composer styled them
+    as output. **No such prompt was ever sent to any model.** To a viewer that is a Claude
+    transcript, and the brief says of exactly this: *"A video that fabricates a Claude
+    transcript to make a cleaner story has failed the assignment on its own terms."*
+    Meanwhile this file and `FACTCHECK.md` both asserted *"no Claude transcript is shown"*.
+    That is the kind of misstatement about what was verified that the brief calls an
+    academic-integrity matter.
+
+    **Why it survived nine rounds.** I was checking against the toolkit's COLD OPEN LAW,
+    which *requires* B00 to "land answered" with output lines. The assignment brief
+    forbids a fabricated answer. The two conflict, and the brief is what is graded. I
+    never read the composer frames against the brief's sentence until asked to take a
+    deeper look at the assignment itself.
+
+    **Fix.** B00's answer lines removed; the indicator now reads *"answered by this video —
+    not by a transcript"*. All three composer beats (B00, B05, B09) render through a
+    reel-local `ShiftComposer` wrapper that overlays a disclosure pill from the first
+    frames; the shared toolkit component is untouched. The model chip no longer names a
+    model version. B05's narration no longer says "I asked for a check" — the evidence
+    script runs both paths, and that is what it now says.
+
+17. **"One machine epsilon" was wrong — on screen and aloud — and so was "one bit".** B06
+    glossed `1.1102230246251565e-16` as *"one machine epsilon — the smallest gap float64
+    can express near 1"*, and the narration said *"one machine epsilon"*. Python's
+    `sys.float_info.epsilon` is `2.220446049250313e-16` = 2⁻⁵², **twice** the measured gap;
+    the gap is exactly 2⁻⁵³ (some texts call that the unit roundoff, but a viewer checking
+    in Python gets the other number). What is exactly true: each differing pair is two
+    **adjacent** floats — `math.nextafter` steps from one to the other — and the largest
+    gap is one ulp of `0.665…`. The narration's close, *"wrong by exactly one bit"*, was
+    also false: the third pair differs in one bit, but the first differs in two
+    (`…1010` vs `…1001`). And the same gloss still ended *"Two digits out of sixty"*:
+    §5.12 corrected the narration and the docs, **not the on-screen text**, because no check
+    read the beat sheet's on-screen strings.
+    **Fix.** Gloss: *"exactly 2\*\*-53 — adjacent floats, one step apart. Two digits out of
+    fifty-three."* Narration: *"Not zero — adjacent floats, one step apart … Had I called them
+    equal, I would have been wrong in the last place of two numbers."* B06 re-recorded
+    (20.50 → 20.63 s) and re-rendered. A new test,
+    `test_screen_and_narration_say_what_the_record_says`, reads the on-screen gloss and the
+    narration from `beat_sheet.json` and checks them against the recorded run; run against
+    the old beat sheet it **fails**, on "sixty". The "one machine epsilon" test was renamed
+    and now asserts adjacency and the ulp directly.
+
+18. **B05 typed, and `SHOTLIST.md` said it did not.** The SPARK-LINE LAW: *"typing belongs
+    to B00 and the handoff beat only — inner beats show the command already typed."* B05 is
+    an inner beat, but the toolkit's `ClaudeComposerAsk` always types from frame 18, so the
+    command typed itself in over 1.5 s. `SHOTLIST.md` said *"B05 … shows the command already
+    typed"* and `CHECKS-REPORT.md` said typing appears in exactly three beats; both were
+    false. **Fix.** `ShiftComposer` gained `preTyped`, which starts the unmodified
+    component's own clock past its typing window (`<Sequence from={-64}>`); B05 now opens
+    fully typed. Verified on the frame at 0.1 s.
+
+19. **The paperwork spoke for me.** The AI policy: *"State what Claude contributed and what
+    you personally attempted, checked, revised, and decided … do not ask AI to invent your
+    struggle or understanding."* The deeper look found the documents doing exactly that:
+    - `PROMPTS.md` said the B05 prompt was *"the prompt that produced
+      `evidence/verify_claims.py` claim 2"*. The session log shows `run-output.txt` was
+      recorded at 09:51 EDT on 2026-09-15, and the B05 text was first written into the beat
+      sheet at 09:58 — as on-screen content. It was never sent to anyone. Fabricated
+      provenance.
+    - This file's §4 had a column headed **"What I checked myself"** listing checks Claude
+      ran; described its paraphrases of its own method in quotation marks, as if they were
+      my prompts; said *"I asked the mirror question"* that found the boundary (Claude asked
+      it); and credited me with setting constraints that came from the course documents.
+    - Every evidence script and the `.tsx` said **"Author: Suketh Produtoor"**; §6 below
+      labelled Claude-written code **"Mine"**, and `SHOTLIST.md` / `PROMPTS.md` marked
+      scenes *(mine)*.
+    - `FRICTIONAL.md`'s header said all work happened *"in a single Claude Code session on
+      2026-09-15"* with Claude Opus 5; the work spans four dates and two models. It held
+      six **"What changed in my understanding"** paragraphs Claude wrote, and sentences
+      such as *"[Claude] pushed back when I wanted to state the two paths were equal"* and
+      *"declined the `.tsx.txt` workaround when I raised it"* — events that did not happen.
+      Its `[MINE]` section even contained a self-assessment Claude had written for me.
+    - `README.md` said `REVIEW.md` holds *"the change I requested"* — still a `[MINE]` item.
+    **Fix.** Every one is re-attributed: §4 now separates Claude's checks from a `[MINE]`
+    checklist; the code headers say who wrote the code; `FRICTIONAL.md` is labelled as
+    Claude's organised record of the sessions, with "What this showed" replacing the
+    understanding claims and those sentences rewritten to say what actually happened; the
+    `[MINE]` sections are prompts only. The uncorrected text is in the first GitHub commit,
+    `da2695f`.
+
+20. **Smaller misstatements found in the same pass.** `BUILD-PROMPT.md` still carried the
+    §5.8 overreach (*"no Remotion component hardcodes a number"*). `CHECKS-REPORT.md` said
+    visual QC *"took six rounds"*; `REVIEW.md` records five. `REVIEW.md` R8-4 listed body
+    word counts as *"70 / 70 / 68"* — B03 and B04 transposed — in a sentence saying they
+    were verified by re-running the gate; the gate had printed 70 / 68 / 70. `FACTCHECK.md`
+    ended *"Signed on the evidence above"*, which reads as a sign-off nobody gave, and dated
+    `S5`/`S6` to 2026-09-18 when both files were last written on 2026-09-24. The
+    `README.md` credit named only Opus 5. `SHOTLIST.md`'s lane histogram still counted B00,
+    B05 and B09 as unmodified toolkit scenes. All corrected; the numbers now come from the
+    files and the session log, not from memory.
+
 ## 6. Third-party assets and licences
 
 | Asset | Source | Licence / terms |
@@ -240,10 +370,10 @@ corrections logged here.
 | Kokoro-82M voice model (`am_onyx`) | `kokoro-onnx` releases, model-files-v1.0 | Apache-2.0 (kokoro-onnx); model weights per upstream Kokoro-82M release |
 | `brutalist.art` toolkit | [github.com/nikbearbrown/brutalist.art](https://github.com/nikbearbrown/brutalist.art) @ `ba2d0e0` | Per repository LICENSE. Used as an external checkout, not vendored into this repo (AGENTS.md). |
 | `BrutalistHesitantWriter` (B01) | Toolkit component. Its own header credits an auto-converted `brik/base44` canvas component, author unknown — see the toolkit's `SOURCES.md`. | Used as shipped, props only; motion math untouched. |
-| `ClaudeComposerAsk`, `ClaudeVerdictArtifact` (B00, B05, B08, B09) | Toolkit components | Used as shipped, props only. |
+| `ClaudeComposerAsk` (inside `ShiftComposer`: B00, B05, B09), `ClaudeVerdictArtifact` (B08) | Toolkit components | Used as shipped — the composer is wrapped, never modified. |
 | EB Garamond | Google Fonts, installed by `./setup --install` | SIL Open Font License 1.1 |
-| `ShiftOverflow`, `ShiftPipeline`, `ShiftCancellation`, `ShiftReceipt`, `ShiftBoundary`, `ShiftOutro` | **Mine** — written for this reel | Contributed to the toolkit checkout under its licence |
-| `verify_claims.py`, `test_verify_claims.py`, `make_srt.py` | **Mine** — written for this reel | Standard library only |
+| `ShiftOverflow`, `ShiftPipeline`, `ShiftCancellation`, `ShiftReceipt`, `ShiftBoundary`, `ShiftComposer`, `ShiftOutro` | **Written for this reel, by Claude** (§4) — not third-party | Contributed to the toolkit checkout under its licence |
+| All eight `evidence/*.py` scripts | **Written for this reel, by Claude** (§4) — not third-party | Standard library only |
 
 **No** paid service, no stock footage, no AI-generated imagery, no screen recordings, no
 lifted figures, no Higgsfield, no ElevenLabs. Total spend: **$0.00**.

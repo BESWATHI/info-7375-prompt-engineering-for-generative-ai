@@ -31,12 +31,13 @@
       "Chapter 1"
     ],
     "build": {
-      "at": "2026-09-24T10:32:33",
+      "at": "2026-09-24T17:37:10",
       "cut": "master",
       "filled": 11,
       "of": 11,
       "slates": [],
       "skin_warnings": [
+        "B00: palette=claude but the cold open is 'ShiftComposer' — COLD OPEN LAW wants ClaudeComposerAsk",
         "B10: palette=claude but the outro is 'ShiftOutro' — OUTRO LAW wants ClaudeTitleOutro"
       ]
     },
@@ -59,39 +60,33 @@
         "show": [
           {
             "at": "0.0",
-            "event": "Claude composer, cream page, spark + serif greeting 'Namaste, Suketh'"
+            "event": "Claude composer (reconstructed), cream page, greeting 'Namaste, Suketh'; disclosure pill top-right: RECONSTRUCTED INTERFACE · NOT A CLAUDE TRANSCRIPT"
           },
           {
             "at": "0.15",
-            "event": "the ask types itself into the composer"
+            "event": "the question this film answers types into the composer"
           },
           {
             "at": "0.62",
-            "event": "running indicator: 'checking the claim…'"
-          },
-          {
-            "at": "0.72",
-            "event": "three result lines land one by one — the ask arrives answered"
+            "event": "indicator: 'answered by this video — not by a transcript'. NO answer lines: the first cut showed three here, written by me and styled as Claude output, which the brief forbids"
           }
         ],
         "remotion": {
-          "pattern": "ClaudeComposerAsk",
+          "pattern": "ShiftComposer",
           "props": {
             "greeting": "Namaste, Suketh",
             "topic": "INFO 7375 · CHAPTER 1",
             "segment": "Shifted, Not Changed",
             "command": "Chapter 1's softmax subtracts the largest score before exponentiating. Show me exactly which numbers that changes, prove which number it cannot change, and then find me an input where the thing everyone says this fixes is still broken.",
-            "runningText": "checking the claim…",
+            "runningText": "answered by this video — not by a transcript",
             "folderLabel": "INFO 7375 · Week 1",
-            "output": [
-              "changes — every intermediate weight",
-              "cannot change — the normalized distribution",
-              "still broken — the small end returns a hard 0.0"
-            ]
+            "output": [],
+            "modelLabel": "Claude",
+            "disclosure": "RECONSTRUCTED INTERFACE · NOT A CLAUDE TRANSCRIPT"
           },
           "rendered": {
             "out": "media/B00.mp4",
-            "at": "2026-09-15T14:52:55.708221+00:00"
+            "at": "2026-09-24T21:25:04.266679+00:00"
           }
         }
       },
@@ -100,8 +95,8 @@
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
-        "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-09-24T10:32:33"
+        "filled_by": "remotion:ShiftComposer",
+        "at": "2026-09-24T17:37:10"
       }
     },
     {
@@ -175,7 +170,7 @@
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "remotion:BrutalistHesitantWriter",
-        "at": "2026-09-24T10:32:33"
+        "at": "2026-09-24T17:37:10"
       }
     },
     {
@@ -242,7 +237,7 @@
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "remotion:ShiftOverflow",
-        "at": "2026-09-24T10:32:33"
+        "at": "2026-09-24T17:37:10"
       }
     },
     {
@@ -343,7 +338,7 @@
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "remotion:ShiftPipeline",
-        "at": "2026-09-24T10:32:33"
+        "at": "2026-09-24T17:37:10"
       }
     },
     {
@@ -402,13 +397,13 @@
         "status": "VIDEO",
         "src": "media/B04.mp4",
         "filled_by": "remotion:ShiftCancellation",
-        "at": "2026-09-24T10:32:33"
+        "at": "2026-09-24T17:37:10"
       }
     },
     {
       "beat_id": "B05",
       "act": "ASK",
-      "narration_text": "The algebra says the two paths agree. I did not want to take that on faith, so I asked for a check that runs both of them and prints the difference, with nothing rounded.",
+      "narration_text": "The algebra says the two paths agree. That is a claim worth checking rather than trusting, so the evidence script runs both of them and prints the difference, with nothing rounded.",
       "estimated_duration_s": 12,
       "audio_file": "mp3/beat-B05.mp3",
       "shot": {
@@ -418,19 +413,19 @@
         "show": [
           {
             "at": "0.0",
-            "event": "back to the Claude composer — the ask half of an ask→result pair"
+            "event": "composer (reconstructed) with the disclosure pill — the question the evidence script answers"
           },
           {
             "at": "0.12",
-            "event": "the verification prompt types in"
+            "event": "the verification question is already typed — an inner beat (SPARK-LINE LAW: typing belongs to B00, B01 and the handoff only)"
           },
           {
             "at": "0.7",
-            "event": "running indicator: 'running both paths…'"
+            "event": "indicator: 'running both paths…' — the RESULT is B06, the recorded output of verify_claims.py, not a Claude response"
           }
         ],
         "remotion": {
-          "pattern": "ClaudeComposerAsk",
+          "pattern": "ShiftComposer",
           "props": {
             "greeting": "The check,",
             "topic": "INFO 7375 · CHAPTER 1",
@@ -438,27 +433,30 @@
             "command": "Import Chapter 1's probabilities() unmodified. Run it on [1, 2, 3], and separately compute the same softmax by direct exponentiation with no max-subtraction. Print both vectors at full precision and the maximum absolute difference. Round nothing.",
             "runningText": "running both paths…",
             "folderLabel": "INFO 7375 · Week 1",
-            "output": []
+            "output": [],
+            "modelLabel": "Claude",
+            "disclosure": "RECONSTRUCTED INTERFACE · NOT A CLAUDE TRANSCRIPT",
+            "preTyped": true
           },
           "rendered": {
             "out": "media/B05.mp4",
-            "at": "2026-09-24T14:05:17.118563+00:00"
+            "at": "2026-09-24T21:34:01.051752+00:00"
           }
         }
       },
-      "actual_duration_s": 9.13,
-      "render_duration_s": 9.166666666666666,
+      "actual_duration_s": 9.56,
+      "render_duration_s": 9.583333333333334,
       "build": {
         "status": "VIDEO",
         "src": "media/B05.mp4",
-        "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-09-24T10:32:33"
+        "filled_by": "remotion:ShiftComposer",
+        "at": "2026-09-24T17:37:10"
       }
     },
     {
       "beat_id": "B06",
       "act": "THE RECEIPT",
-      "narration_text": "And here is the honest result. The two paths agree to within one point one times ten to the minus sixteen. Not zero — one machine epsilon, in two digits out of fifty-three. Identical in algebra; in floating point, merely indistinguishable. Both match the chapter's published table to ten decimal places. If I had told you the outputs were equal, I would have been wrong by exactly one bit.",
+      "narration_text": "And here is the honest result. The two paths agree to within one point one times ten to the minus sixteen. Not zero — adjacent floats, one step apart, in two digits out of fifty-three. Identical in algebra; in floating point, merely indistinguishable. Both match the chapter's published table to ten decimal places. Had I called them equal, I would have been wrong in the last place of two numbers.",
       "estimated_duration_s": 25,
       "audio_file": "mp3/beat-B06.mp3",
       "new_visual_element": "the two output vectors aligned in mono with the only two differing digits marked",
@@ -516,22 +514,22 @@
             ],
             "diffLabel": "max absolute difference",
             "diffValue": "1.1102230246251565e-16",
-            "diffGloss": "one machine epsilon — the smallest gap float64 can express near 1. Two digits out of sixty.",
+            "diffGloss": "exactly 2**-53 — adjacent floats, one step apart. Two digits out of fifty-three.",
             "verdict": "Identical in algebra. Indistinguishable in floating point. Those are not the same sentence."
           },
           "rendered": {
             "out": "media/B06.mp4",
-            "at": "2026-09-24T14:06:04.546629+00:00"
+            "at": "2026-09-24T21:34:48.847894+00:00"
           }
         }
       },
-      "actual_duration_s": 20.5,
-      "render_duration_s": 20.5,
+      "actual_duration_s": 20.63,
+      "render_duration_s": 20.666666666666668,
       "build": {
         "status": "VIDEO",
         "src": "media/B06.mp4",
         "filled_by": "remotion:ShiftReceipt",
-        "at": "2026-09-24T10:32:33"
+        "at": "2026-09-24T17:37:10"
       }
     },
     {
@@ -625,7 +623,7 @@
         "status": "VIDEO",
         "src": "media/B07.mp4",
         "filled_by": "remotion:ShiftBoundary",
-        "at": "2026-09-24T10:32:33"
+        "at": "2026-09-24T17:37:10"
       }
     },
     {
@@ -676,7 +674,7 @@
         "status": "VIDEO",
         "src": "media/B08.mp4",
         "filled_by": "remotion:ClaudeVerdictArtifact",
-        "at": "2026-09-24T10:32:33"
+        "at": "2026-09-24T17:37:10"
       }
     },
     {
@@ -693,7 +691,7 @@
         "show": [
           {
             "at": "0.0",
-            "event": "composer returns, greeting fixed to 'Your turn.' — viewer-addressed"
+            "event": "composer (reconstructed), greeting fixed 'Your turn.'; pill: SUGGESTED PROMPT · NOT YET RUN — YOURS TO TRY"
           },
           {
             "at": "0.12",
@@ -701,11 +699,11 @@
           },
           {
             "at": "0.78",
-            "event": "running indicator: 'paste this into Claude…' — the pause invitation"
+            "event": "indicator: 'paste this into Claude…' — an invitation, not a transcript"
           }
         ],
         "remotion": {
-          "pattern": "ClaudeComposerAsk",
+          "pattern": "ShiftComposer",
           "props": {
             "greeting": "Your turn.",
             "topic": "YOUR TURN · CHAPTER 1",
@@ -713,11 +711,13 @@
             "command": "Chapter 1's softmax subtracts the largest score before exponentiating, and this is widely called 'numerically stable'. Find me an input where the subtraction does NOT save the result. Tell me which end of the float64 range breaks and why the subtraction cannot reach it. Then state the narrowest claim the subtraction actually supports — and say what evidence would be needed to support the wider one.",
             "runningText": "paste this into Claude…",
             "folderLabel": "INFO 7375 · Week 1",
-            "output": []
+            "output": [],
+            "modelLabel": "Claude",
+            "disclosure": "SUGGESTED PROMPT · NOT YET RUN — YOURS TO TRY"
           },
           "rendered": {
             "out": "media/B09.mp4",
-            "at": "2026-09-15T15:00:37.324704+00:00"
+            "at": "2026-09-24T21:26:59.790040+00:00"
           }
         }
       },
@@ -726,8 +726,8 @@
       "build": {
         "status": "VIDEO",
         "src": "media/B09.mp4",
-        "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-09-24T10:32:33"
+        "filled_by": "remotion:ShiftComposer",
+        "at": "2026-09-24T17:37:10"
       }
     },
     {
@@ -777,7 +777,7 @@
         "status": "VIDEO",
         "src": "media/B10.mp4",
         "filled_by": "remotion:ShiftOutro",
-        "at": "2026-09-24T10:32:33"
+        "at": "2026-09-24T17:37:10"
       }
     }
   ]

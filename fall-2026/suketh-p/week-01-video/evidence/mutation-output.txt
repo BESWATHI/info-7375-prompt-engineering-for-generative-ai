@@ -2,11 +2,11 @@
   mutation_check.py — Chapter 1 Assessment 10, applied to this film
 ==========================================================================
 
-baseline: 28 tests, 0 failing
+baseline: 29 tests, 0 failing
   green, as required before mutating.
 
 [CAUGHT]  drop the max-subtraction
-    died 20/28 · survived 8/28
+    died 21/29 · survived 8/29
       survived: TestB02Overflow.test_raw_exponential_raises_rather_than_returning_inf
       survived: TestB03DenominatorFloor.test_it_holds_even_when_all_other_weights_vanish
       survived: TestTheCliffIsDerivable.test_log_space_loses_nothing_where_linear_does
@@ -17,7 +17,7 @@ baseline: 28 tests, 0 failing
       survived: TestTheCliffIsDerivable.test_the_remedy_does_not_change_the_answer
 
 [CAUGHT]  pair probabilities with reversed labels
-    died 10/28 · survived 18/28
+    died 11/29 · survived 18/29
       survived: TestB02Overflow.test_raw_exponential_raises_rather_than_returning_inf
       survived: TestB02Overflow.test_the_ceiling_figure_on_screen_is_the_real_one
       survived: TestB02Overflow.test_the_shift_turns_that_into_a_clean_answer
@@ -29,7 +29,7 @@ baseline: 28 tests, 0 failing
       … and 10 more
 
 [CAUGHT]  accept temperature=0 instead of raising
-    died 2/28 · survived 26/28
+    died 2/29 · survived 27/29
       survived: TestB02Overflow.test_raw_exponential_raises_rather_than_returning_inf
       survived: TestB02Overflow.test_the_ceiling_figure_on_screen_is_the_real_one
       survived: TestB02Overflow.test_the_shift_turns_that_into_a_clean_answer
@@ -38,10 +38,10 @@ baseline: 28 tests, 0 failing
       survived: TestB03Distribution.test_matches_chapters_published_table_to_ten_places
       survived: TestB03Distribution.test_sums_to_one_within_tolerance_not_exactly
       survived: TestB03Intermediates.test_peak_weight_is_exactly_one_not_approximately
-      … and 18 more
+      … and 19 more
 
 [CAUGHT]  clamp probabilities below 1e-12 to 0.0
-    died 2/28 · survived 26/28
+    died 2/29 · survived 27/29
       survived: TestB02Overflow.test_raw_exponential_raises_rather_than_returning_inf
       survived: TestB02Overflow.test_the_ceiling_figure_on_screen_is_the_real_one
       survived: TestB02Overflow.test_the_shift_turns_that_into_a_clean_answer
@@ -50,7 +50,7 @@ baseline: 28 tests, 0 failing
       survived: TestB03Distribution.test_matches_chapters_published_table_to_ten_places
       survived: TestB03Distribution.test_sums_to_one_within_tolerance_not_exactly
       survived: TestB03Intermediates.test_peak_weight_is_exactly_one_not_approximately
-      … and 18 more
+      … and 19 more
 
 --------------------------------------------------------------------------
 mutation score: 4/4 caught

@@ -1,6 +1,8 @@
 """test_verify_claims.py — the numbers in the video, as assertions.
 
-Author: Suketh Produtoor (INFO 7375, Week 1)
+Submitted by Suketh Produtoor (INFO 7375, Week 1). Written by Claude in
+Claude Code build sessions the submitter directed — SOURCES.md §4 records
+who did what, and what the submitter personally re-ran.
 
 Every figure shown in "Shifted, Not Changed" is asserted here against the
 course's own reference implementation. If any of them drifts — a different
@@ -8,7 +10,7 @@ interpreter, a changed reference file, a different float ABI — a test fails
 and names which on-screen claim is now wrong.
 
 Following the course convention of giving each check ONE job (Chapter 1,
-"Build It: give each check one job"): these are nine distinct questions, not
+"Build It: give each check one job"): each test is one distinct question, not
 one aggregate "the video is correct". Each test names the beat it defends, so
 a failure points at a specific frame.
 
@@ -19,7 +21,10 @@ Run:
 
 from __future__ import annotations
 
+import json
 import math
+import pathlib
+import re
 import sys
 import unittest
 
@@ -81,10 +86,19 @@ class TestB06FloatingPointReceipt(unittest.TestCase):
         # real: the vectors are not equal.
         self.assertNotEqual(self.c["shifted_path"], self.c["direct_path"])
 
-    def test_difference_is_one_machine_epsilon(self) -> None:
-        # Shown on screen at 104px: 1.1102230246251565e-16 == 2**-53.
-        self.assertEqual(self.c["max_abs_difference"], sys.float_info.epsilon / 2)
-        self.assertEqual(self.c["max_abs_difference"], 2.0**-53)
+    def test_difference_is_one_step_between_adjacent_floats(self) -> None:
+        # Shown on screen at 104px: 1.1102230246251565e-16, glossed "exactly
+        # 2**-53 — adjacent floats, one step apart". This test used to be named
+        # "one machine epsilon", and so did the film. That was wrong: Python's
+        # sys.float_info.epsilon is 2**-52, twice this gap (SOURCES.md §5.17).
+        d = self.c["max_abs_difference"]
+        self.assertEqual(d, 2.0**-53)
+        self.assertEqual(d, sys.float_info.epsilon / 2)
+        # "adjacent floats, one step apart": every differing pair is exactly one
+        # representable step apart, and the largest gap is one ulp of the peak.
+        for x, y in zip(self.c["shifted_path"], self.c["direct_path"]):
+            self.assertIn(y, (x, math.nextafter(x, math.inf), math.nextafter(x, -math.inf)))
+        self.assertEqual(d, math.ulp(max(self.c["shifted_path"])))
 
     def test_but_they_agree_far_inside_any_reported_precision(self) -> None:
         # Both halves of B06's sentence must hold at once, which is the point:
@@ -93,12 +107,34 @@ class TestB06FloatingPointReceipt(unittest.TestCase):
 
     def test_exactly_two_digit_positions_differ(self) -> None:
         # The video marks indices 19 and 60 in terracotta and says "two digits
-        # out of sixty". If formatting ever changes, this catches it.
+        # out of fifty-three": 62 characters, 53 of them digits. If formatting
+        # ever changes, this catches it.
         a = repr(self.c["shifted_path"])
         b = repr(self.c["direct_path"])
         self.assertEqual(len(a), len(b))
         diff = [i for i, (x, y) in enumerate(zip(a, b)) if x != y]
         self.assertEqual(diff, [19, 60])
+        self.assertEqual(sum(ch.isdigit() for ch in a), 53)
+
+    def test_screen_and_narration_say_what_the_record_says(self) -> None:
+        # R8-2 corrected "two digits out of sixty" in the narration and the
+        # docs, and left it on screen for two more cuts — no check read the
+        # beat sheet's on-screen text. This one does (SOURCES.md §5.17).
+        sheet = json.loads((pathlib.Path(__file__).resolve().parent.parent
+                            / "beat_sheet.json").read_text())
+        b06 = next(b for b in sheet["beats"] if b["beat_id"] == "B06")
+        gloss = b06["shot"]["remotion"]["props"]["diffGloss"]
+        spoken = b06["narration_text"]
+        digits = sum(ch.isdigit() for ch in repr(self.c["shifted_path"]))
+        self.assertEqual(digits, 53)
+        for text in (gloss, spoken):
+            self.assertIn("fifty-three", text)
+            self.assertNotIn("sixty", text)
+            self.assertNotIn("machine epsilon", text)
+        # The exponent printed on screen must be the one the run measured.
+        shown = re.search(r"2\*\*-(\d+)", gloss)
+        self.assertIsNotNone(shown)
+        self.assertEqual(2.0 ** -int(shown.group(1)), self.c["max_abs_difference"])
 
 
 class TestB02Overflow(unittest.TestCase):

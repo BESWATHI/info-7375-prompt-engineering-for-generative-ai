@@ -239,210 +239,214 @@ That is algebra.
 The algebra says the two paths agree.
 
 61
-00:01:37,927 --> 00:01:39,427
-I did not want to take that on faith,
+00:01:37,968 --> 00:01:40,052
+That is a claim worth checking rather than trusting,
 
 62
-00:01:39,760 --> 00:01:41,510
-so I asked for a check that runs both
+00:01:40,385 --> 00:01:42,552
+so the evidence script runs both of them and
 
 63
-00:01:41,510 --> 00:01:43,927
-of them and prints the difference, with nothing rounded.
+00:01:42,552 --> 00:01:44,343
+prints the difference, with nothing rounded.
 
 64
-00:01:44,640 --> 00:01:45,848
+00:01:45,070 --> 00:01:46,278
 And here is the honest result.
 
 65
-00:01:46,182 --> 00:01:48,015
+00:01:46,570 --> 00:01:48,403
 The two paths agree to within one point one
 
 66
-00:01:48,015 --> 00:01:50,015
+00:01:48,445 --> 00:01:50,445
 times ten to the minus sixteen.
 
 67
-00:01:50,057 --> 00:01:50,765
+00:01:50,487 --> 00:01:51,070
 Not zero —
 
 68
-00:01:50,765 --> 00:01:53,557
-one machine epsilon, in two digits out of fifty-three.
+00:01:51,070 --> 00:01:53,737
+adjacent floats, one step apart, in two digits out
 
 69
-00:01:53,598 --> 00:01:56,848
-Identical in algebra; in floating point, merely indistinguishable.
+00:01:53,737 --> 00:01:54,737
+of fifty-three.
 
 70
-00:01:57,223 --> 00:01:59,932
-Both match the chapter's published table to ten decimal
+00:01:54,778 --> 00:01:57,945
+Identical in algebra; in floating point, merely indistinguishable.
 
 71
-00:01:59,932 --> 00:02:00,807
-places.
+00:01:58,320 --> 00:02:00,945
+Both match the chapter's published table to ten decimal
 
 72
-00:02:00,807 --> 00:02:02,515
-If I had told you the outputs were equal,
+00:02:00,945 --> 00:02:01,903
+places.
 
 73
-00:02:02,682 --> 00:02:04,515
-I would have been wrong by exactly one bit.
+00:02:01,903 --> 00:02:03,237
+Had I called them equal, I would have been
 
 74
-00:02:05,140 --> 00:02:06,557
-Now the part the slogan hides.
+00:02:03,237 --> 00:02:04,987
+wrong in the last place of two numbers.
 
 75
-00:02:06,848 --> 00:02:08,223
-The shift protects the biggest term.
+00:02:05,700 --> 00:02:07,117
+Now the part the slogan hides.
 
 76
-00:02:08,515 --> 00:02:09,723
-Nothing protects the smallest.
+00:02:07,408 --> 00:02:08,783
+The shift protects the biggest term.
 
 77
-00:02:10,140 --> 00:02:12,057
-Scores of zero and minus eight hundred:
+00:02:09,075 --> 00:02:10,283
+Nothing protects the smallest.
 
 78
-00:02:12,098 --> 00:02:14,973
-the function returns one point zero, and zero point
+00:02:10,700 --> 00:02:12,617
+Scores of zero and minus eight hundred:
 
 79
-00:02:14,973 --> 00:02:15,348
-zero.
+00:02:12,658 --> 00:02:15,533
+the function returns one point zero, and zero point
 
 80
-00:02:15,348 --> 00:02:17,682
-Exactly zero, for an outcome whose real share is
+00:02:15,533 --> 00:02:15,908
+zero.
 
 81
-00:02:17,807 --> 00:02:19,932
-ten to the minus three hundred and forty-eighth.
+00:02:15,908 --> 00:02:18,242
+Exactly zero, for an outcome whose real share is
 
 82
-00:02:19,973 --> 00:02:21,598
-And that cliff is not arbitrary —
+00:02:18,367 --> 00:02:20,492
+ten to the minus three hundred and forty-eighth.
 
 83
-00:02:21,598 --> 00:02:24,098
-it sits at minus one thousand seventy-five times the
+00:02:20,533 --> 00:02:22,158
+And that cliff is not arbitrary —
 
 84
-00:02:24,098 --> 00:02:25,098
-natural log of two.
+00:02:22,158 --> 00:02:24,658
+it sits at minus one thousand seventy-five times the
 
 85
-00:02:25,710 --> 00:02:27,460
-So let us be precise about what was earned.
+00:02:24,658 --> 00:02:25,658
+natural log of two.
 
 86
-00:02:27,710 --> 00:02:28,918
-What the subtraction guarantees:
+00:02:26,270 --> 00:02:28,020
+So let us be precise about what was earned.
 
 87
-00:02:29,252 --> 00:02:31,835
-the largest weight becomes exactly one, so the denominator
+00:02:28,270 --> 00:02:29,478
+What the subtraction guarantees:
 
 88
-00:02:31,835 --> 00:02:33,877
-is never below one, and the top end cannot
+00:02:29,812 --> 00:02:32,395
+the largest weight becomes exactly one, so the denominator
 
 89
-00:02:33,877 --> 00:02:34,877
-overflow.
+00:02:32,395 --> 00:02:34,437
+is never below one, and the top end cannot
 
 90
-00:02:34,877 --> 00:02:35,877
-What it does not guarantee:
+00:02:34,437 --> 00:02:35,437
+overflow.
 
 91
-00:02:35,877 --> 00:02:37,793
-that small probabilities survive at all.
+00:02:35,437 --> 00:02:36,437
+What it does not guarantee:
 
 92
-00:02:38,127 --> 00:02:40,627
-This explanation does not establish that the function is
+00:02:36,437 --> 00:02:38,353
+that small probabilities survive at all.
 
 93
-00:02:40,627 --> 00:02:41,627
-numerically stable.
+00:02:38,687 --> 00:02:41,187
+This explanation does not establish that the function is
 
 94
-00:02:41,793 --> 00:02:43,585
-It establishes that it is overflow-safe.
+00:02:41,187 --> 00:02:42,187
+numerically stable.
 
 95
-00:02:43,627 --> 00:02:45,877
-Those are two different claims, and only one of
+00:02:42,353 --> 00:02:44,145
+It establishes that it is overflow-safe.
 
 96
-00:02:45,877 --> 00:02:46,877
-them was tested.
+00:02:44,187 --> 00:02:46,437
+Those are two different claims, and only one of
 
 97
-00:02:47,110 --> 00:02:47,652
-Your turn.
+00:02:46,437 --> 00:02:47,437
+them was tested.
 
 98
-00:02:47,652 --> 00:02:48,777
-Paste this into Claude.
+00:02:47,670 --> 00:02:48,212
+Your turn.
 
 99
-00:02:48,985 --> 00:02:51,152
-It asks for an input where the max-subtraction stops
+00:02:48,212 --> 00:02:49,337
+Paste this into Claude.
 
 100
-00:02:51,152 --> 00:02:53,318
-helping, for which end of the float range breaks
+00:02:49,545 --> 00:02:51,712
+It asks for an input where the max-subtraction stops
 
 101
-00:02:53,318 --> 00:02:55,318
-and why, and then for the narrowest claim the
+00:02:51,712 --> 00:02:53,878
+helping, for which end of the float range breaks
 
 102
-00:02:55,318 --> 00:02:56,360
-fix actually supports.
+00:02:53,878 --> 00:02:55,878
+and why, and then for the narrowest claim the
 
 103
-00:02:57,027 --> 00:02:57,485
-Run it —
+00:02:55,878 --> 00:02:56,920
+fix actually supports.
 
 104
-00:02:57,485 --> 00:02:59,068
-but write your own prediction of where the floor
+00:02:57,587 --> 00:02:58,045
+Run it —
 
 105
-00:02:59,068 --> 00:03:00,568
-sits before you read the answer.
+00:02:58,045 --> 00:02:59,628
+but write your own prediction of where the floor
 
 106
-00:03:00,985 --> 00:03:03,485
-Then watch whether Claude names underflow, or whether it
+00:02:59,628 --> 00:03:01,128
+sits before you read the answer.
 
 107
-00:03:03,485 --> 00:03:05,443
-just repeats the word stable back at you.
+00:03:01,545 --> 00:03:04,045
+Then watch whether Claude names underflow, or whether it
 
 108
-00:03:06,530 --> 00:03:07,530
-Shifted, not changed.
+00:03:04,045 --> 00:03:06,003
+just repeats the word stable back at you.
 
 109
-00:03:07,530 --> 00:03:10,072
-One subtraction rewrites every number in the middle and
+00:03:07,090 --> 00:03:08,090
+Shifted, not changed.
 
 110
-00:03:10,072 --> 00:03:11,947
-leaves the answer exactly where it was.
+00:03:08,090 --> 00:03:10,632
+One subtraction rewrites every number in the middle and
 
 111
-00:03:12,363 --> 00:03:13,197
-Overflow-safe —
+00:03:10,632 --> 00:03:12,507
+leaves the answer exactly where it was.
 
 112
-00:03:13,197 --> 00:03:14,488
+00:03:12,923 --> 00:03:13,757
+Overflow-safe —
+
+113
+00:03:13,757 --> 00:03:15,048
 and no further than that.
 

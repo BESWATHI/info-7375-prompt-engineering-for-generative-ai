@@ -1,8 +1,8 @@
 # REVIEW.md — week-01-shifted-not-changed
 
-> **Current state (2026-09-24).** Runtime **195.16 s (3:15)** · Gate V **0 BLOCKER / 0
-> MAJOR** · GATE T **0 FAIL · 1 WARN · 29 PASS** · **28** tests · 4/4 mutations caught ·
-> **112** caption cues.
+> **Current state (2026-09-24).** Runtime **195.72 s (3:16)** · Gate V **0 BLOCKER / 0
+> MAJOR** · GATE T **0 FAIL · 1 WARN · 29 PASS** · **29** tests · 4/4 mutations caught ·
+> **113** caption cues.
 >
 > Everything below is a **dated log of rounds**. Earlier entries quote the numbers that
 > were true *at that time* — 195.46 s, 3:16, 111 cues, 22 tests, 0/3/27 — and are left
@@ -14,6 +14,11 @@ Timestamped review of the rendered cut: what was wrong, what was requested, what
 re-render fixed. Per [`youtube/README.md`](../README.md), this file holds the real human
 review decision — so it distinguishes clearly between what was found by inspecting frames
 and what still needs a person to watch the film with sound.
+
+**Who reviewed what.** Rounds 1–9 are **Claude's** review — of sampled frames, gate
+reports and the scripts — run in the build sessions; "I" in a round is Claude, and a
+"fix requested" is Claude's request of the build. **No human review decision is recorded
+yet.** Mine is the `[MINE]` section at the end, written after I watch the cut with sound.
 
 **A compile is not a review.** The first cut compiled successfully at 186.0 s with 11/11
 slots filled and zero BLOCKER defects. It was still wrong in two substantive ways that no
@@ -437,7 +442,55 @@ the supporting documents kept demonstrating it against me.
 B04 is now trimmed by two words ("Now, why is that allowed" → "Why is that allowed";
 "Every single term" → "Every term"), which brings it to 70. Body beats measure
 **70 / 70 / 68 / 34 / 69 / 70** for B02–B07 — verified by re-running the gate, not by
-counting in my head.
+counting in my head. *[Corrected 2026-09-24: the gate printed **70 / 68 / 70 / 34 / 69 /
+70**. B03 and B04 were transposed when this list was typed, in the sentence saying it was
+not typed from memory. `SOURCES.md` §5.20.]*
+
+---
+
+## Round 9 — a deeper look at the brief, 2026-09-24
+
+Requested by the submitter: a deeper look at whether the assignment was done and submitted
+right. Claude read the brief's own sentences against every frame and document instead of against the
+toolkit's laws. Nine rounds had checked the film against the doctrine; none had checked it
+against the brief's one hard rule.
+
+### R9-1 · B00 showed a fabricated Claude answer (BLOCKER — integrity)
+
+The cold open landed "answered": three authored answer lines under a "Fable 5" model chip,
+for a prompt that was never sent. The toolkit's COLD OPEN LAW asks for exactly that; the
+brief says a fabricated Claude transcript *"has failed the assignment on its own terms."*
+**Fix:** answer lines removed; B00, B05 and B09 render through `ShiftComposer`, which
+overlays a disclosure pill from the first frames (**RECONSTRUCTED INTERFACE · NOT A CLAUDE
+TRANSCRIPT**; B09: **SUGGESTED PROMPT · NOT YET RUN — YOURS TO TRY**) and a generic
+"Claude" model chip. Verified on the frames of the final master. `SOURCES.md` §5.16.
+
+### R9-2 · "One machine epsilon", "one bit", and "sixty" still on screen (MAJOR — correctness)
+
+`sys.float_info.epsilon` is 2⁻⁵², twice the measured gap of 2⁻⁵³. "Wrong by exactly one
+bit" was false for one of the two differing pairs (two bits). And the scene's gloss still
+said "two digits out of sixty" two cuts after R8-2 corrected the narration, because no
+check read the beat sheet's on-screen text. **Fix:** new gloss and narration, B06
+re-recorded (20.63 s) and re-rendered, and a test that reads the on-screen text against the
+recorded run. Run against the old beat sheet, that test fails on "sixty". `SOURCES.md` §5.17.
+
+### R9-3 · B05 typed (MINOR — doctrine, and a false line in `SHOTLIST.md`)
+
+Inner beats must show the command already typed; B05 typed, because the toolkit composer
+always does. **Fix:** `preTyped`, which starts the unmodified component's clock past its
+typing window. Verified at 0.1 s: the command is complete. `SOURCES.md` §5.18.
+
+### R9-4 · The documents spoke for the submitter (BLOCKER — integrity)
+
+`PROMPTS.md` claimed the B05 prompt produced `verify_claims.py`, but it was written after
+the script ran and was never sent. `SOURCES.md` §4 had a column headed "What I checked
+myself" listing Claude's checks. Every code file named the submitter as author.
+`FRICTIONAL.md` carried six understanding paragraphs, and sentences about things the
+submitter never did, all written by Claude. **Fix:** every document re-attributed; `SOURCES.md` §5.19 lists each case.
+
+**Result of this round:** Gate V **BLOCKER 0 · MAJOR 0** (22 frames); master 1920×1080,
+h264+aac, **196.0 s** as probed (195.72 s of narration); **113** caption cues; GATE T
+**0 FAIL · 1 WARN · 29 PASS**; **29** tests green, and the mutation check still catches 4/4.
 
 ---
 
@@ -450,7 +503,7 @@ cut with sound and answer, in my own words:
 - Does the narration ever get ahead of what is on screen? Kokoro reads long numbers at its
   own pace, and B06/B07 both hinge on hearing a figure while seeing it.
 - Is B03 legible at a glance, or do four columns of ten-decimal numbers need longer than
-  20.14 s?
+  19.61 s?
 - Could a classmate who has not read Chapter 1 state, after watching once, both what the
   subtraction guarantees and what it does not?
 - One change I request after watching, and how it improved **understanding** rather than

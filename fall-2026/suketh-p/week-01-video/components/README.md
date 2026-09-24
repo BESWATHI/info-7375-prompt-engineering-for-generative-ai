@@ -1,8 +1,8 @@
 # components/ — deliberately NOT vendored
 
-The six Remotion scenes this film uses are **my own work**, but the `.tsx` source is
-**not committed to this repository**. That is not an omission; it is the repository's
-own rule, and it is enforced.
+The seven reel-local Remotion scenes this film uses were written by Claude for this reel
+(see `../SOURCES.md` §4), but the `.tsx` source is **not committed to this repository**.
+That is not an omission; it is the repository's own rule, and it is enforced.
 
 ## Why
 
@@ -21,31 +21,36 @@ if path.suffix in {".js", ".ts", ".tsx", ".jsx", ".rs", ".jl", ".go"}:
     failures.append(f"Non-Python implementation: {path.relative_to(ROOT)}")
 ```
 
-I found this by running the validator against my own staged folder before opening a PR.
-It exited **1** on `components/ShiftedNotChanged.tsx`. Since `.github/workflows/course.yml`
-runs that validator on every push and pull request, committing the file would have put a
-red CI check on the one category explicitly graded for *proper* posting.
+The build session found this by running the validator against the staged folder before
+opening a PR. It exited **1** on `components/ShiftedNotChanged.tsx`. Since
+`.github/workflows/course.yml` runs that validator on every push and pull request,
+committing the file would have put a red CI check on the one category explicitly graded
+for *proper* posting.
 
 Writing the file out as `.tsx.txt` to slip past the check was the obvious workaround and
-the wrong instinct — the rule is about keeping the Node/Remotion stack out of a
+the wrong one — the rule is about keeping the Node/Remotion stack out of a
 Python-and-Claude course, not about file extensions.
 
 ## Where the source actually lives
 
 ```
-<your brutalist.art checkout>/runtime/remotion/src/ShiftedNotChanged.tsx   (1216 lines)
+<your brutalist.art checkout>/runtime/remotion/src/ShiftedNotChanged.tsx   (1292 lines)
 ```
 
-Registered in that checkout's `Root.tsx` under the folder `ShiftedNotChanged`, with six
+Registered in that checkout's `Root.tsx` under the folder `ShiftedNotChanged`, with seven
 compositions: `ShiftOverflow`, `ShiftPipeline`, `ShiftCancellation`, `ShiftReceipt`,
-`ShiftBoundary`, `ShiftOutro`. [`../BUILD-PROMPT.md`](../BUILD-PROMPT.md) has the full
-rebuild recipe; `../SHOTLIST.md` maps each beat to its component.
+`ShiftBoundary`, `ShiftComposer`, `ShiftOutro`. `ShiftComposer` wraps the toolkit's
+unmodified `ClaudeComposerAsk` and overlays the on-screen disclosure pill.
+[`../BUILD-PROMPT.md`](../BUILD-PROMPT.md) has the full rebuild recipe; `../SHOTLIST.md`
+maps each beat to its component.
 
 ## What a reviewer needs to judge it, without the file
 
-Excerpts below are documentation, not a vendored implementation.
+Excerpts below are documentation, not a vendored implementation. They are cut from the
+real file at staging time, by marker, so they cannot drift from it.
 
-**The contract the whole file is built around** — no figure is hardcoded:
+**The contract the whole file is built around** — every figure arrives as a prop from the
+beat sheet; the schema defaults exist only so a scene previews standalone:
 
 ```tsx
  * SOURCE CARE — the rule this file is built around: every figure the film
@@ -62,7 +67,6 @@ Excerpts below are documentation, not a vendored implementation.
 **The palette, and one accessibility decision GATE T forced** (see `../TYPECHECK.md`):
 
 ```tsx
-
 // -- Palette (claude fidelity: ink on cream, ONE terracotta) ------------------
 const BG = '#F2F0E9';
 const INK = '#3D3929';
@@ -75,6 +79,7 @@ const SOFT = '#73705F';
 // so the palette block stays a complete record of the brand's tokens.
 const GHOST = '#B0AD9A';
 const CARD = '#FFFFFF';
+const BORDER = '#DDD9CC';
 ```
 
 **The single clock.** Every scene is a pure function of the frame, so any frame

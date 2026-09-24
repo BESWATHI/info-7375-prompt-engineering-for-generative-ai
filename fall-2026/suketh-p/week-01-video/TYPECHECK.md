@@ -24,8 +24,8 @@ Coverage and the deliberate gaps are documented in the script's header.
 | §8.5 | ✓ PASS | B02 70 words | budget 45–70; hard fail is 100+ |
 | §8.5 | ✓ PASS | B03 68 words | budget 45–70; hard fail is 100+ |
 | §8.5 | ✓ PASS | B04 70 words | budget 45–70; hard fail is 100+ |
-| §8.5 | ✓ PASS | B05 34 words | ask micro-beat, short by design |
-| §8.5 | ✓ PASS | B06 69 words | budget 45–70; hard fail is 100+ |
+| §8.5 | ✓ PASS | B05 31 words | ask micro-beat, short by design |
+| §8.5 | ✓ PASS | B06 70 words | budget 45–70; hard fail is 100+ |
 | §8.5 | ✓ PASS | B07 70 words | budget 45–70; hard fail is 100+ |
 | §8.6 | ✓ PASS | B02 · OverflowError: math range error | verbatim in a recorded run |
 | §8.6 | ✓ PASS | B02 · 709.7827 | verbatim in a recorded run |

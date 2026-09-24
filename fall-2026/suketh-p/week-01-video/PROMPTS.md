@@ -18,12 +18,22 @@ The `pantry/` directory exists and is empty. That is the finished state, not a p
 
 Two things worth keeping for reproducibility.
 
-### 1. The two prompts that appear *on screen* (they are content, not build instructions)
+### 1. The three prompts that appear *on screen* (they are content, not build instructions)
 
-These are shown in the film itself and read aloud. They are reproduced here verbatim so a
-reviewer can run them without transcribing from video.
+These are shown in the film itself, inside a **reconstructed** composer that is labelled on
+screen as not a Claude transcript. They are reproduced here verbatim so a reviewer can run
+them without transcribing from video. **None of them was ever sent to a model** — they were
+written for the beat sheet as on-screen content.
 
-**B05 — the verification ask** (shown typed into the composer; its result is B06):
+**B00 — the cold-open ask** (types into the composer; the film, not a transcript, answers it):
+
+```text
+Chapter 1's softmax subtracts the largest score before exponentiating. Show me exactly
+which numbers that changes, prove which number it cannot change, and then find me an
+input where the thing everyone says this fixes is still broken.
+```
+
+**B05 — the verification question** (shown already typed; its result is B06):
 
 ```text
 Import Chapter 1's probabilities() unmodified. Run it on [1, 2, 3], and separately
@@ -31,10 +41,15 @@ compute the same softmax by direct exponentiation with no max-subtraction. Print
 vectors at full precision and the maximum absolute difference. Round nothing.
 ```
 
-This is the prompt that produced `evidence/verify_claims.py` claim 2 — the beat's result
-is a real recorded run, not a dramatization.
+**Correction (2026-09-24).** This file used to say this was *"the prompt that produced
+`evidence/verify_claims.py` claim 2"*. It was not. The session log shows the script's
+recorded run (`evidence/run-output.txt`) at 09:51 EDT on 2026-09-15, and this text first
+written into the beat sheet, as on-screen content, at 09:58. It is a statement of the
+question the script answers. The beat's *result* is real: B06 shows the recorded run of
+`verify_claims.py` — not a Claude response. `SOURCES.md` §5.19.
 
-**B09 — the handoff prompt** (HANDOFF LAW: read aloud verbatim, then discussed):
+**B09 — the handoff prompt** (HANDOFF LAW: read aloud verbatim, then discussed; labelled
+on screen as a suggested prompt, not yet run):
 
 ```text
 Chapter 1's softmax subtracts the largest score before exponentiating, and this is
@@ -64,16 +79,16 @@ Recorded so that "no open slots" is auditable rather than asserted.
 
 | Beat | Slot filled by | Needed a human asset? |
 |---|---|---|
-| B00 | `ClaudeComposerAsk` (toolkit), props only | No |
+| B00 | `ShiftComposer` — toolkit composer + on-screen disclosure pill (reel-local wrapper) | No |
 | B01 | `BrutalistHesitantWriter` (toolkit), props only, seeded | No |
 | B02 | `ShiftOverflow` — authored for this reel | No |
 | B03 | `ShiftPipeline` — authored for this reel | No |
 | B04 | `ShiftCancellation` — authored for this reel | No |
-| B05 | `ClaudeComposerAsk` (toolkit), props only | No |
+| B05 | `ShiftComposer` — toolkit composer + disclosure pill, `preTyped` (reel-local wrapper) | No |
 | B06 | `ShiftReceipt` — authored for this reel | No |
 | B07 | `ShiftBoundary` — authored for this reel | No |
 | B08 | `ClaudeVerdictArtifact` (toolkit), props only | No |
-| B09 | `ClaudeComposerAsk` (toolkit), props only | No |
+| B09 | `ShiftComposer` — toolkit composer + on-screen disclosure pill (reel-local wrapper) | No |
 | B10 | `ShiftOutro` — authored for this reel | No |
 
 Every authored component takes its figures as **props**, sourced from

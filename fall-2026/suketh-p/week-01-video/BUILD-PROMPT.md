@@ -42,7 +42,8 @@ pip install "kokoro-onnx>=0.4" "mutagen>=1.47,<1.48" "Pillow>=10.2,<11" \
 ```
 
 Recorded environment of this build: Python 3.12.7 (CPython), macOS 26.6.2 arm64, Node
-v22.11.0, npm 11.16.0, ffmpeg 8.1, `brutalist.art` @ `ba2d0e0`.
+v22.11.0, npm 11.16.0, ffmpeg 8.1, `brutalist.art` @ `ba2d0e0`. The 2026-09-24 re-renders
+ran on macOS 27.0 arm64 with the same Python, Node, npm, ffmpeg and toolkit commit.
 
 ---
 
@@ -61,7 +62,7 @@ Read first, completely, before touching anything:
 Reel folder: /path/to/course/youtube/week-01-shifted-not-changed
 Toolkit:     /path/to/brutalist.art  (venv activated, Python 3.12)
 
-This is a STUDENT submission, not a channel episode. Four rules follow from that
+This is a STUDENT submission, not a channel episode. Five rules follow from that
 and they override the worked examples:
   1. No @NikBearBrown handle, card, or mascot anywhere. OUTRO-LOCK.md scopes
      those to `claude-liam-*` reels: "Other channels ... NEVER get this card,
@@ -70,17 +71,24 @@ and they override the worked examples:
      and the synthetic voice never claims to be the student or the instructor.
   3. The synthetic-narration disclosure stays on the outro card, on screen.
   4. Nothing implies endorsement by the channel, Northeastern, or Anthropic.
+  5. NO FABRICATED CLAUDE RESPONSE. The brief: "If you show a Claude response,
+     it must be a real one you actually got, with the date." B00, B05 and B09
+     render through ShiftComposer with their disclosure pills, and B00's
+     `output` stays EMPTY. The toolkit's COLD OPEN LAW asks for answer lines so
+     the ask "lands answered" — do NOT add them. That law and the brief
+     conflict here, and the brief is what is graded (SOURCES.md §5.16).
 
 Numbers are load-bearing. Before rendering, run
   python3 <reel>/evidence/verify_claims.py
 and diff its output against <reel>/evidence/run-output.txt. Every figure in the
-beat sheet is a PROP taken from that run, and no Remotion component hardcodes a
-number. If a figure has drifted, fix the beat sheet — never the component, and
+beat sheet is a PROP taken from that run, and the beat sheet overrides every
+figure-bearing schema default at render time (the components keep those values only as
+Zod defaults, for standalone preview). If a figure has drifted, fix the beat sheet — never the component, and
 never the reference implementation at
 lessons/01-randomness-and-first-prompts/code/main.py, which is imported unmodified.
 Do not invent a plausible-looking figure to fill a gap.
 
-The six reel-local components live in this checkout at
+The seven reel-local components live in this checkout at
 runtime/remotion/src/ShiftedNotChanged.tsx, registered in Root.tsx under the folder
 "ShiftedNotChanged". Verify they resolve before building:
   ./art scenes --check ShiftPipeline
@@ -157,7 +165,7 @@ Constraints, all hard:
 | Artifact | Expected |
 |---|---|
 | `mp3/beat-B00.mp3` … `beat-B10.mp3` | 11 files. An empty `mp3/` is a FAILED BUILD, never a silent master. |
-| Measured total | **195.16 s (3:15)** — inside the brief's 2–4 min target |
+| Measured total | **195.72 s (3:16)** — inside the brief's 2–4 min target |
 | B01 audio window | **≥ 9 s** (EXECUTIVE-SUMMARY LAW). Measured 16.36 s. |
 | `media/B00.mp4` … `B10.mp4` | 11 per-beat renders, **0 slates** |
 | `final/week-01-shifted-not-changed.mp4` | 1920×1080 master + `.srt` sidecar |
@@ -172,6 +180,9 @@ Constraints, all hard:
    length instead. Do not "fix" this by shortening B01.
 2. **The locked outro card is not used** — see rule 1 in the prompt above. This is the
    correct reading of `OUTRO-LOCK.md`'s scope clause, not an oversight.
-3. **Manim is blocked and never called.** Expected. Do not install Manim to make the
+3. **The COLD OPEN LAW is deliberately not met.** B00 shows no answer lines, because
+   they would be a Claude response that was never given — see rule 5 in the prompt above
+   and `SOURCES.md` §5.16. Do not "fix" this.
+4. **Manim is blocked and never called.** Expected. Do not install Manim to make the
    readiness table green; this film has no equation beats and the prerequisite says to
    record the unused blocked feature honestly.

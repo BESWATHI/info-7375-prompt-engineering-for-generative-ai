@@ -1,6 +1,8 @@
 """make_srt.py — build the caption sidecar from the toolkit's word clock.
 
-Author: Suketh Produtoor (INFO 7375, Week 1)
+Submitted by Suketh Produtoor (INFO 7375, Week 1). Written by Claude in
+Claude Code build sessions the submitter directed — SOURCES.md §4 records
+who did what, and what the submitter personally re-ran.
 
 The public brutalist.art cut ships `align.py` (which writes the word clock,
 `mp3/words.json`) but not the SRT writer — that lived in the publishing module
