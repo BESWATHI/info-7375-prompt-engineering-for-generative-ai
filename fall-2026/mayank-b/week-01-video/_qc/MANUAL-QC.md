@@ -1,0 +1,15 @@
+# Manual visual QC (2026-09-23), frames read by eye
+
+Frames sampled at 15/50/85% of every beat (`sheet1-3.png`), plus B01 at 2.5/4.5/6.5/9.0/11.2 s (`fixsheet.png`).
+(`REPORT.md` in this folder is the toolkit's automatic Gate V report, which overwrites itself on each compile.)
+
+| # | Beat | Severity | Defect | Fix | Status |
+|---|---|---|---|---|---|
+| 1 | B01 | BLOCKER | the correction never appeared on screen; typing unfinished at beat end | single-word trigger, 32 ms/char | fixed, re-checked |
+| 2 | B00, BHTF | MAJOR | composer text undersized | `largeText: true` | fixed, re-checked |
+| 3 | B04 | MAJOR | "54.60×" clipped past the right safe edge (test still) | bar max 520 px | fixed |
+| 4 | B06 | MAJOR | count legends collided (test still) | label-over-number columns | fixed |
+| 5 | B07 | MINOR | honesty stamp wrapped onto two lines | nowrap, wider box | fixed |
+| 6 | B08 | MINOR | dead space under the claims | bigger cards/type | fixed |
+| 7 | BVDT | MINOR | library recap page's text is smallish; component has no size prop | — | open |
+| 8 | B08 50% | — | cards overlap mid-flight while sorting | intended motion; settles by 85% | not a defect |

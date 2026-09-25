@@ -1,0 +1,165 @@
+"""Authors beat_sheet.json (narration + show blocks). Run once; build_props.py
+later adds measured timings and computed props. Numbers here are copied from
+code/temperature_results.json (printed by run_temperature.py)."""
+import json
+
+TITLE = "Temperature Is Not a Fact Checker."
+SLUG = "temperature-concentration"
+V = {"voice": "am_onyx", "engine": "kokoro"}
+
+def beat(bid, act, narration, pattern, props, show, lane="BODY", **extra):
+    b = {"beat_id": bid, "act": act, "lane": lane, "narration_text": narration, **V,
+         "shot": {"type": "REMOTION", "source": "own", "motion": "illustrate",
+                  "show": show, "remotion": {"pattern": pattern, "props": props}}}
+    b.update(extra)
+    return b
+
+CODE = '''def probabilities(logits, temperature=1.0):
+    if not logits or not math.isfinite(temperature) or temperature <= 0:
+        raise ValueError("Need logits and a positive finite temperature")
+    if not all(math.isfinite(x) for x in logits):
+        raise ValueError("Logits must be finite")
+    peak = max(logits)
+    weights = [math.exp((x - peak) / temperature) for x in logits]
+    total = sum(weights)
+    return [weight / total for weight in weights]'''
+
+HANDOFF_PROMPT = ("Pick three possible answers to a question I care about and give each one a score. "
+                  "Compute softmax at temperatures 0.5, 1 and 2. Then tell me what evidence, "
+                  "not temperature, could change which answer is on top.")
+
+beats = [
+  beat("B00", "cold open — the ask",
+       "Hola — this is Liam, in for Bear. Turn a model's temperature down and its answers sound more certain. "
+       "Does that make them more correct? We ran the chapter's own code to find out.",
+       "ClaudeComposerAsk",
+       {"greeting": "Hola, Liam", "topic": "CHAPTER 1 · TEMPERATURE", "segment": TITLE.rstrip('.'),
+        "command": "Does turning temperature down make an answer more accurate?",
+        "runningText": "running the chapter's code offline, no model call…",
+        "output": ["$ python3 run_temperature.py",
+                   "T = 0.5   top outcome  0.8668",
+                   "T = 2.0   top outcome  0.5065",
+                   "ranking at every T:  2 > 1 > 0"],
+        "folderLabel": "@NikBearBrown"},
+       [{"at": "Hola", "event": "greeting + composer; the question types in"},
+        {"at": "We ran", "event": "running indicator, then four stdout lines from run_temperature.py (real output, not a Claude reply)"}],
+       lane="BOOKEND"),
+  beat("B01", "BLUF — hesitant writer",
+       "Temperature sets how concentrated the choices are. It reshapes the odds on answers already on the table. "
+       "It never checks which answer is true — so confident is not the same as correct.",
+       "BrutalistHesitantWriter",
+       {"text": "Temperature sets how creative the model is.\nIt reshapes the odds on answers already there.\nIt never checks which answer is true.",
+        "triggerWords": "how creative the model is",
+        "replacementWords": "how concentrated the choices are",
+        "seed": "temperature-concentration-b01", "fontSize": 76, "align": "center"},
+       [{"at": 0.0, "event": "writer types 'Temperature sets how creative the model is.'"},
+        {"at": "concentrated", "event": "'how creative the model is' highlighted, deleted, retyped as 'how concentrated the choices are'"},
+        {"at": "never checks", "event": "remaining two lines type in"}],
+       lane="BOOKEND", lead_silence_s=0.8),
+  beat("B02", "framework — scores become odds",
+       "Three outcomes, three scores: one, two, three. These are constructed toy scores from the chapter, not a real model. "
+       "Softmax divides each score by temperature, exponentiates, and normalizes. "
+       "At temperature one, the top outcome gets sixty-six point five percent.",
+       "TcScoresToOdds", {"sparkLine": "Scores become odds."},
+       [{"at": "one, two, three", "event": "three score chips z = 1, 2, 3 drop in under outcome 0/1/2"},
+        {"at": "constructed", "event": "stamp: CONSTRUCTED TOY SCORES · Chapter 1"},
+        {"at": "Softmax", "event": "typeset softmax equation reveals"},
+        {"at": "temperature one", "event": "three bars grow to 9.0% / 24.5% / 66.5%; the top bar is the one terracotta"}]),
+  beat("B03", "worked example — the dial",
+       "Turn the dial down to point five, and the top outcome climbs to eighty-six point seven. "
+       "Turn it up to two, and it falls to fifty point six. The bars reshape. "
+       "But the ranking never moves — outcome two wins every time.",
+       "TcTemperatureDial", {"sparkLine": "Same order. New spread."},
+       [{"at": "point five", "event": "T readout slides 1.0 → 0.5; bars recompute live from softmax; top bar 86.7%"},
+        {"at": "up to two", "event": "T slides 0.5 → 2.0; top bar 50.6%, bottom bar rises to 18.6%"},
+        {"at": "ranking", "event": "rank badges 1st/2nd/3rd pulse — unchanged at every T"}]),
+  beat("B04", "mechanism — the ratio",
+       "Here's why. Divide one probability by another and the denominator cancels, leaving e to the score gap over T. "
+       "Outcomes two and zero sit two points apart. At T point five, that ratio is fifty-four point six. "
+       "At T two, two point seven two. Temperature stretches a gap; it never creates one.",
+       "TcRatio", {"sparkLine": "It stretches the gap."},
+       [{"at": "Divide", "event": "ratio equation p_i/p_k = exp((z_i − z_k)/T) reveals"},
+        {"at": "two points apart", "event": "gap z₂ − z₀ = 2 marked"},
+        {"at": "point five", "event": "row T = 0.5 → ratio counter runs to 54.60"},
+        {"at": "At T two", "event": "rows T = 1 (7.39) and T = 2 (2.72) land; all three ratios > 1"}]),
+  beat("B05", "the code — one place temperature enters",
+       "That's the chapter's actual function. Temperature enters the arithmetic in one place: it divides the score differences. "
+       "No question goes in, no answer key, no evidence. And zero is rejected outright — "
+       "low temperature here isn't a secret 'pick the best' mode.",
+       "TcCode", {"sparkLine": "One division. No evidence.", "code": CODE, "title": "main.py · probabilities()"},
+       [{"at": 0.0, "event": "real function source (verbatim from chapter) appears"},
+        {"at": "divides", "event": "line `(x - peak) / temperature` highlighted"},
+        {"at": "No question", "event": "input list shown beside the signature: logits, temperature — nothing else"},
+        {"at": "zero is rejected", "event": "the `temperature <= 0` guard line highlighted"}]),
+  beat("B06", "evidence — a thousand draws",
+       "Probabilities aren't outcomes, so draw a thousand times with seed seven. "
+       "At temperature point five, outcome two comes up eight hundred forty-nine times. "
+       "At temperature two, four hundred sixty-nine. Same scores, same seed. Only the concentration changed.",
+       "TcSampleCounts", {"sparkLine": "Concentration, counted."},
+       [{"at": "draw a thousand", "event": "two 40×25 dot grids fill in draw order (real seed-7 sequences)"},
+        {"at": "eight hundred", "event": "left grid (T = 0.5) counter lands 18 / 133 / 849"},
+        {"at": "four hundred", "event": "right grid (T = 2) counter lands 202 / 329 / 469"},
+        {"at": "Only the concentration", "event": "grids held side by side"}]),
+  beat("B07", "falsifiability — the constructed counterexample",
+       "Now a constructed hypothetical — not a real Claude error. Say an answer key marks outcome zero as correct. "
+       "Lower the temperature from one to point five: the correct answer drops from nine percent to one point six, "
+       "and the wrong favourite climbs to eighty-seven. The formula worked perfectly. It never saw the key.",
+       "TcWrongAnswer", {"sparkLine": "It never saw the key."},
+       [{"at": 0.0, "event": "stamp: CONSTRUCTED HYPOTHETICAL — not an observed Claude error"},
+        {"at": "answer key", "event": "answer key card marks outcome 0 ✓ correct"},
+        {"at": "Lower the temperature", "event": "T slides 1.0 → 0.5; correct bar shrinks 9.0% → 1.6%, wrong bar grows 66.5% → 86.7%"},
+        {"at": "never saw", "event": "arrow from answer key to formula struck out: 'not an input'"}]),
+  beat("B08", "boundary — what this does not establish",
+       "What this doesn't show: how any Claude product sets or exposes temperature. This is a three-outcome toy, run offline. "
+       "And it can't tell you whether the scores themselves were any good — that's a separate question, needing separate evidence.",
+       "TcBoundary", {"sparkLine": "Where the proof stops."},
+       [{"at": 0.0, "event": "claims sort into two columns: SHOWN / NOT SHOWN"},
+        {"at": "Claude product", "event": "'How a Claude product sets or exposes temperature' lands in NOT SHOWN, terracotta"},
+        {"at": "three-outcome toy", "event": "SHOWN column: three constructed scores, offline, Python 3.11"},
+        {"at": "scores themselves", "event": "'Whether the scores were any good' joins NOT SHOWN"}]),
+  beat("BVDT", "verdict page",
+       "The recap. Lower temperature concentrates the choices; higher temperature flattens them. "
+       "The ranking never moves, and nothing in the calculation checks the truth. "
+       "Confidence is a setting. Correctness takes evidence.",
+       "ClaudeVerdictArtifact",
+       {"artifactTitle": TITLE, "artifactHeading": "What the numbers showed",
+        "brandLabel": "Recap written by the author, not a Claude response",
+        "artifactLines": ["Lower T concentrates: top outcome 66.5% → 86.7%",
+                          "Higher T flattens: top outcome 66.5% → 50.6%",
+                          "The ranking never changes for any T > 0",
+                          "No step in the formula checks what is true"]},
+       [{"at": "The recap", "event": "artifact page; four findings reveal in narration order"}],
+       lane="BOOKEND"),
+  beat("BHTF", "handoff — your turn",
+       "Your turn. Paste this into Claude: pick three possible answers to a question I care about and give each one a score. "
+       "Compute softmax at temperatures point five, one and two. Then tell me what evidence, not temperature, "
+       "could change which answer is on top. Check its numbers against the ratio rule. "
+       "And notice: only a change in the scores can reorder the list.",
+       "ClaudeComposerAsk",
+       {"greeting": "Your turn.", "topic": "YOUR TURN · TEMPERATURE", "segment": TITLE.rstrip('.'),
+        "command": HANDOFF_PROMPT, "runningText": "paste this into Claude…", "output": [],
+        "folderLabel": "@NikBearBrown"},
+       [{"at": "Paste this", "event": "suggested prompt types into the composer"}],
+       lane="BOOKEND"),
+  beat("BOUT", "outro — title restate",
+       "Temperature Is Not a Fact Checker. At Nik Bear Brown. Liam, in for Bear.",
+       "ClaudeTitleOutro", {"title": TITLE, "slug": SLUG},
+       [{"at": 0.0, "event": "title card, terracotta period, @NikBearBrown handle"}],
+       lane="BOOKEND"),
+]
+
+sheet = {"metadata": {
+    "title": TITLE, "slug": SLUG, "topic": "CHAPTER 1 · TEMPERATURE",
+    "concept": "Temperature controls how concentrated the choices are; it doesn't check facts",
+    "source": "01-randomness-and-first-prompts.md §'Temperature is a concentration control, not a fact checker'",
+    "register": "Teardown", "audience": "Claude", "brand": "claude-liam", "persona": "Liam (in for Bear)",
+    "in_for_bear": True, "voice": "am_onyx", "engine": "kokoro", "voice_kokoro": "am_onyx",
+    "palette": "claude", "style_preset": "claude", "ground": "#FAF9F5",
+    "typography": {"serif": "Tiempos/EB Garamond", "ui": "system sans", "mono": "SF Mono"},
+    "greeting": "Hola, Liam", "greeting_note": "hello lexicon: Spanish. Wagwan is Bear's only; Liam never takes it.",
+    "folderLabel": "@NikBearBrown", "aspect_ratio": "16:9", "target_runtime_s": [120, 180],
+    "derived_from": "beat_sheet.json",
+    "evidence": "code/run_temperature.py -> code/temperature_results.json (every on-screen number)",
+  }, "beats": beats}
+json.dump(sheet, open("beat_sheet.json", "w"), indent=2, ensure_ascii=False)
+print(len(beats), "beats;", sum(len(b["narration_text"].split()) for b in beats), "words")

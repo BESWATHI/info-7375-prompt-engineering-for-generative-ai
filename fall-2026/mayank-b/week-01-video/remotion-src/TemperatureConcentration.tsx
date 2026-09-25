@@ -1,0 +1,495 @@
+/**
+ * TemperatureConcentration.tsx — reel-local Remotion components for
+ * "Temperature Is Not a Fact Checker." (INFO7375 Week 01, Chapter 1).
+ *
+ * Palette: Claude fidelity — cream #FAF9F5, ink #3D3929, ONE terracotta
+ * accent #D97757 per beat (#AF4B2D when the accent carries words, for
+ * contrast). Registered in Root.tsx under the folder "TemperatureConcentration".
+ *
+ * SOURCE CARE: scores, probabilities, counts and draw sequences arrive as
+ * props written by the reel's code/build_props.py from the chapter's own
+ * functions. Live bar heights during a temperature sweep are recomputed with
+ * the same softmax, so every frame shows a true value of the formula —
+ * nothing is eased between invented numbers.
+ *
+ * TIMING: every cue is in seconds, taken from mp3/words.json (align.py) so
+ * reveals land on the spoken word. durationSeconds sets the composition
+ * length via calculateMetadata in Root.tsx.
+ */
+import React from 'react';
+import { AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig, Easing } from 'remotion';
+import { z } from 'zod';
+
+// -- Palette -----------------------------------------------------------------
+const BG = '#FAF9F5';
+const INK = '#3D3929';
+const SOFT = '#6C6959';
+const GHOST = '#B9B4A0';
+const CARD = '#FFFFFF';
+const BORDER = '#E5E2D9';
+const ACC = '#D97757';
+const ACC_TEXT = '#AF4B2D';
+
+const SERIF = '"EB Garamond", Georgia, "Times New Roman", serif';
+const SANS = '-apple-system, "SF Pro Text", "Segoe UI", sans-serif';
+const MONO = 'ui-monospace, "SF Mono", Menlo, monospace';
+
+// 5% title-safe inset (tokens/layout.ts SAFE): x 96–1824, y 54–1026.
+const SX = 96, SY = 54, SR = 1824, SB = 1026;
+
+const clamp = { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' } as const;
+const ease = Easing.bezier(0.33, 0, 0.2, 1);
+/** 0→1 over [a, a+d] seconds, eased. */
+const ramp = (t: number, a: number, d = 0.6) => interpolate(t, [a, a + d], [0, 1], { ...clamp, easing: ease });
+
+export const softmax = (z: number[], T: number) => {
+  const peak = Math.max(...z);
+  const w = z.map((x) => Math.exp((x - peak) / T));
+  const s = w.reduce((a, b) => a + b, 0);
+  return w.map((x) => x / s);
+};
+/** Temperature path through keyframes [{t, T}], interpolated in log-T so the dial moves evenly. */
+const tempAt = (t: number, keys: { t: number; T: number }[]) => {
+  if (keys.length === 1) return keys[0].T;
+  const ts = keys.map((k) => k.t);
+  const lg = keys.map((k) => Math.log(k.T));
+  return Math.exp(interpolate(t, ts, lg, { ...clamp, easing: ease }));
+};
+const pct = (p: number) => `${(p * 100).toFixed(1)}%`;
+
+const useT = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  return frame / fps;
+};
+
+// -- Shared chrome -------------------------------------------------------------
+const Spark: React.FC<{ size: number }> = ({ size }) => (
+  <svg width={size} height={size} viewBox="-10 -10 20 20" style={{ flex: 'none' }}>
+    {Array.from({ length: 8 }).map((_, i) => {
+      const a = (i * Math.PI) / 4;
+      return <line key={i} x1={0} y1={0} x2={9 * Math.cos(a)} y2={9 * Math.sin(a)}
+        stroke={ACC} strokeWidth={2.4} strokeLinecap="round" />;
+    })}
+  </svg>
+);
+
+/** SPARK-LINE LAW: spark + one short serif line, top of the stage. */
+const SparkLine: React.FC<{ line: string; o: number }> = ({ line, o }) => (
+  <div style={{ position: 'absolute', left: SX, top: SY + 6, display: 'flex', alignItems: 'center', gap: 20, opacity: o }}>
+    <Spark size={46} />
+    <span style={{ fontFamily: SERIF, fontSize: 56, color: INK, lineHeight: 1 }}>{line}</span>
+  </div>
+);
+
+/** LOGO LAW: small low-opacity NBB bug, lower-right, inside SAFE. */
+const Bug: React.FC = () => (
+  <Img src={staticFile('temperature-concentration/nbb-logo.svg')}
+    style={{ position: 'absolute', right: 1920 - SR, bottom: 1080 - SB, height: 64, opacity: 0.35 }} />
+);
+
+/** Honesty label for constructed material — always on screen while it applies. */
+const Stamp: React.FC<{ text: string; o: number; top?: number; right?: number }> = ({ text, o, top = SY + 4, right = 1920 - SR }) => (
+  <div style={{ position: 'absolute', top, right, opacity: o, border: `3px solid ${INK}`, padding: '10px 20px',
+    fontFamily: SANS, fontWeight: 700, fontSize: 26, letterSpacing: 2, color: INK, background: CARD, maxWidth: 1150, whiteSpace: 'nowrap' }}>
+    {text}
+  </div>
+);
+
+const Stage: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <AbsoluteFill style={{ background: BG, color: INK, fontFamily: SERIF }}>
+    {children}
+    <Bug />
+  </AbsoluteFill>
+);
+
+const mathRow = z.object({ src: z.string(), aspect: z.number().positive(), expression: z.string() });
+const MathImg: React.FC<{ row: z.infer<typeof mathRow>; height: number; o?: number; style?: React.CSSProperties }> =
+  ({ row, height, o = 1, style }) => (
+    <Img src={staticFile(row.src)} alt={row.expression}
+      style={{ height, width: height * row.aspect, opacity: o, ...style }} />
+  );
+
+// -- Bars ------------------------------------------------------------------------
+/** Vertical probability bars. `ghost` draws a dashed outline of a reference distribution. */
+const Bars: React.FC<{
+  probs: number[]; grow?: number; x: number; y: number; w: number; h: number;
+  accent: number; labels: string[]; sub: string[]; ghost?: number[] | null; ghostLabel?: string;
+  badges?: string[]; badgePulse?: number; marks?: (string | null)[];
+}> = ({ probs, grow = 1, x, y, w, h, accent, labels, sub, ghost, ghostLabel, badges, badgePulse = 0, marks }) => {
+  const n = probs.length;
+  const slot = w / n;
+  const bw = slot * 0.5;
+  return (
+    <div style={{ position: 'absolute', left: x, top: y, width: w, height: h }}>
+      <div style={{ position: 'absolute', left: 0, right: 0, top: h, height: 3, background: INK }} />
+      {probs.map((p, i) => {
+        const bh = h * p * grow;
+        const cx = slot * i + slot / 2;
+        const isAcc = i === accent;
+        const gh = ghost ? h * ghost[i] : 0;
+        return (
+          <React.Fragment key={i}>
+            {ghost && <div style={{ position: 'absolute', left: cx - bw / 2, top: h - gh, width: bw, height: gh,
+              border: `3px dashed ${GHOST}`, boxSizing: 'border-box' }} />}
+            <div style={{ position: 'absolute', left: cx - bw / 2, top: h - bh, width: bw, height: bh,
+              background: isAcc ? ACC : INK, opacity: isAcc ? 1 : 0.82 }} />
+            <div style={{ position: 'absolute', left: cx - slot / 2, width: slot, top: h - bh - 84, textAlign: 'center',
+              fontFamily: SANS, fontWeight: 700, fontSize: 60, color: isAcc ? ACC_TEXT : INK, opacity: grow > 0.02 ? 1 : 0 }}>
+              {pct(p * Math.min(1, grow))}
+            </div>
+            {marks && marks[i] && <div style={{ position: 'absolute', left: cx - slot / 2, width: slot, top: h - bh - 150,
+              textAlign: 'center', fontFamily: SANS, fontWeight: 800, fontSize: 46, color: INK }}>{marks[i]}</div>}
+            <div style={{ position: 'absolute', left: cx - slot / 2, width: slot, top: h + 18, textAlign: 'center',
+              fontFamily: SERIF, fontSize: 46, color: INK }}>{labels[i]}</div>
+            <div style={{ position: 'absolute', left: cx - slot / 2, width: slot, top: h + 76, textAlign: 'center',
+              fontFamily: SANS, fontSize: 34, color: SOFT }}>{sub[i]}</div>
+            {badges && <div style={{ position: 'absolute', left: cx + bw / 2 + 12, top: h - 58,
+              fontFamily: SANS, fontWeight: 700, fontSize: 32, color: INK, padding: '4px 12px',
+              border: `2px solid ${INK}`, background: CARD,
+              transform: `scale(${1 + 0.18 * Math.sin(Math.PI * badgePulse)})`, transformOrigin: 'left center' }}>{badges[i]}</div>}
+          </React.Fragment>
+        );
+      })}
+      {ghost && ghostLabel && <div style={{ position: 'absolute', right: 0, top: -54, fontFamily: SANS, fontSize: 28, color: SOFT }}>
+        <span style={{ display: 'inline-block', width: 34, height: 18, border: `3px dashed ${GHOST}`, marginRight: 10, verticalAlign: 'middle' }} />
+        {ghostLabel}
+      </div>}
+    </div>
+  );
+};
+
+const base = { durationSeconds: z.number().positive().default(12), sparkLine: z.string().default('') };
+
+// =============================================================================
+// B02 TcScoresToOdds — score chips → typeset softmax → bars grow at T = 1.
+// =============================================================================
+export const tcScoresToOddsSchema = z.object({
+  ...base,
+  scores: z.array(z.number()).default([1, 2, 3]),
+  probsT1: z.array(z.number()).default([0.0900305732, 0.2447284711, 0.6652409558]),
+  formula: mathRow.default({ src: 'temperature-concentration/softmax.svg', aspect: 3, expression: 'softmax' }),
+  stampText: z.string().default('CONSTRUCTED TOY SCORES · CHAPTER 1'),
+  cues: z.object({ chips: z.number(), stamp: z.number(), formula: z.number(), bars: z.number() })
+    .default({ chips: 0.5, stamp: 3, formula: 6, bars: 10 }),
+});
+export const TcScoresToOdds: React.FC<z.infer<typeof tcScoresToOddsSchema>> = ({ sparkLine, scores, probsT1, formula, stampText, cues }) => {
+  const t = useT();
+  const grow = ramp(t, cues.bars, 1.4);
+  return (
+    <Stage>
+      <SparkLine line={sparkLine} o={ramp(t, 0, 0.5)} />
+      <Stamp text={stampText} o={ramp(t, cues.stamp, 0.4)} />
+      <div style={{ position: 'absolute', left: SX, width: SR - SX, top: 170, display: 'flex', justifyContent: 'center' }}>
+        <MathImg row={formula} height={150} o={ramp(t, cues.formula, 0.7)} />
+      </div>
+      <Bars probs={probsT1} grow={grow} x={SX + 150} y={380} w={SR - SX - 300} h={430} accent={2}
+        labels={scores.map((_, i) => `outcome ${i}`)} sub={scores.map((s) => `score z = ${s}`)} />
+      {/* score chips sit on the baseline until the bars take over */}
+      {scores.map((s, i) => {
+        const slot = (SR - SX - 300) / scores.length;
+        const o = ramp(t, cues.chips + i * 0.35, 0.4) * (1 - grow);
+        return <div key={i} style={{ position: 'absolute', left: SX + 150 + slot * i + slot / 2 - 80, top: 640 - 30 * (1 - ramp(t, cues.chips + i * 0.35, 0.4)),
+          width: 160, height: 120, border: `3px solid ${INK}`, background: CARD, opacity: o, display: 'flex', alignItems: 'center',
+          justifyContent: 'center', fontFamily: SANS, fontWeight: 700, fontSize: 64 }}>{s}</div>;
+      })}
+      <div style={{ position: 'absolute', left: SX, bottom: 1080 - SB + 8, fontFamily: SANS, fontSize: 30, color: SOFT, opacity: grow }}>
+        T = 1 · values printed by the chapter's probabilities() function
+      </div>
+    </Stage>
+  );
+};
+
+// =============================================================================
+// B03 TcTemperatureDial — T sweeps 1 → 0.5 → 2; bars recompute live; ranks hold.
+// =============================================================================
+export const tcTemperatureDialSchema = z.object({
+  ...base,
+  scores: z.array(z.number()).default([1, 2, 3]),
+  probsT1: z.array(z.number()).default([0.0900305732, 0.2447284711, 0.6652409558]),
+  cues: z.object({ down: z.number(), up: z.number(), rank: z.number() }).default({ down: 1, up: 5, rank: 9 }),
+});
+const Dial: React.FC<{ T: number; x: number; y: number; w: number }> = ({ T, x, y, w }) => {
+  const lo = Math.log(0.25), hi = Math.log(2.5);
+  const pos = (v: number) => ((Math.log(v) - lo) / (hi - lo)) * w;
+  return (
+    <div style={{ position: 'absolute', left: x, top: y, width: w, height: 120 }}>
+      <div style={{ position: 'absolute', left: 0, right: 0, top: 58, height: 6, background: BORDER }} />
+      {[0.5, 1, 2].map((v) => <div key={v} style={{ position: 'absolute', left: pos(v) - 40, width: 80, top: 82, textAlign: 'center',
+        fontFamily: SANS, fontSize: 30, color: SOFT }}>{v.toFixed(1)}</div>)}
+      {[0.5, 1, 2].map((v) => <div key={`t${v}`} style={{ position: 'absolute', left: pos(v) - 2, top: 48, width: 4, height: 26, background: GHOST }} />)}
+      <div style={{ position: 'absolute', left: pos(T) - 22, top: 39, width: 44, height: 44, borderRadius: 22, background: INK }} />
+      <div style={{ position: 'absolute', left: -270, top: 20, fontFamily: SANS, fontWeight: 700, fontSize: 64, color: INK }}>
+        T = {T.toFixed(2)}
+      </div>
+    </div>
+  );
+};
+export const TcTemperatureDial: React.FC<z.infer<typeof tcTemperatureDialSchema>> = ({ sparkLine, scores, probsT1, cues }) => {
+  const t = useT();
+  const T = tempAt(t, [{ t: cues.down, T: 1 }, { t: cues.down + 1.4, T: 0.5 }, { t: cues.up, T: 0.5 }, { t: cues.up + 1.6, T: 2 }]);
+  const probs = softmax(scores, T);
+  const rankO = ramp(t, cues.rank, 0.3);
+  return (
+    <Stage>
+      <SparkLine line={sparkLine} o={ramp(t, 0, 0.5)} />
+      <Dial T={T} x={SX + 560} y={150} w={1000} />
+      <Bars probs={probs} x={SX + 150} y={400} w={SR - SX - 300} h={430} accent={2} ghost={probsT1} ghostLabel="T = 1 for comparison"
+        labels={scores.map((_, i) => `outcome ${i}`)} sub={scores.map((s) => `score z = ${s}`)}
+        badges={rankO > 0 ? ['3rd', '2nd', '1st'] : undefined} badgePulse={interpolate(t, [cues.rank, cues.rank + 0.8], [0, 1], clamp)} />
+      <div style={{ position: 'absolute', left: SX, bottom: 1080 - SB + 8, fontFamily: SANS, fontSize: 30, color: SOFT }}>
+        bars recomputed from p = softmax(z / T) at every frame · same three constructed scores
+      </div>
+    </Stage>
+  );
+};
+
+// =============================================================================
+// B04 TcRatio — ratio identity, the gap, then e^(gap/T) at three temperatures.
+// =============================================================================
+export const tcRatioSchema = z.object({
+  ...base,
+  ratioFormula: mathRow.default({ src: 'temperature-concentration/ratio.svg', aspect: 3, expression: 'ratio' }),
+  gapFormula: mathRow.default({ src: 'temperature-concentration/gap.svg', aspect: 3, expression: 'gap' }),
+  rows: z.array(z.object({ T: z.number(), ratio: z.number(), math: mathRow })).default([]),
+  cues: z.object({ ratio: z.number(), gap: z.number(), row0: z.number(), rest: z.number() })
+    .default({ ratio: 1, gap: 5, row0: 8, rest: 11 }),
+});
+export const TcRatio: React.FC<z.infer<typeof tcRatioSchema>> = ({ sparkLine, ratioFormula, gapFormula, rows, cues }) => {
+  const t = useT();
+  const maxR = Math.max(...rows.map((r) => r.ratio), 1);
+  const starts = [cues.row0, cues.rest, cues.rest + 0.9];
+  return (
+    <Stage>
+      <SparkLine line={sparkLine} o={ramp(t, 0, 0.5)} />
+      <div style={{ position: 'absolute', left: SX, width: SR - SX, top: 150, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 110 }}>
+        <MathImg row={ratioFormula} height={140} o={ramp(t, cues.ratio, 0.7)} />
+        <MathImg row={gapFormula} height={64} o={ramp(t, cues.gap, 0.5)}
+          style={{ border: `3px solid ${ACC}`, padding: 16, boxSizing: 'content-box' }} />
+      </div>
+      {rows.map((r, i) => {
+        const p = ramp(t, starts[i] ?? cues.rest, 1.2);
+        const y = 420 + i * 190;
+        const barW = (r.ratio / maxR) * 520 * p;
+        return (
+          <div key={i} style={{ position: 'absolute', left: SX, top: y, width: SR - SX, height: 150, opacity: ramp(t, starts[i] ?? cues.rest, 0.3) }}>
+            <div style={{ position: 'absolute', left: 0, top: 36, fontFamily: SANS, fontWeight: 700, fontSize: 56 }}>T = {r.T}</div>
+            <MathImg row={r.math} height={72} style={{ position: 'absolute', left: 230, top: 30 }} />
+            <div style={{ position: 'absolute', left: 900, top: 38, height: 64, width: Math.max(4, barW), background: i === 0 ? ACC : INK }} />
+            <div style={{ position: 'absolute', left: 900 + Math.max(4, barW) + 20, top: 34, fontFamily: SANS, fontWeight: 700, fontSize: 56,
+              color: i === 0 ? ACC_TEXT : INK }}>{(r.ratio * p).toFixed(2)}×</div>
+          </div>
+        );
+      })}
+      <div style={{ position: 'absolute', left: SX, bottom: 1080 - SB + 8, fontFamily: SANS, fontSize: 30, color: SOFT }}>
+        bar = how many times likelier outcome 2 is than outcome 0 · every ratio stays above 1: the order never flips
+      </div>
+    </Stage>
+  );
+};
+
+// =============================================================================
+// B05 TcCode — the chapter's real function; highlight where T enters, the guard.
+// =============================================================================
+export const tcCodeSchema = z.object({
+  ...base,
+  title: z.string().default('main.py'),
+  code: z.string().default(''),
+  divideLine: z.number().default(6),
+  guardLine: z.number().default(1),
+  inputs: z.array(z.string()).default(['logits (the scores)', 'temperature']),
+  absent: z.array(z.string()).default(['the question', 'an answer key', 'any evidence']),
+  cues: z.object({ divide: z.number(), inputs: z.number(), guard: z.number() }).default({ divide: 3, inputs: 7, guard: 10 }),
+});
+export const TcCode: React.FC<z.infer<typeof tcCodeSchema>> = ({ sparkLine, title, code, divideLine, guardLine, inputs, absent, cues }) => {
+  const t = useT();
+  const lines = code.split('\n');
+  const hi = (i: number) => (i === divideLine ? ramp(t, cues.divide, 0.4) * (1 - ramp(t, cues.guard, 0.4) * 0.6)
+    : i === guardLine ? ramp(t, cues.guard, 0.4) : 0);
+  return (
+    <Stage>
+      <SparkLine line={sparkLine} o={ramp(t, 0, 0.5)} />
+      <div style={{ position: 'absolute', left: SX, top: 150, width: SR - SX, background: CARD, border: `2px solid ${BORDER}`,
+        opacity: ramp(t, 0.1, 0.5) }}>
+        <div style={{ fontFamily: SANS, fontSize: 28, color: SOFT, padding: '14px 26px', borderBottom: `2px solid ${BORDER}` }}>
+          {title} <span style={{ marginLeft: 18 }}>· verbatim from Chapter 1</span>
+        </div>
+        <div style={{ padding: '18px 0' }}>
+          {lines.map((ln, i) => {
+            const h = hi(i);
+            return <div key={i} style={{ position: 'relative', fontFamily: MONO, fontSize: 31, lineHeight: '50px', padding: '0 26px',
+              whiteSpace: 'pre', color: INK, background: `rgba(217,119,87,${0.2 * h})`,
+              boxShadow: h > 0.01 ? `inset 8px 0 0 rgba(217,119,87,${h})` : 'none' }}>{ln}</div>;
+          })}
+        </div>
+      </div>
+      <div style={{ position: 'absolute', left: SX, top: 800, width: SR - SX, display: 'flex', gap: 60, opacity: ramp(t, cues.inputs, 0.5) }}>
+        <div>
+          <div style={{ fontFamily: SANS, fontSize: 30, color: SOFT, marginBottom: 14 }}>WHAT GOES IN</div>
+          <div style={{ display: 'flex', gap: 18 }}>
+            {inputs.map((s) => <div key={s} style={{ fontFamily: SANS, fontWeight: 700, fontSize: 38, padding: '12px 22px', border: `3px solid ${INK}`, background: CARD }}>{s}</div>)}
+          </div>
+        </div>
+        <div>
+          <div style={{ fontFamily: SANS, fontSize: 30, color: SOFT, marginBottom: 14 }}>WHAT NEVER GOES IN</div>
+          <div style={{ display: 'flex', gap: 18 }}>
+            {absent.map((s, i) => <div key={s} style={{ fontFamily: SANS, fontSize: 38, padding: '12px 22px', border: `3px dashed ${GHOST}`, color: SOFT,
+              textDecoration: ramp(t, cues.inputs + 0.4 + i * 0.3, 0.2) > 0.5 ? 'line-through' : 'none' }}>{s}</div>)}
+          </div>
+        </div>
+      </div>
+    </Stage>
+  );
+};
+
+// =============================================================================
+// B06 TcSampleCounts — 1000 real seed-7 draws fill two grids, then sort.
+// =============================================================================
+export const tcSampleCountsSchema = z.object({
+  ...base,
+  panels: z.array(z.object({ T: z.number(), draws: z.string(), counts: z.array(z.number()), p2: z.number() })).default([]),
+  caption: z.string().default(''),
+  cues: z.object({ fill: z.number(), left: z.number(), right: z.number(), sort: z.number() })
+    .default({ fill: 1, left: 5, right: 9, sort: 11 }),
+});
+const COLS = 40, ROWS = 25, CELL = 20;
+const dotColor = ['#3D3929', '#B9B4A0', ACC];
+const Grid: React.FC<{ draws: string; shown: number; sort: number; x: number; y: number }> = ({ draws, shown, sort, x, y }) => {
+  const seq = draws.split('').map(Number);
+  // sorted target index: outcome 2 first (fills from the top), then 1, then 0
+  const order = [2, 1, 0];
+  const rankOf: number[] = new Array(seq.length);
+  let k = 0;
+  for (const o of order) seq.forEach((v, i) => { if (v === o) rankOf[i] = k++; });
+  return (
+    <svg style={{ position: 'absolute', left: x, top: y }} width={COLS * CELL} height={ROWS * CELL}>
+      {seq.map((v, i) => {
+        if (i >= shown) return null;
+        const j = rankOf[i];
+        const cx = interpolate(sort, [0, 1], [(i % COLS), (j % COLS)]) * CELL + CELL / 2;
+        const cy = interpolate(sort, [0, 1], [Math.floor(i / COLS), Math.floor(j / COLS)]) * CELL + CELL / 2;
+        return <circle key={i} cx={cx} cy={cy} r={CELL * 0.4} fill={dotColor[v]} />;
+      })}
+    </svg>
+  );
+};
+export const TcSampleCounts: React.FC<z.infer<typeof tcSampleCountsSchema>> = ({ sparkLine, panels, caption, cues }) => {
+  const t = useT();
+  const sort = ramp(t, cues.sort, 1.4);
+  const fills = [[cues.fill, cues.left], [cues.left, cues.right]];
+  return (
+    <Stage>
+      <SparkLine line={sparkLine} o={ramp(t, 0, 0.5)} />
+      {panels.map((p, i) => {
+        const [a, b] = fills[i] ?? fills[0];
+        const shown = Math.round(interpolate(t, [a, b], [0, p.draws.length], clamp));
+        const x = SX + 20 + i * (COLS * CELL + 88);
+        const live = [0, 1, 2].map((o) => p.draws.slice(0, shown).split('').filter((c) => Number(c) === o).length);
+        return (
+          <React.Fragment key={i}>
+            <div style={{ position: 'absolute', left: x, top: 150, fontFamily: SANS, fontWeight: 700, fontSize: 54, color: INK }}>T = {p.T.toFixed(1)}</div>
+            <div style={{ position: 'absolute', left: x + 250, top: 166, fontFamily: SANS, fontSize: 32, color: SOFT }}>{shown} / {p.draws.length} draws</div>
+            <Grid draws={p.draws} shown={shown} sort={sort} x={x} y={240} />
+            <div style={{ position: 'absolute', left: x, top: 240 + ROWS * CELL + 22, width: COLS * CELL, display: 'flex', fontFamily: SANS }}>
+              {[0, 1, 2].map((o) => <div key={o} style={{ width: (COLS * CELL) / 3 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 30, color: SOFT }}>
+                  <svg width={24} height={24}><circle cx={12} cy={12} r={10} fill={dotColor[o]} /></svg>outcome {o}
+                </div>
+                <div style={{ fontSize: 60, fontWeight: 800, color: o === 2 ? ACC_TEXT : INK, marginTop: 2 }}>{live[o]}</div>
+              </div>)}
+            </div>
+            {shown === p.draws.length && <div style={{ position: 'absolute', left: x, top: 240 + ROWS * CELL + 140, fontFamily: SANS, fontSize: 32, color: SOFT }}>
+              outcome 2 share {(p.counts[2] / p.draws.length).toFixed(3)} · assigned p = {p.p2.toFixed(3)}
+            </div>}
+          </React.Fragment>
+        );
+      })}
+      <div style={{ position: 'absolute', left: SX, bottom: 1080 - SB + 8, fontFamily: SANS, fontSize: 30, color: SOFT }}>{caption}</div>
+    </Stage>
+  );
+};
+
+// =============================================================================
+// B07 TcWrongAnswer — constructed answer key; lowering T concentrates on a wrong label.
+// =============================================================================
+export const tcWrongAnswerSchema = z.object({
+  ...base,
+  scores: z.array(z.number()).default([1, 2, 3]),
+  correct: z.number().default(0),
+  stampText: z.string().default('CONSTRUCTED HYPOTHETICAL · NOT AN OBSERVED CLAUDE ERROR'),
+  cues: z.object({ key: z.number(), lower: z.number(), never: z.number() }).default({ key: 3, lower: 7, never: 13 }),
+});
+export const TcWrongAnswer: React.FC<z.infer<typeof tcWrongAnswerSchema>> = ({ sparkLine, scores, correct, stampText, cues }) => {
+  const t = useT();
+  const T = tempAt(t, [{ t: cues.lower, T: 1 }, { t: cues.lower + 2, T: 0.5 }]);
+  const probs = softmax(scores, T);
+  const keyO = ramp(t, cues.key, 0.5);
+  const neverO = ramp(t, cues.never, 0.5);
+  const letters = ['A', 'B', 'C'];
+  return (
+    <Stage>
+      <SparkLine line={sparkLine} o={ramp(t, 0, 0.5)} />
+      <Stamp text={stampText} o={ramp(t, 0.2, 0.4)} top={160} right={1920 - SR} />
+      <div style={{ position: 'absolute', left: SX, top: 150, fontFamily: SANS, fontWeight: 700, fontSize: 60 }}>T = {T.toFixed(2)}</div>
+      <Bars probs={probs} x={SX} y={400} w={1050} h={430} accent={2}
+        labels={letters.map((l, i) => `answer ${l}`)} sub={scores.map((s, i) => `outcome ${i} · z = ${s}`)}
+        marks={letters.map((_, i) => (keyO > 0.5 && i === correct ? '✓ correct' : null))} />
+      {/* the answer key and the formula — no arrow between them */}
+      <div style={{ position: 'absolute', left: 1230, top: 330, width: SR - 1230, opacity: keyO }}>
+        <div style={{ border: `3px solid ${INK}`, background: CARD, padding: '22px 28px' }}>
+          <div style={{ fontFamily: SANS, fontSize: 28, color: SOFT }}>ANSWER KEY (stipulated)</div>
+          <div style={{ fontFamily: SERIF, fontSize: 56, marginTop: 6 }}>A is correct</div>
+        </div>
+        <div style={{ height: 150, position: 'relative' }}>
+          <div style={{ position: 'absolute', left: '50%', top: 12, bottom: 12, borderLeft: `4px dashed ${GHOST}` }} />
+          <div style={{ position: 'absolute', left: 'calc(50% - 44px)', top: 36, fontFamily: SANS, fontWeight: 800, fontSize: 72,
+            color: ACC_TEXT, opacity: neverO }}>✕</div>
+          <div style={{ position: 'absolute', left: 'calc(50% + 48px)', top: 52, fontFamily: SANS, fontSize: 32, color: SOFT, opacity: neverO }}>not an input</div>
+        </div>
+        <div style={{ border: `3px solid ${INK}`, background: CARD, padding: '22px 28px' }}>
+          <div style={{ fontFamily: SANS, fontSize: 28, color: SOFT }}>THE FORMULA SEES ONLY</div>
+          <div style={{ fontFamily: MONO, fontSize: 44, marginTop: 8 }}>scores, T</div>
+        </div>
+      </div>
+      <div style={{ position: 'absolute', left: SX, bottom: 1080 - SB + 8, fontFamily: SANS, fontSize: 30, color: SOFT }}>
+        constructed labels and answer key (Chapter 1's counterexample) · real softmax values
+      </div>
+    </Stage>
+  );
+};
+
+// =============================================================================
+// B08 TcBoundary — claims sort into SHOWN / NOT SHOWN on the spoken phrase.
+// =============================================================================
+export const tcBoundarySchema = z.object({
+  ...base,
+  items: z.array(z.object({ text: z.string(), shown: z.boolean(), at: z.number(), accent: z.boolean().default(false) })).default([]),
+});
+export const TcBoundary: React.FC<z.infer<typeof tcBoundarySchema>> = ({ sparkLine, items }) => {
+  const t = useT();
+  const colW = 820, colL = SX, colR = SR - colW, top = 300;
+  let si = 0, ni = 0;
+  return (
+    <Stage>
+      <SparkLine line={sparkLine} o={ramp(t, 0, 0.5)} />
+      {[['SHOWN', colL], ['NOT SHOWN', colR]].map(([h, x]) => (
+        <div key={h as string} style={{ position: 'absolute', left: x as number, top: 180, width: colW, fontFamily: SANS, fontWeight: 700,
+          fontSize: 44, letterSpacing: 3, borderBottom: `4px solid ${INK}`, paddingBottom: 12, opacity: ramp(t, 0.1, 0.5) }}>{h}</div>
+      ))}
+      {items.map((it, i) => {
+        const slot = it.shown ? si++ : ni++;
+        const p = ramp(t, it.at + 0.35, 0.8);
+        const tx = it.shown ? colL : colR;
+        const x = interpolate(p, [0, 1], [960 - colW / 2, tx]);
+        const y = interpolate(p, [0, 1], [760, top + slot * 215]);
+        return <div key={i} style={{ position: 'absolute', left: x, top: y, width: colW, minHeight: 180, boxSizing: 'border-box',
+          opacity: ramp(t, it.at, 0.3), padding: '18px 26px', background: CARD,
+          border: it.accent ? `4px solid ${ACC}` : `3px solid ${it.shown ? INK : GHOST}`,
+          fontFamily: SERIF, fontSize: 54, lineHeight: 1.15, color: it.accent ? ACC_TEXT : INK, display: 'flex', alignItems: 'center', gap: 20 }}>
+          <span style={{ fontFamily: SANS, fontWeight: 800, fontSize: 44, color: it.shown ? INK : (it.accent ? ACC_TEXT : SOFT) }}>{it.shown ? '✓' : '✕'}</span>
+          <span>{it.text}</span>
+        </div>;
+      })}
+    </Stage>
+  );
+};

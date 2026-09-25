@@ -1,0 +1,804 @@
+{
+  "metadata": {
+    "title": "Temperature Is Not a Fact Checker.",
+    "slug": "temperature-concentration",
+    "topic": "CHAPTER 1 · TEMPERATURE",
+    "concept": "Temperature controls how concentrated the choices are; it doesn't check facts",
+    "source": "01-randomness-and-first-prompts.md §'Temperature is a concentration control, not a fact checker'",
+    "register": "Teardown",
+    "audience": "Claude",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "in_for_bear": true,
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "typography": {
+      "serif": "Tiempos/EB Garamond",
+      "ui": "system sans",
+      "mono": "SF Mono"
+    },
+    "greeting": "Hola, Liam",
+    "greeting_note": "hello lexicon: Spanish. Wagwan is Bear's only; Liam never takes it.",
+    "folderLabel": "@NikBearBrown",
+    "aspect_ratio": "16:9",
+    "target_runtime_s": [
+      120,
+      180
+    ],
+    "derived_from": "beat_sheet.json",
+    "evidence": "code/run_temperature.py -> code/temperature_results.json (every on-screen number)",
+    "build": {
+      "at": "2026-09-25T14:02:20",
+      "cut": "master",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open — the ask",
+      "lane": "BOOKEND",
+      "narration_text": "Hola — this is Liam, in for Bear. Turn a model's temperature down and its answers sound more certain. Does that make them more correct? We ran the chapter's own code to find out.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "illustrate",
+        "show": [
+          {
+            "at": "Hola",
+            "event": "greeting + composer; the question types in"
+          },
+          {
+            "at": "We ran",
+            "event": "running indicator, then four stdout lines from run_temperature.py (real output, not a Claude reply)"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Hola, Liam",
+            "topic": "CHAPTER 1 · TEMPERATURE",
+            "segment": "Temperature Is Not a Fact Checker",
+            "command": "Does turning temperature down make an answer more accurate?",
+            "runningText": "running the chapter's code offline, no model call…",
+            "output": [
+              "$ python3 run_temperature.py",
+              "T = 0.5   top outcome  0.8668",
+              "T = 2.0   top outcome  0.5065",
+              "ranking at every T:  2 > 1 > 0"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "durationSeconds": 9.62,
+            "largeText": true
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": "2026-09-23T23:09:11.518636+00:00"
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 9.62,
+      "render_duration_s": 9.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-25T14:02:20"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "BLUF — hesitant writer",
+      "lane": "BOOKEND",
+      "narration_text": "Temperature sets how concentrated the choices are. It reshapes the odds on answers already on the table. It never checks which answer is true — so confident is not the same as correct.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "illustrate",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "writer types 'Temperature sets how creative…'"
+          },
+          {
+            "at": "concentrated",
+            "event": "'creative' highlighted, deleted, retyped as 'concentrated' (component matches single words only)"
+          },
+          {
+            "at": "never checks",
+            "event": "remaining two lines type in"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Temperature sets how creative the choices are.\nIt reshapes the odds on answers already there.\nIt never checks which answer is true.",
+            "triggerWords": "creative",
+            "replacementWords": "concentrated",
+            "seed": "temperature-concentration-b01",
+            "fontSize": 76,
+            "align": "center",
+            "durationSeconds": 11.38,
+            "charMs": 32,
+            "mistakeRate": 3,
+            "hesitateWithin": 1,
+            "hesitateBetween": 8
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": "2026-09-23T23:10:24.293841+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 11.38,
+      "lead_silence_applied": "0.8s prepended with ffmpeg anullsrc (generate_audio_kokoro.py does not implement lead_silence_s)",
+      "render_duration_s": 11.416666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-25T14:02:20"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "BrutalistHesitantWriter types the overview token by token (EXECUTIVE-SUMMARY LAW); mid-beat frames are mostly cream by design. Three lines at fontSize 76 is the largest size whose longest line stays inside SAFE. Frames read at 2.5/4.5/6.5/9.0/11.2 s: correction lands, all lines complete (_qc/fixsheet.png)."
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "framework — scores become odds",
+      "lane": "BODY",
+      "narration_text": "Three outcomes, three scores: one, two, three. These are constructed toy scores from the chapter, not a real model. Softmax divides each score by temperature, exponentiates, and normalizes. At temperature one, the top outcome gets sixty-six point five percent.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "illustrate",
+        "show": [
+          {
+            "at": "one, two, three",
+            "event": "three score chips z = 1, 2, 3 drop in under outcome 0/1/2"
+          },
+          {
+            "at": "constructed",
+            "event": "stamp: CONSTRUCTED TOY SCORES · Chapter 1"
+          },
+          {
+            "at": "Softmax",
+            "event": "typeset softmax equation reveals"
+          },
+          {
+            "at": "temperature one",
+            "event": "three bars grow to 9.0% / 24.5% / 66.5%; the top bar is the one terracotta"
+          }
+        ],
+        "remotion": {
+          "pattern": "TcScoresToOdds",
+          "props": {
+            "sparkLine": "Scores become odds.",
+            "durationSeconds": 14.95,
+            "scores": [
+              1,
+              2,
+              3
+            ],
+            "probsT1": [
+              0.09003057317038046,
+              0.24472847105479764,
+              0.6652409557748218
+            ],
+            "formula": {
+              "src": "temperature-concentration/softmax.svg",
+              "aspect": 2.3861,
+              "expression": "p_i = \\frac{\\exp(z_i/T)}{\\sum_j \\exp(z_j/T)}"
+            },
+            "cues": {
+              "chips": 1.54,
+              "stamp": 3.0,
+              "formula": 6.42,
+              "bars": 10.67
+            }
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": "2026-09-23T22:54:15.564115+00:00"
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 14.95,
+      "render_duration_s": 14.958333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "remotion:TcScoresToOdds",
+        "at": "2026-09-25T14:02:20"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "worked example — the dial",
+      "lane": "BODY",
+      "narration_text": "Turn the dial down to point five, and the top outcome climbs to eighty-six point seven. Turn it up to two, and it falls to fifty point six. The bars reshape. But the ranking never moves — outcome two wins every time.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "illustrate",
+        "show": [
+          {
+            "at": "point five",
+            "event": "T readout slides 1.0 → 0.5; bars recompute live from softmax; top bar 86.7%"
+          },
+          {
+            "at": "up to two",
+            "event": "T slides 0.5 → 2.0; top bar 50.6%, bottom bar rises to 18.6%"
+          },
+          {
+            "at": "ranking",
+            "event": "rank badges 1st/2nd/3rd pulse — unchanged at every T"
+          }
+        ],
+        "remotion": {
+          "pattern": "TcTemperatureDial",
+          "props": {
+            "sparkLine": "Same order. New spread.",
+            "durationSeconds": 12.52,
+            "scores": [
+              1,
+              2,
+              3
+            ],
+            "probsT1": [
+              0.09003057317038046,
+              0.24472847105479764,
+              0.6652409557748218
+            ],
+            "cues": {
+              "down": 1.08,
+              "up": 5.12,
+              "rank": 9.08
+            }
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": "2026-09-23T22:55:14.120813+00:00"
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 12.52,
+      "render_duration_s": 12.541666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "remotion:TcTemperatureDial",
+        "at": "2026-09-25T14:02:20"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "mechanism — the ratio",
+      "lane": "BODY",
+      "narration_text": "Here's why. Divide one probability by another and the denominator cancels, leaving e to the score gap over T. Outcomes two and zero sit two points apart. At T point five, that ratio is fifty-four point six. At T two, two point seven two. Temperature stretches a gap; it never creates one.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "illustrate",
+        "show": [
+          {
+            "at": "Divide",
+            "event": "ratio equation p_i/p_k = exp((z_i − z_k)/T) reveals"
+          },
+          {
+            "at": "two points apart",
+            "event": "gap z₂ − z₀ = 2 marked"
+          },
+          {
+            "at": "point five",
+            "event": "row T = 0.5 → ratio counter runs to 54.60"
+          },
+          {
+            "at": "At T two",
+            "event": "rows T = 1 (7.39) and T = 2 (2.72) land; all three ratios > 1"
+          }
+        ],
+        "remotion": {
+          "pattern": "TcRatio",
+          "props": {
+            "sparkLine": "It stretches the gap.",
+            "durationSeconds": 16.75,
+            "ratioFormula": {
+              "src": "temperature-concentration/ratio.svg",
+              "aspect": 4.9492,
+              "expression": "\\frac{p_i}{p_k} = \\exp\\left(\\frac{z_i - z_k}{T}\\right)"
+            },
+            "gapFormula": {
+              "src": "temperature-concentration/gap.svg",
+              "aspect": 8.6829,
+              "expression": "z_2 - z_0 = 3 - 1 = 2"
+            },
+            "rows": [
+              {
+                "T": 0.5,
+                "ratio": 54.5982,
+                "math": {
+                  "src": "temperature-concentration/ratio_T0.5.svg",
+                  "aspect": 6.9683,
+                  "expression": "\\frac{p_2}{p_0} = e^{2/0.5} = e^{4} \\approx 54.60"
+                }
+              },
+              {
+                "T": 1.0,
+                "ratio": 7.3891,
+                "math": {
+                  "src": "temperature-concentration/ratio_T1.svg",
+                  "aspect": 6.1905,
+                  "expression": "\\frac{p_2}{p_0} = e^{2/1} = e^{2} \\approx 7.39"
+                }
+              },
+              {
+                "T": 2.0,
+                "ratio": 2.7183,
+                "math": {
+                  "src": "temperature-concentration/ratio_T2.svg",
+                  "aspect": 6.1905,
+                  "expression": "\\frac{p_2}{p_0} = e^{2/2} = e^{1} \\approx 2.72"
+                }
+              }
+            ],
+            "cues": {
+              "ratio": 0.5,
+              "gap": 7.54,
+              "row0": 8.58,
+              "rest": 11.71
+            }
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": "2026-09-23T22:56:27.504958+00:00"
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 16.75,
+      "render_duration_s": 16.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "remotion:TcRatio",
+        "at": "2026-09-25T14:02:20"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "the code — one place temperature enters",
+      "lane": "BODY",
+      "narration_text": "That's the chapter's actual function. Temperature enters the arithmetic in one place: it divides the score differences. No question goes in, no answer key, no evidence. And zero is rejected outright — low temperature here isn't a secret 'pick the best' mode.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "illustrate",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "real function source (verbatim from chapter) appears"
+          },
+          {
+            "at": "divides",
+            "event": "line `(x - peak) / temperature` highlighted"
+          },
+          {
+            "at": "No question",
+            "event": "input list shown beside the signature: logits, temperature — nothing else"
+          },
+          {
+            "at": "zero is rejected",
+            "event": "the `temperature <= 0` guard line highlighted"
+          }
+        ],
+        "remotion": {
+          "pattern": "TcCode",
+          "props": {
+            "sparkLine": "One division. No evidence.",
+            "code": "def probabilities(logits, temperature=1.0):\n    if not logits or not math.isfinite(temperature) or temperature <= 0:\n        raise ValueError(\"Need logits and a positive finite temperature\")\n    if not all(math.isfinite(x) for x in logits):\n        raise ValueError(\"Logits must be finite\")\n    peak = max(logits)\n    weights = [math.exp((x - peak) / temperature) for x in logits]\n    total = sum(weights)\n    return [weight / total for weight in weights]",
+            "title": "main.py · probabilities()",
+            "durationSeconds": 14.85,
+            "cues": {
+              "divide": 4.58,
+              "inputs": 6.46,
+              "guard": 9.71
+            }
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": "2026-09-23T22:58:05.121233+00:00"
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 14.85,
+      "render_duration_s": 14.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "remotion:TcCode",
+        "at": "2026-09-25T14:02:20"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "evidence — a thousand draws",
+      "lane": "BODY",
+      "narration_text": "Probabilities aren't outcomes, so draw a thousand times with seed seven. At temperature point five, outcome two comes up eight hundred forty-nine times. At temperature two, four hundred sixty-nine. Same scores, same seed. Only the concentration changed.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "illustrate",
+        "show": [
+          {
+            "at": "draw a thousand",
+            "event": "two 40×25 dot grids fill in draw order (real seed-7 sequences)"
+          },
+          {
+            "at": "eight hundred",
+            "event": "left grid (T = 0.5) counter lands 18 / 133 / 849"
+          },
+          {
+            "at": "four hundred",
+            "event": "right grid (T = 2) counter lands 202 / 329 / 469"
+          },
+          {
+            "at": "Only the concentration",
+            "event": "grids held side by side"
+          }
+        ],
+        "remotion": {
+          "pattern": "TcSampleCounts",
+          "props": {
+            "sparkLine": "Concentration, counted.",
+            "durationSeconds": 14.36,
+            "panels": [
+              {
+                "T": 0.5,
+                "draws": "2221221212112212222221222122222221122222222222222221222212222222222222122222221221121222122222222222222222022222222122222212112221021212222221222211222212222122222222222222222222211222222222222222222212222222222222221222222222102222222222222212222222222122022222222212222222222222222222222222121212222222222222222222222122122212221212212222222211221222121222222122121222222221202222212222222222222211122212222222222222222202222202121122222222222222122222222222222221121222222022222122122222222222212222201222222221222212222222222221222222210222222202212222222222211222222222222222212222212122222222222222222222212122222222221221222222222221122220222222122222222212222212221122222022222222222122222221222222222222222222222222222112222222222122222022212222221222222122211122222222222202222122222222222222222221222112222221122222222221222222222222222222212222121222222222212222222222022222221122212222222222222222022222220222122222221222212221222222222222222212221221212222222222122222222112122121222122",
+                "counts": [
+                  18,
+                  133,
+                  849
+                ],
+                "p2": 0.8668
+              },
+              {
+                "T": 2.0,
+                "draws": "1020210201001201222120210012022120012112112212222120120102222122212212022221120100020112012222111220011121011222222022221102001010000102201110221100112002202022221102221122222212100112212221111122212202222102122112200022022212002222122111121102112212222010020122122202112222212222121222212220010102220220221211220121112021012202220102101221022200210222020211221021000111212010102211202122122212221100021002221111011222121101121201010011222222112022022222022222222210010222221022222021012122211222200121200122212110212201221112120220222212100111011202202221112211100212112112222222202122102011122121210012212210101011222112110120222111112220022120122221002222221202122101220022112011222111221022112210112122212121121221112201120001222221022021110011202112210112112012200021221122121102222011221111202222211120121002122210022111222220212121110221122122201222010122212112202211011221012011220012200211121211221121021212100222021201220122102210212220211220112101220220202221121211021122101001012020222021",
+                "counts": [
+                  202,
+                  329,
+                  469
+                ],
+                "p2": 0.5065
+              }
+            ],
+            "caption": "random.Random(7).choices(…, k=1000) · Python 3.11.16 · counts match Chapter 1's recorded run",
+            "cues": {
+              "fill": 1.5,
+              "left": 6.54,
+              "right": 9.21,
+              "sort": 10.42
+            }
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": "2026-09-23T22:59:53.138757+00:00"
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 14.36,
+      "render_duration_s": 14.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "remotion:TcSampleCounts",
+        "at": "2026-09-25T14:02:20"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "falsifiability — the constructed counterexample",
+      "lane": "BODY",
+      "narration_text": "Now a constructed hypothetical — not a real Claude error. Say an answer key marks outcome zero as correct. Lower the temperature from one to point five: the correct answer drops from nine percent to one point six, and the wrong favourite climbs to eighty-seven. The formula worked perfectly. It never saw the key.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "illustrate",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "stamp: CONSTRUCTED HYPOTHETICAL — not an observed Claude error"
+          },
+          {
+            "at": "answer key",
+            "event": "answer key card marks outcome 0 ✓ correct"
+          },
+          {
+            "at": "Lower the temperature",
+            "event": "T slides 1.0 → 0.5; correct bar shrinks 9.0% → 1.6%, wrong bar grows 66.5% → 86.7%"
+          },
+          {
+            "at": "never saw",
+            "event": "arrow from answer key to formula struck out: 'not an input'"
+          }
+        ],
+        "remotion": {
+          "pattern": "TcWrongAnswer",
+          "props": {
+            "sparkLine": "It never saw the key.",
+            "durationSeconds": 17.24,
+            "scores": [
+              1,
+              2,
+              3
+            ],
+            "correct": 0,
+            "cues": {
+              "key": 3.62,
+              "lower": 6.17,
+              "never": 15.54
+            }
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": "2026-09-23T23:01:38.600465+00:00"
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 17.24,
+      "render_duration_s": 17.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "remotion:TcWrongAnswer",
+        "at": "2026-09-25T14:02:20"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "boundary — what this does not establish",
+      "lane": "BODY",
+      "narration_text": "What this doesn't show: how any Claude product sets or exposes temperature. This is a three-outcome toy, run offline. And it can't tell you whether the scores themselves were any good — that's a separate question, needing separate evidence.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "illustrate",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "claims sort into two columns: SHOWN / NOT SHOWN"
+          },
+          {
+            "at": "Claude product",
+            "event": "'How a Claude product sets or exposes temperature' lands in NOT SHOWN, terracotta"
+          },
+          {
+            "at": "three-outcome toy",
+            "event": "SHOWN column: three constructed scores, offline, Python 3.11"
+          },
+          {
+            "at": "scores themselves",
+            "event": "'Whether the scores were any good' joins NOT SHOWN"
+          }
+        ],
+        "remotion": {
+          "pattern": "TcBoundary",
+          "props": {
+            "sparkLine": "Where the proof stops.",
+            "durationSeconds": 12.99,
+            "items": [
+              {
+                "text": "How any Claude product sets or exposes temperature",
+                "shown": false,
+                "at": 0.79,
+                "accent": true
+              },
+              {
+                "text": "How softmax reshapes three constructed scores",
+                "shown": true,
+                "at": 5.0
+              },
+              {
+                "text": "The ranking holds for every T > 0",
+                "shown": true,
+                "at": 5.6
+              },
+              {
+                "text": "Seed-7 counts, run offline",
+                "shown": true,
+                "at": 5.75
+              },
+              {
+                "text": "Whether the scores themselves were any good",
+                "shown": false,
+                "at": 8.17
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": "2026-09-23T23:02:56.032106+00:00"
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 12.99,
+      "render_duration_s": 13.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "remotion:TcBoundary",
+        "at": "2026-09-25T14:02:20"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict page",
+      "lane": "BOOKEND",
+      "narration_text": "The recap. Lower temperature concentrates the choices; higher temperature flattens them. The ranking never moves, and nothing in the calculation checks the truth. Confidence is a setting. Correctness takes evidence.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "illustrate",
+        "show": [
+          {
+            "at": "The recap",
+            "event": "artifact page; four findings reveal in narration order"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Temperature Is Not a Fact Checker.",
+            "artifactHeading": "What the numbers showed",
+            "brandLabel": "Recap written by the author, not a Claude response",
+            "artifactLines": [
+              "Lower T concentrates: top outcome 66.5% → 86.7%",
+              "Higher T flattens: top outcome 66.5% → 50.6%",
+              "The ranking never changes for any T > 0",
+              "No step in the formula checks what is true"
+            ],
+            "durationSeconds": 11.88
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": "2026-09-23T23:03:59.167928+00:00"
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 11.88,
+      "render_duration_s": 11.916666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "remotion:ClaudeVerdictArtifact",
+        "at": "2026-09-25T14:02:20"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "handoff — your turn",
+      "lane": "BOOKEND",
+      "narration_text": "Your turn. Paste this into Claude: pick three possible answers to a question I care about and give each one a score. Compute softmax at temperatures point five, one and two. Then tell me what evidence, not temperature, could change which answer is on top. Check its numbers against the ratio rule. And notice: only a change in the scores can reorder the list.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "illustrate",
+        "show": [
+          {
+            "at": "Paste this",
+            "event": "suggested prompt types into the composer"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · TEMPERATURE",
+            "segment": "Temperature Is Not a Fact Checker",
+            "command": "Pick three possible answers to a question I care about and give each one a score. Compute softmax at temperatures 0.5, 1 and 2. Then tell me what evidence, not temperature, could change which answer is on top.",
+            "runningText": "paste this into Claude…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "durationSeconds": 17.98,
+            "largeText": true
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-23T23:12:09.716749+00:00"
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": 17.98,
+      "render_duration_s": 18.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-25T14:02:20"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro — title restate",
+      "lane": "BOOKEND",
+      "narration_text": "Temperature Is Not a Fact Checker. At Nik Bear Brown. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "illustrate",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title card, terracotta period, @NikBearBrown handle"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Temperature Is Not a Fact Checker.",
+            "slug": "temperature-concentration",
+            "durationSeconds": 4.74
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-23T23:06:01.920397+00:00"
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": 4.74,
+      "render_duration_s": 4.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-25T14:02:20"
+      }
+    }
+  ]
+}
