@@ -35,4 +35,4 @@ Everything is free and local (Kokoro, Remotion, ffmpeg; no API keys). Full steps
 - `FRICTIONAL.md` — dated log of what went wrong and what I did instead
 - `CHANGELOG.md` — every change since generation started
 - `FACTCHECK.md`, `CHECKS-REPORT.md`, `SHOTLIST.md`, `PROMPTS.md`, `_qc/` — gate paperwork and visual QC
-- `code/` — the evidence scripts · `remotion-src/` — the seven custom scenes
+- `code/` — the evidence scripts · `remotion-src/` — the seven custom scenes (TypeScript stored as `.txt`; see its README)

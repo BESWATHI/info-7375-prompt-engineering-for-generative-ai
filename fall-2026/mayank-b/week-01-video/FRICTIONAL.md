@@ -55,3 +55,7 @@ Dates are local. Each entry: what I tried → what broke → what I did instead.
   loosening the gate.
 - **Gate V overwrites `_qc/REPORT.md`** on every compile, and it had replaced my hand-written QC
   table. → Restored mine as `_qc/MANUAL-QC.md`.
+- **My first push broke the course repo's CI** — for me and for the next classmate. The validator
+  rejects TypeScript files anywhere in the repo, and my scene source is `.tsx`. I hadn't read the
+  repo's rules before pushing. → Stored the source as `.tsx.txt`, and added a local copy of the CI
+  checks that now runs before every push.

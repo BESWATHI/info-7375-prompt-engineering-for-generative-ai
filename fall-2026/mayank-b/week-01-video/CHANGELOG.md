@@ -56,3 +56,21 @@ file records *what changed*.
 - No change to narration, audio, or any visual. **← current version**
 - Pushed to `nikbearbrown/info-7375-prompt-engineering-for-generative-ai`,
   `fall-2026/mayank-b/week-01-video/`.
+
+## 2026-09-25 — workflow
+- Pushed as commit `72e9aa1` (v3).
+- From here on, every iteration becomes its own commit in the course repo, pushed with
+  `bash code/publish.sh "vN: what changed"`, so the history shows how the video was revised.
+  Added `code/publish.sh`; it will go up with the next iteration.
+
+## 2026-09-25 — v4: fix course CI failure
+
+- Commit `72e9aa1` failed the course repo's `validate` workflow: `scripts/validate_course.py`
+  rejects any `.ts/.tsx/.js` file ("Non-Python implementation"), and it scans the whole repo, so the
+  next student's commit went red too.
+- `remotion-src/TemperatureConcentration.tsx` → `TemperatureConcentration.tsx.txt` (byte-identical),
+  plus `remotion-src/README.md` explaining why and how to restore it. BUILD-PROMPT, SOURCES and
+  README references updated.
+- Added `code/check_repo_rules.py` (local copy of the CI rules); `publish.sh` now runs it before
+  every commit and refuses to push on failure. Also adds `code/publish.sh` to the repo.
+- No change to the video.

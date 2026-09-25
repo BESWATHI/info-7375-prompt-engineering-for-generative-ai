@@ -17,7 +17,7 @@ No stock footage, no images, no music, no paid services.
 
 ## What was made for this video
 - `code/run_temperature.py`, `code/build_props.py`, `code/author_sheet.py`
-- `remotion-src/TemperatureConcentration.tsx` — seven new scenes (B02–B08)
+- `remotion-src/TemperatureConcentration.tsx.txt` — seven new scenes (B02–B08); TypeScript stored as .txt, see remotion-src/README.md
 - The script, the beat sheet, and all paperwork in this folder
 
 ## Constructed vs. real

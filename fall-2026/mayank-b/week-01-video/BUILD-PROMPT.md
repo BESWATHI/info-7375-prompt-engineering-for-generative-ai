@@ -21,7 +21,7 @@ TK=../brutalist.art
 (cd code && python3 run_temperature.py)
 
 # 1. components — register the reel-local scenes (skip if already present)
-cp remotion-src/TemperatureConcentration.tsx $TK/runtime/remotion/src/
+cp remotion-src/TemperatureConcentration.tsx.txt $TK/runtime/remotion/src/TemperatureConcentration.tsx
 #    + add the import and <Folder name="TemperatureConcentration"> block to Root.tsx
 #    (7 Compositions, calculateMetadata from props.durationSeconds)
 
