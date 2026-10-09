@@ -2,6 +2,12 @@
 
 Dated entries, newest at the bottom. What I tried, what broke, what changed.
 
+## 2026-10-08 (written 2026-10-09, from memory)
+- Read the assignment brief.
+- Watched the course AI-policy video.
+- Thought about possible project ideas; did not pick one yet.
+- Looked at the Brutalist repository.
+
 ## 2026-10-09
 - Read the assignment. Chose project idea: **Seeded Faults** — Claude-generated data-quality tests scored against planted faults. Picked it because it fits Data Engineering / BI roles and can be verified by a stranger.
 - Used Claude Code (Opus 5.5) to help choose the project from three options and to draft PROJECT-BRIEF.md, beat_sheet.json and the scaffolding files. I need to review and rewrite every line in my own words before submission.
