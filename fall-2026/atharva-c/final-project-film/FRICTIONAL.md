@@ -30,3 +30,5 @@ Dated entries, newest at the bottom. What I tried, what broke, what changed.
   - Faulted sample (50 blanked passenger_count values): not_null → FAIL 50; accepted_values → PASS (column untouched). Same result as the GX run.
   - Observation: as with GX, dbt ran exactly the tests I wrote. It did not suggest any, and it says nothing about faults I didn't write a test for.
   - Still open: read the dbt-expectations README (who maintains it, whether it generates or scores tests).
+- dbt-expectations: Claude read the README on the dbt package hub (https://hub.getdbt.com/metaplane/dbt_expectations/latest/, v0.10.10, 2026-10-09) and summarised it; I checked the summary against the page. It's a maintained fork of the original calogica package, now under metaplane. It adds ~60 GE-style test types that you still choose and write in `schema.yml`. Nothing in the README about generating tests, coverage, or planted faults.
+- Step B: rewrote beat B03 and brief section 2 to use only what I checked today. Removed the earlier "GX can propose expectations" claim.

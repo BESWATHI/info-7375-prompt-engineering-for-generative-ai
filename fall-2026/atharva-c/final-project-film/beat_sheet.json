@@ -20,7 +20,11 @@
    "narration_text": "I'm Atharva, and I want to be hired as a data engineer. My final project will be called Seeded Faults: a Claude Code workflow that writes data-quality tests for a table, and then checks whether those tests actually catch problems.",
    "estimated_duration_s": 14,
    "new_visual_element": "A single table icon with a row of checkmarks beside it, one checkmark drawn with a question mark",
-   "shot": {"type": "GRAPHIC", "source": "own", "motion": "drawon"}
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon"
+   }
   },
   {
    "beat_id": "B01",
@@ -28,7 +32,11 @@
    "narration_text": "When it's done, it will be a public GitHub repository: a fault-injection script, a small dbt project on DuckDB, the prompt contract Claude follows, an evaluation log, and a write-up of what the tests missed. None of that exists yet. Today there is only this plan.",
    "estimated_duration_s": 17,
    "new_visual_element": "Repository folder tree drawn as boxes; each box stamped 'WILL EXIST'",
-   "shot": {"type": "GRAPHIC", "source": "own", "motion": "drawon"},
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon"
+   },
    "on_screen_label": "CONSTRUCTED — planned layout"
   },
   {
@@ -37,16 +45,24 @@
    "narration_text": "Here's the problem. When you add tests to a new table, they pass on clean data, and that feels like safety. But a test that has never failed hasn't proven anything. AI-written tests make this worse, because they look complete.",
    "estimated_duration_s": 15,
    "new_visual_element": "Green 'all tests passed' badge, with a crack running through it",
-   "shot": {"type": "GRAPHIC", "source": "own", "motion": "drawon"}
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon"
+   }
   },
   {
    "beat_id": "B03",
    "act": "why care",
-   "narration_text": "I looked at two alternatives: Great Expectations, which can propose expectations from your data, and dbt tests with the dbt-expectations package. [REWRITE after hands-on check: one sentence on what each does, from what you actually saw.] What I want Seeded Faults to add is a score: plant known faults, run the tests, and report what was caught and what was missed.",
-   "estimated_duration_s": 20,
-   "new_visual_element": "Two labelled boxes (the alternatives) and a third box with a scoreboard",
-   "shot": {"type": "GRAPHIC", "source": "own", "motion": "drawon"},
-   "honesty_note": "Do not render until the bracketed sentence is replaced with what Atharva verified about each tool."
+   "narration_text": "I looked at tools data engineers already use. In Great Expectations, version 1.24, I wrote each check by hand. When I planted fifty missing values, my check caught all fifty. dbt gave the same result with tests I wrote in YAML, and the dbt-expectations package adds more test types, but you still write them yourself. In each case, a test only checks what you thought to write. None of them told me what my tests would miss. That score is what Seeded Faults will add.",
+   "estimated_duration_s": 26,
+   "new_visual_element": "Three tool boxes (Great Expectations, dbt, dbt-expectations), each with a hand-written checklist; a fourth box with a caught/missed scoreboard",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon"
+   },
+   "evidence": "Ran 2026-10-09 in sandbox: GX 1.24.0 and dbt 1.12.5 not_null check — clean sample 0 failures, 50 planted nulls → 50 caught. dbt-expectations README read 2026-10-09 (hub.getdbt.com/metaplane/dbt_expectations, v0.10.10). See FRICTIONAL.md."
   },
   {
    "beat_id": "B04",
@@ -54,7 +70,11 @@
    "narration_text": "The reader is a data engineering hiring manager. In the first sixty seconds, they open the README and see one table: every planted fault, caught or missed, and why. One command reproduces it.",
    "estimated_duration_s": 14,
    "new_visual_element": "Mock README with a caught/missed table — rows blank or clearly placeholder",
-   "shot": {"type": "GRAPHIC", "source": "own", "motion": "static"},
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "static"
+   },
    "on_screen_label": "CONSTRUCTED — mock-up, no results yet"
   },
   {
@@ -63,7 +83,11 @@
    "narration_text": "It will show the skills this course teaches: a written prompt contract, verification instead of trust, and an evaluation you can rerun. And it will show data engineering: SQL, dbt, and thinking about keys and grain. The evidence will be the log in the repo, not a claim in this film.",
    "estimated_duration_s": 18,
    "new_visual_element": "Three linked icons: contract, magnifier, repeat-loop; arrow to a log file",
-   "shot": {"type": "GRAPHIC", "source": "own", "motion": "drawon"}
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon"
+   }
   },
   {
    "beat_id": "B06",
@@ -71,7 +95,11 @@
    "narration_text": "In scope: one public table of New York City taxi trips, a fixed catalogue of about fifteen to twenty fault types, and the generated tests. Out of scope: it will not repair data or touch a live warehouse. The first thing I'll make run is the fault-injection script. You'll know it ran when the eval command prints a caught-or-missed table.",
    "estimated_duration_s": 22,
    "new_visual_element": "A box split IN / OUT; a '1' badge on the fault-injection script",
-   "shot": {"type": "GRAPHIC", "source": "own", "motion": "drawon"}
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon"
+   }
   },
   {
    "beat_id": "B07",
@@ -79,7 +107,11 @@
    "narration_text": "What could sink it: Claude might write tests that pass everything and catch little, or tests so strict they flag clean data. So I'll measure false alarms on clean data as well as catches, and I'll fix the fault list before generating any tests, so I can't tune one to the other.",
    "estimated_duration_s": 18,
    "new_visual_element": "A balance: 'missed faults' on one side, 'false alarms' on the other",
-   "shot": {"type": "GRAPHIC", "source": "own", "motion": "drawon"}
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon"
+   }
   },
   {
    "beat_id": "B08",
@@ -87,7 +119,11 @@
    "narration_text": "Why this project? It's a mix. I already work with SQL, dimensional models, and data-quality checks in pipelines, and my earlier course repositories are on GitHub. [CONFIRM which repos are public; name one.] What's new for me is prompt contracts, evaluating an AI's output, and fault injection.",
    "estimated_duration_s": 18,
    "new_visual_element": "Two columns: 'already have' and 'learning'",
-   "shot": {"type": "GRAPHIC", "source": "own", "motion": "drawon"},
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon"
+   },
    "honesty_note": "Only cite a repo that is public and that Atharva can explain. LA crime project was a team project — say which part was his own if cited."
   },
   {
@@ -96,7 +132,11 @@
    "narration_text": "So that's Seeded Faults: tests for your data, tested. Nothing is built yet. The first step is the fault-injection script, and the log of how it goes will be in the repository.",
    "estimated_duration_s": 12,
    "new_visual_element": "The cracked badge from B02, now beside a scoreboard with empty rows",
-   "shot": {"type": "GRAPHIC", "source": "own", "motion": "drawon"}
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "motion": "drawon"
+   }
   }
  ]
 }

@@ -14,11 +14,11 @@ When it is done, it will be a **public GitHub repository** containing: the workf
 ## 2. Why would anyone care?
 A data engineer who adds tests to a new table usually has no way to know whether those tests would catch the problems that actually happen. AI-generated tests make this worse: they look complete and pass on clean data.
 
-Alternatives I will compare against (to be checked hands-on before the film is final — see FRICTIONAL.md):
-- **Great Expectations** (its data assistants / profiler that propose expectations from data)
-- **dbt tests and the dbt-expectations package** (hand-written schema tests)
+Alternatives I checked on 2026-10-09 (details in FRICTIONAL.md):
+- **Great Expectations, GX Core 1.24.0 (free library).** I wrote each check by hand. The "Create an Expectation" docs page describes choosing and configuring checks yourself, and I found no automatic suggestion feature in the installed library. A not-null check passed on clean data and caught all 50 nulls I planted. *Not checked: GX Cloud.*
+- **dbt tests (dbt-core 1.12.5) and dbt-expectations (metaplane fork, v0.10.10).** Same result with tests I wrote in YAML. dbt-expectations adds about 60 more test types, which you still write by hand; its README says nothing about generating tests or measuring what they would miss.
 
-The difference I am aiming for: Seeded Faults will not only generate tests, it will **score** them against a catalogue of planted faults and report what was missed. It saves a data engineer from trusting a test suite that has never been shown to fail. If, while checking, I find an alternative already does this, I will say so and narrow the claim.
+In each tool, a test only checks what the person thought to write, and nothing reported which faults the tests would miss. The difference I am aiming for: Seeded Faults will **score** a test suite against a fixed catalogue of planted faults and report what was caught and what was missed. It saves a data engineer from trusting a test suite that has never been shown to fail.
 
 ## 3. Who opens it, and what do they do?
 - **Reader:** a data engineering hiring manager or a senior data engineer reviewing my GitHub.
