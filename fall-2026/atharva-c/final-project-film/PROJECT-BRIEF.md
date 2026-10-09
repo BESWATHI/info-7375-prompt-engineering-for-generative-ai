@@ -1,0 +1,57 @@
+# PROJECT-BRIEF — Seeded Faults (working title)
+
+**Author:** Atharva C · **Course:** INFO 7375 · **Drafted:** 2026-10-09
+**Target role:** Data Engineer / BI Engineer (entry level)
+**Stack (planned):** Python, DuckDB, dbt-core with dbt-duckdb, Claude Code, public NYC TLC trip data
+
+> Status as of 2026-10-09: this is a pitch. No project code exists yet. Every "will" below is a plan.
+
+## 1. What is it?
+Seeded Faults will be a Claude Code workflow that writes data-quality tests for a table, then measures those tests by planting known faults in a copy of the data and counting which faults the tests catch.
+
+When it is done, it will be a **public GitHub repository** containing: the workflow (prompt contract + scripts), a fault-injection script, a small dbt project on DuckDB, an evaluation log, and a written failure analysis.
+
+## 2. Why would anyone care?
+A data engineer who adds tests to a new table usually has no way to know whether those tests would catch the problems that actually happen. AI-generated tests make this worse: they look complete and pass on clean data.
+
+Alternatives I will compare against (to be checked hands-on before the film is final — see FRICTIONAL.md):
+- **Great Expectations** (its data assistants / profiler that propose expectations from data)
+- **dbt tests and the dbt-expectations package** (hand-written schema tests)
+
+The difference I am aiming for: Seeded Faults will not only generate tests, it will **score** them against a catalogue of planted faults and report what was missed. It saves a data engineer from trusting a test suite that has never been shown to fail. If, while checking, I find an alternative already does this, I will say so and narrow the claim.
+
+## 3. Who opens it, and what do they do?
+- **Reader:** a data engineering hiring manager or a senior data engineer reviewing my GitHub.
+- **First 60 seconds:** they open the README and see one table — each planted fault, whether the generated tests caught it, and why not when they did not. One command (`make eval`) reproduces that table.
+
+## 4. What does it prove about me?
+- **Prompt contracts:** the test-generation prompt will have a written contract (inputs, output format, what it must not do).
+- **Verification:** generated tests are not trusted; they are run against clean and faulted data.
+- **Evaluation:** a fixed fault catalogue and a catch-rate / false-alarm log, rerunnable.
+- **Data engineering:** dbt, SQL, data-quality testing, dimensional thinking about keys and grain.
+
+A reviewer could fairly conclude: "This person checks whether their checks work." The evidence will be the evaluation log and the failure analysis in the repo — not a claim in the film.
+
+## 5. In, out, first
+- **In:** one public table (a NYC TLC trip sample), one fault catalogue (~15–20 fault types), generated dbt tests, an evaluation report.
+- **Out (deliberately):** it will **not** repair data, run in production, or connect to any live warehouse.
+- **First piece to run:** the fault-injection script on the trip sample, plus one generated test. You will know it ran because `make eval` prints a caught/missed table and writes it to `eval/results.md`.
+
+## 6. What could sink it?
+**Risk:** Claude may write tests that are tuned to the clean sample (pass everything, catch little), or tests so strict they flag clean data. Either would make the catch rate meaningless.
+**What I will do:** measure false alarms on clean data as well as catches on faulted data; keep the fault catalogue fixed before generating any tests so I cannot tune it to the output; log every miss by fault type in the failure analysis.
+
+## 7. Why this project?
+A mix of showing off and learning.
+- **Skills I already have:** SQL, dimensional modelling, data-quality checks in pipelines (Databricks Delta Live Tables expectations, Azure Data Factory). *Evidence:* prior course repositories on github.com/Arc-211 — **to confirm which are public before citing them in the film.** The LA crime pipeline was a team project; I will state my own part.
+- **Skills that are new to me:** prompt contracts, LLM evaluation, agent workflows in Claude Code, fault injection / mutation-style testing, dbt on DuckDB.
+
+---
+
+### Exists today (2026-10-09)
+- This brief, the beat sheet, and the submission scaffolding files in this folder.
+- A local checkout of the Brutalist toolkit (not yet run for this film).
+
+### Will exist
+- The rendered pitch film and the toolkit's gate reports.
+- The Seeded Faults repository: fault-injection script, dbt project, prompt contract, evaluation log, failure analysis.
