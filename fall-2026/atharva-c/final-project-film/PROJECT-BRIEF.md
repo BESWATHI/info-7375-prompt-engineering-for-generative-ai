@@ -53,6 +53,7 @@ A mix of showing off and learning.
 
 ### Exists today (2026-10-09)
 - This brief, the beat sheet, and the submission scaffolding files in this folder.
+- One hand-run planted-fault test (50 nulls in one column, caught by a hand-written check in Great Expectations and in dbt). Scripts and logs in `evidence/2026-10-09-first-planted-fault/`.
 - A local checkout of the Brutalist toolkit (not yet run for this film).
 
 ### Will exist
