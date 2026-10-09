@@ -116,15 +116,15 @@
   {
    "beat_id": "B08",
    "act": "why this project",
-   "narration_text": "Why this project? It's a mix. I already work with SQL, dimensional models, and data-quality checks in pipelines, and my earlier course repositories are on GitHub. [CONFIRM which repos are public; name one.] What's new for me is prompt contracts, evaluating an AI's output, and fault injection.",
+   "narration_text": "Why this project? It's a mix. I already work with SQL and data pipelines. You can open my Crime Rate Management System on GitHub: an Oracle database I built on my own, with its own testing script. What's new for me is prompt contracts, evaluating an AI's output, and fault injection.",
    "estimated_duration_s": 18,
-   "new_visual_element": "Two columns: 'already have' and 'learning'",
+   "new_visual_element": "Two columns: 'already have' (with a drawn repo card labelled DMDD_FinalProject) and 'learning'",
    "shot": {
     "type": "GRAPHIC",
     "source": "own",
     "motion": "drawon"
    },
-   "honesty_note": "Only cite a repo that is public and that Atharva can explain. LA crime project was a team project — say which part was his own if cited."
+   "evidence": "Public repos checked 2026-10-09 via GitHub API: github.com/Arc-211/DMDD_FinalProject (CRMS, solo; SQL + testing.sql) and github.com/Arc-211/Chinook_ADF (ADF pipeline JSON). LA crime project is not public, so not cited."
   },
   {
    "beat_id": "B09",
