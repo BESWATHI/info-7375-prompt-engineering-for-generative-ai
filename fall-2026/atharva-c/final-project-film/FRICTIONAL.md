@@ -19,4 +19,9 @@ Dated entries, newest at the bottom. What I tried, what broke, what changed.
 - Downloaded NYC TLC yellow taxi trips, January 2024 (public; 2,964,624 rows, 19 columns). Kept the first 2,000 rows as `trips_sample.csv`.
 - Great Expectations: ran one hand-written check (`passenger_count` not null) on the 2,000-row sample → passed, 0 unexpected. I had to write the rule myself.
 - First planted-fault test (script drafted by Claude, run by me): blanked `passenger_count` in 50 random rows. Same check → clean file passed (0 unexpected); faulted file failed with exactly 50 unexpected. This is the project's core idea done once by hand, for one fault type.
-- Still open: does GX 1.x (free library) suggest expectations automatically? Checking the docs next.
+- Checked whether GX Core 1.x (free library) suggests expectations automatically:
+  - Searching the docs for "profiler" returned only tutorial pages (dbt tutorial, SQL connection, uniqueness use case) — none answered the question.
+  - The "Create an Expectation" page (https://docs.greatexpectations.io/docs/core/define_expectations/create_an_expectation/, read 2026-10-09) describes choosing an Expectation from the Gallery and setting its parameters by hand. No automatic-suggestion step.
+  - Searched the installed great_expectations 1.24.0 package for "data_assistant", "DataAssistant" and "onboarding": no matches.
+  - **Finding:** in GX Core 1.24.0 I wrote each check by hand; I found no automatic suggestion feature in the docs page or the installed library. GX Cloud not checked — the docs site no longer has Cloud pages, so the film will not make any claim about Cloud.
+  - This changes the brief: section 2 said GX "can propose expectations from your data". That was from general knowledge (older versions) and is not supported by what I checked. Brief and beat B03 must be corrected.
