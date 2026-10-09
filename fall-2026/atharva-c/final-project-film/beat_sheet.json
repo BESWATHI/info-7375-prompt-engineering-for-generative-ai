@@ -29,7 +29,7 @@
   {
    "beat_id": "B01",
    "act": "what is it",
-   "narration_text": "When it's done, it will be a public GitHub repository: a fault-injection script, a small dbt project on DuckDB, the prompt contract Claude follows, an evaluation log, and a write-up of what the tests missed. None of that exists yet. Today there is only this plan.",
+   "narration_text": "When it's done, it will be a public GitHub repository: a fault-injection script, a small dbt project on DuckDB, the prompt contract Claude follows, an evaluation log, and a write-up of what the tests missed. None of that exists yet. Today there's this plan and one small test I ran by hand.",
    "estimated_duration_s": 17,
    "new_visual_element": "Repository folder tree drawn as boxes; each box stamped 'WILL EXIST'",
    "shot": {
@@ -42,7 +42,7 @@
   {
    "beat_id": "B02",
    "act": "why care",
-   "narration_text": "Here's the problem. When you add tests to a new table, they pass on clean data, and that feels like safety. But a test that has never failed hasn't proven anything. AI-written tests make this worse, because they look complete.",
+   "narration_text": "Here's the problem. When you add tests to a new table, they pass on clean data, and that feels like safety. But a test that has never failed hasn't proven anything. My guess is that AI-written tests make this worse, because they look complete. That's what I want to measure.",
    "estimated_duration_s": 15,
    "new_visual_element": "Green 'all tests passed' badge, with a crack running through it",
    "shot": {
@@ -92,7 +92,7 @@
   {
    "beat_id": "B06",
    "act": "in out first",
-   "narration_text": "In scope: one public table of New York City taxi trips, a fixed catalogue of about fifteen to twenty fault types, and the generated tests. Out of scope: it will not repair data or touch a live warehouse. The first thing I'll make run is the fault-injection script. You'll know it ran when the eval command prints a caught-or-missed table.",
+   "narration_text": "In scope: one public table of New York City taxi trips, a fixed catalogue of about fifteen to twenty fault types, and the generated tests. Out of scope: it will not repair data or touch a live warehouse. The first thing I'll build is a fault-injection script that covers the whole catalogue. You'll know it ran when the eval command prints a caught-or-missed table.",
    "estimated_duration_s": 22,
    "new_visual_element": "A box split IN / OUT; a '1' badge on the fault-injection script",
    "shot": {
@@ -129,7 +129,7 @@
   {
    "beat_id": "B09",
    "act": "close",
-   "narration_text": "So that's Seeded Faults: tests for your data, tested. Nothing is built yet. The first step is the fault-injection script, and the log of how it goes will be in the repository.",
+   "narration_text": "So that's Seeded Faults: tests for your data, tested. The project isn't built yet. The first step is the fault-injection script, and the log of how it goes will be in the repository.",
    "estimated_duration_s": 12,
    "new_visual_element": "The cracked badge from B02, now beside a scoreboard with empty rows",
    "shot": {
