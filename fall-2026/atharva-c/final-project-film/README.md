@@ -15,6 +15,7 @@
 | `BUILD-PROMPT.md` | Prompts and commands that rebuild the film |
 | `SOURCES.md` | What I used, what I made, what Claude contributed, licences |
 | `FRICTIONAL.md` | Dated work log |
+| `evidence/` | Scripts and logs behind every past-tense claim in the film |
 | `gate-reports/` | Brutalist quality-gate reports _(after render)_ |
 
 ## How to rebuild the film
