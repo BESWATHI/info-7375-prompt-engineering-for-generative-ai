@@ -25,3 +25,8 @@ Dated entries, newest at the bottom. What I tried, what broke, what changed.
   - Searched the installed great_expectations 1.24.0 package for "data_assistant", "DataAssistant" and "onboarding": no matches.
   - **Finding:** in GX Core 1.24.0 I wrote each check by hand; I found no automatic suggestion feature in the docs page or the installed library. GX Cloud not checked — the docs site no longer has Cloud pages, so the film will not make any claim about Cloud.
   - This changes the brief: section 2 said GX "can propose expectations from your data". That was from general knowledge (older versions) and is not supported by what I checked. Brief and beat B03 must be corrected.
+- dbt: set up a minimal dbt-duckdb project in the sandbox (`dbt_try/`, files drafted by Claude) with one model reading the taxi CSV and two hand-written tests (`not_null` on passenger_count, `accepted_values` 0–6 on payment_type).
+  - Clean sample: `dbt build` → PASS=3 (view + both tests passed).
+  - Faulted sample (50 blanked passenger_count values): not_null → FAIL 50; accepted_values → PASS (column untouched). Same result as the GX run.
+  - Observation: as with GX, dbt ran exactly the tests I wrote. It did not suggest any, and it says nothing about faults I didn't write a test for.
+  - Still open: read the dbt-expectations README (who maintains it, whether it generates or scores tests).
