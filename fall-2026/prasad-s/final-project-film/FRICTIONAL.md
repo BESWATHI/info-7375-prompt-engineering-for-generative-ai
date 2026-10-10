@@ -48,3 +48,16 @@ previous global email for all repositories, and confirmed it with
 What I'd check next time: Replace placeholders before running any copied
 command, read the whole message before running it, and check "git config
 user.email" before the first commit.
+
+## 10/09/2026 — Prediction before the first full render
+Written before running audio generation, ./art run, or any gate on the real
+film.
+What I know going in: the 2-beat test reel passed every gate on its first run.
+The real film has 14 beats and 13 new drawn scenes that I have only seen as
+low-resolution stills, not at 4K. The narration is 474 words.
+What I expect: every gate (pre-flight, contrast, layout, visual QC, type check,
+final verification, master check) passes on the first try, so no gate fails
+first. I expect the final film to run over 3:00, and I expect 3 to 5
+fix-and-re-render rounds.
+Why: the topic is fairly complex, so I expect to need 3 to 5 iterations to get
+the pictures and the narration right.
