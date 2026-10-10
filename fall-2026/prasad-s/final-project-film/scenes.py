@@ -172,6 +172,15 @@ def go(self, phrase, *anims, rt=0.6, lead=0.25):
     self.play(*anims, run_time=rt)
 
 
+def at(self, frac):
+    """Wait until `frac` of the beat's measured audio (narration-independent timing)."""
+    total = _TARGET.get(_bid(self), 0)
+    if total:
+        gap = total * frac - _elapsed(self)
+        if gap > 0.05:
+            self.wait(gap)
+
+
 def hold(self):
     total = _TARGET.get(_bid(self), 0)
     rest = (total - _elapsed(self) - 0.06) if total else 1.5
@@ -180,7 +189,7 @@ def hold(self):
 
 
 def tag(s):
-    """The provenance label (SKETCH / CONSTRUCTED / WILL EXIST / REAL), top left."""
+    """The provenance label (SKETCH / CONSTRUCTED / WILL EXIST / COPIED), top left."""
     t = T(s, 32, bold=True)
     t.move_to([-6.0 + t.width / 2, 3.0, 0])
     return t
@@ -277,18 +286,27 @@ class B03_Contract(Scene):
         L, Rt = Iso(-3.4, -0.9, 1.0), Iso(2.8, -0.9, 1.0)
         plinth_l = L.box(-0.25, -0.25, -0.3, 2.5, 3.0, 0.3, DARK_TOP, DARK_L, DARK_R)
         sheets = VGroup(*[L.box(0, 0, 0.08 * i, 2.0, 2.5, 0.06, PAGE_TOP, PAGE_L, PAGE_R, sw=1.5) for i in range(3)])
-        cover = L.page(0, 0, 0.24, 2.0, 2.5)
+        cover = L.page(0, 0, 0.32, 2.0, 2.5)
+        cover.set_z_index(3)                           # the cover stays the top sheet
         plinth_r = Rt.box(-0.25, -0.25, -0.3, 2.5, 3.0, 0.3, DARK_TOP, DARK_L, DARK_R)
-        page12 = Rt.page(0, 0, 0, 2.0, 2.5)
+        page12 = L.page(0, 0, 0.24, 2.0, 2.5)          # page 12 starts just under the cover
+        page12.set_z_index(2)                          # stays above the right-hand base when it lands
+        start = np.array(L.p(1.0, 1.25, 0.24))
+        end = np.array(Rt.p(1.0, 1.25, 0.0))
+        path = ArcBetweenPoints(start, end, angle=-PI / 4)
         cover_lab = lab("cover: $50", -3.4, -2.0, 40)
         p12_lab = lab("page 12: $500 / month", 2.8, -2.0, 40)
+        scan = Line([0.7, -1.05, 0], [0.7, 1.5, 0], color=TERRA, stroke_width=6)
+        scan.set_z_index(3)
         curve = ArcBetweenPoints([-3.0, 2.0, 0], [2.9, 2.0, 0], angle=-PI / 3, color=INK, stroke_width=6)
         spark = Dot([2.9, 2.0, 0], radius=0.1, color=TERRA)
 
-        go(self, None, FadeIn(VGroup(plinth_l, sheets, cover)), rt=0.5)
+        go(self, None, FadeIn(VGroup(plinth_l, sheets, cover, page12, plinth_r)), rt=0.5)
         go(self, "fifty dollars", FadeIn(cover_lab), rt=0.4)
-        go(self, "page twelve", FadeIn(plinth_r), FadeIn(page12, shift=RIGHT * 1.2), rt=0.7)
-        go(self, "five hundred a month", FadeIn(p12_lab), rt=0.4)
+        go(self, "page twelve", MoveAlongPath(page12, path), rt=0.8)
+        go(self, None, FadeIn(scan), rt=0.15)
+        go(self, None, scan.animate.shift(RIGHT * 3.8), rt=0.6)
+        go(self, None, FadeOut(scan), FadeIn(p12_lab), rt=0.3)
         go(self, "That's the gap", Create(curve), rt=0.8)
         go(self, None, FadeIn(spark), rt=0.3)
         hold(self)
@@ -296,25 +314,41 @@ class B03_Contract(Scene):
 
 class B04_Browser(Scene):
     def construct(self):
-        self.add(tag("WILL EXIST"))
-        win = RoundedRectangle(width=9.8, height=5.0, corner_radius=0.2, fill_color=CARD, fill_opacity=1,
-                               stroke_color=INK, stroke_width=4).move_to([0, 0.05, 0])
-        bar = Rectangle(width=9.5, height=0.45, fill_color=BAR1, fill_opacity=1, stroke_width=0).move_to([0, 2.25, 0])
+        self.add(tag("CONSTRUCTED · WILL EXIST"))
+        ys = (1.1, 0.5, -0.1, -0.7, -1.3)
+        fields = ("amount", "merchant", "cap", "expiry", "recurring")
+        lx, rx, cx = -1.6, 3.6, 1.0                    # left panel, right panel, check column
+        win = RoundedRectangle(width=10.0, height=5.0, corner_radius=0.2, fill_color=CARD, fill_opacity=1,
+                               stroke_color=INK, stroke_width=4).move_to([1.0, 0.05, 0])
+        bar = Rectangle(width=9.7, height=0.45, fill_color=BAR1, fill_opacity=1, stroke_width=0).move_to([1.0, 2.25, 0])
         lights = VGroup(*[Circle(radius=0.08, fill_color=CARD, fill_opacity=1, stroke_width=0).move_to([x, 2.25, 0])
-                          for x in (-4.4, -4.1, -3.8)])
+                          for x in (-3.4, -3.1, -2.8)])
         panels, rows = VGroup(), VGroup()
-        for cx, widths in ((-2.6, (2.4, 1.8, 2.2, 1.4)), (2.6, (2.6, 1.6, 2.0, 1.9))):
+        for px, widths in ((lx, (2.6, 2.0, 2.4, 1.8, 2.2)), (rx, (2.6, 2.0, 0.9, 1.8, 2.2))):   # cap row short on the text side
             panels.add(Rectangle(width=3.6, height=3.6, fill_color="#FFFFFF", fill_opacity=1,
-                                 stroke_color=BAR1, stroke_width=3).move_to([cx, -0.2, 0]))
-            for wd, y in zip(widths, (0.9, 0.2, -0.5, -1.2)):
+                                 stroke_color=BAR1, stroke_width=3).move_to([px, -0.1, 0]))
+            for wd, y in zip(widths, ys):
                 r = Rectangle(width=wd, height=0.22, fill_color=BAR1, fill_opacity=1, stroke_width=0)
-                r.move_to([cx - 1.5 + wd / 2, y, 0])
+                r.move_to([px - 1.5 + wd / 2, y, 0])
                 rows.add(r)
-        names = VGroup(lab("mandate", -2.6, -2.9, 38), lab("text", 2.6, -2.9, 38))
-        checks = VGroup(*[check(-0.1, y, s=0.22, color=INK, w=7) for y in (0.9, 0.2, -0.5, -1.2)])
+        names = VGroup(*[lab_l(f, -6.0, y, 32) for f, y in zip(fields, ys)])      # field names outside the window
+        heads = VGroup(lab("mandate", lx, -2.9, 38), lab("text", rx, -2.9, 38))
+        lens = Rectangle(width=8.9, height=0.5, stroke_color=BAR1, stroke_width=4, fill_opacity=0).move_to([1.0, ys[0], 0])
+        tick = lambda y: check(cx - 0.05, y, s=0.2, color=INK, w=7)
+        flag = Dot([rx - 1.5 + 0.9 + 0.35, ys[2], 0], radius=0.12, color=TERRA)
 
-        go(self, None, FadeIn(VGroup(win, bar, lights, panels, rows)), FadeIn(names), rt=0.6)
-        go(self, "matches the signed terms", LaggedStart(*[Create(c) for c in checks], lag_ratio=0.3), rt=1.0)
+        go(self, None, FadeIn(VGroup(win, bar, lights, panels, rows)), FadeIn(names), FadeIn(heads), rt=0.6)
+        at(self, 0.12); go(self, None, FadeIn(lens), rt=0.15)
+        at(self, 0.15); go(self, None, Create(tick(ys[0])), rt=0.3)
+        at(self, 0.22); go(self, None, lens.animate.move_to([1.0, ys[1], 0]), rt=0.15)
+        at(self, 0.25); go(self, None, Create(tick(ys[1])), rt=0.3)
+        at(self, 0.30); go(self, None, lens.animate.move_to([1.0, ys[2], 0]), rt=0.15)
+        at(self, 0.33); go(self, None, Create(cross(cx, ys[2], s=0.18, w=7)), FadeIn(flag, scale=0.5), rt=0.4)
+        at(self, 0.57); go(self, None, lens.animate.move_to([1.0, ys[3], 0]), rt=0.15)
+        at(self, 0.60); go(self, None, Create(tick(ys[3])), rt=0.3)
+        at(self, 0.67); go(self, None, lens.animate.move_to([1.0, ys[4], 0]), rt=0.15)
+        at(self, 0.70); go(self, None, Create(tick(ys[4])), rt=0.3)
+        at(self, 0.72); go(self, None, lens.animate.move_to([1.0, ys[2], 0]), rt=0.2)   # rest on the mismatch
         hold(self)
 
 
@@ -359,7 +393,7 @@ class B06_Landscape(Scene):
 
 class B07_Examples(Scene):
     def construct(self):
-        self.add(tag("CONSTRUCTED / WILL EXIST"))
+        self.add(tag("CONSTRUCTED · WILL EXIST"))
         xs = (-4.1, 0.0, 4.1)
         cards, lines = VGroup(), VGroup()
         for x in xs:
@@ -425,7 +459,7 @@ class B09_Fields(Scene):
 
 class B10_ScopeTest(Scene):
     def construct(self):
-        self.add(tag("WILL EXIST"))
+        self.add(tag("CONSTRUCTED · WILL EXIST"))
         items = ("real signing", "real payments", "protocol compliance", "original request")
         ys = (1.5, 0.5, -0.5, -1.5)
         texts = VGroup(*[lab_l(s, -5.1, y, 36) for s, y in zip(items, ys)])
@@ -477,7 +511,7 @@ def _wrap(text, maxw, size):
 
 class B12_GitLog(Scene):
     def construct(self):
-        self.add(tag("REAL - git log, Oct 9"))
+        self.add(tag("COPIED from git log, Oct 9 (re-typeset)"))
         rows = _manim_field("B12", "rows", None) or ["0000000 (rows come from beat_sheet.json)"]
         size, lh, gap = 32, 0.42, 0.28
         wrapped = [(sha, _wrap(subject, 9.0, size)) for sha, _, subject in (r.partition(" ") for r in rows[:5])]

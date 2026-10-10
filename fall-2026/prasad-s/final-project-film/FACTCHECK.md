@@ -39,6 +39,9 @@ Sources:
 | 22 | B11 | Matching text is brittle, because the same amount can be written several ways. | PENDING | Brief §6 (the checker may miss paraphrases such as "five hundred" versus "$500") | — |
 | 23 | B12 | Payments and agent-payment protocols are new to me. | PENDING | Brief §7 | — |
 | 24 | B12 | I already have the Assignment 1 film. | PENDING | Brief §4 and §7; `fall-2026/prasad-s/week-01-video/` | — |
-| 25 | B12 | The commit trail is on screen. | PENDING | git log (B12 rows): four of Prasad's commits in `fall-2026/prasad-s/` (1a6aa5b, 2eb73eb, 2a1f40f, fe9c16c), frozen 2026-10-09 in `make_sheet.py` | — |
+| 25 | B12 | The commit trail is on screen. | PENDING | git log (B12 rows): four of Prasad's commits in `fall-2026/prasad-s/` (1a6aa5b, 2eb73eb, 2a1f40f, fe9c16c), frozen 2026-10-09 in `make_sheet.py`; on screen labelled "COPIED from git log, Oct 9 (re-typeset)" | — |
 | 26 | B13 | Today the brief, the beat sheet, and this film exist. | PENDING | Brief, EXISTS TODAY; this folder | The brief's EXISTS TODAY list is the folder skeleton, the brief, and the toolkit; the beat sheet and film are new since. |
 | 27 | B13 | The project itself does not exist yet; it will be the generator, the checker, the test set, the demo page, and the results table. | PENDING | Brief, WILL EXIST | — |
+| 28 | B04 | (picture) B04 shows a constructed example of a flagged mismatch: the cap row differs and is crossed and flagged; it is not output from a real checker. | PENDING | Brief §5 (all mandates and summaries constructed); `scenes.py` B04_Browser; label "CONSTRUCTED · WILL EXIST" | — |
+| 29 | B10 | (picture) B10 shows an illustration of the planned first test (ten mandates, three planted errors, three flagged), not a result. | PENDING | Brief §5; `scenes.py` B10_ScopeTest; label "CONSTRUCTED · WILL EXIST" | — |
+| 30 | B12 | (picture) The B12 rows are COPIED from `git log` on Oct 9 and re-typeset (wrapped, set in the film's serif), not a screen capture. | PENDING | git log; `make_sheet.py` B12_ROWS; label "COPIED from git log, Oct 9 (re-typeset)" | — |

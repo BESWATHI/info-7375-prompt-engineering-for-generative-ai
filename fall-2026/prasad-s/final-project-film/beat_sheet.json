@@ -117,26 +117,34 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "A contract stack: the cover page reads $50; page 12 slides out and reads $500 / month; a curve joins them.",
+        "visual_intent": "A contract stack on a dark base with the cover on top, labelled 'cover: $50'; page 12 slides out from just under the cover along a short curve onto a second dark base; a terracotta scan line sweeps it and 'page 12: $500 / month' fades in as the scan ends; an ink curve joins the two pages, ending in a dot.",
         "show": [
           {
-            "at": 0.2,
-            "event": "cover, $50"
+            "at": 0.0,
+            "event": "stack with the cover on top; empty right-hand base"
           },
           {
-            "at": 0.45,
-            "event": "page 12, $500 / month"
+            "at": 0.3,
+            "event": "label 'cover: $50'"
           },
           {
-            "at": 0.75,
-            "event": "curve joins them"
+            "at": 0.42,
+            "event": "page 12 slides out from under the cover onto the right-hand base"
+          },
+          {
+            "at": 0.55,
+            "event": "scan line sweeps page 12; 'page 12: $500 / month' fades in"
+          },
+          {
+            "at": 0.66,
+            "event": "ink curve joins the pages; dot at its end"
           }
         ],
         "manim": {
           "class": "B03_Contract",
           "tag": "CONSTRUCTED"
         },
-        "motion_claim": "A contract stack: the cover page reads $50; page 12 slides out and reads $500 / month; a curve joins them."
+        "motion_claim": "A contract stack on a dark base with the cover on top, labelled 'cover: $50'; page 12 slides out from just under the cover along a short curve onto a second dark base; a terracotta scan line sweeps it and 'page 12: $500 / month' fades in as the scan ends; an ink curve joins the two pages, ending in a dot."
       },
       "qc": {
         "sparse_by_design": true,
@@ -155,22 +163,46 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "A browser window: the mandate's fields on the left, the shown text on the right, and a check lands between each matching row.",
+        "visual_intent": "A browser window with five rows per panel (mandate left, shown text right) and the field names amount, merchant, cap, expiry and recurring outside the window; the cap row is shorter on the text side. A highlight box steps row to row: checks on rows 1-2, a cross and a terracotta dot on row 3 (cap), checks on rows 4-5; the box returns to the cap row and holds. A constructed example of a flagged mismatch.",
         "show": [
           {
             "at": 0.0,
-            "event": "window, mandate, text"
+            "event": "window, five rows per panel, field names"
           },
           {
-            "at": 0.4,
-            "event": "checks land between rows"
+            "at": 0.12,
+            "event": "highlight box on row 1"
+          },
+          {
+            "at": 0.15,
+            "event": "check, amount"
+          },
+          {
+            "at": 0.25,
+            "event": "check, merchant"
+          },
+          {
+            "at": 0.33,
+            "event": "cross and terracotta dot, cap"
+          },
+          {
+            "at": 0.6,
+            "event": "check, expiry"
+          },
+          {
+            "at": 0.7,
+            "event": "check, recurring"
+          },
+          {
+            "at": 0.72,
+            "event": "box returns to the cap row; still to the end"
           }
         ],
         "manim": {
           "class": "B04_Browser",
-          "tag": "WILL EXIST"
+          "tag": "CONSTRUCTED · WILL EXIST"
         },
-        "motion_claim": "A browser window: the mandate's fields on the left, the shown text on the right, and a check lands between each matching row."
+        "motion_claim": "A browser window with five rows per panel (mandate left, shown text right) and the field names amount, merchant, cap, expiry and recurring outside the window; the cap row is shorter on the text side. A highlight box steps row to row: checks on rows 1-2, a cross and a terracotta dot on row 3 (cap), checks on rows 4-5; the box returns to the cap row and holds. A constructed example of a flagged mismatch."
       },
       "qc": {
         "sparse_by_design": true,
@@ -278,7 +310,7 @@
         ],
         "manim": {
           "class": "B07_Examples",
-          "tag": "CONSTRUCTED / WILL EXIST"
+          "tag": "CONSTRUCTED · WILL EXIST"
         },
         "motion_claim": "Three example cards; a cursor clicks; a check lands on 'clean' and crosses on 'hidden cap' and 'changed amount'."
       },
@@ -387,7 +419,7 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Left: four out-of-scope items, each with a cross beside it. Right: ten dots; three turn terracotta; rings mark exactly those three.",
+        "visual_intent": "Left: four out-of-scope items, each with a cross beside it. Right: ten dots labelled 'ten mandates'; three turn terracotta; rings mark exactly those three. An illustration of the planned first test, not a result.",
         "show": [
           {
             "at": 0.05,
@@ -408,9 +440,9 @@
         ],
         "manim": {
           "class": "B10_ScopeTest",
-          "tag": "WILL EXIST"
+          "tag": "CONSTRUCTED · WILL EXIST"
         },
-        "motion_claim": "Left: four out-of-scope items, each with a cross beside it. Right: ten dots; three turn terracotta; rings mark exactly those three."
+        "motion_claim": "Left: four out-of-scope items, each with a cross beside it. Right: ten dots labelled 'ten mandates'; three turn terracotta; rings mark exactly those three. An illustration of the planned first test, not a result."
       },
       "qc": {
         "sparse_by_design": true,
@@ -467,11 +499,11 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "A panel lists four of Prasad's commits in this folder, frozen on Oct 9 (hash and subject); a trail line with a dot per commit draws beside them.",
+        "visual_intent": "A panel lists four of Prasad's commits in this folder, copied from git log on Oct 9 and re-typeset (hash and subject); a trail line with a dot per commit draws beside them.",
         "show": [
           {
             "at": 0.0,
-            "event": "five commit rows"
+            "event": "four commit rows"
           },
           {
             "at": 0.6,
@@ -480,7 +512,7 @@
         ],
         "manim": {
           "class": "B12_GitLog",
-          "tag": "REAL - git log, Oct 9",
+          "tag": "COPIED from git log, Oct 9 (re-typeset)",
           "rows": [
             "1a6aa5b docs(prasad-s): close out FRICTIONAL log - B03 fix, final-path patch, export",
             "2eb73eb docs(prasad-s): checkpoint 3 - week-01 video built, exported (1080p final) and reviewed",
@@ -488,7 +520,7 @@
             "fe9c16c docs(prasad-s): checkpoint 1 - brutalist.art environment stood up"
           ]
         },
-        "motion_claim": "A panel lists four of Prasad's commits in this folder, frozen on Oct 9 (hash and subject); a trail line with a dot per commit draws beside them."
+        "motion_claim": "A panel lists four of Prasad's commits in this folder, copied from git log on Oct 9 and re-typeset (hash and subject); a trail line with a dot per commit draws beside them."
       },
       "qc": {
         "sparse_by_design": true,
@@ -520,7 +552,7 @@
         ],
         "manim": {
           "class": "B13_Columns",
-          "tag": "EXISTS TODAY / WILL EXIST (column headers)"
+          "tag": "EXISTS TODAY · WILL EXIST (column headers)"
         },
         "motion_claim": "Two columns: EXISTS TODAY (the brief, the beat sheet, this film) and WILL EXIST (the generator, the checker, the test set, the demo page, the results table), each item arriving as it is spoken."
       },
