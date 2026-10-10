@@ -1,0 +1,13 @@
+# gistgap-pitch reel: ignore caches, intermediates, review cuts, frames and every MP4.
+# The master (exports/**/*.mp4) goes only in the Canvas zip, by TA instruction.
+# Gate reports, ledgers and receipts (exports/**/*.verified.json) stay tracked.
+*.mp4
+media/
+clips/
+mp3/
+manim/
+mp4/
+_qc/frames/
+_superseded/
+.audio.log
+__pycache__/

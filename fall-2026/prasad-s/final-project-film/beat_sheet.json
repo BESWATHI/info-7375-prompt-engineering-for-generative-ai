@@ -1,0 +1,567 @@
+{
+  "metadata": {
+    "slug": "gistgap-pitch",
+    "title": "GistGap: What You See Is What You Sign",
+    "topic": "GISTGAP · FINAL PROJECT PITCH",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "gistgap",
+    "voice": "af_bella",
+    "voice_kokoro": "af_bella",
+    "engine": "kokoro",
+    "clock": "narration",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt",
+      "bhtf"
+    ],
+    "bookend_exempt_reason": "Course pitch film, not a channel episode: it opens on the problem (B01) instead of a composer cold open, has no verdict card and no Your Turn composer, and carries no channel handle or persona. It also has no BOUT outro, which bookend_check.py cannot exempt; that script is not called by art run or art final.",
+    "audience": "a hiring manager or an engineer reviewing a product-management portfolio project",
+    "source_doc": "PROJECT-BRIEF.md (this folder); sources in FACTCHECK.md"
+  },
+  "beats": [
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Imagine an AI agent about to spend your money. You tap Approve. But what, exactly, are you approving?",
+      "estimated_duration_s": 7.2,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A robot holding a shopping bag stands beside a phone; a cursor taps the Approve button; a question mark appears.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "robot with bag"
+          },
+          {
+            "at": 0.2,
+            "event": "phone with Approve"
+          },
+          {
+            "at": 0.5,
+            "event": "cursor taps Approve"
+          },
+          {
+            "at": 0.8,
+            "event": "?"
+          }
+        ],
+        "manim": {
+          "class": "B01_Agent",
+          "tag": "SKETCH"
+        },
+        "motion_claim": "A robot holding a shopping bag stands beside a phone; a cursor taps the Approve button; a question mark appears."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Two things matter here. What you're shown: the plain-English text on the screen. And what you sign: the exact terms, called a mandate. They should match.",
+      "estimated_duration_s": 10.4,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A box labelled SHOWN appears, then a taped box labelled SIGNED; a question mark lands between them.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "SHOWN box"
+          },
+          {
+            "at": 0.5,
+            "event": "SIGNED box"
+          },
+          {
+            "at": 0.9,
+            "event": "?"
+          }
+        ],
+        "manim": {
+          "class": "B02_ShownSigned",
+          "tag": "SKETCH"
+        },
+        "motion_claim": "A box labelled SHOWN appears, then a taped box labelled SIGNED; a question mark lands between them."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Here's an invented example. The cover page says fifty dollars, but page twelve says five hundred a month. That's the gap between the gist and the signed terms.",
+      "estimated_duration_s": 11.2,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A contract stack: the cover page reads $50; page 12 slides out and reads $500 / month; a curve joins them.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "cover, $50"
+          },
+          {
+            "at": 0.45,
+            "event": "page 12, $500 / month"
+          },
+          {
+            "at": 0.75,
+            "event": "curve joins them"
+          }
+        ],
+        "manim": {
+          "class": "B03_Contract",
+          "tag": "CONSTRUCTED"
+        },
+        "motion_claim": "A contract stack: the cover page reads $50; page 12 slides out and reads $500 / month; a curve joins them."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "GistGap will be a web demo that tests whether the text shown to someone approving an agent's payment matches the signed terms. It will be a public GitHub repository with a demo page, a test set, and a results table.",
+      "estimated_duration_s": 16.0,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A browser window: the mandate's fields on the left, the shown text on the right, and a check lands between each matching row.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "window, mandate, text"
+          },
+          {
+            "at": 0.4,
+            "event": "checks land between rows"
+          }
+        ],
+        "manim": {
+          "class": "B04_Browser",
+          "tag": "WILL EXIST"
+        },
+        "motion_claim": "A browser window: the mandate's fields on the left, the shown text on the right, and a check lands between each matching row."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "It's for whoever owns an agent-payment approval screen. Before launch, they will be able to test, with synthetic data, whether the text drops or changes a cap, an amount, an expiry, or a recurrence.",
+      "estimated_duration_s": 13.6,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A launch checklist: two rows get checks; the third box, 'approval text tested?', stays empty and a dot marks it.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "checklist"
+          },
+          {
+            "at": 0.3,
+            "event": "two checks"
+          },
+          {
+            "at": 0.55,
+            "event": "approval text tested?"
+          }
+        ],
+        "manim": {
+          "class": "B05_Checklist",
+          "tag": "SKETCH"
+        },
+        "motion_claim": "A launch checklist: two rows get checks; the third box, 'approval text tested?', stays empty and a dot marks it."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "I looked at two existing things. Google's AP2: I read the announcement post and the main spec page. And a buildathon repo: I read its README only. AP2 defines how mandates are signed and checked, and the repo checks payments against its own mandates. In what I read, neither tests the text a person is shown. GistGap will.",
+      "estimated_duration_s": 23.2,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two boxes, AP2 and buildathon repo, appear; arrows run from both to a taped GistGap box.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "AP2"
+          },
+          {
+            "at": 0.35,
+            "event": "buildathon repo"
+          },
+          {
+            "at": 0.8,
+            "event": "arrows to GistGap"
+          }
+        ],
+        "manim": {
+          "class": "B06_Landscape",
+          "tag": "SKETCH"
+        },
+        "motion_claim": "Two boxes, AP2 and buildathon repo, appear; arrows run from both to a taped GistGap box."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The target role is product manager for AI agent products. The reader is a hiring manager or an engineer. In the first sixty seconds, they will click three constructed examples and read the results table.",
+      "estimated_duration_s": 14.0,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three example cards; a cursor clicks; a check lands on 'clean' and crosses on 'hidden cap' and 'changed amount'.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "three cards"
+          },
+          {
+            "at": 0.75,
+            "event": "check, cross, cross"
+          }
+        ],
+        "manim": {
+          "class": "B07_Examples",
+          "tag": "CONSTRUCTED / WILL EXIST"
+        },
+        "motion_claim": "Three example cards; a cursor clicks; a check lands on 'clean' and crosses on 'hidden cap' and 'changed amount'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "It will show four skills from this course: prompt contracts, verification, evaluation, and source grounding. The evidence will be the test set, the results table, dated Claude outputs, and predictions I commit before each run. It will not show that this works on real payments.",
+      "estimated_duration_s": 18.0,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Four icons arrive one by one: prompt contracts (a page), verification (a check), evaluation (bars), source grounding (a linked page and field).",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "prompt contracts"
+          },
+          {
+            "at": 0.22,
+            "event": "verification"
+          },
+          {
+            "at": 0.28,
+            "event": "evaluation"
+          },
+          {
+            "at": 0.35,
+            "event": "source grounding"
+          }
+        ],
+        "manim": {
+          "class": "B08_Skills",
+          "tag": "WILL EXIST"
+        },
+        "motion_claim": "Four icons arrive one by one: prompt contracts (a page), verification (a check), evaluation (bars), source grounding (a linked page and field)."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "In scope: five fields. Amount, merchant, spending cap, expiry date, and one-time versus recurring.",
+      "estimated_duration_s": 5.6,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Five dark bases; a box drops onto each as its field is named: amount, merchant, cap, expiry, recurring.",
+        "show": [
+          {
+            "at": 0.25,
+            "event": "amount"
+          },
+          {
+            "at": 0.4,
+            "event": "merchant"
+          },
+          {
+            "at": 0.55,
+            "event": "cap"
+          },
+          {
+            "at": 0.7,
+            "event": "expiry"
+          },
+          {
+            "at": 0.9,
+            "event": "recurring"
+          }
+        ],
+        "manim": {
+          "class": "B09_Fields",
+          "tag": "WILL EXIST"
+        },
+        "motion_claim": "Five dark bases; a box drops onto each as its field is named: amount, merchant, cap, expiry, recurring."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Out of scope: real signing, real payments, protocol compliance, and checking what the user originally asked for. First, I will run ten constructed mandates, three with planted errors. I will know it ran if it flags exactly those three. I'll commit my prediction first.",
+      "estimated_duration_s": 17.6,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Left: four out-of-scope items, each with a cross beside it. Right: ten dots; three turn terracotta; rings mark exactly those three.",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "out-of-scope items crossed"
+          },
+          {
+            "at": 0.4,
+            "event": "ten dots"
+          },
+          {
+            "at": 0.5,
+            "event": "three terracotta"
+          },
+          {
+            "at": 0.75,
+            "event": "rings on those three"
+          }
+        ],
+        "manim": {
+          "class": "B10_ScopeTest",
+          "tag": "WILL EXIST"
+        },
+        "motion_claim": "Left: four out-of-scope items, each with a cross beside it. Right: ten dots; three turn terracotta; rings mark exactly those three."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The biggest risk: AP2 requires the display to be non-agentic, so the problem may be smaller than I think. I haven't examined any implementation. If so, I'll narrow the project. A second risk: matching text is brittle, because the same amount can be written several ways.",
+      "estimated_duration_s": 18.4,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A large box shrinks inside the outline of its old size; 'smaller problem?' appears beside it.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "box"
+          },
+          {
+            "at": 0.3,
+            "event": "box shrinks, outline stays"
+          },
+          {
+            "at": 0.3,
+            "event": "smaller problem?"
+          }
+        ],
+        "manim": {
+          "class": "B11_Shrink",
+          "tag": "SKETCH"
+        },
+        "motion_claim": "A large box shrinks inside the outline of its old size; 'smaller problem?' appears beside it."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "This is a mix, mainly learning. Payments and agent-payment protocols are new to me. What I already have is the Assignment 1 film and the commit trail you can see here. I want to learn fintech and break into fintech product management.",
+      "estimated_duration_s": 16.8,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A panel lists four of Prasad's commits in this folder, frozen on Oct 9 (hash and subject); a trail line with a dot per commit draws beside them.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "five commit rows"
+          },
+          {
+            "at": 0.6,
+            "event": "commit trail draws"
+          }
+        ],
+        "manim": {
+          "class": "B12_GitLog",
+          "tag": "REAL - git log, Oct 9",
+          "rows": [
+            "1a6aa5b docs(prasad-s): close out FRICTIONAL log - B03 fix, final-path patch, export",
+            "2eb73eb docs(prasad-s): checkpoint 3 - week-01 video built, exported (1080p final) and reviewed",
+            "2a1f40f docs(prasad-s): checkpoint 2 - evidence packet (temp 1.0 vs 0.5) and pipeline check",
+            "fe9c16c docs(prasad-s): checkpoint 1 - brutalist.art environment stood up"
+          ]
+        },
+        "motion_claim": "A panel lists four of Prasad's commits in this folder, frozen on Oct 9 (hash and subject); a trail line with a dot per commit draws beside them."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Today, what exists is the brief, the beat sheet, and this film. The project itself does not exist yet. It will be the generator, the checker, the test set, the demo page, and the results table.",
+      "estimated_duration_s": 14.4,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two columns: EXISTS TODAY (the brief, the beat sheet, this film) and WILL EXIST (the generator, the checker, the test set, the demo page, the results table), each item arriving as it is spoken.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "EXISTS TODAY items"
+          },
+          {
+            "at": 0.6,
+            "event": "WILL EXIST items, one per phrase"
+          }
+        ],
+        "manim": {
+          "class": "B13_Columns",
+          "tag": "EXISTS TODAY / WILL EXIST (column headers)"
+        },
+        "motion_claim": "Two columns: EXISTS TODAY (the brief, the beat sheet, this film) and WILL EXIST (the generator, the checker, the test set, the demo page, the results table), each item arriving as it is spoken."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "show-tell",
+      "lane": "card",
+      "proof_gate": "CARD",
+      "narration_text": "GistGap: what you see is what you sign.",
+      "estimated_duration_s": 3.2,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "why_a_card": "Card test: (1) the idea is a name and a title; (2) the word filling its own outline IS the beat; (3) no drawing of the film's objects says a name more clearly.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "GistGap fills from below inside its outline"
+          },
+          {
+            "at": 0.3,
+            "event": "the line rises in"
+          }
+        ],
+        "remotion": {
+          "pattern": "ShowTellCard",
+          "props": {
+            "kind": "masked",
+            "word": "GistGap",
+            "sub": "What you see is what you sign",
+            "durationSeconds": 3.2
+          }
+        }
+      }
+    }
+  ]
+}
