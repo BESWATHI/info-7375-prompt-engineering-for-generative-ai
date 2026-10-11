@@ -492,7 +492,7 @@ class B11_Shrink(Scene):
         question = lab("smaller problem?", 3.6, 0.6, 44)
 
         go(self, None, FadeIn(VGroup(base, box)), rt=0.5)
-        go(self, "smaller than I think", FadeIn(outline), box.animate.scale(0.55, about_point=S.p(0, 0, z0)), rt=1.0)
+        go(self, "smaller than I think", FadeIn(outline), VGroup(base, box).animate.scale(0.55, about_point=S.p(0, 0, z0)), rt=1.0)
         go(self, None, FadeIn(question), rt=0.4)
         hold(self)
 

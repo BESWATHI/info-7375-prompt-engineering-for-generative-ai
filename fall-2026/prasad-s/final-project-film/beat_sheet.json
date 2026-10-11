@@ -24,8 +24,8 @@
     "audience": "a hiring manager or an engineer reviewing a product-management portfolio project",
     "source_doc": "PROJECT-BRIEF.md (this folder); sources in FACTCHECK.md",
     "build": {
-      "at": "2026-10-10T21:18:53",
-      "cut": "review",
+      "at": "2026-10-10T22:07:59",
+      "cut": "master",
       "filled": 14,
       "of": 14,
       "slates": [],
@@ -81,7 +81,7 @@
         "status": "MANIM",
         "src": "manim/B01.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -128,7 +128,7 @@
         "status": "MANIM",
         "src": "manim/B02.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -183,7 +183,7 @@
         "status": "MANIM",
         "src": "manim/B03.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -250,7 +250,7 @@
         "status": "MANIM",
         "src": "manim/B04.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -297,7 +297,7 @@
         "status": "MANIM",
         "src": "manim/B05.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -348,7 +348,7 @@
         "status": "MANIM",
         "src": "manim/B06.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -391,7 +391,7 @@
         "status": "MANIM",
         "src": "manim/B07.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -442,7 +442,7 @@
         "status": "MANIM",
         "src": "manim/B08.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -497,7 +497,7 @@
         "status": "MANIM",
         "src": "manim/B09.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -548,7 +548,7 @@
         "status": "MANIM",
         "src": "manim/B10.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -595,7 +595,7 @@
         "status": "MANIM",
         "src": "manim/B11.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -650,7 +650,7 @@
         "status": "MANIM",
         "src": "manim/B12.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -693,7 +693,7 @@
         "status": "MANIM",
         "src": "manim/B13.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     },
     {
@@ -740,7 +740,7 @@
         "status": "MANIM",
         "src": "manim/B14.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T21:18:53"
+        "at": "2026-10-10T22:07:59"
       }
     }
   ]

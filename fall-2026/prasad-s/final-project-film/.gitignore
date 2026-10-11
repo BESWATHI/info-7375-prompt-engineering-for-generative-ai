@@ -17,3 +17,7 @@ build-state.json
 todo.json
 ToDo.md
 STATUS.md
+
+# Final export and its originals hold local paths; redacted copies live in receipts/.
+exports/
+MASTERCHECK.md

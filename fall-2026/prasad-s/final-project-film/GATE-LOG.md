@@ -2212,3 +2212,220 @@ Animation 1: Create(Line), etc.:   0%|          | 0/6 [00:00<?, ?it/s]
     B14  filled     manim             pipeline manim/B14.mp4
 ### TODO EXIT=0 ELAPSED=0s
 ```
+
+## gistgap-final-fail1.log
+
+Final export attempt 1 (2026-10-10): `./art final <reel> --height 2160 --out <reel>/exports/landscape` stopped at GATE T on B11 (bbox-overlap §8.6b); no master was written.
+
+```text
+### ./art final <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film --height 2160 --out <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film/exports/landscape
+[typecheck] wrote <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film/TYPECHECK.md
+[typecheck] §8.10 B01: SKIP
+[typecheck] §8.10 B02: SKIP
+[typecheck] §8.10 B03: SKIP
+[typecheck] §8.10 B04: SKIP
+[typecheck] §8.10 B05: SKIP
+[typecheck] §8.10 B06: SKIP
+[typecheck] §8.10 B07: SKIP
+[typecheck] §8.10 B08: SKIP
+[typecheck] §8.10 B09: SKIP
+[typecheck] §8.10 B10: SKIP
+[typecheck] §8.10 B11: SKIP
+[typecheck] §8.10 B12: SKIP
+[typecheck] §8.10 B13: SKIP
+[typecheck] §8.10 B14: SKIP
+[typecheck] GATE T: FAIL (1 pixel beats, 0 sweep, 0 shape)
+[art final] GATE T BLOCKED: TYPECHECK.md has FAILs — fix before final cut.
+[art final] See: <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film/TYPECHECK.md
+### FINAL EXIT=2 ELAPSED=34s
+```
+
+## gistgap-run6.log
+
+B11 rebuild, review build (2026-10-10): B11 re-rendered after its base was scaled with the box; the other 13 beats reused.
+
+```text
+### ./art run <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film --height 2160
+[run] skip B01_Agent — B01 already filled
+[run] skip B02_ShownSigned — B02 already filled
+[run] skip B03_Contract — B03 already filled
+[run] skip B04_Browser — B04 already filled
+[run] skip B05_Checklist — B05 already filled
+[run] skip B06_Landscape — B06 already filled
+[run] skip B07_Examples — B07 already filled
+[run] skip B08_Skills — B08 already filled
+[run] skip B09_Fields — B09 already filled
+[run] skip B10_ScopeTest — B10 already filled
+[run] skip B12_GitLog — B12 already filled
+[run] skip B13_Columns — B13 already filled
+[run] skip B14_Title — B14 already filled
+[run] GATE L — beat-mix lint
+[beat-lint] clean — beat mix OK (beat_sheet.json)
+[run] GATE SHAPE — finance chart-shape enforcement
+[gate-shape] skip — not a finance reel (beat_sheet.json)
+[run] GATE A — static pre-flight
+
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[run] GATE W — WCAG contrast + margins + text-overlap (independent second check)
+[gateW] B11_Shrink clean
+[run] rendering B11_Shrink
+Manim Community v0.18.1
+
+[10/10/26 22:05:21] INFO     Animation 0 : Using cached     cairo_renderer.py:88
+                             data (hash :                                       
+                             3429491395_616798995_420204052                     
+                             6)                                                 
+
+Animation 0: FadeIn(VGroup of 2 submobjects):   0%|          | 0/1 [00:00<?, ?it/s]
+                                                                                   
+[10/10/26 22:05:22] INFO     Animation 1 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '<home>/Docum                         
+                             ents/Code/info-7375-prompt                         
+                             -engineering-for-generativ                         
+                             e-ai/fall-2026/prasad-s/fi                         
+                             nal-project-film/media/vid                         
+                             eos/scenes/2160p24/partial                         
+                             _movie_files/B11_Shrink/16                         
+                             06801221_4205392534_149277                         
+                             0448.mp4'                                          
+
+Animation 2: FadeIn(Polygon), etc.:   0%|          | 0/24 [00:00<?, ?it/s]
+Animation 2: FadeIn(Polygon), etc.:  42%|████▏     | 10/24 [00:00<00:00, 94.88it/s]
+Animation 2: FadeIn(Polygon), etc.:  88%|████████▊ | 21/24 [00:00<00:00, 101.39it/s]
+                                                                                    
+[10/10/26 22:05:23] INFO     Animation 2 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '<home>/Docum                         
+                             ents/Code/info-7375-prompt                         
+                             -engineering-for-generativ                         
+                             e-ai/fall-2026/prasad-s/fi                         
+                             nal-project-film/media/vid                         
+                             eos/scenes/2160p24/partial                         
+                             _movie_files/B11_Shrink/16                         
+                             06801221_624033982_3280899                         
+                             567.mp4'                                           
+
+Animation 3: FadeIn(Text('smaller problem?')):   0%|          | 0/10 [00:00<?, ?it/s]
+Animation 3: FadeIn(Text('smaller problem?')): 100%|██████████| 10/10 [00:00<00:00, 98.10it/s]
+                                                                                              
+                    INFO     Animation 3 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '<home>/Docum                         
+                             ents/Code/info-7375-prompt                         
+                             -engineering-for-generativ                         
+                             e-ai/fall-2026/prasad-s/fi                         
+                             nal-project-film/media/vid                         
+                             eos/scenes/2160p24/partial                         
+                             _movie_files/B11_Shrink/16                         
+                             06801221_1579410793_393440                         
+                             785.mp4'                                           
+[10/10/26 22:05:25] INFO     Animation 4 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '<home>/Docum                         
+                             ents/Code/info-7375-prompt                         
+                             -engineering-for-generativ                         
+                             e-ai/fall-2026/prasad-s/fi                         
+                             nal-project-film/media/vid                         
+                             eos/scenes/2160p24/partial                         
+                             _movie_files/B11_Shrink/16                         
+                             06801221_2580693517_251366                         
+                             8269.mp4'                                          
+                    INFO     Combining to Movie file.   scene_file_writer.py:617
+                    INFO                                scene_file_writer.py:737
+                             File ready at                                      
+                             '<home>/Docum                         
+                             ents/Code/info-7375-prompt                         
+                             -engineering-for-generativ                         
+                             e-ai/fall-2026/prasad-s/fi                         
+                             nal-project-film/media/vid                         
+                             eos/scenes/2160p24/B11_Shr                         
+                             ink.mp4'                                           
+                                                                                
+                    INFO     Rendered B11_Shrink                    scene.py:247
+                             Played 5 animations                                
+You are using manim version v0.18.1, but version v0.22.0 is available.
+You should consider upgrading via pip install -U manim
+
+Animation 0: FadeIn(VGroup of 2 submobjects):   0%|          | 0/8 [00:00<?, ?it/s]
+                                                                                   
+<home>/Documents/Code/brutalist.art/runtime/qc/manim_layout_audit.py:149: DeprecationWarning: This method is not guaranteed to stay around. Please prefer getting the attribute normally.
+  if float(mob.get_stroke_opacity()) <= 0.02:
+
+Animation 2: FadeIn(Polygon), etc.:   0%|          | 0/15 [00:00<?, ?it/s]
+                                                                          
+
+Animation 3: FadeIn(Text('smaller problem?')):   0%|          | 0/6 [00:00<?, ?it/s]
+                                                                                    
+[audit] scenes: 7 snapshots → CLEAN
+[audit] report: <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film/layout_audit.md
+[remotion] nothing to do — no shot.remotion.pattern beats
+[art] compiled B11  MANIM    18.0s  ← B11.mp4
+[art] motion histogram: graphic:14
+[art] build stamp → beat_sheet.json (14/14 filled)
+[art] QC contact sheet → <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film/qc-sheet.png
+[art] wrote <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film/gistgap-pitch-slate.mp4  (175.5s, audio: per-beat timeline (source audio preserved), drawtext: no — PIL overlays)
+[art] slots: 14/14 filled — B01:MANIM B02:MANIM B03:MANIM B04:MANIM B05:MANIM B06:MANIM B07:MANIM B08:MANIM B09:MANIM B10:MANIM B11:MANIM B12:MANIM B13:MANIM B14:MANIM
+[run] GATE V — frame-level visual QC on the compiled reel
+[gate-v] frames=28 BLOCKER=0 MAJOR=0 → <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film/_qc/REPORT.md
+[run] done → <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film  (QC gates: on)
+[run] REVIEW built; no final exported. Use ./art final <reel> for a verified master.
+[run] any remaining slates are YOUR slots — see <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film/SHOTLIST.md
+### RUN EXIT=0 ELAPSED=63s
+### ./art todo <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film
+[todo] final-project-film: 14/14 filled → todo.json + STATUS.md + ToDo.md
+    B01  filled     manim             pipeline manim/B01.mp4
+    B02  filled     manim             pipeline manim/B02.mp4
+    B03  filled     manim             pipeline manim/B03.mp4
+    B04  filled     manim             pipeline manim/B04.mp4
+    B05  filled     manim             pipeline manim/B05.mp4
+    B06  filled     manim             pipeline manim/B06.mp4
+    B07  filled     manim             pipeline manim/B07.mp4
+    B08  filled     manim             pipeline manim/B08.mp4
+    B09  filled     manim             pipeline manim/B09.mp4
+    B10  filled     manim             pipeline manim/B10.mp4
+    B11  filled     manim             pipeline manim/B11.mp4
+    B12  filled     manim             pipeline manim/B12.mp4
+    B13  filled     manim             pipeline manim/B13.mp4
+    B14  filled     manim             pipeline manim/B14.mp4
+### TODO EXIT=0 ELAPSED=0s
+```
+
+## gistgap-final2.log
+
+Final export attempt 2 (2026-10-10): GATE T passed on all 14 beats and the master was written.
+
+```text
+### ./art final <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film --height 2160 --out <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film/exports/landscape
+[typecheck] wrote <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film/TYPECHECK.md
+[typecheck] §8.10 B01: SKIP
+[typecheck] §8.10 B02: SKIP
+[typecheck] §8.10 B03: SKIP
+[typecheck] §8.10 B04: SKIP
+[typecheck] §8.10 B05: SKIP
+[typecheck] §8.10 B06: SKIP
+[typecheck] §8.10 B07: SKIP
+[typecheck] §8.10 B08: SKIP
+[typecheck] §8.10 B09: SKIP
+[typecheck] §8.10 B10: SKIP
+[typecheck] §8.10 B11: SKIP
+[typecheck] §8.10 B12: SKIP
+[typecheck] §8.10 B13: SKIP
+[typecheck] §8.10 B14: SKIP
+[typecheck] GATE T: PASS
+[art] motion histogram: graphic:14
+[art] build stamp → beat_sheet.json (14/14 filled)
+[art] wrote <home>/Documents/Code/info-7375-prompt-engineering-for-generative-ai/fall-2026/prasad-s/final-project-film/exports/landscape/gistgap-pitch.mp4  (175.5s, audio: per-beat timeline (source audio preserved), drawtext: no — PIL overlays)
+[art] slots: 14/14 filled — B01:MANIM B02:MANIM B03:MANIM B04:MANIM B05:MANIM B06:MANIM B07:MANIM B08:MANIM B09:MANIM B10:MANIM B11:MANIM B12:MANIM B13:MANIM B14:MANIM
+### FINAL EXIT=0 ELAPSED=87s
+```
+
+## Summary of the final master
+
+- Master: `exports/landscape/gistgap-pitch.mp4`, 13,515,055 bytes, 175.458 s, 3840×2160, 24 fps; video h264 (High, yuv420p), audio AAC (LC, 48 kHz, stereo).
+- SHA-256: `6a0329a02a36558ce1fbddda32adbafac63ceb398a3f3ee475fa320cd804ed04` (matches the `sha256` field of the export receipt).
+- `master_check.py` passed (`[master] PASS  3840×2160  24fps  yuv420p  h264  175.5s`), but its duration assertion was skipped: `clock_check.py` is missing from the toolkit. Duration was instead checked with ffprobe against the 175.23 s beat total: 175.458 s, 0.228 s over, within 1 s.
+- `receipts/gistgap-pitch.verified.redacted.json` and `receipts/MASTERCHECK.redacted.md` are copies of the export receipt and `MASTERCHECK.md` with the home-folder path replaced by `<home>`; nothing else was changed. The originals stay local and are ignored.
+- `final-frames-contact.png` is an ffmpeg extract of one frame at 50% of each beat (B01–B14) from the master. It is not a gate report.
+- The film itself is not in git; it is submitted in the Canvas zip.
+- FACTCHECK.md verdicts are still PENDING.
