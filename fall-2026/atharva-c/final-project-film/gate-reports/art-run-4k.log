@@ -1,0 +1,62 @@
+[run] GATE L — beat-mix lint
+[run] GATE SHAPE — finance chart-shape enforcement
+[run] GATE A — static pre-flight
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[run] GATE W — WCAG contrast + margins + text-overlap (independent second check)
+[gateW] B00_TableAndTests clean
+[gateW] B01_PlannedRepo clean
+[gateW] B02_CrackedPass clean
+[gateW] B03_FiftyCaught clean
+[gateW] B04_ReadmeMock clean
+[gateW] B05_Proof clean
+[gateW] B06_Scope clean
+[gateW] B07_Balance clean
+[gateW] B08_TwoColumns clean
+[gateW] B09_Close clean
+[audit] report: ~/Projects/seeded-faults-film-build/seeded-faults-pitch/layout_audit.md
+[audit] report: ~/Projects/seeded-faults-film-build/seeded-faults-pitch/layout_audit.md
+[audit] report: ~/Projects/seeded-faults-film-build/seeded-faults-pitch/layout_audit.md
+[audit] report: ~/Projects/seeded-faults-film-build/seeded-faults-pitch/layout_audit.md
+[audit] report: ~/Projects/seeded-faults-film-build/seeded-faults-pitch/layout_audit.md
+[audit] report: ~/Projects/seeded-faults-film-build/seeded-faults-pitch/layout_audit.md
+[audit] report: ~/Projects/seeded-faults-film-build/seeded-faults-pitch/layout_audit.md
+[audit] report: ~/Projects/seeded-faults-film-build/seeded-faults-pitch/layout_audit.md
+[audit] report: ~/Projects/seeded-faults-film-build/seeded-faults-pitch/layout_audit.md
+[audit] report: ~/Projects/seeded-faults-film-build/seeded-faults-pitch/layout_audit.md
+[audit] scenes: 4 snapshots → CLEAN
+[audit] report: ~/Projects/seeded-faults-film-build/seeded-faults-pitch/layout_audit.md
+[art] compiled B00  MANIM    18.3s  ← B00.mp4
+[art] compiled B01  MANIM    23.2s  ← B01.mp4
+[art] compiled B02  MANIM    19.4s  ← B02.mp4
+[art] compiled B03  MANIM    33.8s  ← B03.mp4
+[art] compiled B04  MANIM    15.6s  ← B04.mp4
+[art] compiled B05  MANIM    22.9s  ← B05.mp4
+[art] compiled B06  MANIM    24.6s  ← B06.mp4
+[art] compiled B07  MANIM    21.0s  ← B07.mp4
+[art] compiled B08  MANIM    23.0s  ← B08.mp4
+[art] compiled B09  MANIM    11.5s  ← B09.mp4
+[art] compiled BOUT  MANIM     3.6s  ← BOUT.mp4
+[art] motion histogram: graphic:11
+[art] SKIN LINT: B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk
+[art] SKIN LINT: BOUT: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro
+[art] build stamp → beat_sheet.json (11/11 filled)
+[art] QC contact sheet → ~/Projects/seeded-faults-film-build/seeded-faults-pitch/qc-sheet.png
+[art] wrote ~/Projects/seeded-faults-film-build/seeded-faults-pitch/seeded-faults-pitch-slate.mp4  (216.8s, audio: per-beat timeline (source audio preserved), drawtext: no — PIL overlays)
+[art] slots: 11/11 filled — B00:MANIM B01:MANIM B02:MANIM B03:MANIM B04:MANIM B05:MANIM B06:MANIM B07:MANIM B08:MANIM B09:MANIM BOUT:MANIM
+[run] GATE V — frame-level visual QC on the compiled reel
+[gate-v] frames=22 BLOCKER=0 MAJOR=0 → ~/Projects/seeded-faults-film-build/seeded-faults-pitch/_qc/REPORT.md
+[run] done → ~/Projects/seeded-faults-film-build/seeded-faults-pitch  (QC gates: on)
+[run] REVIEW built; no final exported. Use ./art final <reel> for a verified master.
+[run] any remaining slates are YOUR slots — see ~/Projects/seeded-faults-film-build/seeded-faults-pitch/SHOTLIST.md
+[art] SKIN LINT: B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk
+[art] SKIN LINT: BOUT: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro

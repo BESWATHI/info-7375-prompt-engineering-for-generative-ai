@@ -1,26 +1,46 @@
 # BUILD-PROMPT — how to rebuild the film
 
-Fill in the exact commands as they are run on Day 3. Only list commands that actually worked; failures go in FRICTIONAL.md.
+Free pipeline only: Kokoro narration and Manim/ffmpeg rendering run locally. No API keys, no paid generation, no upload.
 
-## Toolkit
+## 1. Toolkit
 ```bash
-git clone https://github.com/nikbearbrown/brutalist.art
-cd brutalist.art
-./setup --install     # deps + Remotion + Kokoro model (~340MB, local)
-./art --list          # confirm available skills (look for show-tell)
+git clone https://github.com/nikbearbrown/brutalist.art ~/Applications/brutalist.art
+cd ~/Applications/brutalist.art && git checkout b21f625
+python3 -m venv .venv && source .venv/bin/activate && ./setup --install
 ```
-Toolkit commit used: _TBD_
-
-## Free pipeline only
-Kokoro narration and local rendering. No Higgsfield login, no API keys, no upload.
-
-## Prompts given to Claude Code
-1. _2026-10-09_ — Project selection and drafting of PROJECT-BRIEF.md / beat_sheet.json (see SOURCES.md for what Claude contributed).
-2. _TBD_ — Build prompt for the film, e.g. "Using the show-tell skill, build the reel from `beat_sheet.json` …" (paste the exact prompt used).
-
-## Render and gate commands
+At b21f625, `./setup` exits 1 at its ElevenLabs guard because of the toolkit's own example files (see FRICTIONAL.md, 2026-10-10). Readiness was confirmed by hand instead:
 ```bash
-# TBD — paste the exact render command(s) used
-# TBD — paste the exact gate / render-integrity command(s) used
+python3 runtime/scripts/setup_smoke_kokoro.py   # → kokoro synth OK
+./art --list                                    # → lists show-tell
 ```
-Output: `seeded-faults-pitch.mp4`, gate reports copied to `gate-reports/`.
+Run every command below with that `.venv` active.
+
+## 2. Build folder (outside the repo, so audio and render caches stay out of git)
+```bash
+B=~/Projects/seeded-faults-film-build/seeded-faults-pitch && mkdir -p $B
+cp film-source/{scenes.py,make_sheet.py,FACTCHECK.md,SHOTLIST.md,PROMPTS.md} $B/
+python3 $B/make_sheet.py        # reads narration from this folder's beat_sheet.json (path set inside make_sheet.py)
+```
+
+## 3. Narration (Kokoro am_michael)
+```bash
+python3 runtime/scripts/generate_audio_kokoro.py $B
+# pad the outro with a 1.0 s silent tail, then write the new length to BOUT's actual_duration_s
+ffmpeg -y -i $B/mp3/beat-BOUT.mp3 -af "apad=pad_dur=1.0" -c:a libmp3lame -q:a 2 /tmp/bout.mp3 && mv /tmp/bout.mp3 $B/mp3/beat-BOUT.mp3
+```
+Pronunciation was checked with faster-whisper (base.en) on every beat. B01 and B06 were reworded where Kokoro fused "Claude".
+
+## 4. Render and gates
+```bash
+./art run   $B --height 2160                               # Gates F, A, W, B, then V on the review cut
+./art final $B --height 2160 --out $B/exports/landscape    # GATE T, then the verified master
+python3 runtime/qc/factcheck_check.py $B
+python3 runtime/scripts/bookend_check.py $B                # expected FAIL, see gate-reports/README.md
+```
+Output: `$B/exports/landscape/seeded-faults-pitch.mp4` (sha256 `3142aa404d1460e8853498e534753bea15b459ebe4ca4204f6aaeb6345590137` for this submission's render).
+
+## Prompts given to Claude Code (summarised; full conversation not included)
+1. 2026-10-09: explain the assignment; suggest projects for Data Engineering / BI roles; create the submission files.
+2. 2026-10-09: guide the alternatives check (Great Expectations, dbt, dbt-expectations); write the sandbox test scripts.
+3. 2026-10-10: make the narration flow and sound conversational.
+4. 2026-10-10: "lock it, build now". Build the show-tell film with my own bookends and no instructor persona, then run the gates.

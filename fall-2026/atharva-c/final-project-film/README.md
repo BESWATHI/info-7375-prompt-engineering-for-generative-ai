@@ -4,8 +4,8 @@
 - **Course:** INFO 7375, Fall 2026
 - **Working title:** Seeded Faults — data-quality tests, tested
 - **Target role:** Data Engineer / BI Engineer
-- **Runtime:** _TBD after render (target 2:30–3:20)_
-- **Film:** `seeded-faults-pitch.mp4` _(not rendered yet)_
+- **Runtime:** 3:37 (216.8 s)
+- **Film:** `seeded-faults-pitch.mp4` (3840×2160, rendered 2026-10-10 with Brutalist show-tell, free local pipeline)
 
 ## What's in this folder
 | File | What it is |
@@ -16,7 +16,8 @@
 | `SOURCES.md` | What I used, what I made, what Claude contributed, licences |
 | `FRICTIONAL.md` | Dated work log |
 | `evidence/` | Scripts and logs behind every past-tense claim in the film |
-| `gate-reports/` | Brutalist quality-gate reports _(after render)_ |
+| `gate-reports/` | Brutalist quality-gate reports; summary in `gate-reports/README.md` |
+| `film-source/` | `scenes.py`, `make_sheet.py` and the toolkit paperwork that rebuild the film |
 
 ## How to rebuild the film
-See `BUILD-PROMPT.md`. In short: install the Brutalist toolkit (free local pipeline, Kokoro narration), point it at `beat_sheet.json`, render, then run the toolkit's gates and copy their reports into `gate-reports/`.
+See `BUILD-PROMPT.md` for the exact commands. In short: install Brutalist (free local pipeline, Kokoro narration), copy `film-source/` into a build folder, run `make_sheet.py`, generate audio, then `./art run` and `./art final` at 4K.
