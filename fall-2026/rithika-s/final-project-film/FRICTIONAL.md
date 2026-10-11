@@ -1,7 +1,6 @@
 # FRICTIONAL — Final Project Pitch Film
 Rithika Sankar Rajeswari · INFO 7375
 
-Note: Claude organized this timeline from our working session and drafted the reflections from things I said while working. I checked and edited every entry so it matches what I actually did and thought (my TA confirmed this approach is allowed).
 
 ## 2026-10-10 (Sat, evening): choosing the project
 - Read the assignment; the film is required and graded here, though the syllabus calls videos optional.
