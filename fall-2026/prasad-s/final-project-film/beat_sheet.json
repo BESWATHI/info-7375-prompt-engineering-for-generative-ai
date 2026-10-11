@@ -22,7 +22,15 @@
     ],
     "bookend_exempt_reason": "Course pitch film, not a channel episode: it opens on the problem (B01) instead of a composer cold open, has no verdict card and no Your Turn composer, and carries no channel handle or persona. It also has no BOUT outro, which bookend_check.py cannot exempt; that script is not called by art run or art final.",
     "audience": "a hiring manager or an engineer reviewing a product-management portfolio project",
-    "source_doc": "PROJECT-BRIEF.md (this folder); sources in FACTCHECK.md"
+    "source_doc": "PROJECT-BRIEF.md (this folder); sources in FACTCHECK.md",
+    "build": {
+      "at": "2026-10-10T21:18:53",
+      "cut": "review",
+      "filled": 14,
+      "of": 14,
+      "slates": [],
+      "skin_warnings": []
+    }
   },
   "beats": [
     {
@@ -58,7 +66,7 @@
         ],
         "manim": {
           "class": "B01_Agent",
-          "tag": "SKETCH"
+          "tag": "CONSTRUCTED · drawn to explain"
         },
         "motion_claim": "A robot holding a shopping bag stands beside a phone; a cursor taps the Approve button; a question mark appears."
       },
@@ -67,7 +75,14 @@
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 6.49,
-      "audio_file": "mp3/beat-B01.mp3"
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 6.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B02",
@@ -98,7 +113,7 @@
         ],
         "manim": {
           "class": "B02_ShownSigned",
-          "tag": "SKETCH"
+          "tag": "CONSTRUCTED · drawn to explain"
         },
         "motion_claim": "A box labelled SHOWN appears, then a taped box labelled SIGNED; a question mark lands between them."
       },
@@ -107,7 +122,14 @@
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 8.9,
-      "audio_file": "mp3/beat-B02.mp3"
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 8.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B03",
@@ -146,7 +168,7 @@
         ],
         "manim": {
           "class": "B03_Contract",
-          "tag": "CONSTRUCTED"
+          "tag": "CONSTRUCTED · invented example"
         },
         "motion_claim": "A contract stack on a dark base with the cover on top, labelled 'cover: $50'; page 12 slides out from just under the cover along a short curve onto a second dark base; a terracotta scan line sweeps it and 'page 12: $500 / month' fades in as the scan ends; an ink curve joins the two pages, ending in a dot."
       },
@@ -155,7 +177,14 @@
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 9.92,
-      "audio_file": "mp3/beat-B03.mp3"
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 9.958333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B04",
@@ -206,7 +235,7 @@
         ],
         "manim": {
           "class": "B04_Browser",
-          "tag": "CONSTRUCTED · WILL EXIST"
+          "tag": "CONSTRUCTED · mock-up, not built"
         },
         "motion_claim": "A browser window with five rows per panel (mandate left, shown text right) and the field names amount, merchant, cap, expiry and recurring outside the window; the cap row is shorter on the text side. A highlight box steps row to row: checks on rows 1-2, a cross and a terracotta dot on row 3 (cap), checks on rows 4-5; the box returns to the cap row and holds. A constructed example of a flagged mismatch."
       },
@@ -215,7 +244,14 @@
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 13.76,
-      "audio_file": "mp3/beat-B04.mp3"
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 13.791666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B05",
@@ -246,7 +282,7 @@
         ],
         "manim": {
           "class": "B05_Checklist",
-          "tag": "SKETCH"
+          "tag": "CONSTRUCTED · drawn to explain"
         },
         "motion_claim": "A launch checklist: two rows get checks; the third box, 'approval text tested?', stays empty and a dot marks it."
       },
@@ -255,7 +291,14 @@
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 12.65,
-      "audio_file": "mp3/beat-B05.mp3"
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 12.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B06",
@@ -269,33 +312,44 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Two boxes, AP2 and buildathon repo, appear; arrows run from both to a taped GistGap box.",
+        "visual_intent": "Two small boxes on dark bases, named beneath them: 'Google AP2' (subtitle 'Agent Payments Protocol') and 'Razorpay buildathon repo' (subtitle 'Mandate Mirror'); a taped GistGap box appears, and arrows grow from both to it.",
         "show": [
           {
             "at": 0.1,
-            "event": "AP2"
+            "event": "Google AP2 · Agent Payments Protocol"
           },
           {
             "at": 0.35,
-            "event": "buildathon repo"
+            "event": "Razorpay buildathon repo · Mandate Mirror"
           },
           {
-            "at": 0.8,
+            "at": 0.78,
+            "event": "GistGap box"
+          },
+          {
+            "at": 0.95,
             "event": "arrows to GistGap"
           }
         ],
         "manim": {
           "class": "B06_Landscape",
-          "tag": "SKETCH"
+          "tag": "CONSTRUCTED · drawn to explain"
         },
-        "motion_claim": "Two boxes, AP2 and buildathon repo, appear; arrows run from both to a taped GistGap box."
+        "motion_claim": "Two small boxes on dark bases, named beneath them: 'Google AP2' (subtitle 'Agent Payments Protocol') and 'Razorpay buildathon repo' (subtitle 'Mandate Mirror'); a taped GistGap box appears, and arrows grow from both to it."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 20.99,
-      "audio_file": "mp3/beat-B06.mp3"
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 21.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B07",
@@ -322,7 +376,7 @@
         ],
         "manim": {
           "class": "B07_Examples",
-          "tag": "CONSTRUCTED · WILL EXIST"
+          "tag": "CONSTRUCTED · mock-up, not built"
         },
         "motion_claim": "Three example cards; a cursor clicks; a check lands on 'clean' and crosses on 'hidden cap' and 'changed amount'."
       },
@@ -331,7 +385,14 @@
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 13.46,
-      "audio_file": "mp3/beat-B07.mp3"
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 13.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B08",
@@ -366,7 +427,7 @@
         ],
         "manim": {
           "class": "B08_Skills",
-          "tag": "WILL EXIST"
+          "tag": "WILL EXIST · not built yet"
         },
         "motion_claim": "Four icons arrive one by one: prompt contracts (a page), verification (a check), evaluation (bars), source grounding (a linked page and field)."
       },
@@ -375,7 +436,14 @@
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 17.47,
-      "audio_file": "mp3/beat-B08.mp3"
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 17.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B09",
@@ -414,7 +482,7 @@
         ],
         "manim": {
           "class": "B09_Fields",
-          "tag": "WILL EXIST"
+          "tag": "WILL EXIST · not built yet"
         },
         "motion_claim": "Five dark bases; a box drops onto each as its field is named: amount, merchant, cap, expiry, recurring."
       },
@@ -423,7 +491,14 @@
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 7.0,
-      "audio_file": "mp3/beat-B09.mp3"
+      "audio_file": "mp3/beat-B09.mp3",
+      "render_duration_s": 7.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B10",
@@ -458,7 +533,7 @@
         ],
         "manim": {
           "class": "B10_ScopeTest",
-          "tag": "CONSTRUCTED · WILL EXIST"
+          "tag": "CONSTRUCTED · planned test, no results yet"
         },
         "motion_claim": "Left: four out-of-scope items, each with a cross beside it. Right: ten dots labelled 'ten mandates'; three turn terracotta; rings mark exactly those three. An illustration of the planned first test, not a result."
       },
@@ -467,7 +542,14 @@
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 17.62,
-      "audio_file": "mp3/beat-B10.mp3"
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 17.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B11",
@@ -498,7 +580,7 @@
         ],
         "manim": {
           "class": "B11_Shrink",
-          "tag": "SKETCH"
+          "tag": "CONSTRUCTED · drawn to explain"
         },
         "motion_claim": "A large box shrinks inside the outline of its old size; 'smaller problem?' appears beside it."
       },
@@ -507,7 +589,14 @@
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 18.03,
-      "audio_file": "mp3/beat-B11.mp3"
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 18.041666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B12",
@@ -521,35 +610,48 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "A panel lists four of Prasad's commits in this folder, copied from git log on Oct 9 and re-typeset (hash and subject); a trail line with a dot per commit draws beside them.",
+        "visual_intent": "A drawn timeline, oldest to newest left to right: an ink line, then four terracotta nodes appearing one at a time, named '1 · environment', '2 · evidence', '3 · video built' and 'close-out' (paraphrasing the commit subjects), each with its short hash (fe9c16c, 2a1f40f, 2eb73eb, 1a6aa5b) beneath it.",
         "show": [
           {
             "at": 0.0,
-            "event": "four commit rows"
+            "event": "timeline line draws"
           },
           {
             "at": 0.6,
-            "event": "commit trail draws"
+            "event": "node 1 · environment (fe9c16c)"
+          },
+          {
+            "at": 0.65,
+            "event": "node 2 · evidence (2a1f40f)"
+          },
+          {
+            "at": 0.7,
+            "event": "node 3 · video built (2eb73eb)"
+          },
+          {
+            "at": 0.75,
+            "event": "node close-out (1a6aa5b)"
           }
         ],
         "manim": {
           "class": "B12_GitLog",
-          "tag": "COPIED from git log, Oct 9 (re-typeset)",
-          "rows": [
-            "1a6aa5b docs(prasad-s): close out FRICTIONAL log - B03 fix, final-path patch, export",
-            "2eb73eb docs(prasad-s): checkpoint 3 - week-01 video built, exported (1080p final) and reviewed",
-            "2a1f40f docs(prasad-s): checkpoint 2 - evidence packet (temp 1.0 vs 0.5) and pipeline check",
-            "fe9c16c docs(prasad-s): checkpoint 1 - brutalist.art environment stood up"
-          ]
+          "tag": "REDRAWN from my git log, Oct 9"
         },
-        "motion_claim": "A panel lists four of Prasad's commits in this folder, copied from git log on Oct 9 and re-typeset (hash and subject); a trail line with a dot per commit draws beside them."
+        "motion_claim": "A drawn timeline, oldest to newest left to right: an ink line, then four terracotta nodes appearing one at a time, named '1 · environment', '2 · evidence', '3 · video built' and 'close-out' (paraphrasing the commit subjects), each with its short hash (fe9c16c, 2a1f40f, 2eb73eb, 1a6aa5b) beneath it."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 14.36,
-      "audio_file": "mp3/beat-B12.mp3"
+      "audio_file": "mp3/beat-B12.mp3",
+      "render_duration_s": 14.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B13",
@@ -585,43 +687,61 @@
         "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 12.25,
-      "audio_file": "mp3/beat-B13.mp3"
+      "audio_file": "mp3/beat-B13.mp3",
+      "render_duration_s": 12.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     },
     {
       "beat_id": "B14",
       "act": "show-tell",
-      "lane": "card",
-      "proof_gate": "CARD",
+      "lane": "manim",
+      "proof_gate": "SHOW",
       "narration_text": "GistGap: what you see is what you sign.",
       "estimated_duration_s": 3.2,
       "voice": "af_bella",
       "engine": "kokoro",
-      "why_a_card": "Card test: (1) the idea is a name and a title; (2) the word filling its own outline IS the beat; (3) no drawing of the film's objects says a name more clearly.",
       "shot": {
-        "type": "REMOTION",
+        "type": "GRAPHIC",
         "source": "own",
+        "visual_intent": "A drawn title: 'GistGap' in the film's serif rises into place, then an ink rule with a terracotta dot draws under it and 'What you see is what you sign' fades in; everything is still from about 30% to the end. No provenance label.",
         "show": [
           {
-            "at": 0.1,
-            "event": "GistGap fills from below inside its outline"
+            "at": 0.0,
+            "event": "GistGap rises in"
+          },
+          {
+            "at": 0.15,
+            "event": "rule, dot and 'What you see is what you sign'"
           },
           {
             "at": 0.3,
-            "event": "the line rises in"
+            "event": "still to the end"
           }
         ],
-        "remotion": {
-          "pattern": "ShowTellCard",
-          "props": {
-            "kind": "masked",
-            "word": "GistGap",
-            "sub": "What you see is what you sign",
-            "durationSeconds": 2.33
-          }
-        }
+        "manim": {
+          "class": "B14_Title",
+          "tag": ""
+        },
+        "motion_claim": "A drawn title: 'GistGap' in the film's serif rises into place, then an ink rule with a terracotta dot draws under it and 'What you see is what you sign' fades in; everything is still from about 30% to the end. No provenance label."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn picture per beat on a cream stage with minimal labels; the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
       "actual_duration_s": 2.33,
-      "audio_file": "mp3/beat-B14.mp3"
+      "audio_file": "mp3/beat-B14.mp3",
+      "render_duration_s": 2.3333333333333335,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T21:18:53"
+      }
     }
   ]
 }

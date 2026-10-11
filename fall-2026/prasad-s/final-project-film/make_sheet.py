@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """make_sheet.py — beat_sheet.json for gistgap-pitch (the GistGap final-project pitch film).
 
-Show-tell style: one drawn picture per beat (B01-B13, Manim, scenes.py) and one
-ShowTellCard (B14, the title). Voice: Kokoro af_bella. No persona, no channel handle,
+Show-tell style: one drawn picture per beat (B01-B14, Manim, scenes.py); B14 is a drawn
+title (it replaced a ShowTellCard whose clip left the "p" descender hollow). Voice: Kokoro af_bella. No persona, no channel handle,
 no outro beat, no composer bookends.
 
 Re-run after audio generation: it keeps each beat's measured actual_duration_s and
 audio_file, and writes the card's durationSeconds from the measured audio.
 Do NOT re-run after `art final`: it rewrites the sheet and drops the build stamps.
 
-B12's rows are frozen literal text: four of Prasad Shinde's commits in fall-2026/prasad-s/
-(1a6aa5b, 2eb73eb, 2a1f40f, fe9c16c), newest first, as `git log --format='%h %s' --
-fall-2026/prasad-s/` printed them on 2026-10-09. This script does not run git.
+B12 is a drawn timeline of four of Prasad Shinde's commits in fall-2026/prasad-s/
+(fe9c16c, 2a1f40f, 2eb73eb, 1a6aa5b; oldest to newest), redrawn from `git log` on
+2026-10-09 with short names that paraphrase the commit subjects. This script does not run git.
 """
 import json
 from pathlib import Path
@@ -62,16 +62,6 @@ def card(bid, narration, props, show, why):
                  "remotion": {"pattern": "ShowTellCard", "props": props}}})
 
 
-# Frozen 2026-10-09: four of Prasad Shinde's commits in fall-2026/prasad-s/, newest first,
-# hash and subject exactly as `git log --format='%h %s' -- fall-2026/prasad-s/` prints them.
-B12_ROWS = [
-    "1a6aa5b docs(prasad-s): close out FRICTIONAL log - B03 fix, final-path patch, export",
-    "2eb73eb docs(prasad-s): checkpoint 3 - week-01 video built, exported (1080p final) and reviewed",
-    "2a1f40f docs(prasad-s): checkpoint 2 - evidence packet (temp 1.0 vs 0.5) and pipeline check",
-    "fe9c16c docs(prasad-s): checkpoint 1 - brutalist.art environment stood up",
-]
-
-
 N = {
  "B01": "Imagine an AI agent about to spend your money. You tap Approve. But what, exactly, are you approving?",
  "B02": "Two things matter here. What you're shown: the plain-English text on the screen. And what you sign: the exact terms, called a mandate. They should match.",
@@ -90,65 +80,65 @@ N = {
 }
 
 B = [
- drawn("B01", N["B01"], "B01_Agent", "SKETCH",
+ drawn("B01", N["B01"], "B01_Agent", "CONSTRUCTED · drawn to explain",
        "A robot holding a shopping bag stands beside a phone; a cursor taps the Approve button; a question mark appears.",
        [{"at": 0.0, "event": "robot with bag"}, {"at": 0.2, "event": "phone with Approve"},
         {"at": 0.5, "event": "cursor taps Approve"}, {"at": 0.8, "event": "?"}]),
- drawn("B02", N["B02"], "B02_ShownSigned", "SKETCH",
+ drawn("B02", N["B02"], "B02_ShownSigned", "CONSTRUCTED · drawn to explain",
        "A box labelled SHOWN appears, then a taped box labelled SIGNED; a question mark lands between them.",
        [{"at": 0.15, "event": "SHOWN box"}, {"at": 0.5, "event": "SIGNED box"}, {"at": 0.9, "event": "?"}]),
- drawn("B03", N["B03"], "B03_Contract", "CONSTRUCTED",
+ drawn("B03", N["B03"], "B03_Contract", "CONSTRUCTED · invented example",
        "A contract stack on a dark base with the cover on top, labelled 'cover: $50'; page 12 slides out from just under the cover along a short curve onto a second dark base; a terracotta scan line sweeps it and 'page 12: $500 / month' fades in as the scan ends; an ink curve joins the two pages, ending in a dot.",
        [{"at": 0.0, "event": "stack with the cover on top; empty right-hand base"}, {"at": 0.3, "event": "label 'cover: $50'"},
         {"at": 0.42, "event": "page 12 slides out from under the cover onto the right-hand base"},
         {"at": 0.55, "event": "scan line sweeps page 12; 'page 12: $500 / month' fades in"},
         {"at": 0.66, "event": "ink curve joins the pages; dot at its end"}]),
- drawn("B04", N["B04"], "B04_Browser", "CONSTRUCTED · WILL EXIST",
+ drawn("B04", N["B04"], "B04_Browser", "CONSTRUCTED · mock-up, not built",
        "A browser window with five rows per panel (mandate left, shown text right) and the field names amount, merchant, cap, expiry and recurring outside the window; the cap row is shorter on the text side. A highlight box steps row to row: checks on rows 1-2, a cross and a terracotta dot on row 3 (cap), checks on rows 4-5; the box returns to the cap row and holds. A constructed example of a flagged mismatch.",
        [{"at": 0.0, "event": "window, five rows per panel, field names"}, {"at": 0.12, "event": "highlight box on row 1"},
         {"at": 0.15, "event": "check, amount"}, {"at": 0.25, "event": "check, merchant"},
         {"at": 0.33, "event": "cross and terracotta dot, cap"}, {"at": 0.6, "event": "check, expiry"},
         {"at": 0.7, "event": "check, recurring"}, {"at": 0.72, "event": "box returns to the cap row; still to the end"}]),
- drawn("B05", N["B05"], "B05_Checklist", "SKETCH",
+ drawn("B05", N["B05"], "B05_Checklist", "CONSTRUCTED · drawn to explain",
        "A launch checklist: two rows get checks; the third box, 'approval text tested?', stays empty and a dot marks it.",
        [{"at": 0.0, "event": "checklist"}, {"at": 0.3, "event": "two checks"}, {"at": 0.55, "event": "approval text tested?"}]),
- drawn("B06", N["B06"], "B06_Landscape", "SKETCH",
-       "Two boxes, AP2 and buildathon repo, appear; arrows run from both to a taped GistGap box.",
-       [{"at": 0.1, "event": "AP2"}, {"at": 0.35, "event": "buildathon repo"}, {"at": 0.8, "event": "arrows to GistGap"}]),
- drawn("B07", N["B07"], "B07_Examples", "CONSTRUCTED · WILL EXIST",
+ drawn("B06", N["B06"], "B06_Landscape", "CONSTRUCTED · drawn to explain",
+       "Two small boxes on dark bases, named beneath them: 'Google AP2' (subtitle 'Agent Payments Protocol') and 'Razorpay buildathon repo' (subtitle 'Mandate Mirror'); a taped GistGap box appears, and arrows grow from both to it.",
+       [{"at": 0.1, "event": "Google AP2 · Agent Payments Protocol"}, {"at": 0.35, "event": "Razorpay buildathon repo · Mandate Mirror"},
+        {"at": 0.78, "event": "GistGap box"}, {"at": 0.95, "event": "arrows to GistGap"}]),
+ drawn("B07", N["B07"], "B07_Examples", "CONSTRUCTED · mock-up, not built",
        "Three example cards; a cursor clicks; a check lands on 'clean' and crosses on 'hidden cap' and 'changed amount'.",
        [{"at": 0.0, "event": "three cards"}, {"at": 0.75, "event": "check, cross, cross"}]),
- drawn("B08", N["B08"], "B08_Skills", "WILL EXIST",
+ drawn("B08", N["B08"], "B08_Skills", "WILL EXIST · not built yet",
        "Four icons arrive one by one: prompt contracts (a page), verification (a check), evaluation (bars), source grounding (a linked page and field).",
        [{"at": 0.15, "event": "prompt contracts"}, {"at": 0.22, "event": "verification"},
         {"at": 0.28, "event": "evaluation"}, {"at": 0.35, "event": "source grounding"}]),
- drawn("B09", N["B09"], "B09_Fields", "WILL EXIST",
+ drawn("B09", N["B09"], "B09_Fields", "WILL EXIST · not built yet",
        "Five dark bases; a box drops onto each as its field is named: amount, merchant, cap, expiry, recurring.",
        [{"at": 0.25, "event": "amount"}, {"at": 0.4, "event": "merchant"}, {"at": 0.55, "event": "cap"},
         {"at": 0.7, "event": "expiry"}, {"at": 0.9, "event": "recurring"}]),
- drawn("B10", N["B10"], "B10_ScopeTest", "CONSTRUCTED · WILL EXIST",
+ drawn("B10", N["B10"], "B10_ScopeTest", "CONSTRUCTED · planned test, no results yet",
        "Left: four out-of-scope items, each with a cross beside it. Right: ten dots labelled 'ten mandates'; three turn terracotta; rings mark exactly those three. An illustration of the planned first test, not a result.",
        [{"at": 0.05, "event": "out-of-scope items crossed"}, {"at": 0.4, "event": "ten dots"},
         {"at": 0.5, "event": "three terracotta"}, {"at": 0.75, "event": "rings on those three"}]),
- drawn("B11", N["B11"], "B11_Shrink", "SKETCH",
+ drawn("B11", N["B11"], "B11_Shrink", "CONSTRUCTED · drawn to explain",
        "A large box shrinks inside the outline of its old size; 'smaller problem?' appears beside it.",
        [{"at": 0.0, "event": "box"}, {"at": 0.3, "event": "box shrinks, outline stays"}, {"at": 0.3, "event": "smaller problem?"}]),
- drawn("B12", N["B12"], "B12_GitLog", "COPIED from git log, Oct 9 (re-typeset)",
-       "A panel lists four of Prasad's commits in this folder, copied from git log on Oct 9 and re-typeset (hash and subject); a trail line with a dot per commit draws beside them.",
-       [{"at": 0.0, "event": "four commit rows"}, {"at": 0.6, "event": "commit trail draws"}]),
+ drawn("B12", N["B12"], "B12_GitLog", "REDRAWN from my git log, Oct 9",
+       "A drawn timeline, oldest to newest left to right: an ink line, then four terracotta nodes appearing one at a time, named '1 · environment', '2 · evidence', '3 · video built' and 'close-out' (paraphrasing the commit subjects), each with its short hash (fe9c16c, 2a1f40f, 2eb73eb, 1a6aa5b) beneath it.",
+       [{"at": 0.0, "event": "timeline line draws"}, {"at": 0.6, "event": "node 1 · environment (fe9c16c)"},
+        {"at": 0.65, "event": "node 2 · evidence (2a1f40f)"}, {"at": 0.7, "event": "node 3 · video built (2eb73eb)"},
+        {"at": 0.75, "event": "node close-out (1a6aa5b)"}]),
  drawn("B13", N["B13"], "B13_Columns", "EXISTS TODAY · WILL EXIST (column headers)",
        "Two columns: EXISTS TODAY (the brief, the beat sheet, this film) and WILL EXIST (the generator, the checker, the test set, the demo page, the results table), each item arriving as it is spoken.",
        [{"at": 0.0, "event": "EXISTS TODAY items"}, {"at": 0.6, "event": "WILL EXIST items, one per phrase"}]),
- card("B14", N["B14"],
-      {"kind": "masked", "word": "GistGap", "sub": "What you see is what you sign"},
-      [{"at": 0.1, "event": "GistGap fills from below inside its outline"}, {"at": 0.3, "event": "the line rises in"}],
-      "Card test: (1) the idea is a name and a title; (2) the word filling its own outline IS the beat; "
-      "(3) no drawing of the film's objects says a name more clearly."),
+ drawn("B14", N["B14"], "B14_Title", "",
+       "A drawn title: 'GistGap' in the film's serif rises into place, then an ink rule with a terracotta dot draws under it and 'What you see is what you sign' fades in; everything is still from about 30% to the end. No provenance label.",
+       [{"at": 0.0, "event": "GistGap rises in"}, {"at": 0.15, "event": "rule, dot and 'What you see is what you sign'"},
+        {"at": 0.3, "event": "still to the end"}]),
 ]
 
 for b in B:
-    if b["beat_id"] == "B12":
-        b["shot"]["manim"]["rows"] = B12_ROWS
     if b["lane"] == "card":
         b["shot"]["remotion"]["props"]["durationSeconds"] = max(2.0, b.get("actual_duration_s") or b["estimated_duration_s"])
 

@@ -21,8 +21,8 @@ Sources:
 | 4 | B04 | It will be a public GitHub repository with a demo page, a test set, and a results table. | PENDING | Brief §1 | — |
 | 5 | B05 | It is for whoever owns an agent-payment approval screen. | PENDING | Brief §2 | — |
 | 6 | B05 | Before launch, they will be able to test, with synthetic data, whether the text drops or changes a cap, an amount, an expiry, or a recurrence. | PENDING | Brief §2 | — |
-| 7 | B06 | For AP2, I read the announcement post and the main spec page. | PENDING | Brief §2(a) | — |
-| 8 | B06 | For the buildathon repo, I read its README only. | PENDING | Brief §2(b) | — |
+| 7 | B06 | For AP2, I read the announcement post and the main spec page. (On screen: "Google AP2", subtitle "Agent Payments Protocol".) | PENDING | Brief §2(a) | — |
+| 8 | B06 | For the buildathon repo, I read its README only. (On screen: "Razorpay buildathon repo", subtitle "Mandate Mirror".) | PENDING | Brief §2(b) | — |
 | 9 | B06 | AP2 defines how mandates are signed and checked. | PENDING | AP2 spec; AP2 post; Brief §2(a) (verifiers check closed mandates against the constraints in open ones) | — |
 | 10 | B06 | The repo checks payments against its own mandates. | PENDING | Repo README; Brief §2(b) (checks each payment request against a mandate and the spend already used) | — |
 | 11 | B06 | In what I read, neither tests the text a person is shown. | PENDING | AP2 spec; Repo README; Brief §2 | — |
@@ -39,9 +39,12 @@ Sources:
 | 22 | B11 | Matching text is brittle, because the same amount can be written several ways. | PENDING | Brief §6 (the checker may miss paraphrases such as "five hundred" versus "$500") | — |
 | 23 | B12 | Payments and agent-payment protocols are new to me. | PENDING | Brief §7 | — |
 | 24 | B12 | I already have the Assignment 1 film. | PENDING | Brief §4 and §7; `fall-2026/prasad-s/week-01-video/` | — |
-| 25 | B12 | The commit trail is on screen. | PENDING | git log (B12 rows): four of Prasad's commits in `fall-2026/prasad-s/` (1a6aa5b, 2eb73eb, 2a1f40f, fe9c16c), frozen 2026-10-09 in `make_sheet.py`; on screen labelled "COPIED from git log, Oct 9 (re-typeset)" | — |
+| 25 | B12 | The commit trail is on screen. | PENDING | git log: four of Prasad's commits in `fall-2026/prasad-s/` (fe9c16c, 2a1f40f, 2eb73eb, 1a6aa5b), drawn as a timeline in `scenes.py` B12_GitLog; on screen labelled "REDRAWN from my git log, Oct 9" | — |
 | 26 | B13 | Today the brief, the beat sheet, and this film exist. | PENDING | Brief, EXISTS TODAY; this folder | The brief's EXISTS TODAY list is the folder skeleton, the brief, and the toolkit; the beat sheet and film are new since. |
 | 27 | B13 | The project itself does not exist yet; it will be the generator, the checker, the test set, the demo page, and the results table. | PENDING | Brief, WILL EXIST | — |
 | 28 | B04 | (picture) B04 shows a constructed example of a flagged mismatch: the cap row differs and is crossed and flagged; it is not output from a real checker. | PENDING | Brief §5 (all mandates and summaries constructed); `scenes.py` B04_Browser; label "CONSTRUCTED · WILL EXIST" | — |
 | 29 | B10 | (picture) B10 shows an illustration of the planned first test (ten mandates, three planted errors, three flagged), not a result. | PENDING | Brief §5; `scenes.py` B10_ScopeTest; label "CONSTRUCTED · WILL EXIST" | — |
-| 30 | B12 | (picture) The B12 rows are COPIED from `git log` on Oct 9 and re-typeset (wrapped, set in the film's serif), not a screen capture. | PENDING | git log; `make_sheet.py` B12_ROWS; label "COPIED from git log, Oct 9 (re-typeset)" | — |
+| 30 | B12 | (picture) B12 is a timeline REDRAWN from `git log` on Oct 9: four commits, oldest to newest, with their short hashes; it is not a screen capture. | PENDING | `git log --format='%h %s' -- fall-2026/prasad-s/`; `scenes.py` B12_GitLog; label "REDRAWN from my git log, Oct 9" | — |
+| 31 | B06 | (picture) AP2's full name is "Agent Payments Protocol", as in Google's announcement post. | PENDING | AP2 post (Sept 16, 2025) | The v0.2 spec page's title differs: "Agentic Payment Protocol (v0.2)". Confirm which name the post uses. |
+| 32 | B06 | (picture) "Razorpay buildathon repo" means a third-party project built for Razorpay's buildathon, named "Mandate Mirror"; it was not made by Razorpay. | PENDING | Repo README; Brief §2(b) | — |
+| 33 | B12 | (picture) The node names paraphrase the commit subjects: fe9c16c "checkpoint 1 - brutalist.art environment stood up" → "1 · environment"; 2a1f40f "checkpoint 2 - evidence packet (temp 1.0 vs 0.5) and pipeline check" → "2 · evidence"; 2eb73eb "checkpoint 3 - week-01 video built, exported (1080p final) and reviewed" → "3 · video built"; 1a6aa5b "close out FRICTIONAL log - B03 fix, final-path patch, export" → "close-out". | PENDING | `git log --format='%h %s' -- fall-2026/prasad-s/` | — |

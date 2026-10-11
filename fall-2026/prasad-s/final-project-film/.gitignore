@@ -11,3 +11,9 @@ _qc/frames/
 _superseded/
 .audio.log
 __pycache__/
+
+# Local build ledgers (build-state.json holds absolute local paths).
+build-state.json
+todo.json
+ToDo.md
+STATUS.md

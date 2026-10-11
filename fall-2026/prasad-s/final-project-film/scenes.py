@@ -189,7 +189,7 @@ def hold(self):
 
 
 def tag(s):
-    """The provenance label (SKETCH / CONSTRUCTED / WILL EXIST / COPIED), top left."""
+    """The provenance label (CONSTRUCTED · …, WILL EXIST · …, REDRAWN …), top left."""
     t = T(s, 32, bold=True)
     t.move_to([-6.0 + t.width / 2, 3.0, 0])
     return t
@@ -232,7 +232,7 @@ def _manim_field(bid, key, default):
 # ═════════════════════════════ GistGap scenes ═════════════════════════════
 class B01_Agent(Scene):
     def construct(self):
-        self.add(tag("SKETCH"))
+        self.add(tag("CONSTRUCTED · drawn to explain"))
         R = Iso(-3.9, -1.9, 1.0)
         base = R.box(-0.3, -0.3, 0, 2.6, 1.9, 0.3, DARK_TOP, DARK_L, DARK_R)
         body = R.box(0, 0, 0.3, 1.3, 1.0, 1.4)
@@ -266,7 +266,7 @@ class B01_Agent(Scene):
 
 class B02_ShownSigned(Scene):
     def construct(self):
-        self.add(tag("SKETCH"))
+        self.add(tag("CONSTRUCTED · drawn to explain"))
         A, S = Iso(-3.6, -1.3, 1.0), Iso(3.6, -1.3, 1.0)
         base_a, box_a = on_base(A, 0, 0, 0, 1.7, 1.7, 1.5)
         base_s, box_s = on_base(S, 0, 0, 0, 1.7, 1.7, 1.5)
@@ -282,7 +282,7 @@ class B02_ShownSigned(Scene):
 
 class B03_Contract(Scene):
     def construct(self):
-        self.add(tag("CONSTRUCTED"))
+        self.add(tag("CONSTRUCTED · invented example"))
         L, Rt = Iso(-3.4, -0.9, 1.0), Iso(2.8, -0.9, 1.0)
         plinth_l = L.box(-0.25, -0.25, -0.3, 2.5, 3.0, 0.3, DARK_TOP, DARK_L, DARK_R)
         sheets = VGroup(*[L.box(0, 0, 0.08 * i, 2.0, 2.5, 0.06, PAGE_TOP, PAGE_L, PAGE_R, sw=1.5) for i in range(3)])
@@ -298,8 +298,8 @@ class B03_Contract(Scene):
         p12_lab = lab("page 12: $500 / month", 2.8, -2.0, 40)
         scan = Line([0.7, -1.05, 0], [0.7, 1.5, 0], color=TERRA, stroke_width=6)
         scan.set_z_index(3)
-        curve = ArcBetweenPoints([-3.0, 2.0, 0], [2.9, 2.0, 0], angle=-PI / 3, color=INK, stroke_width=6)
-        spark = Dot([2.9, 2.0, 0], radius=0.1, color=TERRA)
+        curve = ArcBetweenPoints([-3.0, 1.9, 0], [2.9, 1.9, 0], angle=-PI / 4, color=INK, stroke_width=6)
+        spark = Dot([2.9, 1.9, 0], radius=0.1, color=TERRA)
 
         go(self, None, FadeIn(VGroup(plinth_l, sheets, cover, page12, plinth_r)), rt=0.5)
         go(self, "fifty dollars", FadeIn(cover_lab), rt=0.4)
@@ -314,7 +314,7 @@ class B03_Contract(Scene):
 
 class B04_Browser(Scene):
     def construct(self):
-        self.add(tag("CONSTRUCTED · WILL EXIST"))
+        self.add(tag("CONSTRUCTED · mock-up, not built"))
         ys = (1.1, 0.5, -0.1, -0.7, -1.3)
         fields = ("amount", "merchant", "cap", "expiry", "recurring")
         lx, rx, cx = -1.6, 3.6, 1.0                    # left panel, right panel, check column
@@ -354,7 +354,7 @@ class B04_Browser(Scene):
 
 class B05_Checklist(Scene):
     def construct(self):
-        self.add(tag("SKETCH"))
+        self.add(tag("CONSTRUCTED · drawn to explain"))
         ys = (1.4, 0.0, -1.4)
         boxes = VGroup(*[Square(side_length=0.7, fill_color=CARD, fill_opacity=1, stroke_color=INK,
                                 stroke_width=5).move_to([-4.0, y, 0]) for y in ys])
@@ -365,7 +365,7 @@ class B05_Checklist(Scene):
             bars.add(r)
         question = lab_l("approval text tested?", -3.2, ys[2], 40)
         ticks = VGroup(check(-4.05, ys[0], s=0.22, color=INK, w=8), check(-4.05, ys[1], s=0.22, color=INK, w=8))
-        mark = Dot([question.get_right()[0] + 0.5, ys[2], 0], radius=0.14, color=TERRA)
+        mark = Dot([1.45, ys[2], 0], radius=0.14, color=TERRA)
 
         go(self, None, FadeIn(VGroup(boxes, bars)), FadeIn(question), rt=0.6)
         go(self, "Before launch", LaggedStart(*[Create(t) for t in ticks], lag_ratio=0.4), rt=0.8)
@@ -375,14 +375,16 @@ class B05_Checklist(Scene):
 
 class B06_Landscape(Scene):
     def construct(self):
-        self.add(tag("SKETCH"))
-        A, Rp, G = Iso(-4.3, 0.9, 0.75), Iso(-4.3, -2.0, 0.75), Iso(3.4, -1.3, 1.1)
+        self.add(tag("CONSTRUCTED · drawn to explain"))
+        A, Rp, G = Iso(-4.6, 1.1, 0.6), Iso(-4.6, -2.0, 0.6), Iso(3.4, -1.3, 1.1)
         ap2 = VGroup(*on_base(A, 0, 0, 0, 1.1, 1.1, 1.0, pad=0.15, base_h=0.2))
         repo = VGroup(*on_base(Rp, 0, 0, 0, 1.1, 1.1, 1.0, pad=0.15, base_h=0.2))
         g_base, g_box = on_base(G, 0, 0, 0, 1.6, 1.6, 1.4)
         gist = VGroup(g_base, g_box, G.tape(0, 0, 1.65, 1.6, 1.6, drop=0.35))
-        ap2_lab, repo_lab, gist_lab = lab("AP2", -4.3, 0.4), lab("buildathon repo", -4.3, -2.55), lab("GistGap", 3.4, -2.0, 40)
-        links = VGroup(arrow([-3.3, 1.7, 0], [1.45, 0.85, 0]), arrow([-3.3, -1.15, 0], [1.45, -0.15, 0]))
+        ap2_lab = VGroup(lab_l("Google AP2", -6.0, 0.5, 38), lab_l("Agent Payments Protocol", -6.0, -0.1, 32))
+        repo_lab = VGroup(lab_l("Razorpay buildathon repo", -6.0, -2.55, 38), lab_l("Mandate Mirror", -6.0, -3.1, 32))
+        gist_lab = lab("GistGap", 3.4, -2.0, 40)
+        links = VGroup(arrow([-3.65, 1.85, 0], [1.45, 0.85, 0]), arrow([-3.65, -1.25, 0], [1.45, -0.15, 0]))
 
         go(self, "Google's AP2", FadeIn(ap2, shift=DOWN * 0.3), FadeIn(ap2_lab), rt=0.6)
         go(self, "a buildathon repo", FadeIn(repo, shift=DOWN * 0.3), FadeIn(repo_lab), rt=0.6)
@@ -393,7 +395,7 @@ class B06_Landscape(Scene):
 
 class B07_Examples(Scene):
     def construct(self):
-        self.add(tag("CONSTRUCTED · WILL EXIST"))
+        self.add(tag("CONSTRUCTED · mock-up, not built"))
         xs = (-4.1, 0.0, 4.1)
         cards, lines = VGroup(), VGroup()
         for x in xs:
@@ -416,7 +418,7 @@ class B07_Examples(Scene):
 
 class B08_Skills(Scene):
     def construct(self):
-        self.add(tag("WILL EXIST"))
+        self.add(tag("WILL EXIST · not built yet"))
         P = Iso(-4.85, 0.75, 0.85)
         contract = VGroup(P.box(-0.15, -0.15, -0.25, 1.4, 1.7, 0.25, DARK_TOP, DARK_L, DARK_R), P.page(0, 0, 0, 1.1, 1.4))
         frame = Square(side_length=1.3, fill_color=CARD, fill_opacity=1, stroke_color=INK, stroke_width=5).move_to([1.5, 1.2, 0])
@@ -441,7 +443,7 @@ class B08_Skills(Scene):
 
 class B09_Fields(Scene):
     def construct(self):
-        self.add(tag("WILL EXIST"))
+        self.add(tag("WILL EXIST · not built yet"))
         xs = (-4.8, -2.4, 0.0, 2.4, 4.8)
         words = ("amount", "merchant", "cap", "expiry", "recurring")
         cues = ("Amount", "merchant", "spending cap", "expiry date", "recurring")
@@ -459,7 +461,7 @@ class B09_Fields(Scene):
 
 class B10_ScopeTest(Scene):
     def construct(self):
-        self.add(tag("CONSTRUCTED · WILL EXIST"))
+        self.add(tag("CONSTRUCTED · planned test, no results yet"))
         items = ("real signing", "real payments", "protocol compliance", "original request")
         ys = (1.5, 0.5, -0.5, -1.5)
         texts = VGroup(*[lab_l(s, -5.1, y, 36) for s, y in zip(items, ys)])
@@ -481,8 +483,8 @@ class B10_ScopeTest(Scene):
 
 class B11_Shrink(Scene):
     def construct(self):
-        self.add(tag("SKETCH"))
-        S = Iso(-2.0, -1.7, 1.0)
+        self.add(tag("CONSTRUCTED · drawn to explain"))
+        S = Iso(-2.0, -2.05, 1.0)
         base, box = on_base(S, 0, 0, 0, 2.2, 2.2, 2.0)
         z0, z1 = 0.25, 2.25
         outline = Polygon(S.p(0, 0, z0), S.p(2.2, 0, z0), S.p(2.2, 0, z1), S.p(2.2, 2.2, z1), S.p(0, 2.2, z1), S.p(0, 2.2, z0),
@@ -495,44 +497,22 @@ class B11_Shrink(Scene):
         hold(self)
 
 
-def _wrap(text, maxw, size):
-    words, lines, cur = text.split(), [], ""
-    for w in words:
-        trial = (cur + " " + w).strip()
-        if cur and T(trial, size).width > maxw:
-            lines.append(cur)
-            cur = w
-        else:
-            cur = trial
-    if cur:
-        lines.append(cur)
-    return lines
-
-
 class B12_GitLog(Scene):
     def construct(self):
-        self.add(tag("COPIED from git log, Oct 9 (re-typeset)"))
-        rows = _manim_field("B12", "rows", None) or ["0000000 (rows come from beat_sheet.json)"]
-        size, lh, gap = 32, 0.42, 0.28
-        wrapped = [(sha, _wrap(subject, 9.0, size)) for sha, _, subject in (r.partition(" ") for r in rows[:5])]
-        block = sum(len(lines) for _, lines in wrapped) * lh + (len(wrapped) - 1) * gap
-        mid = -0.25                                   # the panel is sized to its rows and centred here
-        panel = RoundedRectangle(width=11.8, height=block + 0.8, corner_radius=0.2, fill_color=CARD, fill_opacity=1,
-                                 stroke_color=BAR1, stroke_width=3).move_to([0.15, mid, 0])
-        y = mid + block / 2 - lh / 2
-        texts, row_ys = VGroup(), []
-        for sha, lines in wrapped:
-            row_ys.append(y)
-            texts.add(lab_l(sha, -4.9, y, size))
-            for i, ln in enumerate(lines):
-                texts.add(lab_l(ln, -3.3, y - i * lh, size))
-            y -= len(lines) * lh + gap
-        trail = Line([-5.35, row_ys[0], 0], [-5.35, row_ys[-1], 0], color=INK, stroke_width=5)
-        knots = VGroup(*[Dot([-5.35, yy, 0], radius=0.1, color=TERRA) for yy in row_ys])
+        self.add(tag("REDRAWN from my git log, Oct 9"))
+        # Oldest to newest, left to right; names paraphrase the commit subjects.
+        nodes = ((-4.5, "1 · environment", "fe9c16c"), (-1.5, "2 · evidence", "2a1f40f"),
+                 (1.5, "3 · video built", "2eb73eb"), (4.5, "close-out", "1a6aa5b"))
+        y = 0.0
+        line = Line([-4.5, y, 0], [4.5, y, 0], color=INK, stroke_width=5)
+        stops = [(Dot([x, y, 0], radius=0.18, color=TERRA), lab(name, x, y + 0.75, 36), lab(sha, x, y - 0.65, 32))
+                 for x, name, sha in nodes]
 
-        go(self, None, FadeIn(panel), LaggedStart(*[FadeIn(t) for t in texts], lag_ratio=0.05), rt=1.0)
-        go(self, "the commit trail", Create(trail), rt=0.6)
-        go(self, None, FadeIn(knots), rt=0.3)
+        go(self, None, Create(line), rt=0.8)
+        go(self, "the commit trail", *[FadeIn(m) for m in stops[0]], rt=0.4)
+        for stop in stops[1:]:
+            self.wait(0.25)
+            go(self, None, *[FadeIn(m) for m in stop], rt=0.4)
         hold(self)
 
 
@@ -552,4 +532,18 @@ class B13_Columns(Scene):
         for (text, cue), y in zip(later, ys):
             box = Square(side_length=0.26, fill_opacity=0, stroke_color=INK, stroke_width=4).move_to([1.0, y, 0])
             go(self, cue, FadeIn(box), FadeIn(lab_l(text, 1.4, y, 38)), rt=0.3)
+        hold(self)
+
+
+class B14_Title(Scene):
+    def construct(self):
+        # A drawn title (replaces the masked ShowTellCard, whose clip left the "p" descender hollow).
+        # Unlabelled, like the card it replaces. All motion ends by ~0.70 s, before the 50% sample.
+        title = T("GistGap", 170, bold=True).move_to([0, 0.9, 0])
+        rule = Line([-3.5, -0.6, 0], [3.5, -0.6, 0], color=INK, stroke_width=5)
+        spark = Dot([3.5, -0.6, 0], radius=0.1, color=TERRA)
+        tagline = T("What you see is what you sign", 48).move_to([0, -1.4, 0])
+
+        go(self, None, FadeIn(title, shift=UP * 0.2), rt=0.35)
+        go(self, None, Create(rule), FadeIn(spark), FadeIn(tagline), rt=0.35)
         hold(self)
