@@ -11,7 +11,7 @@ Note on "agentic": here it means agent-written queries. The project does not bui
 Alternatives I examined:
 - Perplexity's Q2D-Web paper (Schall et al., 2026) studies agent-written queries at 190M-document scale. Its corpus, queries, and labels are private; only a leaderboard for open-weight models is public, so an outside engineer cannot inspect the data or rerun the experiments. The paper proposes, as future work, testing whether BM25 adds value to a hybrid ensemble compared with a neural-only ensemble of the same size; my Experiment 2 will run that test at small scale on public data.
 - MS MARCO passage dev/small, which I loaded and measured, has human-written queries only and sparse labels (about 1.07 correct passages per query across the full dev/small set (6,980 queries)).
-What mine does: it lets an engineer choosing a retriever for an agentic RAG system rerun a human-vs-agent query comparison on public data, on one laptop, with every number traceable to a results file.
+What mine does: it will let an engineer choosing a retriever for an agentic RAG system rerun a human-vs-agent query comparison on public data, on one laptop, with every number traceable to a results file.
 
 ## 3. Who opens it, and what do they do in the first 60 seconds?
 Reader: a hiring manager or engineer screening candidates for ML/AI engineering roles.
