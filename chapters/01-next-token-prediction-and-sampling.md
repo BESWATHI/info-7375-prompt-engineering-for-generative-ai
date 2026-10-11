@@ -1,4 +1,4 @@
-# Chapter 1 — Randomness and first prompts
+# Chapter 1 — Next-token prediction and sampling
 
 *The answer changed. First, find out what you actually measured.*
 

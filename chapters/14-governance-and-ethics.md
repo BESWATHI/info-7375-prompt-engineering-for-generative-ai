@@ -1,4 +1,4 @@
-# Chapter 14 — Team Governance and Applied Ethics
+# Chapter 14 — Governance and ethics
 
 Every field is filled. Nobody is responsible.
 

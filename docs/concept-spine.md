@@ -119,11 +119,11 @@ Filenames are under each book's `chapters/` directory (`../info-7375-conducting-
 
 ## 8. Chapter map: the concept each chapter now carries
 
-| Ch | Technical core (unchanged) | Conduct: the gate | Check: the sign-off | Drive: the driver's seat |
+| Ch | Chapter title | Conduct: the gate | Check: the sign-off | Drive: the driver's seat |
 |---|---|---|---|---|
-| 1 | Next-token prediction, softmax, temperature, sampling | You set the experiment: scores, temperature, count, seed. Claude does not choose what is being measured | Probability is not frequency is not correctness; repeatable is not true | Claude is Tier-1 superhuman at the continuation; you build the small version so you can audit it |
+| 1 | Next-token prediction and sampling | You set the experiment: scores, temperature, count, seed. Claude does not choose what is being measured | Probability is not frequency is not correctness; repeatable is not true | Claude is Tier-1 superhuman at the continuation; you build the small version so you can audit it |
 | 2 | Prompt contracts and evaluation | The contract is written for the consumer before any prompt is tried | A structural pass names the obligation it passed, no more | What counts as acceptable is a judgment, not a field |
-| 3 | Chat, assistant, agent | Choose sufficient autonomy before granting capability | Capability is not authority; read the trace | Authority and accountability stay with the person |
+| 3 | Chat, assistant, and agent | Choose sufficient autonomy before granting capability | Capability is not authority; read the trace | Authority and accountability stay with the person |
 | 4 | The agent loop | Exits, budgets and stop conditions are designed, not discovered | A finished wrong answer; finish is not success | Which stops are Claude's to take |
 | 5 | Tools and permissions | The permission policy is a design constraint | An authorized change can still be a bad change | Who may do what is a human decision |
 | 6 | Claude Code and diff review | Reproduce and write the test before the patch | Accept / revise / reject on evidence, not on Claude's last sentence | The scope decision and the merge are yours |

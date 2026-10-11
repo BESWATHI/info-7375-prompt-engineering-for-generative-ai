@@ -1,4 +1,4 @@
-# Chapter 9 — Training mechanics and Claude configuration
+# Chapter 9 — Training and configuration
 *Changing what the model sees is not changing what the model is.*
 
 Suppose you upload documents, revise a system prompt, and get a better answer. A teammate writes it up as "we trained Claude on our policies." Something did change: the input available during that interaction. But the verb carries a claim about *what* changed, and that claim decides what happens next. If the change was training, the improvement lives in parameters, costs a training run to reproduce, and sits in whatever artifact holds those parameters. If it was a prompt, it lives in a text file you can diff and copy into another project. If it was retrieval, it lives in a corpus and a selection step, and it disappears when the corpus does. Training changes parameters through an objective and an update rule. Prompting and retrieval change the information supplied to an already configured model for inference. One word is hiding three different things to maintain, audit, and pay for.

@@ -1,4 +1,4 @@
-# Chapter 15 — Supervised Agentic Capstone
+# Chapter 15 — Supervised capstone
 
 Ten files contain sixty copied `x` characters each. The packet validator passes.
 

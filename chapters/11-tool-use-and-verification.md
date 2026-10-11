@@ -1,4 +1,4 @@
-# Chapter 11 — Claude Tool Use and Verification
+# Chapter 11 — Tool use and verification
 
 *A result can match its request exactly and still not support the sentence built on it.*
 

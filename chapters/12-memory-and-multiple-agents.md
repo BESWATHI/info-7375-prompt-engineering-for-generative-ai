@@ -1,4 +1,4 @@
-# Chapter 12 — Memory and Multiple Agents
+# Chapter 12 — Memory and multiple agents
 
 *A write can be valid and still not believable. Decide what reopens before the workers start.*
 

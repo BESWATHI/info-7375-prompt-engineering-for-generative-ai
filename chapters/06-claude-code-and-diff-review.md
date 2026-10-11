@@ -1,4 +1,4 @@
-# Chapter 6 — Claude Code and evidence-based diff review
+# Chapter 6 — Claude Code and diff review
 *The patch is small. The claim attached to it may not be.*
 
 Suppose a function should add one to its input. The current version subtracts one. A proposed patch makes the visible regression test pass, and the changed line looks pleasantly short. There is only one problem: the patch returns the constant three. It works for the test input two and fails for five. Nothing about the patch's size reveals the defect. Nothing about one green test proves the intended rule has been restored.

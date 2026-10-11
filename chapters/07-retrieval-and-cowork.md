@@ -1,4 +1,4 @@
-# Chapter 7 — Context retrieval and Claude Cowork
+# Chapter 7 — Retrieval and Cowork
 *The nearest passage may still fail to answer the question.*
 
 Suppose a corpus contains a document saying “Office hours by appointment.” The query is “office hours.” Our small retriever ranks that document highly. The result feels satisfying because the shared words are visible. Now change the query to “tuition refund” and put the phrase “fee reimbursement” in the only relevant document. A human reader can see the relationship. The retriever returns nothing because its representation sees no shared token.

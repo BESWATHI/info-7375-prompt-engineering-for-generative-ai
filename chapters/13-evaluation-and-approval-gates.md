@@ -1,4 +1,4 @@
-# Chapter 13 — Evaluation and Human Approval Gates
+# Chapter 13 — Evaluation and approval gates
 
 *An approval can survive after the thing it approved has disappeared.*
 

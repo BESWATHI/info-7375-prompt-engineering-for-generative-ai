@@ -1,4 +1,4 @@
-# Chapter 5 — Tools, permissions, and boundaries
+# Chapter 5 — Tools and permissions
 *The path looks local. Where does it actually lead?*
 
 Suppose a tool is allowed to read files in a small course folder. A request arrives for `notes.txt`, which looks ordinary. Another arrives for `../notes.txt`, which asks to move to the parent before locating the file. A third names an entry inside the folder that is actually a symbolic link to somewhere outside it. All three are strings. Their spelling alone is not a sufficient account of the target the filesystem will use.
