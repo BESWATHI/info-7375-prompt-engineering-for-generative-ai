@@ -1,0 +1,599 @@
+{
+  "metadata": {
+    "slug": "final-project-pitch",
+    "title": "The Reallocation Engine Pitch",
+    "topic": "PITCH FILM",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Isaac (in for Bear)",
+    "voice": "am_puck",
+    "voice_kokoro": "am_puck",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Plain",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "German/Dutch (Hallo)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt",
+      "your-turn"
+    ],
+    "bookend_exempt_reason": "Pitch film structure. No your-turn required.",
+    "playlist": "INFO7375 Pitch",
+    "chapter_number": 1,
+    "tags": [
+      "Pitch",
+      "The Reallocation Engine"
+    ],
+    "build": {
+      "at": "2026-10-10T23:48:18",
+      "cut": "master",
+      "filled": 9,
+      "of": 9,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hallo. This is Isaac. I'm building an AI workflow for F-1 STEM OPT students. The question is: how do we stop AI from guessing visa sponsorships?",
+      "estimated_duration_s": 10.4,
+      "voice": "am_puck",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How do we stop AI from\nguessing visa sponsorships?",
+            "triggerWords": "guessing",
+            "replacementWords": "hallucinating",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "final-project-pitch",
+            "banner": ""
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question and corrects it.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 10.9,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 10.916666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T23:48:18"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "card",
+      "proof_gate": "SHOW",
+      "narration_text": "This is a command-line workflow that scores software development roles—from SWE to DevOps and QA—for F-1 STEM OPT students, outputting a clear Apply or Skip based on real visa data.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_puck",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "type"
+          },
+          {
+            "at": 0.6,
+            "event": "results"
+          }
+        ],
+        "remotion": {
+          "pattern": "ShowTellCard",
+          "props": {
+            "kind": "search",
+            "heading": "F-1 Tech Role Filter",
+            "sub": "SWE · DevOps · QA",
+            "word": "",
+            "onTwos": true,
+            "items": [
+              {
+                "label": "Software Engineer (SWE)",
+                "sub": "Backend / Systems · In-Scope",
+                "value": ""
+              },
+              {
+                "label": "DevOps / SRE Engineer",
+                "sub": "Cloud & CI/CD · In-Scope",
+                "value": ""
+              },
+              {
+                "label": "QA & Test Automation",
+                "sub": "Testing Frameworks · In-Scope",
+                "value": ""
+              },
+              {
+                "label": "Machine Learning / Data",
+                "sub": "Specialized · Configured Out",
+                "value": ""
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": "2026-10-11T03:42:53.180246+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 13.72,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 13.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "remotion:ShowTellCard",
+        "at": "2026-10-10T23:48:18"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "card",
+      "proof_gate": "SHOW",
+      "narration_text": "Instead of a black box AI that hallucinates sponsorship, this tool grounds every score in verified public filings. We verify historical DOL H-1B approval numbers and SEC Form D venture funding, giving students concrete proof behind every single pass or skip decision.",
+      "estimated_duration_s": 16.8,
+      "voice": "am_puck",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.22,
+            "event": "tab switches from AI to Evidence"
+          }
+        ],
+        "remotion": {
+          "pattern": "ShowTellCard",
+          "props": {
+            "kind": "tabs",
+            "heading": "Evidence > Black Box",
+            "sub": "H-1B Record Found",
+            "word": "",
+            "onTwos": true,
+            "labels": [
+              "Black-Box AI",
+              "Verified Data"
+            ],
+            "cues": [
+              0.22
+            ],
+            "items": [
+              {
+                "label": "ChatGPT Guess",
+                "value": "Hallucinated",
+                "sub": ""
+              },
+              {
+                "label": "Visa Sponsorship",
+                "value": "Unverified",
+                "sub": ""
+              },
+              {
+                "label": "Rejection Risk",
+                "value": "High",
+                "sub": ""
+              }
+            ],
+            "items2": [
+              {
+                "label": "DOL H-1B Filings",
+                "value": "15 Approved",
+                "sub": ""
+              },
+              {
+                "label": "SEC Form D (Series B)",
+                "value": "$24M Raised",
+                "sub": ""
+              },
+              {
+                "label": "True Sponsorship",
+                "value": "VERIFIED",
+                "sub": ""
+              }
+            ]
+          }
+        }
+      },
+      "actual_duration_s": 17.54,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 17.541666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T23:48:18"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "card",
+      "proof_gate": "SHOW",
+      "narration_text": "An F-1 student runs the CLI with a job URL. The pipeline extracts and cleans the company, title, and description, feeding them to the engine so the student gets a decision in under sixty seconds.",
+      "estimated_duration_s": 14.0,
+      "voice": "am_puck",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "workspace expands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ShowTellCard",
+          "props": {
+            "kind": "workspace",
+            "heading": "Job Extraction Pipeline",
+            "sub": "Paste URL -> Instant Decision",
+            "word": "",
+            "onTwos": true,
+            "items": [
+              {
+                "label": "1. Extract",
+                "value": "",
+                "sub": ""
+              },
+              {
+                "label": "2. Clean",
+                "value": "",
+                "sub": ""
+              },
+              {
+                "label": "3. Score",
+                "value": "",
+                "sub": ""
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": "2026-10-11T03:43:27.789015+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 13.01,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 13.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "remotion:ShowTellCard",
+        "at": "2026-10-10T23:48:18"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "card",
+      "proof_gate": "SHOW",
+      "narration_text": "It proves I can build source-grounded agent workflows: using prompt contracts to prevent hallucinations, phase gates to short-circuit bad roles, and automated evaluation suites to benchmark decision accuracy.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_puck",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "paths connect data to AI"
+          }
+        ],
+        "remotion": {
+          "pattern": "ShowTellCard",
+          "props": {
+            "kind": "paths",
+            "heading": "Source-Grounded Workflows",
+            "sub": "Prompt Contracts · Eval",
+            "word": "",
+            "onTwos": true,
+            "items": [
+              {
+                "label": "Job URL",
+                "value": "",
+                "sub": ""
+              },
+              {
+                "label": "Phase Gates",
+                "value": "",
+                "sub": ""
+              },
+              {
+                "label": "Decision",
+                "value": "",
+                "sub": ""
+              },
+              {
+                "label": "DOL & SEC",
+                "value": "",
+                "sub": ""
+              },
+              {
+                "label": "Eval Suite",
+                "value": "",
+                "sub": ""
+              }
+            ]
+          }
+        }
+      },
+      "actual_duration_s": 13.27,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 13.291666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T23:48:18"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "card",
+      "proof_gate": "SHOW",
+      "narration_text": "It includes a lightweight hash-tracker for duplicates, but it is deliberately not an auto-apply bot. The first piece to run is the sponsor lookup, verifying company names against actual H-1B filing records.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_puck",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "stack of features"
+          }
+        ],
+        "remotion": {
+          "pattern": "ShowTellCard",
+          "props": {
+            "kind": "stack",
+            "heading": "Project Scope",
+            "sub": "Sponsor Lookup",
+            "word": "",
+            "onTwos": true,
+            "items": [
+              {
+                "label": "Sponsor Lookup",
+                "value": "FIRST (Core)",
+                "sub": ""
+              },
+              {
+                "label": "Hash Deduplication",
+                "value": "NEXT (UX)",
+                "sub": ""
+              },
+              {
+                "label": "Auto-Apply Bot",
+                "value": "OUT OF SCOPE",
+                "sub": ""
+              }
+            ]
+          }
+        }
+      },
+      "actual_duration_s": 13.4,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 13.416666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T23:48:18"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "card",
+      "proof_gate": "SHOW",
+      "narration_text": "To prevent false rejections, the AI must quote exact proof. And to cut UX friction, a background hash tracker skips duplicate postings, so students never waste time re-evaluating the same job.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_puck",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "drops in list of duplicate postings skipped"
+          }
+        ],
+        "remotion": {
+          "pattern": "ShowTellCard",
+          "props": {
+            "kind": "dashboard",
+            "heading": "Duplicate Postings Filtered (SHA-256)",
+            "sub": "Background Hash Cache · Zero Wasted Evaluations",
+            "word": "3",
+            "onTwos": true,
+            "items": [
+              {
+                "label": "Meta — Software Engineer (Backend)",
+                "value": "SKIP",
+                "sub": "Hash: 7f2a9c1e · Match Found in Cache"
+              },
+              {
+                "label": "Amazon — DevOps / SRE Engineer",
+                "value": "SKIP",
+                "sub": "Hash: 3c1b84e0 · Match Found in Cache"
+              },
+              {
+                "label": "Stripe — Infrastructure Engineer",
+                "value": "SKIP",
+                "sub": "Hash: 9e4d01b8 · Match Found in Cache"
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": "2026-10-11T03:24:12.105109+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 12.89,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 12.916666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "remotion:ShowTellCard",
+        "at": "2026-10-10T23:48:18"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "card",
+      "proof_gate": "SHOW",
+      "narration_text": "I used to trust AI blindly. I'm showing off the open friction logs and provenance tags that prove my AI workflow to any reviewer, while learning to replace naive prompt-pasting with strict verification gates.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_puck",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "lens focuses on model judgment"
+          }
+        ],
+        "remotion": {
+          "pattern": "ShowTellCard",
+          "props": {
+            "kind": "focus",
+            "heading": "Audit Trail & Provenance",
+            "sub": "Friction Logs · Provenance Tags",
+            "word": "",
+            "onTwos": true,
+            "items": [
+              {
+                "label": "[record] DOL H-1B",
+                "value": "15 Approved",
+                "sub": ""
+              },
+              {
+                "label": "[record] SEC Form D",
+                "value": "$24M Raised",
+                "sub": ""
+              },
+              {
+                "label": "[model-judgment]",
+                "value": "Quote Proof",
+                "sub": ""
+              },
+              {
+                "label": "FRICTIONAL.md Log",
+                "value": "Auditable",
+                "sub": ""
+              }
+            ],
+            "focus": 2
+          }
+        }
+      },
+      "actual_duration_s": 13.65,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 13.666666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T23:48:18"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "The Reallocation Engine Pitch. Isaac Tai.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_puck",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Reallocation Engine Pitch",
+            "slug": "final-project-pitch",
+            "handle": "@IsaacTai",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-10-11T03:24:33.159736+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 2.65,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 2.6666666666666665,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-10-10T23:48:18"
+      }
+    }
+  ]
+}
