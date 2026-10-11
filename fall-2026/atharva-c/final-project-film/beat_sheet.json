@@ -17,7 +17,7 @@
   {
    "beat_id": "B00",
    "act": "what is it",
-   "narration_text": "I'm Atharva, and I want to be hired as a data engineer. My final project will be called Seeded Faults: a Claude Code workflow that writes data-quality tests for a table, and then checks whether those tests actually catch problems.",
+   "narration_text": "Hi, I'm Atharva, and I'm aiming for a job as a data engineer. So for my final project, I want to build something called Seeded Faults. The idea is simple: Claude Code writes data-quality tests for a table, and then I check whether those tests actually catch anything.",
    "estimated_duration_s": 14,
    "new_visual_element": "A single table icon with a row of checkmarks beside it, one checkmark drawn with a question mark",
    "shot": {
@@ -29,7 +29,7 @@
   {
    "beat_id": "B01",
    "act": "what is it",
-   "narration_text": "When it's done, it will be a public GitHub repository: a fault-injection script, a small dbt project on DuckDB, the prompt contract Claude follows, an evaluation log, and a write-up of what the tests missed. None of that exists yet. Today there's this plan and one small test I ran by hand.",
+   "narration_text": "By the end, it'll be a public GitHub repo. There'll be a script that plants faults in the data, a small dbt project running on DuckDB, the prompt contract Claude has to follow, an evaluation log, and a write-up of everything the tests missed. To be clear, none of that exists yet. Right now I have this plan, and one small test I ran by hand.",
    "estimated_duration_s": 17,
    "new_visual_element": "Repository folder tree drawn as boxes; each box stamped 'WILL EXIST'",
    "shot": {
@@ -42,7 +42,7 @@
   {
    "beat_id": "B02",
    "act": "why care",
-   "narration_text": "Here's the problem. When you add tests to a new table, they pass on clean data, and that feels like safety. But a test that has never failed hasn't proven anything. My guess is that AI-written tests make this worse, because they look complete. That's what I want to measure.",
+   "narration_text": "So why bother? Think about the last time you added tests to a new table. They pass on clean data, and it feels safe. But a test that's never failed hasn't really proven anything. My guess is that AI-written tests make this worse, because they look so complete. That's exactly what I want to measure.",
    "estimated_duration_s": 15,
    "new_visual_element": "Green 'all tests passed' badge, with a crack running through it",
    "shot": {
@@ -54,7 +54,7 @@
   {
    "beat_id": "B03",
    "act": "why care",
-   "narration_text": "I looked at tools data engineers already use. In Great Expectations, version 1.24, I wrote each check by hand. When I planted fifty missing values, my check caught all fifty. dbt gave the same result with tests I wrote in YAML, and the dbt-expectations package adds more test types, but you still write them yourself. In each case, a test only checks what you thought to write. None of them told me what my tests would miss. That score is what Seeded Faults will add.",
+   "narration_text": "Before pitching this, I tried the tools data engineers already use. In Great Expectations, version 1.24, I wrote every check myself. I planted fifty missing values, and my check caught all fifty. dbt did the same with tests I wrote in YAML. The dbt-expectations package gives you more test types, but you still write them by hand. Every time, a test only checked what I'd thought to write. Nothing told me what I'd missed. That missing score is what Seeded Faults will add.",
    "estimated_duration_s": 26,
    "new_visual_element": "Three tool boxes (Great Expectations, dbt, dbt-expectations), each with a hand-written checklist; a fourth box with a caught/missed scoreboard",
    "shot": {
@@ -67,7 +67,7 @@
   {
    "beat_id": "B04",
    "act": "who opens it",
-   "narration_text": "The reader is a data engineering hiring manager. In the first sixty seconds, they open the README and see one table: every planted fault, caught or missed, and why. One command reproduces it.",
+   "narration_text": "So who's this for? A hiring manager on a data engineering team. In the first minute, they open the README and see one table: every fault I planted, whether it was caught, and why not if it wasn't. And one command reruns the whole thing.",
    "estimated_duration_s": 14,
    "new_visual_element": "Mock README with a caught/missed table — rows blank or clearly placeholder",
    "shot": {
@@ -80,7 +80,7 @@
   {
    "beat_id": "B05",
    "act": "what it proves",
-   "narration_text": "It will show the skills this course teaches: a written prompt contract, verification instead of trust, and an evaluation you can rerun. And it will show data engineering: SQL, dbt, and thinking about keys and grain. The evidence will be the log in the repo, not a claim in this film.",
+   "narration_text": "What will that tell them about me? It'll show the skills from this course: a written prompt contract, checking Claude's work instead of trusting it, and an evaluation anyone can rerun. It'll also show the data engineering side: SQL, dbt, and thinking about keys and grain. And the proof will be the log in the repo, not me saying so in this video.",
    "estimated_duration_s": 18,
    "new_visual_element": "Three linked icons: contract, magnifier, repeat-loop; arrow to a log file",
    "shot": {
@@ -92,7 +92,7 @@
   {
    "beat_id": "B06",
    "act": "in out first",
-   "narration_text": "In scope: one public table of New York City taxi trips, a fixed catalogue of about fifteen to twenty fault types, and the generated tests. Out of scope: it will not repair data or touch a live warehouse. The first thing I'll build is a fault-injection script that covers the whole catalogue. You'll know it ran when the eval command prints a caught-or-missed table.",
+   "narration_text": "To keep it finishable, the scope is tight. One public table of New York City taxi trips, a fixed list of fifteen to twenty fault types, and the tests Claude generates. It won't repair data, and it won't touch a live warehouse. The first thing I'll build is a script that plants every fault on that list. You'll know it worked when the eval command prints a caught-or-missed table.",
    "estimated_duration_s": 22,
    "new_visual_element": "A box split IN / OUT; a '1' badge on the fault-injection script",
    "shot": {
@@ -104,7 +104,7 @@
   {
    "beat_id": "B07",
    "act": "risk",
-   "narration_text": "What could sink it: Claude might write tests that pass everything and catch little, or tests so strict they flag clean data. So I'll measure false alarms on clean data as well as catches, and I'll fix the fault list before generating any tests, so I can't tune one to the other.",
+   "narration_text": "Now, what could sink it? Claude might write tests that pass everything and catch almost nothing, or tests so strict they flag perfectly clean data. So I'll count false alarms on clean data, not just catches. And I'll lock the fault list before Claude writes a single test, so I can't quietly tune one to fit the other.",
    "estimated_duration_s": 18,
    "new_visual_element": "A balance: 'missed faults' on one side, 'false alarms' on the other",
    "shot": {
@@ -116,7 +116,7 @@
   {
    "beat_id": "B08",
    "act": "why this project",
-   "narration_text": "Why this project? It's a mix. I already work with SQL and data pipelines. You can open my Crime Rate Management System on GitHub: an Oracle database I built on my own, with its own testing script. What's new for me is prompt contracts, evaluating an AI's output, and fault injection.",
+   "narration_text": "Why this project? Honestly, it's a mix. SQL and data pipelines are things I already do, and you can check that: my Crime Rate Management System is on GitHub. It's an Oracle database I built on my own, with its own testing script. The new part for me is prompt contracts, evaluating what an AI produces, and fault injection.",
    "estimated_duration_s": 18,
    "new_visual_element": "Two columns: 'already have' (with a drawn repo card labelled DMDD_FinalProject) and 'learning'",
    "shot": {
@@ -129,7 +129,7 @@
   {
    "beat_id": "B09",
    "act": "close",
-   "narration_text": "So that's Seeded Faults: tests for your data, tested. The project isn't built yet. The first step is the fault-injection script, and the log of how it goes will be in the repository.",
+   "narration_text": "So that's Seeded Faults: tests for your data, tested. It isn't built yet. Next up is the fault-injection script, and how it goes, good or bad, will be in the repo's log.",
    "estimated_duration_s": 12,
    "new_visual_element": "The cracked badge from B02, now beside a scoreboard with empty rows",
    "shot": {

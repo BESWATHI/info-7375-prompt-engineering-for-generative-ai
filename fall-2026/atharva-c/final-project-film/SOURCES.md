@@ -11,6 +11,8 @@
 
 ## What Claude contributed
 - **2026-10-09, Claude Code (Opus 5.5):** suggested three project options from my stated target roles; I chose "Seeded Faults". Drafted PROJECT-BRIEF.md, beat_sheet.json and the scaffolding for README, BUILD-PROMPT, SOURCES and FRICTIONAL. I am responsible for checking and rewriting all of it.
+- **2026-10-09–10, Claude Code:** wrote the sandbox scripts (`ge_try.py`, `ge_fault.py`, the `dbt_try` project) that I ran; read and summarised the dbt-expectations README, which I checked against the page; made the honesty fixes to B01, B02, B06 and B09.
+- **2026-10-10, Claude Code:** at my request, rewrote all ten narration beats so they flow from one to the next and sound conversational. Facts and tense were kept the same. Lines I changed afterwards in my own words: _list them here_.
 - _Add any later contributions with dates._
 
 ## Third-party assets
