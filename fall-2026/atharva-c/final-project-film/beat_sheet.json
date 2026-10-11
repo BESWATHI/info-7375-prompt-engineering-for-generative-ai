@@ -29,7 +29,7 @@
   {
    "beat_id": "B01",
    "act": "what is it",
-   "narration_text": "By the end, it'll be a public GitHub repo. There'll be a script that plants faults in the data, a small dbt project running on DuckDB, the prompt contract Claude has to follow, an evaluation log, and a write-up of everything the tests missed. To be clear, none of that exists yet. Right now I have this plan, and one small test I ran by hand.",
+   "narration_text": "By the end, it'll be a public GitHub repo. There'll be a script that plants faults in the data, a small dbt project running on DuckDB, the prompt contract that Claude follows, an evaluation log, and a write-up of everything the tests missed. To be clear, none of that exists yet. Right now I have this plan, and one small test I ran by hand.",
    "estimated_duration_s": 17,
    "new_visual_element": "Repository folder tree drawn as boxes; each box stamped 'WILL EXIST'",
    "shot": {
@@ -92,7 +92,7 @@
   {
    "beat_id": "B06",
    "act": "in out first",
-   "narration_text": "To keep it finishable, the scope is tight. One public table of New York City taxi trips, a fixed list of fifteen to twenty fault types, and the tests Claude generates. It won't repair data, and it won't touch a live warehouse. The first thing I'll build is a script that plants every fault on that list. You'll know it worked when the eval command prints a caught-or-missed table.",
+   "narration_text": "To keep it finishable, the scope is tight. One public table of New York City taxi trips, a fixed list of fifteen to twenty fault types, and the tests written by Claude. It won't repair data, and it won't touch a live warehouse. The first thing I'll build is a script that plants every fault on that list. You'll know it worked when the eval command prints a table of what was caught and what was missed.",
    "estimated_duration_s": 22,
    "new_visual_element": "A box split IN / OUT; a '1' badge on the fault-injection script",
    "shot": {
