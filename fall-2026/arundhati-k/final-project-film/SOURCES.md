@@ -30,11 +30,14 @@ disclosure here and in README.md.)
 ## What Claude (Claude Code, Opus 5.5) contributed
 
 - Sketched three candidate projects; drafted PROJECT-BRIEF.md except §7 (mine).
-- Wrote the narration draft, `make_sheet.py`, `scenes.py` (fourteen drawings on the toolkit's kit), FACTCHECK.md,
+- Wrote the narration draft, `make_sheet.py`, `scenes.py` (sixteen drawings on the toolkit's kit), FACTCHECK.md,
   SHOTLIST.md, PROMPTS.md, this file, README.md and BUILD-PROMPT.md.
 - **Ran the USCIS H-1B Employer Data Hub search on my instruction** (2026-10-12, its built-in browser): read
   the filter list and the FY2026 employer names for "MELLON" and "JPMORGAN"; recorded in
   `evidence/uscis-hub-search-2026-10-12.md`. It drafted B05/B05A and PROJECT-BRIEF §2 from that record. I approved it in chat ("OK..DO IT", 2026-10-12).
+- **Ran the first 6 evaluation rows on my instruction** (2026-10-12): wrote `evidence/eval_first_rows.py`, which
+  imports my recipe's matcher unchanged, and searched each company in the USCIS hub; table in
+  `evidence/eval-first-rows-2026-10-12.md`. The six companies were my choice.
 - Re-ran my recipe and tests on 2026-10-10 (`evidence/recipe-rerun-2026-10-10.txt`).
 - Diagnosed the setup failures, fixed two mispronunciations found by a whisper transcript, and made a
   local edit to the toolkit's outro card so it shows my name instead of the instructor's handle.

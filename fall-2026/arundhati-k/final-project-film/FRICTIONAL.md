@@ -83,3 +83,10 @@ Dated entries, appended as I work. Nothing above a later entry is rewritten.
 - **The film was silently left out of the first commit.** The course repo's `.gitignore` ignores `*.mp4`, so
   `git add` on the folder skipped it with no warning. Caught by reading the staged file list; fixed with
   `git add -f` (as classmates' committed films show is the norm) and an amend before pushing.
+- **First 6 evaluation rows ran (2026-10-12, ~18:45).** I asked Claude to run my six companies (PayPal, Visa,
+  Goldman Sachs, Mastercard, BlackRock, LSEG) through my recipe's matcher and the USCIS hub. 6/6 in the hub, 0/6 with
+  a record in my dataset. It also exposed a defect I had not predicted: `norm_name` strips "CO"/"LLC" but not "AND",
+  so "GOLDMAN SACHS AND CO LLC" → "GOLDMAN SACHS AND". "LSEG" finds nothing in the hub; only the legal name does.
+  The browser pane had closed between sessions, so the first click failed until it was reopened.
+  Film updated: B07 now says the first rows ran (past tense), new B07A shows the bug. Kokoro fused "and Co into" into
+  "and cointer"; reworded. Runtime ~3:50.

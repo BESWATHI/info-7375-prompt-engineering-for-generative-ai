@@ -101,10 +101,14 @@ B = [
       "so a missing bank becomes a real answer or an honest unknown.",
       "B06_Second", "A second page slides under the gapped page and fills the hole; tag 'PLANNED'.",
       [{"at": 0.2, "event": "second page slides in"}, {"at": 0.62, "event": "gap filled"}]),
- beat("B07", "And an evaluation. I will check twenty-five real companies by hand against public records, and compare each one to the tool's answer. "
-      "That comparison is the first thing I will make run. You'll know it ran when the table of matches and mismatches is committed, with its date.",
-      "B07_Eval", "A grid of twenty-five small boxes; a hand-check marks each with a tick or a cross; tag 'PLANNED'.",
-      [{"at": 0.15, "event": "grid"}, {"at": 0.62, "event": "ticks and crosses"}]),
+ beat("B07", "And an evaluation. The first six of twenty-five rows ran on October twelfth. All six companies file in the official hub. "
+      "My dataset had a sponsorship record for none of them, and the tool said unknown every time, not zero.",
+      "B07_Eval", "A grid of twenty-five company squares; the first six fill grey and their rows land in the results table; the rest stay empty; tag '6 RAN · 2026-10-12 · 19 PLANNED'.",
+      [{"at": 0.15, "event": "grid"}, {"at": 0.3, "event": "six squares fill, six rows land"}, {"at": 0.62, "event": "magnifier moves to square seven"}]),
+ beat("B07A", "The check also found a real bug. The hub lists Goldman Sachs and Co, L L C. My name matcher shortens that to Goldman Sachs and, which would never match. "
+      "That gets fixed before the hub is joined. The other nineteen rows are next.",
+      "B07A_Bug", "The hub's name 'GOLDMAN SACHS AND CO LLC', an arrow, and the matcher's output 'GOLDMAN SACHS AND' with a cross; tag 'FOUND · 2026-10-12'.",
+      [{"at": 0.15, "event": "hub name"}, {"at": 0.3, "event": "arrow and matcher output"}, {"at": 0.62, "event": "cross"}]),
  beat("B08", "The risk that could sink it is names. B N Y Mellon, and The Bank of New York Mellon, may be one employer or two. "
       "A wrong match turns a sponsor into unknown, or borrows another company's record. So the tool will not guess. "
       "It will show the candidates to a person, and I will report how many of the twenty-five needed one.",

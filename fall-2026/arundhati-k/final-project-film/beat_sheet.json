@@ -37,10 +37,10 @@
       "evaluation"
     ],
     "build": {
-      "at": "2026-10-12T18:22:33",
+      "at": "2026-10-12T18:48:09",
       "cut": "master",
-      "filled": 18,
-      "of": 18,
+      "filled": 19,
+      "of": 19,
       "slates": [],
       "skin_warnings": [
         "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
@@ -85,10 +85,6 @@
             "seed": "coop-sponsor-check-pitch",
             "banner": "",
             "durationSeconds": 14.53
-          },
-          "rendered": {
-            "out": "media/BIDEA.mp4",
-            "at": "2026-10-12T22:19:24.295490+00:00"
           }
         }
       },
@@ -104,8 +100,8 @@
       "build": {
         "status": "VIDEO",
         "src": "media/BIDEA.mp4",
-        "filled_by": "remotion:BrutalistHesitantWriter",
-        "at": "2026-10-12T18:22:33"
+        "filled_by": "media",
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -168,7 +164,7 @@
         "status": "VIDEO",
         "src": "media/BDEFS.mp4",
         "filled_by": "media",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -210,7 +206,7 @@
         "status": "MANIM",
         "src": "manim/B00.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -256,7 +252,7 @@
         "status": "MANIM",
         "src": "manim/B01.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -298,7 +294,7 @@
         "status": "MANIM",
         "src": "manim/B02.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -340,7 +336,7 @@
         "status": "MANIM",
         "src": "manim/B03.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -382,7 +378,7 @@
         "status": "MANIM",
         "src": "manim/B04.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -424,7 +420,7 @@
         "status": "MANIM",
         "src": "manim/B05.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -466,7 +462,7 @@
         "status": "MANIM",
         "src": "manim/B05A.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -508,7 +504,7 @@
         "status": "MANIM",
         "src": "manim/B06.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -516,41 +512,91 @@
       "act": "show-tell",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "And an evaluation. I will check twenty-five real companies by hand against public records, and compare each one to the tool's answer. That comparison is the first thing I will make run. You'll know it ran when the table of matches and mismatches is committed, with its date.",
-      "estimated_duration_s": 19.2,
+      "narration_text": "And an evaluation. The first six of twenty-five rows ran on October twelfth. All six companies file in the official hub. My dataset had a sponsorship record for none of them, and the tool said unknown every time, not zero.",
+      "estimated_duration_s": 16.0,
       "voice": "bf_emma",
       "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "A grid of twenty-five small boxes; a hand-check marks each with a tick or a cross; tag 'PLANNED'.",
+        "visual_intent": "A grid of twenty-five company squares; the first six fill grey and their rows land in the results table; the rest stay empty; tag '6 RAN · 2026-10-12 · 19 PLANNED'.",
         "show": [
           {
             "at": 0.15,
             "event": "grid"
           },
           {
+            "at": 0.3,
+            "event": "six squares fill, six rows land"
+          },
+          {
             "at": 0.62,
-            "event": "ticks and crosses"
+            "event": "magnifier moves to square seven"
           }
         ],
         "manim": {
           "class": "B07_Eval"
         },
-        "motion_claim": "A grid of twenty-five small boxes; a hand-check marks each with a tick or a cross; tag 'PLANNED'."
+        "motion_claim": "A grid of twenty-five company squares; the first six fill grey and their rows land in the results table; the rest stay empty; tag '6 RAN · 2026-10-12 · 19 PLANNED'."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 15.168,
+      "actual_duration_s": 12.97,
       "audio_file": "mp3/beat-B07.mp3",
-      "render_duration_s": 15.208333333333334,
+      "render_duration_s": 13.0,
       "build": {
         "status": "MANIM",
         "src": "manim/B07.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
+      }
+    },
+    {
+      "beat_id": "B07A",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The check also found a real bug. The hub lists Goldman Sachs and Co, L L C. My name matcher shortens that to Goldman Sachs and, which would never match. That gets fixed before the hub is joined. The other nineteen rows are next.",
+      "estimated_duration_s": 17.6,
+      "voice": "bf_emma",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The hub's name 'GOLDMAN SACHS AND CO LLC', an arrow, and the matcher's output 'GOLDMAN SACHS AND' with a cross; tag 'FOUND · 2026-10-12'.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "hub name"
+          },
+          {
+            "at": 0.3,
+            "event": "arrow and matcher output"
+          },
+          {
+            "at": 0.62,
+            "event": "cross"
+          }
+        ],
+        "manim": {
+          "class": "B07A_Bug"
+        },
+        "motion_claim": "The hub's name 'GOLDMAN SACHS AND CO LLC', an arrow, and the matcher's output 'GOLDMAN SACHS AND' with a cross; tag 'FOUND · 2026-10-12'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 13.31,
+      "audio_file": "mp3/beat-B07A.mp3",
+      "render_duration_s": 13.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07A.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -592,7 +638,7 @@
         "status": "MANIM",
         "src": "manim/B08.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -634,7 +680,7 @@
         "status": "MANIM",
         "src": "manim/B09.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -680,7 +726,7 @@
         "status": "MANIM",
         "src": "manim/B10.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -722,7 +768,7 @@
         "status": "MANIM",
         "src": "manim/B11.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -764,7 +810,7 @@
         "status": "MANIM",
         "src": "manim/B11A.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -819,7 +865,7 @@
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
         "filled_by": "media",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     },
     {
@@ -860,7 +906,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-10-12T18:22:33"
+        "at": "2026-10-12T18:48:09"
       }
     }
   ]

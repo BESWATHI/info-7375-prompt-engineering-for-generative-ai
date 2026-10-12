@@ -15,7 +15,10 @@ Rule: past tense only for what exists and is shown in evidence; everything else 
 | 8 | B04 | 17 tests passed at build and on re-run October tenth; tag "17 / 17" | PASS | TEST-REPORT §5 (2026-10-03); evidence/recipe-rerun-2026-10-10.txt "Ran 17 tests … OK" | — |
 | 9 | B04 | Six failure cases incl. a fake posting and two names that may be one firm | PASS | TEST-REPORT §4: F1–F6; F6 fake Databricks id; F3 SoFi `ambiguous` | — |
 | 10 | B06 | A second public data source | EXEMPT | proposal, spoken as "will exist"; tag PLANNED on screen | — |
-| 11 | B07 | 25 companies checked by hand; first thing made to run; committed table with date | EXEMPT | proposal ("will"); tag PLANNED; table drawn empty, no results shown | — |
+| 11 | B07 | The first six of twenty-five rows ran on October twelfth | PASS | evidence/eval-first-rows-2026-10-12.md + eval-first-rows-dataset-2026-10-12.json | tag "6 RAN · 2026-10-12 · 19 PLANNED"; run by Claude on my instruction |
+| 26 | B07 | All six companies file in the official hub; dataset had a record for none; tool said unknown, not zero, every time | PASS | same files: hub FY2026 name lists for all six; statuses 5× not-in-dataset, 1× no-sponsorship-record (both reported as unknown by design) | "file in" = listed as an FY2026 petitioner |
+| 27 | B07A | Hub lists "Goldman Sachs and Co LLC"; my matcher shortens it to "Goldman Sachs and" | PASS | `norm_name("GOLDMAN SACHS AND CO LLC")` → "GOLDMAN SACHS AND" (printed 2026-10-12; recipe at 03784b0) | — |
+| 28 | B07A | Fixed before the hub is joined; other nineteen rows next | EXEMPT | plan ("gets fixed", "next"); not claimed as done | — |
 | 12 | B08 | "BNY Mellon" and "The Bank of New York Mellon" may be one employer or two | PASS | stated as a possibility, not a finding; gate G2 human check exists today (CHANGE-BRIEF §3) | — |
 | 13 | B09 | Will not give immigration advice; every answer labelled record / judgment / your input | PASS | labels exist today: `test_every_scorer_term_is_labeled`; scope statement is a plan (PLANNED tag) | — |
 | 14 | B10 | Reader runs one command, sees unknown rows and a right/wrong table | EXEMPT | proposal; drawing tagged "CONSTRUCTED · not built yet"; ticks/crosses illustrative, no counts | — |

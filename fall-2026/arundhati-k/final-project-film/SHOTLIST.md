@@ -15,7 +15,8 @@ Cast kept across the film: the kraft company box, the data page, the gate.
 | B05 | hub search window, one row; 'job title' filter crossed out | row lands; cross draws | SEARCHED · uscis.gov · 2026-10-12 |
 | B05A | the four names the hub returned for 'Mellon' | names land; BNY markers, Carnegie cross | SEARCHED · uscis.gov · 2026-10-12 |
 | B06 | second page slides under the gapped page | gap fills | PLANNED |
-| B07 | 5×5 grid of companies; empty results table | magnifier lands on one square | PLANNED |
+| B07 | 5×5 company grid, first six filled; six rows in the results table | squares fill, rows land, magnifier moves to square seven | 6 RAN · 2026-10-12 · 19 PLANNED |
+| B07A | hub name → matcher output, crossed out | arrow grows; cross draws | FOUND · 2026-10-12 |
 | B08 | one box with two name labels pulling on it | "human check" box gets a tick | PLANNED |
 | B09 | stop sign; box with three grey label tags | tags clip on | PLANNED |
 | B10 | report window; right/wrong table | rows land; "?" row; marks appear | CONSTRUCTED · not built yet |

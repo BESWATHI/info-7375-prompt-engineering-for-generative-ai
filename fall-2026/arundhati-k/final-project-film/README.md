@@ -3,7 +3,7 @@
 - **Name:** Arundhati Kandelkar
 - **Working title:** Co-op Sponsor Check
 - **Target role:** software developer / full-stack developer
-- **Runtime:** 3:40 (219.5 s) · 3840×2160 · 24 fps · 18 beats · master SHA-256 `c6b16b6358de9e1df939c603ab1777e3ea7c4d359fcc42665050299d9516afda`
+- **Runtime:** 3:51 (230.6 s) · 3840×2160 · 24 fps · 19 beats · master SHA-256 `ee45cfdc797df54521505f0332d0be72fb57745832664e566350a0bbf4bb695a`
 - **Narration:** synthetic voice (Kokoro `bf_emma`, local, free) reading my script — not my recorded voice.
 - **Status:** pitch, not a build. What exists and what will exist are listed at the end of [PROJECT-BRIEF.md](PROJECT-BRIEF.md).
 
@@ -19,7 +19,7 @@
 | `FRICTIONAL.md` | dated log of what went wrong and what I did |
 | `FACTCHECK.md`, `SHOTLIST.md`, `PROMPTS.md` | the toolkit's required records |
 | `reports/` | gate reports: GATE T `TYPECHECK.md` (PASS), Gate V (0 blocker / 0 major), layout audit, verified.json |
-| `evidence/` | the 2026-10-10 re-run of my recipe that backs every past-tense claim |
+| `evidence/` | the 2026-10-10 recipe re-run, the 2026-10-12 USCIS hub search, and the **first 6 evaluation rows** (`eval-first-rows-2026-10-12.md`, script + raw output) |
 | `source/` | `make_sheet.py` and `scenes.py`, copied from the reel folder `youtube/coop-sponsor-check-pitch/` |
 | `SCRIPT-DRAFT.md` | the narration draft before it became the beat sheet |
 

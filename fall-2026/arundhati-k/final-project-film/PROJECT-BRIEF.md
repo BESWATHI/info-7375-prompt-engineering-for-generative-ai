@@ -57,8 +57,8 @@ could **not** conclude it is accurate for every company — the evaluation will 
 
 - **Out:** it will not give immigration or legal advice, and will not predict whether anyone gets an H-1B.
 - **In:** sponsorship *history* for software titles, from public government-derived data, with labels.
-- **First:** the 25-company evaluation set. *How you'll know it ran:* `eval.py` prints a table of tool answer
-  vs. my hand check for each company, plus totals, and that output is committed with its date.
+- **First:** the 25-company evaluation set. *How you'll know it ran:* a table of tool answer vs. hand check per
+  company, with totals, committed with its date. **The first 6 rows ran on 2026-10-12** (`evidence/`).
 
 ## 6. What could sink it?
 
@@ -94,11 +94,14 @@ It is **a mix** of showing and learning.
   covering the six failure cases F1–F6, re-run 2026-10-10 with the same results as 2026-10-03.
 - Gates G1–G5, including the human check for ambiguous company names (G2).
 - Finding: JPMorgan Chase, Goldman Sachs and Morgan Stanley are missing from the dataset.
+- **First 6 of 25 evaluation rows** (2026-10-12, `evidence/eval-first-rows-2026-10-12.md`): all six employers are
+  FY2026 petitioners in the USCIS hub, my dataset has a record for none, the tool said unknown every time, and the
+  check found a matcher defect ("…AND CO LLC" → "GOLDMAN SACHS AND").
 
 ## Will exist
 
 - A second public data source to cover companies missing from the first.
-- A 25-company evaluation set, hand-checked, with an evaluation log.
+- The remaining 19 evaluation rows, and a fix for the "AND" matcher defect.
 - Source citations on every "sponsors software" answer.
 - A failure analysis: where the tool was wrong and how I caught it.
 - A README written for a hiring manager, with a one-command demo.

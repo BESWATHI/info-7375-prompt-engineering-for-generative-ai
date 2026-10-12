@@ -500,20 +500,43 @@ class B06_Second(Scene):
 
 class B07_Eval(Scene):
     def construct(self):
-        grid = VGroup(*[Square(0.5, fill_color=BOX_TOP, fill_opacity=1, stroke_color="#917A55", stroke_width=3)
+        grid = VGroup(*[Square(0.5, fill_color=(BAR1 if i < 6 else BOX_TOP), fill_opacity=1, stroke_color="#917A55", stroke_width=3)
                         .move_to([-4.5 + 0.66 * (i % 5), 1.5 - 0.66 * (i // 5), 0]) for i in range(25)])
+        for sq in grid[:6]:
+            sq.set_fill(BOX_TOP)
         l1 = label("25 companies", -3.18, -2.2)
         tbl = Rectangle(width=4.4, height=3.2, fill_color=CARD, fill_opacity=1, stroke_color=BAR1, stroke_width=4).move_to([2.8, 0.2, 0])
         head = Rectangle(width=4.4, height=0.5, fill_color=BAR2, fill_opacity=1, stroke_width=0).move_to([2.8, 1.55, 0])
-        rows = VGroup(*[Line([0.9, y, 0], [4.7, y, 0], color=GHOST, stroke_width=6) for y in (0.8, 0.2, -0.4, -1.0)])
-        l2 = label("results table", 2.8, -1.95)
-        tg = tag("PLANNED")
-        self.play(FadeIn(tg), LaggedStart(*[FadeIn(s) for s in grid], lag_ratio=0.05), run_time=rt(self, 0.14))
-        self.play(FadeIn(l1), FadeIn(tbl), FadeIn(head), Create(rows), FadeIn(l2), run_time=rt(self, 0.12))
+        rows = VGroup(*[Rectangle(width=3.6, height=0.18, fill_color=BAR1, fill_opacity=1, stroke_width=0).move_to([2.8, 1.0 - 0.36 * k, 0]) for k in range(6)])
+        l2 = label("6 rows ran", 2.8, -1.95)
+        tg = tag("6 RAN · 2026-10-12 · 19 PLANNED")
+        self.play(FadeIn(tg), LaggedStart(*[FadeIn(s) for s in grid], lag_ratio=0.04), FadeIn(l1), run_time=rt(self, 0.12))
+        self.play(FadeIn(tbl), FadeIn(head), FadeIn(l2), *[s.animate.set_fill(BAR1) for s in grid[:6]], run_time=rt(self, 0.08))
+        self.play(LaggedStart(*[FadeIn(r) for r in rows], lag_ratio=0.2), run_time=rt(self, 0.12))
         to(self, 0.62)
-        lens = VGroup(Circle(radius=0.5, stroke_color=INK, stroke_width=7).move_to([-3.84, 0.84, 0]),
-                      Line([-3.49, 0.49, 0], [-3.0, 0.0, 0], color=INK, stroke_width=10))
-        self.play(Create(lens), GrowFromCenter(Dot([1.2, 0.8, 0], radius=0.09, color=TERRA)), run_time=rt(self, 0.1))
+        lens = VGroup(Circle(radius=0.45, stroke_color=INK, stroke_width=7).move_to([-3.84, 0.84, 0]),
+                      Line([-3.52, 0.52, 0], [-3.1, 0.1, 0], color=INK, stroke_width=10))
+        self.play(Create(lens), run_time=rt(self, 0.08))
+        finish(self)
+
+
+class B07A_Bug(Scene):
+    def construct(self):
+        a = T("GOLDMAN SACHS AND CO LLC", 48)
+        a.move_to([-5.6 + a.width / 2, 1.2, 0])
+        la = label("hub name", -5.6 + 1.0, 2.0, 40)
+        arr = Arrow([-3.6, 0.55, 0], [-3.6, -0.45, 0], color=INK, stroke_width=8, buff=0, max_tip_length_to_length_ratio=0.35)
+        b = T("GOLDMAN SACHS AND", 48)
+        b.move_to([-5.6 + b.width / 2, -1.1, 0])
+        lb = label("my matcher's output", -5.6 + 1.9, -1.95, 40)
+        tg = tag("FOUND · 2026-10-12")
+        self.play(FadeIn(tg), FadeIn(a), FadeIn(la), run_time=rt(self, 0.1))
+        self.play(GrowArrow(arr), FadeIn(b), FadeIn(lb), run_time=rt(self, 0.12))
+        to(self, 0.62)
+        cx, cy = 3.6, -1.1
+        x = VGroup(Line([cx - 0.45, cy - 0.45, 0], [cx + 0.45, cy + 0.45, 0], color=INK, stroke_width=10),
+                   Line([cx - 0.45, cy + 0.45, 0], [cx + 0.45, cy - 0.45, 0], color=INK, stroke_width=10))
+        self.play(Create(x), run_time=rt(self, 0.08))
         finish(self)
 
 
