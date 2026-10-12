@@ -61,3 +61,65 @@ first. I expect the final film to run over 3:00, and I expect 3 to 5
 fix-and-re-render rounds.
 Why: the topic is fairly complex, so I expect to need 3 to 5 iterations to get
 the pictures and the narration right.
+
+## 10/09/2026 — Toolkit friction before the first build
+What I tried: Smoke-tested the Brutalist toolkit and read its docs before
+building.
+What happened: The toolkit's own smoke test failed because its fixture's slug
+(_smoke) breaks the toolkit's slug rule. The show-tell reference example could
+not be built because its scenes.py is not shipped. No check is called "render
+integrity"; the closest are ./art final's verification and master_check.py,
+whose duration test is skipped because clock_check.py is missing. The docs
+disagree about whether the Kokoro model ships with the toolkit. My Mac's
+system Python (3.9.6) is too old, so the toolkit's .venv has to come first on
+PATH. After I updated the toolkit, show-tell appeared with defaults (a persona
+voice and a spoken credit outro) that conflict with the assignment's
+no-persona rule.
+What I did instead, or decided: Wrote my own scenes.py and sheet, used the
+af_bella voice with no persona or outro, treated ./art final, master_check.py
+and an ffprobe duration check together as my render-integrity check, and kept
+strict gates with no overrides.
+What I'd check next time: Run the full documented build on a tiny reel early,
+and read which checks get skipped.
+
+## 10/10/2026 — Build problems, in the order they happened
+What I tried: Built the film from the beat sheet with strict gates and no
+overrides.
+What happened: Gate A failed first, on B05: the scene places a dot relative to
+a label's width, and Gate A's stand-in for Manim overestimates text width.
+After I edited scenes (labels, B06, B12), ./art run silently reused the old
+clips, because it only renders a scene whose clip is missing. Watching the
+review cut, I saw B14's title leave the tail of the "p" unfilled; Gate V had
+reported no problems. At ./art final, Gate T (which only runs at final) failed
+B11, reading the large dark base as overlapping text. The build also wrote 29
+absolute local paths into build-state.json and the receipt.
+What I did instead, or decided: Gave the B05 dot a fixed position; moved old
+clips into _superseded/ before each rebuild; redrew B14 as a drawn scene;
+scaled B11's base together with its box (tested in a scratch copy first);
+untracked build-state.json and committed redacted copies of the receipt and
+master check with my home path replaced by <home>.
+What I'd check next time: Move old clips aside after every scene edit, watch
+the whole cut myself because gates miss visual problems, and run the final's
+checks earlier.
+
+## 10/11/2026 — Outcome against my 10/09 prediction
+What I predicted: Every gate passes on the first try (so none fails first), a
+final film over 3:00, and 3 to 5 fix-and-re-render rounds.
+What happened: Gate A failed first and Gate T failed later, so the first
+prediction was wrong. The narration measured 175.23 s and the master 175.458 s
+(2:55.5), under 3:00, so the second was wrong. I count four fix rounds (Gate A
+on B05; the label, B06 and B12 edits with the stale-clip problem; B14; Gate T
+on B11), inside my 3 to 5. The final master passed Gate T and the master check;
+I checked its duration with ffprobe because the check's own duration test was
+skipped.
+What I'd do differently: Expect the visual gates to need most of the rounds.
+The narration pace came out at about 2.7 words per second.
+
+## 10/11/2026 — Running the final before FACTCHECK verdicts
+What happened: The toolkit's header for FACTCHECK.md says verdicts should be
+set before the final export, but its gate only checks that the file exists, so
+the final ran with every row PENDING. I set the verdicts afterwards, on
+10/11, after reading the table.
+What I did: Set all 33 rows after reading the table; no row required changing
+the film. I recorded the order in a note under the table.
+What I'd check next time: Do the fact-check before the final, not after.
