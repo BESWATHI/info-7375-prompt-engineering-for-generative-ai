@@ -7,6 +7,7 @@ Cast kept across the film: the kraft company box, the data page, the gate.
 |---|---|---|---|
 | BIDEA | hesitant writer | naive question corrected to the narrower one | — |
 | BDEFS | Terms In This Film | three terms land | — |
+| BWHAT | repository tray holding the box (tool), a grid (evaluation set), a page (failure log) | parts drop in; folder tab | PLANNED · finished form |
 | B00 | company box + data page | box drops in; scribble lines draw | EXISTS · commit 03784b0 |
 | B01 | open box; record page, calendar, live check | three items rise out of the box | EXISTS |
 | B02 | box and gate with "?" | box rides to the gate; "?" appears; speech bubble "ask a person" | EXISTS |
@@ -19,6 +20,7 @@ Cast kept across the film: the kraft company box, the data page, the gate.
 | B07A | hub name → matcher output, crossed out | arrow grows; cross draws | FOUND · 2026-10-12 |
 | B08 | one box with two name labels pulling on it | "human check" box gets a tick | PLANNED |
 | B09 | stop sign; box with three grey label tags | tags clip on | PLANNED |
+| B09P | three trays: label tags (verification), six rows (evaluation), page with pointer (source grounding) | contents land; a dot under each | WHAT IT PROVES |
 | B10 | report window; right/wrong table | rows land; "?" row; marks appear | CONSTRUCTED · not built yet |
 | B11 | company box, calendar, big question mark | question mark lands | WHY THIS PROJECT |
 | B11A | two trays: 'already have · not shown here' and 'new · second source' | second page drops into the new tray | WHY THIS PROJECT |

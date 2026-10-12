@@ -30,7 +30,7 @@ disclosure here and in README.md.)
 ## What Claude (Claude Code, Opus 5.5) contributed
 
 - Sketched three candidate projects; drafted PROJECT-BRIEF.md except §7 (mine).
-- Wrote the narration draft, `make_sheet.py`, `scenes.py` (sixteen drawings on the toolkit's kit), FACTCHECK.md,
+- Wrote the narration draft, `make_sheet.py`, `scenes.py` (eighteen drawings on the toolkit's kit), FACTCHECK.md,
   SHOTLIST.md, PROMPTS.md, this file, README.md and BUILD-PROMPT.md.
 - **Ran the USCIS H-1B Employer Data Hub search on my instruction** (2026-10-12, its built-in browser): read
   the filter list and the FY2026 employer names for "MELLON" and "JPMORGAN"; recorded in

@@ -69,6 +69,10 @@ OPEN = [
 ]
 
 B = [
+ beat("BWHAT", "What is it? When it's done, a public GitHub repository: a small Python tool that tells an international student whether a company has sponsored software jobs, "
+      "plus an evaluation set, and a log of where it fails.",
+      "BWHAT_Repo", "A repository folder tray holding three things: the company box (the tool), a small grid (the evaluation set), a page (the failure log); tag 'PLANNED · finished form'.",
+      [{"at": 0.15, "event": "repo tray"}, {"at": 0.3, "event": "three parts drop in"}, {"at": 0.62, "event": "folder tab"}]),
  beat("B00", "Here is what exists today. On October third I pushed a recipe to my fork of the Reallocation Engine. "
       "It takes a company and the job I want, software or full-stack development.",
       "B00_Arrives", "A kraft company box drops onto the stage beside a flat data page; tag 'EXISTS · 03784b0'.",
@@ -85,8 +89,7 @@ B = [
       "The dataset's own notes say it was built from a list of funded startups taken from S E C filings, which would explain why the big banks are missing.",
       "B03_Gap", "A data page with a gap; three bank boxes drop toward it and pass through the gap.",
       [{"at": 0.2, "event": "page with gap"}, {"at": 0.35, "event": "three boxes fall through"}]),
- beat("B04", "Seventeen tests passed when I built it, and again when I re-ran them on October tenth. "
-      "They cover six failure cases, including a fake job posting, and two company names that might be the same firm.",
+ beat("B04", "Seventeen tests passed when I built it, and again when I re-ran them on October tenth. They cover six failure cases.",
       "B04_Tests", "A tray of seventeen small slots; each gets a check; tag '17 / 17 pass · re-run 10-10'.",
       [{"at": 0.15, "event": "checks land"}, {"at": 0.62, "event": "tag"}]),
  beat("B05", "The real alternative is the official U S C I S, H-1B Employer Data Hub. Searched on October twelfth, it does list JPMorgan Chase, which my dataset is missing. "
@@ -110,14 +113,17 @@ B = [
       "B07A_Bug", "The hub's name 'GOLDMAN SACHS AND CO LLC', an arrow, and the matcher's output 'GOLDMAN SACHS AND' with a cross; tag 'FOUND · 2026-10-12'.",
       [{"at": 0.15, "event": "hub name"}, {"at": 0.3, "event": "arrow and matcher output"}, {"at": 0.62, "event": "cross"}]),
  beat("B08", "The risk that could sink it is names. B N Y Mellon, and The Bank of New York Mellon, may be one employer or two. "
-      "A wrong match turns a sponsor into unknown, or borrows another company's record. So the tool will not guess. "
+      "So the tool will not guess. "
       "It will show the candidates to a person, and I will report how many of the twenty-five needed one.",
       "B08_Names", "One box with two name tags pulling in different directions; a 'human check' stamp lands between them.",
       [{"at": 0.2, "event": "two tags"}, {"at": 0.62, "event": "human check stamp"}]),
- beat("B09", "One thing it will deliberately not do: give immigration advice, or predict whether anyone gets a visa. "
-      "It will report history, with every answer labelled as a record, a judgment, or your own input.",
+ beat("B09", "One thing it will deliberately not do: give immigration advice, or predict whether anyone gets a visa. It reports history.",
       "B09_Out", "A stop sign beside the box; three small label tags clip onto the box.",
       [{"at": 0.2, "event": "stop sign"}, {"at": 0.62, "event": "three label tags"}]),
+ beat("B09P", "What does it prove? Verification: every answer is labelled as a record, a judgment, or your input. "
+      "Evaluation: six answers were checked against the official hub. Source grounding: every sponsor record in the run log cites its C S V line.",
+      "B09P_Proves", "Three trays in a row, labelled verification, evaluation, source grounding: label tags on a box; a ticked six-row table; a page with a line pointer; tag 'WHAT IT PROVES'.",
+      [{"at": 0.15, "event": "three trays and labels"}, {"at": 0.62, "event": "a terracotta dot lands on each"}]),
  beat("B10", "Who opens it? A hiring manager or engineer hiring software developers. "
       "In the first minute, they will run one command, and see a report that says unknown where the data is silent, "
       "next to a table of where the tool was right and wrong.",
@@ -132,12 +138,10 @@ B = [
       [{"at": 0.15, "event": "two trays"}, {"at": 0.62, "event": "second page into the new tray"}]),
 ]
 
-YT_PROMPT = ("I'm an international student. For the company [name one], list every legal name it might file "
-             "U.S. work-visa paperwork under, and mark the ones you are not sure of.")
+YT_PROMPT = ("List every legal name [company] might file U.S. work-visa paperwork under. Mark the ones you are not sure of.")
 YOURTURN = remotion("BHTF", "your turn",
-    "Your turn. Paste this into Claude: " + YT_PROMPT.replace("[name one]", "you name").replace("U.S. work-visa", "United States work visa") +
-    " Then check two things yourself. Look each name up in the public U S C I S, H-1B Employer Data Hub. "
-    "And count how many names were wrong, or made up.",
+    "Your turn. Paste this into Claude: " + YT_PROMPT.replace("[company]", "a company you choose").replace("U.S. work-visa", "United States work visa") +
+    " Then look each name up in the U S C I S hub, and count the ones that were wrong.",
     "ClaudeComposerAsk",
     {"greeting": "Your turn.", "topic": "CLAUDE · YOUR TURN", "segment": "Check One Company", "command": YT_PROMPT,
      "runningText": "paste this into Claude…",

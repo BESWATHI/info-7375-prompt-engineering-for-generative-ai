@@ -37,10 +37,10 @@
       "evaluation"
     ],
     "build": {
-      "at": "2026-10-12T18:48:09",
+      "at": "2026-10-12T19:07:02",
       "cut": "master",
-      "filled": 19,
-      "of": 19,
+      "filled": 21,
+      "of": 21,
       "slates": [],
       "skin_warnings": [
         "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
@@ -101,7 +101,7 @@
         "status": "VIDEO",
         "src": "media/BIDEA.mp4",
         "filled_by": "media",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -164,7 +164,53 @@
         "status": "VIDEO",
         "src": "media/BDEFS.mp4",
         "filled_by": "media",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
+      }
+    },
+    {
+      "beat_id": "BWHAT",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What is it? When it's done, a public GitHub repository: a small Python tool that tells an international student whether a company has sponsored software jobs, plus an evaluation set, and a log of where it fails.",
+      "estimated_duration_s": 14.8,
+      "voice": "bf_emma",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A repository folder tray holding three things: the company box (the tool), a small grid (the evaluation set), a page (the failure log); tag 'PLANNED · finished form'.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "repo tray"
+          },
+          {
+            "at": 0.3,
+            "event": "three parts drop in"
+          },
+          {
+            "at": 0.62,
+            "event": "folder tab"
+          }
+        ],
+        "manim": {
+          "class": "BWHAT_Repo"
+        },
+        "motion_claim": "A repository folder tray holding three things: the company box (the tool), a small grid (the evaluation set), a page (the failure log); tag 'PLANNED · finished form'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.395,
+      "audio_file": "mp3/beat-BWHAT.mp3",
+      "render_duration_s": 12.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/BWHAT.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -206,7 +252,7 @@
         "status": "MANIM",
         "src": "manim/B00.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -252,7 +298,7 @@
         "status": "MANIM",
         "src": "manim/B01.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -294,7 +340,7 @@
         "status": "MANIM",
         "src": "manim/B02.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -336,7 +382,7 @@
         "status": "MANIM",
         "src": "manim/B03.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -344,8 +390,8 @@
       "act": "show-tell",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "Seventeen tests passed when I built it, and again when I re-ran them on October tenth. They cover six failure cases, including a fake job posting, and two company names that might be the same firm.",
-      "estimated_duration_s": 14.4,
+      "narration_text": "Seventeen tests passed when I built it, and again when I re-ran them on October tenth. They cover six failure cases.",
+      "estimated_duration_s": 8.4,
       "voice": "bf_emma",
       "engine": "kokoro",
       "shot": {
@@ -371,14 +417,14 @@
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 11.52,
+      "actual_duration_s": 6.976,
       "audio_file": "mp3/beat-B04.mp3",
-      "render_duration_s": 11.541666666666666,
+      "render_duration_s": 7.0,
       "build": {
         "status": "MANIM",
         "src": "manim/B04.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -413,14 +459,14 @@
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 16.02,
+      "actual_duration_s": 16.021,
       "audio_file": "mp3/beat-B05.mp3",
       "render_duration_s": 16.041666666666668,
       "build": {
         "status": "MANIM",
         "src": "manim/B05.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -455,14 +501,14 @@
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 13.67,
+      "actual_duration_s": 13.675,
       "audio_file": "mp3/beat-B05A.mp3",
       "render_duration_s": 13.708333333333334,
       "build": {
         "status": "MANIM",
         "src": "manim/B05A.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -504,7 +550,7 @@
         "status": "MANIM",
         "src": "manim/B06.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -543,14 +589,14 @@
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 12.97,
+      "actual_duration_s": 12.971,
       "audio_file": "mp3/beat-B07.mp3",
       "render_duration_s": 13.0,
       "build": {
         "status": "MANIM",
         "src": "manim/B07.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -589,14 +635,14 @@
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 13.31,
+      "actual_duration_s": 13.312,
       "audio_file": "mp3/beat-B07A.mp3",
       "render_duration_s": 13.333333333333334,
       "build": {
         "status": "MANIM",
         "src": "manim/B07A.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -604,8 +650,8 @@
       "act": "show-tell",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "The risk that could sink it is names. B N Y Mellon, and The Bank of New York Mellon, may be one employer or two. A wrong match turns a sponsor into unknown, or borrows another company's record. So the tool will not guess. It will show the candidates to a person, and I will report how many of the twenty-five needed one.",
-      "estimated_duration_s": 25.2,
+      "narration_text": "The risk that could sink it is names. B N Y Mellon, and The Bank of New York Mellon, may be one employer or two. So the tool will not guess. It will show the candidates to a person, and I will report how many of the twenty-five needed one.",
+      "estimated_duration_s": 20.0,
       "voice": "bf_emma",
       "engine": "kokoro",
       "shot": {
@@ -631,14 +677,14 @@
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 17.813,
+      "actual_duration_s": 13.291,
       "audio_file": "mp3/beat-B08.mp3",
-      "render_duration_s": 17.833333333333332,
+      "render_duration_s": 13.291666666666666,
       "build": {
         "status": "MANIM",
         "src": "manim/B08.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -646,8 +692,8 @@
       "act": "show-tell",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "One thing it will deliberately not do: give immigration advice, or predict whether anyone gets a visa. It will report history, with every answer labelled as a record, a judgment, or your own input.",
-      "estimated_duration_s": 13.6,
+      "narration_text": "One thing it will deliberately not do: give immigration advice, or predict whether anyone gets a visa. It reports history.",
+      "estimated_duration_s": 8.0,
       "voice": "bf_emma",
       "engine": "kokoro",
       "shot": {
@@ -673,14 +719,56 @@
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 11.221,
+      "actual_duration_s": 7.061,
       "audio_file": "mp3/beat-B09.mp3",
-      "render_duration_s": 11.25,
+      "render_duration_s": 7.083333333333333,
       "build": {
         "status": "MANIM",
         "src": "manim/B09.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
+      }
+    },
+    {
+      "beat_id": "B09P",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What does it prove? Verification: every answer is labelled as a record, a judgment, or your input. Evaluation: six answers were checked against the official hub. Source grounding: every sponsor record in the run log cites its C S V line.",
+      "estimated_duration_s": 16.4,
+      "voice": "bf_emma",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three trays in a row, labelled verification, evaluation, source grounding: label tags on a box; a ticked six-row table; a page with a line pointer; tag 'WHAT IT PROVES'.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "three trays and labels"
+          },
+          {
+            "at": 0.62,
+            "event": "a terracotta dot lands on each"
+          }
+        ],
+        "manim": {
+          "class": "B09P_Proves"
+        },
+        "motion_claim": "Three trays in a row, labelled verification, evaluation, source grounding: label tags on a box; a ticked six-row table; a page with a line pointer; tag 'WHAT IT PROVES'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 14.144,
+      "audio_file": "mp3/beat-B09P.mp3",
+      "render_duration_s": 14.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09P.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -726,7 +814,7 @@
         "status": "MANIM",
         "src": "manim/B10.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -761,14 +849,14 @@
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 6.68,
+      "actual_duration_s": 6.677,
       "audio_file": "mp3/beat-B11.mp3",
       "render_duration_s": 6.708333333333333,
       "build": {
         "status": "MANIM",
         "src": "manim/B11.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -803,14 +891,14 @@
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 13.55,
+      "actual_duration_s": 13.547,
       "audio_file": "mp3/beat-B11A.mp3",
       "render_duration_s": 13.583333333333334,
       "build": {
         "status": "MANIM",
         "src": "manim/B11A.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -818,8 +906,8 @@
       "act": "your turn",
       "lane": "bookend",
       "proof_gate": "SHOW",
-      "narration_text": "Your turn. Paste this into Claude: I'm an international student. For the company you name, list every legal name it might file United States work visa paperwork under, and mark the ones you are not sure of. Then check two things yourself. Look each name up in the public U S C I S, H-1B Employer Data Hub. And count how many names were wrong, or made up.",
-      "estimated_duration_s": 27.2,
+      "narration_text": "Your turn. Paste this into Claude: List every legal name a company you choose might file United States work visa paperwork under. Mark the ones you are not sure of. Then look each name up in the U S C I S hub, and count the ones that were wrong.",
+      "estimated_duration_s": 20.0,
       "voice": "bf_emma",
       "engine": "kokoro",
       "shot": {
@@ -845,7 +933,7 @@
             "greeting": "Your turn.",
             "topic": "CLAUDE · YOUR TURN",
             "segment": "Check One Company",
-            "command": "I'm an international student. For the company [name one], list every legal name it might file U.S. work-visa paperwork under, and mark the ones you are not sure of.",
+            "command": "List every legal name [company] might file U.S. work-visa paperwork under. Mark the ones you are not sure of.",
             "runningText": "paste this into Claude…",
             "output": [
               "Check: look each name up in the USCIS H-1B Employer Data Hub.",
@@ -854,18 +942,22 @@
             "folderLabel": "Arundhati Kandelkar",
             "modelLabel": "Opus 5.5",
             "effortLabel": "High",
-            "durationSeconds": 19.67
+            "durationSeconds": 14.21
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-10-12T23:03:19.669864+00:00"
           }
         }
       },
-      "actual_duration_s": 19.669,
+      "actual_duration_s": 14.208,
       "audio_file": "mp3/beat-BHTF.mp3",
-      "render_duration_s": 19.708333333333332,
+      "render_duration_s": 14.208333333333334,
       "build": {
         "status": "VIDEO",
         "src": "media/BHTF.mp4",
-        "filled_by": "media",
-        "at": "2026-10-12T18:48:09"
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-10-12T19:07:02"
       }
     },
     {
@@ -906,7 +998,7 @@
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
         "filled_by": "media",
-        "at": "2026-10-12T18:48:09"
+        "at": "2026-10-12T19:07:02"
       }
     }
   ]

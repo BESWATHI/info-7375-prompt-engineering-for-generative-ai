@@ -33,3 +33,8 @@ Rule: past tense only for what exists and is shown in evidence; everything else 
 | 23 | B11 | I'm an international student; this is the question I face choosing a co-op | PASS | my own statement, chosen 2026-10-12 from options Claude offered (SOURCES.md) | — |
 | 24 | B11A | I've worked in Java, Spring Boot, microservices, Angular, cloud and AI; this project doesn't show it | EXEMPT | my own statement; deliberately not claimed as evidenced here (rubric: existing skills need evidence) | no-evidence wording chosen by me |
 | 25 | B11A | New for me: joining a second public data source into a small Python tool | PASS | my own statement; matches "Will exist" in PROJECT-BRIEF | — |
+| 29 | BWHAT | When done: a public GitHub repository — a small Python tool, an evaluation set, a failure log | EXEMPT | the finished form, spoken as "when it's done"; tag "PLANNED · finished form" | — |
+| 30 | B09P | Every answer is labelled as a record, a judgment, or your input | PASS | `test_every_scorer_term_is_labeled` passes (evidence/recipe-rerun-2026-10-10.txt); labels `record` / `model-judgment` / `your-input` in run-log.json | — |
+| 31 | B09P | Six answers were checked against the official hub | PASS | evidence/eval-first-rows-2026-10-12.md | — |
+| 32 | B09P | Every sponsor record in the run log cites its CSV line | PASS | runs/sample/run-log.json in the fork at 03784b0: 48 `csv_line` fields, one per record-sourced value (checked 2026-10-12) | — |
+

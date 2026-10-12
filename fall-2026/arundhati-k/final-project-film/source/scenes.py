@@ -688,3 +688,41 @@ class B11A_Skills(Scene):
         lines = VGroup(*[Line([2.9, y, 0], [3.9, y, 0], color=GHOST, stroke_width=6) for y in (0.7, 0.3, -0.1)])
         self.play(FadeIn(pg, shift=DOWN * 0.5), Create(lines), run_time=rt(self, 0.1))
         finish(self)
+
+
+class BWHAT_Repo(Scene):
+    def construct(self):
+        tray = Rectangle(width=9.6, height=3.4, fill_color=CARD, fill_opacity=1, stroke_color=INK, stroke_width=4).move_to([0.0, -0.3, 0])
+        tab = Rectangle(width=2.6, height=0.5, fill_color=BAR1, fill_opacity=1, stroke_width=0).move_to([-3.4, 1.65, 0])
+        box = kbox(-3.4, -1.3, 0.8)
+        grid = VGroup(*[Square(0.36, fill_color=BOX_TOP, fill_opacity=1, stroke_color="#917A55", stroke_width=3)
+                        .move_to([-0.72 + 0.48 * (i % 4), 0.55 - 0.48 * (i // 4), 0]) for i in range(16)])
+        pg = Rectangle(width=1.5, height=1.9, fill_color=PAGE_TOP, fill_opacity=1, stroke_color=BAR1, stroke_width=4).move_to([3.4, -0.1, 0])
+        lines = VGroup(*[Line([2.9, y, 0], [3.9, y, 0], color=GHOST, stroke_width=6) for y in (0.45, 0.05, -0.35)])
+        ls = VGroup(label("tool", -3.4, -2.55, 42), label("evaluation set", 0.0, -2.55, 42), label("failure log", 3.4, -2.55, 42))
+        lr = label("GitHub repository", 2.4, 1.85, 42)
+        tg = tag("PLANNED · finished form")
+        self.play(FadeIn(tg), FadeIn(tray), FadeIn(lr), run_time=rt(self, 0.08))
+        self.play(FadeIn(box, shift=DOWN * 0.5), FadeIn(grid, shift=DOWN * 0.5), FadeIn(VGroup(pg, lines), shift=DOWN * 0.5), FadeIn(ls), run_time=rt(self, 0.14))
+        to(self, 0.62)
+        self.play(FadeIn(tab), run_time=rt(self, 0.06))
+        finish(self)
+
+
+class B09P_Proves(Scene):
+    def construct(self):
+        xs = (-4.0, 0.0, 4.0)
+        trays = VGroup(*[Rectangle(width=3.4, height=2.6, fill_color=CARD, fill_opacity=1, stroke_color=INK, stroke_width=4).move_to([x, 0.2, 0]) for x in xs])
+        tags3 = VGroup(*[Rectangle(width=0.8, height=0.4, fill_color=c, fill_opacity=1, stroke_color=INK, stroke_width=3).move_to([-4.0, 0.9 - 0.6 * k, 0])
+                         for k, c in enumerate((BAR1, BAR2, BAR3))])
+        rows = VGroup(*[Rectangle(width=2.4, height=0.16, fill_color=BAR1, fill_opacity=1, stroke_width=0).move_to([0.0, 1.0 - 0.3 * k, 0]) for k in range(6)])
+        pg = Rectangle(width=1.3, height=1.8, fill_color=PAGE_TOP, fill_opacity=1, stroke_color=BAR1, stroke_width=4).move_to([3.6, 0.2, 0])
+        plines = VGroup(*[Line([3.15, y, 0], [4.05, y, 0], color=GHOST, stroke_width=6) for y in (0.75, 0.4, 0.05, -0.3)])
+        ptr = Arrow([5.2, 0.05, 0], [4.25, 0.05, 0], color=INK, stroke_width=7, buff=0, max_tip_length_to_length_ratio=0.35)
+        ls = VGroup(label("verification", -4.0, -1.55, 42), label("evaluation", 0.0, -1.55, 42), label("source grounding", 4.0, -1.55, 42))
+        tg = tag("WHAT IT PROVES")
+        self.play(FadeIn(tg), FadeIn(trays), FadeIn(ls), run_time=rt(self, 0.08))
+        self.play(FadeIn(tags3), FadeIn(rows), FadeIn(VGroup(pg, plines)), GrowArrow(ptr), run_time=rt(self, 0.12))
+        to(self, 0.62)
+        self.play(LaggedStart(*[GrowFromCenter(Dot([x, -2.2, 0], radius=0.1, color=TERRA)) for x in xs], lag_ratio=0.25), run_time=rt(self, 0.1))
+        finish(self)

@@ -90,3 +90,10 @@ Dated entries, appended as I work. Nothing above a later entry is rewritten.
   The browser pane had closed between sessions, so the first click failed until it was reopened.
   Film updated: B07 now says the first rows ran (past tense), new B07A shows the bug. Kokoro fused "and Co into" into
   "and cointer"; reworded. Runtime ~3:50.
+- **Self-audit against the rubric found two film gaps (2026-10-12, evening).** Q4 "what does it prove" and Q1's
+  one-sentence answer + finished form were in PROJECT-BRIEF but not in the film (a word search of the narration found
+  no "verify" or "skill"). Added BWHAT (Q1) and B09P (Q4). That pushed the film to 4:02, over the limit, so B04, B08,
+  B09 and Your Turn were trimmed (no claim removed) and B09P tightened → 3:58. While checking B09P's wording I found
+  source grounding already exists — the run log carries 48 `csv_line` citations — so it is stated in present tense.
+- **PROJECT-BRIEF cut to one page** (107 → ~45 lines). Also corrected a stale guess: §6 had used "BNY Mellon NA", a
+  name Claude invented on 2026-10-10 as an example; it now uses the Goldman names the hub actually lists.
