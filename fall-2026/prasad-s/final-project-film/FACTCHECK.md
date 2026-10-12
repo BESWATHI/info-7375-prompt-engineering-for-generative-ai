@@ -7,7 +7,7 @@ run before every row reads PASS, CORRECTED or EXEMPT. B01 (a hypothetical) and B
 
 Sources:
 
-- **Brief**: `PROJECT-BRIEF.md` in this folder (committed 50cecd6).
+- **Brief**: `PROJECT-BRIEF.md` in this folder (committed cbac63f).
 - **AP2 spec**: Google's Agent Payments Protocol (AP2) v0.2 specification, main page only.
 - **AP2 post**: Google's AP2 announcement post, September 16, 2025.
 - **Repo README**: the Razorpay buildathon repository "Mandate Mirror", README only.

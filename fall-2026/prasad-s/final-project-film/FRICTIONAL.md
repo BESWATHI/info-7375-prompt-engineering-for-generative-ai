@@ -125,3 +125,14 @@ What I did: All 33 rows read APPROVED after I read the table; APPROVED is my own
 word, not one of the toolkit's verdicts (PASS, CORRECTED, EXEMPT). No row
 required changing the film. I recorded the order in a note under the table.
 What I'd check next time: Do the fact-check before the final, not after.
+
+## 10/11/2026 — Push: rebase changed commit hashes and committer dates
+What happened: Before pushing I ran git pull --rebase, because origin/main had
+moved. That replayed my 13 commits for this assignment onto the newer main, so
+each has a new hash and a committer date of the day it was replayed. Their
+order, messages, content and author dates are unchanged. The four Assignment 1
+hashes shown in the film (B12) were already on origin/main and did not change.
+What I did: Updated stale commit-hash citations in my files in a new commit, and
+kept a local backup branch of the pre-rebase history until after submission.
+What I'd check next time: Merge instead of rebasing when the checkpoint dates
+are part of the evidence.
