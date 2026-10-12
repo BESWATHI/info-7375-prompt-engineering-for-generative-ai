@@ -79,8 +79,8 @@ into fintech product management. Already have: making and committing a
 Brutalist film with a checkpoint trail (Assignment 1 in this repository) and
 a habit of checking and measuring outputs instead of trusting them.
 
-EXISTS TODAY: the empty project folder skeleton in my course repo (six
-placeholder files); this brief; the Brutalist toolkit (third-party, used in
-Assignment 1).
-WILL EXIST: the generator, the checker, the test set, the demo page, the
-results table, the film (.mp4), the beat sheet, and the gate reports.
+EXISTS TODAY: this brief; the beat sheet and scene code; the rendered pitch
+film (2:55) with its gate reports; the Brutalist toolkit (third-party, used in
+Assignment 1 and this film).
+WILL EXIST: the generator, the checker, the test set, the demo page, and the
+results table.
