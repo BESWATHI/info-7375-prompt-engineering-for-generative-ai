@@ -97,3 +97,10 @@ Dated entries, appended as I work. Nothing above a later entry is rewritten.
   source grounding already exists — the run log carries 48 `csv_line` citations — so it is stated in present tense.
 - **PROJECT-BRIEF cut to one page** (107 → ~45 lines). Also corrected a stale guess: §6 had used "BNY Mellon NA", a
   name Claude invented on 2026-10-10 as an example; it now uses the Goldman names the hub actually lists.
+- **Evidence for existing skills added (B11A).** I gave Claude my résumé to pick one evidence line; it chose my
+  Software Developer role at Giesecke+Devrient (Java/Spring Boot) and claimed only what that role shows —
+  not Angular, which is on my skills list but not in that job. The résumé is not committed. Kokoro read the name as
+  "G-Sec and Deviant", so the narration says "G plus D" (the company's own short name); the label shows the full name.
+- **Caught a wrong date before committing.** The first résumé copy gave the G+D role as Aug 2021–Sep 2022, so B11A
+  said "for a year". I then shared an updated résumé (Aug 2021–Sep 2024) and stopped Claude after the render but
+  before the commit. B11A now says "for three years"; fact-check row 24 records both copies.

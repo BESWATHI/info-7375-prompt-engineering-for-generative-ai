@@ -3,7 +3,7 @@
 - **Name:** Arundhati Kandelkar
 - **Working title:** Co-op Sponsor Check
 - **Target role:** software developer / full-stack developer
-- **Runtime:** 3:58 (238.5 s) · 3840×2160 · 24 fps · 21 beats · master SHA-256 `c46fcf5674d18c2d2069a53694608da3a634145af1f086268bc62b7059fcf7da`
+- **Runtime:** 3:59 (239.1 s) · 3840×2160 · 24 fps · 21 beats · master SHA-256 `587c3a89f1a082d8ed4ae77dc0019495a461dda71adf01517523674b1a71cedb`
 - **Narration:** synthetic voice (Kokoro `bf_emma`, local, free) reading my script — not my recorded voice.
 - **Status:** pitch, not a build. What exists and what will exist are listed at the end of [PROJECT-BRIEF.md](PROJECT-BRIEF.md).
 

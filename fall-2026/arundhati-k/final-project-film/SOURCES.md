@@ -24,8 +24,9 @@ disclosure here and in README.md.)
 - The recipe and prototype `coop_sponsor_check.py`, 17 tests, gates G1–G5 (commit `03784b0`, 2026-10-03;
   built with Claude's help, recorded in that submission's own SOURCES.md).
 - My voice choice, the decision to keep my name in place of the toolkit persona, the instruction to search the
-  USCIS hub, and my answers for B11/B11A and brief §7 (chosen from options Claude offered; the decision
-  not to claim my Java/Angular experience without evidence is mine).
+  USCIS hub, and my answers for B11/B11A and brief §7 (chosen from options Claude offered; the evidence line for
+  B11A — my role at Giesecke+Devrient — is from my own résumé, which I chose to cite; the résumé itself is not in
+  this folder).
 
 ## What Claude (Claude Code, Opus 5.5) contributed
 

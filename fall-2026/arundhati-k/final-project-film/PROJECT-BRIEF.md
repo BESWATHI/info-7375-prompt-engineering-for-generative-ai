@@ -32,8 +32,8 @@ auto-match; candidates go to a human (gate G2, exists); traps stay in the evalua
 needed a human. Known limit: the dataset is built from an SEC list of funded startups, so big banks are missing.
 
 **7. Why this project?** *(chosen 2026-10-12 from options Claude offered)* My own question — I am an international
-student choosing a co-op. A mix. **Already have:** Java, Spring Boot, microservices, Angular, cloud, AI — nothing in
-this project shows it, so I don't claim it here. **New:** joining a second public data source into a Python tool.
+student choosing a co-op. A mix. **Already have:** Java and Spring Boot services — evidence: Software Developer at
+Giesecke+Devrient (G+D), Pune, Aug 2021–Sep 2024. This project does not show that work. **New:** joining a second public data source into a Python tool.
 
 ## Exists today
 

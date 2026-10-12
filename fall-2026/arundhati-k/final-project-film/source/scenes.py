@@ -675,7 +675,7 @@ class B11A_Skills(Scene):
         blocks = VGroup(*[Square(0.7, fill_color=BAR3, fill_opacity=1, stroke_color=BAR2, stroke_width=2)
                           .move_to([-4.6 + 1.0 * (i % 4), 0.7 - 1.0 * (i // 4), 0]) for i in range(6)])
         l1 = label("already have", -3.1, 1.95, 42)
-        l2 = label("not shown here", -3.1, -1.6, 42)
+        l2 = label("Giesecke+Devrient", -3.1, -1.6, 42)
         t2 = Rectangle(width=4.2, height=2.6, fill_color=CARD, fill_opacity=1, stroke_color=INK, stroke_width=4).move_to([3.4, 0.2, 0])
         l3 = label("new", 3.4, 1.95, 42)
         l4 = label("second source", 3.4, -1.6, 42)

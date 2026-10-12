@@ -132,9 +132,9 @@ B = [
  beat("B11", "Why this project? It's my own question. I'm an international student, and this is what I face when choosing a co-op.",
       "B11_Why", "The company box beside a calendar block, with a large question mark above the box; tag 'WHY THIS PROJECT'.",
       [{"at": 0.15, "event": "box and calendar"}, {"at": 0.62, "event": "question mark lands"}]),
- beat("B11A", "So it's a mix. I've worked in Java, Spring Boot, microservices, Angular, cloud and AI, but this project doesn't show that, so I won't claim it here. "
+ beat("B11A", "So it's a mix. I already build Java and Spring Boot services. I did it for three years as a software developer at G plus D, but this project doesn't show that. "
       "What's new for me is joining a second public data source into a small Python tool.",
-      "B11A_Skills", "Two trays: 'already have' with greyed blocks marked 'not shown here'; 'new' with the second data page sliding in.",
+      "B11A_Skills", "Two trays: 'already have' with greyed blocks, labelled Giesecke+Devrient; 'new' with the second data page sliding in.",
       [{"at": 0.15, "event": "two trays"}, {"at": 0.62, "event": "second page into the new tray"}]),
 ]
 
