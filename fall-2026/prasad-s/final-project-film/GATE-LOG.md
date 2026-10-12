@@ -1,6 +1,9 @@
 # GATE-LOG.md — gistgap-pitch
 
-Console output of the review builds (`./art run <reel> --height 2160`, strict gates: ART_STRICT=1, facts gate on, no overrides), each followed by `./art todo`.
+Console output of the review builds (`./art run <reel> --height 2160`, strict
+gates: ART_STRICT=1, facts gate on, no overrides), each followed by `./art todo`,
+and of the final export attempts (`./art final <reel> --height 2160`, same
+settings).
 Absolute home-folder paths were replaced with `<home>`; nothing else was edited (Manim's progress-bar carriage returns are kept as printed).
 `layout_audit.md` holds only the last rendered scene's Gate B audit, because the toolkit overwrites it for each scene; the per-scene Gate A, W and B results are in these logs.
 Earlier runs (run 2 and run 3) are superseded and not included.

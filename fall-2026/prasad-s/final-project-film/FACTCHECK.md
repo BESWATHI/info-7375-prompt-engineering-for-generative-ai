@@ -50,6 +50,7 @@ Sources:
 | 33 | B12 | (picture) The node names paraphrase the commit subjects: fe9c16c "checkpoint 1 - brutalist.art environment stood up" → "1 · environment"; 2a1f40f "checkpoint 2 - evidence packet (temp 1.0 vs 0.5) and pipeline check" → "2 · evidence"; 2eb73eb "checkpoint 3 - week-01 video built, exported (1080p final) and reviewed" → "3 · video built"; 1a6aa5b "close out FRICTIONAL log - B03 fix, final-path patch, export" → "close-out". | APPROVED | `git log --format='%h %s' -- fall-2026/prasad-s/` | — |
 
 Note (10/11/2026): I set these verdicts after the final master was built,
-although the toolkit's own header says verdicts come first (its gate only
+although the header above says they come first (the toolkit's Gate F only
 checks that this file exists). I read the table and approved every row on this
-date; no row required a change to the film.
+date; each verdict reads APPROVED, my own word, not one of the toolkit's PASS,
+CORRECTED or EXEMPT. No row required a change to the film.

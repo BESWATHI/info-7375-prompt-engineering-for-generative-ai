@@ -91,8 +91,9 @@ After I edited scenes (labels, B06, B12), ./art run silently reused the old
 clips, because it only renders a scene whose clip is missing. Watching the
 review cut, I saw B14's title leave the tail of the "p" unfilled; Gate V had
 reported no problems. At ./art final, Gate T (which only runs at final) failed
-B11, reading the large dark base as overlapping text. The build also wrote 29
-absolute local paths into build-state.json and the receipt.
+B11, reading the large dark base as overlapping text. The build also wrote
+absolute local paths into build-state.json (29) and the receipt (29), and one
+into MASTERCHECK.md.
 What I did instead, or decided: Gave the B05 dot a fixed position; moved old
 clips into _superseded/ before each rebuild; redrew B14 as a drawn scene;
 scaled B11's base together with its box (tested in a scratch copy first);
@@ -116,10 +117,11 @@ What I'd do differently: Expect the visual gates to need most of the rounds.
 The narration pace came out at about 2.7 words per second.
 
 ## 10/11/2026 — Running the final before FACTCHECK verdicts
-What happened: The toolkit's header for FACTCHECK.md says verdicts should be
-set before the final export, but its gate only checks that the file exists, so
-the final ran with every row PENDING. I set the verdicts afterwards, on
-10/11, after reading the table.
-What I did: Set all 33 rows after reading the table; no row required changing
-the film. I recorded the order in a note under the table.
+What happened: The header of my FACTCHECK.md says the final should wait until
+every row reads PASS, CORRECTED or EXEMPT, but the toolkit's Gate F only checks
+that the file exists, so the final ran with every row still PENDING. I set the
+verdicts afterwards, on 10/11, after reading the table.
+What I did: All 33 rows read APPROVED after I read the table; APPROVED is my own
+word, not one of the toolkit's verdicts (PASS, CORRECTED, EXEMPT). No row
+required changing the film. I recorded the order in a note under the table.
 What I'd check next time: Do the fact-check before the final, not after.
