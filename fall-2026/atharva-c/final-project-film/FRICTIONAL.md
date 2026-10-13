@@ -89,4 +89,10 @@ Claude offered a list of moments from this project. These are the ones **I picke
 - What `unexpected_count` means in Great Expectations output.
 
 ### In my own words (2026-10-12)
-_To be written by me._
+The most surprising part of the test run was seeing the numbers match exactly: the script blanked 50 rows in passenger_count, and both Great Expectations and dbt flagged exactly 50 unexpected rows. What bothered me was the clean run right before it. Both tools passed the clean sample with zero errors, which felt good for a second until I realized that a green test run tells you nothing about whether your assertions would actually catch a bad row.
+
+I also had to roll back an assumption I had made in the brief. I thought Great Expectations still suggested tests automatically from data, but when I searched the docs page and searched the installed package for those features, nothing came up. In GX Core 1.24.0, I had to write the rule by hand. dbt worked the same way—it only evaluated the assertions I explicitly wrote in schema.yml. In the two tools I tested, test generation wasn't automatic at all.
+
+Most of the time lost went to small setup and formatting issues. I accidentally ran ./setup while my sandbox virtual environment was still active, so packages installed into the wrong place. Later, Gate T's text-size check failed because Manim squiggles and drawn scale parts were being measured as undersized text, and Gate B rejected B01 because a label sat outside the safe margin.
+
+If a TA asks me to explain the core test in person: ge_fault.py uses random_state=7 to deterministically set 50 random values of passenger_count to null. Running the check against that file outputs an unexpected_count of 50, which simply means 50 rows violated the not-null rule. The clean data proved the rule doesn't produce false positives; the faulted data proved it actually detects the failure.
