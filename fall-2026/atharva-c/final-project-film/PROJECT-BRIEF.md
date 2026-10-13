@@ -51,11 +51,10 @@ A mix of showing off and learning.
 
 ---
 
-### Exists today (2026-10-09)
-- This brief, the beat sheet, and the submission scaffolding files in this folder.
+### Exists today (2026-10-13)
+- This brief, the beat sheet, and the submission files in this folder.
+- The rendered pitch film (`seeded-faults-pitch.mp4`, 3:37) and the toolkit's gate reports (`gate-reports/`).
 - One hand-run planted-fault test (50 nulls in one column, caught by a hand-written check in Great Expectations and in dbt). Scripts and logs in `evidence/2026-10-09-first-planted-fault/`.
-- A local checkout of the Brutalist toolkit (not yet run for this film).
 
 ### Will exist
-- The rendered pitch film and the toolkit's gate reports.
-- The Seeded Faults repository: fault-injection script, dbt project, prompt contract, evaluation log, failure analysis.
+- The Seeded Faults repository: a fault-injection script covering the full fault catalogue, the dbt project, the prompt contract, an evaluation log, and the failure analysis.
