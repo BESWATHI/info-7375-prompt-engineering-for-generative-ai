@@ -2,7 +2,7 @@
 
 Dated entries, newest at the bottom. What I tried, what broke, what changed.
 
-> **Who wrote what:** the bullet-point log entries were drafted by Claude Code during our working sessions, from what we actually ran and decided. I checked them. The **In my own words** sections are written by me.
+> **Who wrote what:** the bullet-point log entries were drafted by Claude Code during our working sessions, from what we actually ran and decided. I checked them. The **In my own words** sections are written by me. The *Reflection: points I picked* section uses Claude's wording for points I selected.
 
 ## 2026-10-08 (written 2026-10-09, from memory)
 - Read the assignment brief.
@@ -38,8 +38,6 @@ Dated entries, newest at the bottom. What I tried, what broke, what changed.
 - Added `evidence/2026-10-09-first-planted-fault/`: the GX and dbt scripts plus logs, so the past-tense claim in B03 can be checked. Logs come from a re-run at 17:32 EDT (same numbers as the first runs). Data files not committed; SHA-256 fingerprints and download steps are included.
 - Honesty pass on narration: fixed 4 lines that were out of date after today's test or overclaimed. B01 and B09 no longer say nothing exists; B02 now calls "AI-written tests make this worse" a guess to be measured, not a fact; B06 says the first build is the full fault-injection script.
 
-### In my own words (2026-10-09)
-_To be written by me._
 
 ## 2026-10-10
 - Updated Brutalist with `git pull`: 29ba0e8 → b21f625. My local change to `runtime/remotion/package-lock.json` didn't block the pull.
@@ -59,8 +57,6 @@ _To be written by me._
 - 4K render: `./art run --height 2160` passed Gates A, W, B and V (0 BLOCKER/MAJOR); `./art final --height 2160` passed GATE T and wrote the verified master (3840×2160, 216.8 s = 3:37, sha256 3142aa40…0137). `bookend_check.py` fails as expected (no ClaudeTitleOutro, for the persona reason above); explained in gate-reports/README.md. Copied the film, gate reports and film-source/ into this folder; updated README, BUILD-PROMPT and SOURCES.
 - Still to do: watch the whole film and check every line against the honesty rule; check by ear the words Whisper flagged ("Seeded", "GitHub" in B01); sign off FACTCHECK.md; fill in my own narration edits in SOURCES.md, or say there were none.
 
-### In my own words (2026-10-10)
-_To be written by me._
 
 ## 2026-10-12
 - Got feedback on my previous assignment: random variation was described rather than shown, my Frictional log was drafted by Claude with no reflection of my own, and on-screen text was too small. Applied all three lessons here:
@@ -69,6 +65,28 @@ _To be written by me._
   - **My own reflection:** added the "Who wrote what" note at the top and "In my own words" sections for me to write.
 - Re-render: the 1080p test first failed Gate B (strict) because the larger CONSTRUCTED stamp in B01 crossed the safe area → moved it inward. After that, all gates passed at 1080p. 4K re-render started.
 - 4K re-render done: Gates A, W, B, V passed (0 BLOCKER/MAJOR), GATE T PASS, master "ready" (3840×2160, 216.8 s, sha256 fd90da0c…c84b). Replaced the film and gate reports in this folder; the old master is kept outside the repo.
+
+### Reflection (2026-10-12): points I picked
+Claude offered a list of moments from this project. These are the ones **I picked** as true for me. The wording is Claude's; the choices are mine.
+
+**What surprised me**
+- The not-null check caught exactly 50 of 50 planted blanks, in both Great Expectations and dbt.
+- Both tools passed the clean data perfectly, which proves nothing about whether they'd catch problems.
+
+**What I believed that turned out wrong**
+- The brief originally said Great Expectations "can propose expectations from your data". Checking the docs and the installed library didn't support that, so the claim was removed.
+- My first narration said things like "nothing exists yet", but by the end of Day 1 one real test did exist.
+
+**What was frustrating**
+- Brutalist got installed into the wrong Python environment, because the sandbox one was still active.
+- The setup error, and having to check readiness by hand.
+- Text checks failed twice (B05, B07), and Gate B refused B01 once.
+- The feedback from my last assignment, and having to redo the text sizes.
+- Re-rendering takes about 20 minutes each time.
+
+**What I'd find hardest to explain to a TA**
+- How `ge_fault.py` plants the 50 blanks (`random_state=7`, blanking `passenger_count`).
+- What `unexpected_count` means in Great Expectations output.
 
 ### In my own words (2026-10-12)
 _To be written by me._
