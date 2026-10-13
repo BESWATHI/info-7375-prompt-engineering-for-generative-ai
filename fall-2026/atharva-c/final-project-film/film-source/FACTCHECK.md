@@ -1,6 +1,6 @@
 # FACTCHECK — Seeded Faults pitch
 
-Status: drafted by Claude Code 2026-10-10 from the submission's FRICTIONAL.md and evidence/ folder; awaiting sign-off by Atharva C.
+Status: drafted by Claude Code 2026-10-10 from the submission's FRICTIONAL.md and evidence/ folder; read and signed off by Atharva C, 2026-10-13.
 
 | # | Beat | Claim (as spoken / shown) | Verdict | Source / derivation | Fix |
 |---|---|---|---|---|---|
