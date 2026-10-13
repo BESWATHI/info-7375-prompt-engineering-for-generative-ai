@@ -1,1 +1,0 @@
-Hi, I'm Anisha Gaikar, and this is my final project pitch: JobPost Contracts, a Python tool that summarizes job postings and catches when the AI makes things up. Nothing is built yet; everything you'll see is a sketch of what I will build. My first question was: can AI summarize a job posting? The better question is: can it do that without inventing anything?

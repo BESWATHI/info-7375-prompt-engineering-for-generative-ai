@@ -1,1 +1,0 @@
-In scope: five fields. Job title, seniority, required skills, location, and salary. Out of scope: no scraping real job sites, no real postings, and no job ranking or career advice. The first piece I'll make run is one contract on one synthetic posting. You'll know it ran when the output matches my hand-written expected answer and the test prints PASS.
