@@ -2,6 +2,8 @@
 
 Dated entries, newest at the bottom. What I tried, what broke, what changed.
 
+> **Who wrote what:** the bullet-point log entries were drafted by Claude Code during our working sessions, from what we actually ran and decided. I checked them. The **In my own words** sections are written by me.
+
 ## 2026-10-08 (written 2026-10-09, from memory)
 - Read the assignment brief.
 - Watched the course AI-policy video.
@@ -36,6 +38,9 @@ Dated entries, newest at the bottom. What I tried, what broke, what changed.
 - Added `evidence/2026-10-09-first-planted-fault/`: the GX and dbt scripts plus logs, so the past-tense claim in B03 can be checked. Logs come from a re-run at 17:32 EDT (same numbers as the first runs). Data files not committed; SHA-256 fingerprints and download steps are included.
 - Honesty pass on narration: fixed 4 lines that were out of date after today's test or overclaimed. B01 and B09 no longer say nothing exists; B02 now calls "AI-written tests make this worse" a guess to be measured, not a fact; B06 says the first build is the full fault-injection script.
 
+### In my own words (2026-10-09)
+_To be written by me._
+
 ## 2026-10-10
 - Updated Brutalist with `git pull`: 29ba0e8 → b21f625. My local change to `runtime/remotion/package-lock.json` didn't block the pull.
 - `show-tell` skill now exists (`skills/make/show-tell/`). Read its SKILL.md. **Conflict with the assignment:** show-tell's fixed bookends use the instructor's persona — the "Liam, in for Bear" greeting, the Kokoro `am_onyx` voice, and a spoken "@NikBearBrown" outro. The assignment says to narrate as myself with no instructor name, persona or credit line. Plan: keep show-tell's drawing style (one isometric picture per beat, minimal labels) but replace the greeting and outro with my own, and use a different Kokoro voice. If the toolkit's bookend check fails because of this, I'll record it here, not hide it.
@@ -53,3 +58,16 @@ Dated entries, newest at the bottom. What I tried, what broke, what changed.
 - Gate results while iterating (1080p review renders): Gate A first warned that the "CONSTRUCTED" labels in B01/B04 sat outside the safe area, and Gate B (strict) refused to slot B04 → moved the labels inward. GATE T then failed twice: B05's handwriting squiggles read as text below the size floor, and in B07 the balance beam, post and pans fused into one giant "text" blob → recoloured those in kraft. After the fixes, Gates A, B, W, V, F and T all passed on the 1080p test cut (3:37). Also moved B06's "1" badge off the "faults" label. 4K render started.
 - 4K render: `./art run --height 2160` passed Gates A, W, B and V (0 BLOCKER/MAJOR); `./art final --height 2160` passed GATE T and wrote the verified master (3840×2160, 216.8 s = 3:37, sha256 3142aa40…0137). `bookend_check.py` fails as expected (no ClaudeTitleOutro, for the persona reason above); explained in gate-reports/README.md. Copied the film, gate reports and film-source/ into this folder; updated README, BUILD-PROMPT and SOURCES.
 - Still to do: watch the whole film and check every line against the honesty rule; check by ear the words Whisper flagged ("Seeded", "GitHub" in B01); sign off FACTCHECK.md; fill in my own narration edits in SOURCES.md, or say there were none.
+
+### In my own words (2026-10-10)
+_To be written by me._
+
+## 2026-10-12
+- Got feedback on my previous assignment: random variation was described rather than shown, my Frictional log was drafted by Claude with no reflection of my own, and on-screen text was too small. Applied all three lessons here:
+  - **Shown, not described:** B03 now puts the real program output from 2026-10-09 on screen (GX `unexpected_count=0` on the clean sample, `=50` on the faulted one; dbt `PASS` vs `FAIL 50`), labelled "real output · 2026-10-09", copied verbatim from `evidence/…/output/`.
+  - **Text size:** every label now has a 44-point minimum (it was 32–42), the CONSTRUCTED stamps are 48, and I removed the toolkit's tiny corner name on B00 (`channel_title`). My name is spoken in B00 and large on the outro.
+  - **My own reflection:** added the "Who wrote what" note at the top and "In my own words" sections for me to write.
+- Re-render: the 1080p test first failed Gate B (strict) because the larger CONSTRUCTED stamp in B01 crossed the safe area → moved it inward. After that, all gates passed at 1080p. 4K re-render started.
+
+### In my own words (2026-10-12)
+_To be written by me._
