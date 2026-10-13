@@ -4,7 +4,7 @@
 **Course:** INFO7375
 **Working title:** JobPost Contracts
 **Target role:** Junior AI / prompt engineer
-**Runtime:** 3:33
+**Runtime:** 3:45
 
 ## What this is
 A pitch film for my final project: a Python library of prompt contracts that turns job postings into structured summaries, with a test set that catches Claude inventing details. **Nothing in the project is built yet;** this folder only contains the pitch.
@@ -22,6 +22,9 @@ Format: show-tell style (as in the Brutalist toolkit's show-tell skill): a typin
 | `audio/` | Narration audio, one file per beat |
 | `make_film.sh` | Makes the narration and joins it with the scenes (ffmpeg) |
 | `tools/render.py`, `tools/fonts/` | The script that draws and animates the scenes, and its fonts (SIL OFL) |
+| `evidence/` | My dated screenshots of the chatbot alternative (question 2) |
+| `reports/` | The toolkit's Gate V report and contact sheet for the final film |
+| `tools/run_gate_v.sh` | Runs the toolkit's Gate V on the film |
 | `BUILD-PROMPT.md` | Prompts and commands that rebuild the film |
 | `SOURCES.md` | What I used, what I made, what Claude contributed |
 | `FRICTIONAL.md` | Dated log of what happened while making it |

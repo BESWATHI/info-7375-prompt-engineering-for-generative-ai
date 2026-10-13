@@ -18,6 +18,10 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Title and typing intro: one centred question on a plain page by design (show-tell opening)."
       }
     },
     {
@@ -44,8 +48,8 @@
     {
       "beat_id": "B03",
       "act": "2 · why care",
-      "narration_text": "Who is it for? Anyone who reads lots of job postings and needs the key facts fast, like a job seeker comparing roles. I looked at two alternatives. Pasting a posting into a general chatbot gives a quick summary, but it does not show which line each fact came from, so I can't check whether a salary or skill was made up. Copying fields into a spreadsheet by hand is accurate, but slow. In my tool, every field must come with a quote from the posting, or be marked 'not stated'.",
-      "new_visual_element": "Chatbot screen (no source) / spreadsheet with clock (slow) / my summary with leader lines back to the posting (quote per field)",
+      "narration_text": "Who is it for? Anyone who reads lots of job postings and needs the key facts fast, like a job seeker comparing roles. I looked at two alternatives. Pasting a posting into ChatGPT: on October thirteenth I tried a real internship posting. It couldn't open the LinkedIn link, and with the text pasted, it gave a good summary, but it didn't show which line each fact came from, and under location it added a detail that wasn't in the posting at all. Copying fields into a spreadsheet by hand is accurate, but slow. In my tool, every field must come with a quote from the posting, or be marked 'not stated'.",
+      "new_visual_element": "Pile of postings; chatbot screen (no source shown, 'added a fact not in the posting', tried 2026-10-13) / spreadsheet with clock (slow) / my summary with leader lines to the posting",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
@@ -99,8 +103,8 @@
     {
       "beat_id": "B08",
       "act": "7 · why this project",
-      "narration_text": "I picked this project because it is small enough for one person to finish and it uses exactly what this course teaches. It is mostly new learning for me. Prompt contracts, building a test set, and keeping an evaluation log are new skills. The skill I already have is basic Python, and my evidence is my earlier assignments for this course in my GitHub repo.",
-      "new_visual_element": "Two piles: 'new to me' (contracts, test sets, eval logs) and 'already have' (Python, course assignments)",
+      "narration_text": "I picked this project because it is small enough for one person to finish and it uses exactly what this course teaches. It's a mix of new learning and skills I already have. Prompt contracts, building a test set for AI output, and keeping an evaluation log are new skills. The skill I already have is Python, including tests and data-quality checks. My evidence is my MBTA transit reliability pipeline on my GitHub.",
+      "new_visual_element": "Handwritten reasons with checks; 'new to me' pile (contracts, test sets, eval logs); 'already have' block: Python, MBTA pipeline on GitHub",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",

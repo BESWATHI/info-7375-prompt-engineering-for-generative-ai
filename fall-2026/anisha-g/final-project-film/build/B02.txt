@@ -1,0 +1,1 @@
+The project is JobPost Contracts: a small Python library of prompt contracts that turns a job posting into a structured summary, with a test set that catches Claude inventing details that are not in the posting. When it's done, it will be a GitHub repository with the contracts, twenty synthetic job postings, a test script, and an evaluation log.

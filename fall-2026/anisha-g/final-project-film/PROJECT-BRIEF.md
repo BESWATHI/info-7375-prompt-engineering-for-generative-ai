@@ -20,7 +20,7 @@ Alternatives I will compare against:
 - pasting a posting into a general chatbot and asking for a summary
 - copying the fields into a spreadsheet by hand
 
-Pasting a posting into a general chatbot gives a quick summary, but it does not show which line of the posting each fact came from, so I cannot check whether a salary or skill was made up. Copying fields into a spreadsheet by hand is accurate, but slow.
+On 2026-10-13 I tried ChatGPT on a real internship posting (Staples, Financial Analytics Intern, from LinkedIn). It could not open the LinkedIn link. With the text pasted, it gave a good summary and correctly said the salary was not disclosed, but it did not show which line of the posting each fact came from, and under location it added a detail that is not in the posting ("Staples is headquartered near Boston"). Copying fields into a spreadsheet by hand is accurate, but slow. Screenshots are in `evidence/` (personal details cropped out).
 
 The difference: every field my tool extracts must be backed by a quote from the posting, or marked "not stated," and the test script checks for invented fields.
 
@@ -52,7 +52,7 @@ The evidence will be the test results and evaluation log in the repository. It w
 **What I will do:** hand-check those cases and record them in the log.
 
 ## 7. Why this project?
-I picked this project because it is small enough for one person to finish and it uses exactly what this course teaches. It is mostly new learning for me. Prompt contracts, building a test set, and keeping an evaluation log are new skills. The skill I already have is basic Python, and my evidence is my earlier assignments for this course in my GitHub repository.
+I picked this project because it is small enough for one person to finish and it uses exactly what this course teaches. It is a mix of new learning and skills I already have. New to me: writing prompt contracts, building a test set for AI output, and keeping an evaluation log. Already have: Python, including automated tests and data-quality checks. Evidence: my MBTA Transit Reliability Pipeline (github.com/anishagaikar0420/mbta-reliability-pipeline), a Python ELT pipeline with a test suite and a quality gate.
 
 ---
 

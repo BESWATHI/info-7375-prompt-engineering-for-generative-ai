@@ -33,8 +33,8 @@ def _bg():
         u = y / (H - 1)
         ImageDraw.Draw(im).line([(0, y), (W, y)], fill=tuple(int(top[i] + (bot[i] - top[i]) * u) for i in range(3)))
     cl = im.copy(); d = ImageDraw.Draw(cl)
-    for (x, y, r, col) in [(1920, 0, 330, (250, 228, 219)), (0, 1080, 360, (222, 234, 246)),
-                           (0, 0, 220, (226, 240, 234)), (1920, 1080, 260, (250, 238, 212))]:
+    for (x, y, r, col) in [(1920, 0, 340, (250, 236, 230)), (0, 1080, 360, (234, 241, 249)),
+                           (0, 0, 240, (238, 246, 242)), (1920, 1080, 280, (250, 243, 228))]:
         d.ellipse([x - r, y - r, x + r, y + r], fill=col)
     im = cl.filter(ImageFilter.GaussianBlur(120))
     return im.resize((W * SS, H * SS), Image.BILINEAR)
@@ -198,7 +198,7 @@ U = 46  # default iso unit
 # ---------- scenes ----------
 def S_B00(s):
     s.add(0, 0.5, lambda c, k: c.text(W / 2, 60, 'JOBPOST CONTRACTS  ·  FINAL PROJECT PITCH  ·  ANISHA GAIKAR  ·  INFO 7375', F_TINY(), DIM, k))
-    s.add(0, 0.5, lambda c, k: c.text(W / 2, 1010, 'Anisha Gaikar', F_SUB(), DIM, k))
+    s.add(0, 0.5, lambda c, k: c.text(W / 2, 990, 'Anisha Gaikar', F_SUB(), DIM, k))
     s.add(s.at('JobPost Contracts'), 0.8, lambda c, k: c.text(W / 2, 250, 'JobPost Contracts', font('EBGaramond-Medium.ttf', 96), INK, k))
     s.add(s.at('a Python tool'), 0.8, lambda c, k: (c.text(W / 2, 340, 'summarizes job postings, catches when the AI makes things up', F_SUB(), DIM, k), c.line([(760, 395), (1160, 395)], ACC, k, 3)))
     l1 = 'Can AI summarize a job posting'
@@ -266,7 +266,7 @@ def S_B02(s):
         def part(c, k, o, x=x, nm=nm, f=f):
             if f is PAGE: stack(c, x, 790 + o, 34, k)
             else: box(c, x, 800 + o, 34, 1.4, 1.4, 1.0 if nm != 'eval log' else 0.4, f, k)
-            label(c, x, 880, nm, k)
+            label(c, x, 860, nm, k)
         s.add(t0 + 1.2 + i * 0.9, 0.7, drop(part))
 
 def _travel(s, t0, segs, period=2.4):
@@ -286,6 +286,8 @@ def S_B03(s):
     s.add(1.6, 0.5, lambda c, k: c.text(1240, 290, 'lots of postings', F_SUB(), DIM, k, 'lm'))
     s.add(tc, 0.8, drop(lambda c, k, o: (monitor(c, 420, 600 + o, 70, k), label(c, 420, 720, 'chatbot', k, 'no source shown'))))
     s.add(tc + 2.5, 0.5, lambda c, k: c.text(420, 330, '?', font('EBGaramond-Medium.ttf', 90), ACC, k))
+    s.add(s.at('added a detail'), 0.6, lambda c, k: (c.text(420, 790, 'added a fact not in the posting', F_SUB(), ACC, k),
+                                                    c.text(420, 826, 'tried 2026-10-13', F_SUB(), DIM, k)))
     def sheet(c, k, o):
         box(c, 960, 560 + o, 60, 2.6, 2.0, 0.12, PAGE, k)
         for i in range(1, 5):
@@ -338,7 +340,7 @@ def S_B04(s):
             x, y = 1760, 470 + i * 42
             (check(c, x, y, 13, k, ACC, 5) if ok else cross(c, x, y, 11, k, INK, 4))
         s.add(tp + 0.9 + i * 0.25, 0.3, mk)
-    s.add(tp + 2.4, 0.6, lambda c, k: c.text(W / 2, 900, 'first 60 seconds', font('EBGaramond-Italic.ttf', 46), ACC, k))
+    s.add(tp + 2.4, 0.6, lambda c, k: c.text(W / 2, 860, 'first 60 seconds', font('EBGaramond-Italic.ttf', 46), ACC, k))
     def cur(c, dt):
         if int(dt * 2) % 2 == 0:
             bb = c.d.textbbox((1220 * SS, 420 * SS), '$ python run_tests.py', font=F_MONO(), anchor='mm')
@@ -364,7 +366,7 @@ def S_B05(s):
     def gh(c, k):
         ghost_box(c, 1450, 760, 60, 2.4, 2.4, 1.2, k)
         cross(c, 1450, 700, 70, k, ACC, 5)
-        label(c, 1450, 880, 'real data at scale', k, 'not proven')
+        label(c, 1450, 850, 'real data at scale', k, 'not proven')
     s.add(tn, 0.8, gh)
     def scan(c, dt):
         u = (dt % 3.0) / 3.0; y = 860 - u * 420
@@ -390,10 +392,9 @@ def S_B06(s):
         s.add(to + 0.5 + i * 0.7, 0.5, drop(o_, 40))
     for i in range(3):
         s.add(to + 2.8 + i * 0.3, 0.3, lambda c, k, i=i: cross(c, 960, 410 + i * 150, 24, k, ACC, 5))
-    s.add(to, 0.5, lambda c, k: label(c, 960, 860, 'out', k))
-    s.add(tf, 0.8, drop(lambda c, k, o: (page(c, 1580, 560 + o, 58, k), label(c, 1580, 860, 'first', k, 'one contract, one posting'))))
+    s.add(to, 0.5, lambda c, k: label(c, 960, 820, 'out', k))
+    s.add(tf, 0.8, drop(lambda c, k, o: (page(c, 1580, 560 + o, 58, k), label(c, 1580, 820, 'first', k, 'one contract, one posting'))))
     s.add(tk, 0.5, lambda c, k: (check(c, 1580, 380, 34, k, ACC, 8), c.text(1580, 440, 'PASS', F_LAB(), INK, k)))
-    _travel(s, tf + 1.2, [((620, 560), (1300, 560))], 3.0)
 
 def S_B07(s):
     s.add(0, 0.5, CONS)
@@ -419,14 +420,14 @@ def S_B07(s):
 def S_B08(s):
     s.add(0, 0.5, CONS)
     tn = s.at('Prompt contracts, building'); ta = s.at('The skill I already have')
-    reasons = [('small enough to finish alone', 'small enough'), ('uses what this course teaches', 'uses exactly'), ('mostly new learning', 'mostly new learning')]
+    reasons = [('small enough to finish alone', 'small enough'), ('uses what this course teaches', 'uses exactly'), ('a mix: new and existing skills', 'a mix of new learning')]
     for i, (txt, ph) in enumerate(reasons):
         y = 250 + i * 62
         def r(c, k, y=y, txt=txt):
             n = int(k * len(txt)); c.text(780, y, txt[:n], font('EBGaramond-Italic.ttf', 40), INK, 1, 'lm')
             if k >= 1: check(c, 740, y, 14, 1, ACC, 5)
         s.add(s.at(ph), 1.2, r)
-    s.add(tn, 0.5, lambda c, k: label(c, 600, 880, 'new to me', k))
+    s.add(tn, 0.5, lambda c, k: label(c, 600, 860, 'new to me', k))
     for i, nm in enumerate(['contracts', 'test sets', 'eval logs']):
         def b(c, k, o, i=i, nm=nm):
             box(c, 600, 760 + o, 66, 2.6, 2.6, 0.8, [SKY, DARK, MUSTARD][i], k, i * 0.8)
@@ -434,8 +435,8 @@ def S_B08(s):
             c.line([(x + 30, y), (x + 120, y)], DIM, k, 2)
             c.text(x + 135, y, nm, F_LAB(), INK, k, 'lm')
         s.add(tn + i * 0.9, 0.7, drop(b, 120))
-    s.add(ta, 0.7, drop(lambda c, k, o: (box(c, 1400, 760 + o, 66, 2.6, 2.6, 0.8, CORAL, k), label(c, 1400, 880, 'already have', k))))
-    s.add(ta + 0.6, 0.5, lambda c, k: (c.text(1400, 540, 'Python', F_LAB(), INK, k), c.text(1400, 580, 'earlier course assignments', F_SUB(), DIM, k)))
+    s.add(ta, 0.7, drop(lambda c, k, o: (box(c, 1400, 760 + o, 66, 2.6, 2.6, 0.8, CORAL, k), label(c, 1400, 860, 'already have', k))))
+    s.add(ta + 0.6, 0.5, lambda c, k: (c.text(1400, 540, 'Python', F_LAB(), INK, k), c.text(1400, 580, 'MBTA pipeline on GitHub', F_SUB(), DIM, k)))
 
 def S_B09(s):
     s.add(0, 0.5, CONS)
@@ -447,11 +448,11 @@ def S_B09(s):
             c.line([(x + 40, y - 6 - i * 20), (x + 120, y - 6 - i * 30)], DIM, k, 2)
             c.text(x + 135, y - 6 - i * 30, nm, F_LAB(), INK, k, 'lm')
         s.add(te + 0.6 + i * 0.6, 0.6, drop(b, 80))
-    s.add(te, 0.5, lambda c, k: label(c, 560, 860, 'exists today', k))
+    s.add(te, 0.5, lambda c, k: label(c, 560, 840, 'exists today', k))
     for i, nm in enumerate(['contracts', 'postings', 'tests', 'eval log']):
         x = 1180 + (i % 2) * 330; y = 470 + (i // 2) * 240
         s.add(tw + i * 0.5, 0.6, lambda c, k, x=x, y=y, nm=nm: (ghost_box(c, x, y, 40, 1.8, 1.8, 1.0, k), c.text(x, y + 90, nm, F_SUB(), DIM, k)))
-    s.add(tw, 0.5, lambda c, k: label(c, 1345, 860, 'will exist', k))
+    s.add(tw, 0.5, lambda c, k: label(c, 1345, 840, 'will exist', k))
     _travel(s, tw + 2.5, [((720, 640), (1080, 520)), ((720, 640), (1080, 760))], 3.2)
 
 TITLES = {'B02': '1 · What is it?', 'B03': '2 · Why would anyone care?', 'B04': '3 · Who opens it?',
@@ -500,16 +501,16 @@ def draw(s, bid, t):
                 shown = sen[:int(clamp((t - t0) / min(1.2, 0.4 * (t1 - t0))) * len(sen))]
                 lines = wrap(c, sen, f, 1560)
                 # reveal by character count across the wrapped lines
-                left = len(shown); ys = [1030] if len(lines) == 1 else [990, 1036]
+                left = len(shown); ys = [992] if len(lines) == 1 else [952, 992]
                 wmax = max(c.d.textlength(l, font=f) for l in lines[:2]) / SS
-                c.d.rounded_rectangle([(W / 2 - wmax / 2 - 40) * SS, (ys[0] - 32) * SS, (W / 2 + wmax / 2 + 40) * SS, (ys[-1] + 30) * SS],
+                c.d.rounded_rectangle([(W / 2 - wmax / 2 - 40) * SS, (ys[0] - 30) * SS, (W / 2 + wmax / 2 + 40) * SS, (ys[-1] + 26) * SS],
                                       radius=28 * SS, fill=(255, 255, 255), outline=INK, width=2 * SS)
                 for y, ln in zip(ys, lines[:2]):
                     part = ln[:max(0, left)]; left -= len(ln) + 1
                     c.text(W / 2, y, part, f, INK, 1)
                 break
     # slow camera drift
-    z = 1 + 0.035 * clamp(t / s.T)
+    z = 1 + 0.010 * clamp(t / s.T)
     w2, h2 = W * SS / z, H * SS / z
     l, tp = (W * SS - w2) / 2, (H * SS - h2) / 2
     return c.im.resize((W, H), Image.BOX, box=(l, tp, l + w2, tp + h2))

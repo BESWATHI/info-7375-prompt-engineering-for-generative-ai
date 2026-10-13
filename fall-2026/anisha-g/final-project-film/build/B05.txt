@@ -1,0 +1,1 @@
+What would it prove about me? Four things from this course: writing prompt contracts, grounding every answer in the source, verifying that each quote really appears in the posting, and evaluating with a fixed test set. The evidence will be the test results and the evaluation log. It will not prove the tool works on real postings at scale, because I'm only testing synthetic data.

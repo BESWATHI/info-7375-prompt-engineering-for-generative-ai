@@ -1,0 +1,1 @@
+Three terms first. A prompt contract is a set of rules the AI must follow, including what to say when something is missing. A synthetic posting is a fake job ad I write myself, so no real data is used. And a grounded field is an answer that comes with a quote from the posting.

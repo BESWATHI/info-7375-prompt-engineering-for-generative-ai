@@ -10,6 +10,9 @@
 - 2026-10-13: "add little more animation and elements … make sure it has visuals", "add more color aesthetic, presentable" → subtitles, question titles, looping motion, extra drawings, more colours
 - 2026-10-13: shared a classmate's pitch film and asked for "same with different topic" and "change the design" → Claude rewrote the beat sheet in the same show-tell structure (typing intro, terms card, one drawing per beat) and wrote `tools/render.py` to draw and animate the scenes in its own teal/coral palette. No content, drawings or files were taken from the classmate's film; only the format was followed.
 
+- 2026-10-13: "have we pushed everything and covered every requirement … I don't want to lose marks" → Claude ran the toolkit's Gate V, fixed the design until it passed, and added `tools/run_gate_v.sh`
+- 2026-10-13: tried ChatGPT myself on a real posting for question 2 (screenshots in `evidence/`); gave my MBTA pipeline repo as question 7 evidence
+
 ## 2. Brutalist
 ```bash
 git clone https://github.com/nikbearbrown/brutalist.art
@@ -28,8 +31,13 @@ bash make_film.sh Gaikar
 ```
 Scene timing comes from the narration: each drawing appears when its phrase is spoken (estimated at 180 words per minute), and `make_film.sh` stretches each scene to the real length of its narration so the drawings and subtitles stay in sync.
 
-## 4. My own checks (Brutalist's gates were not run)
-- [x] Runtime between 2 and 4 minutes: 3:33
+## 4. Checks
+Toolkit gate (Brutalist GATE V, `runtime/qc/final_frame_check.py`), run on the finished film:
+```bash
+bash tools/run_gate_v.sh      # clones brutalist.art if needed, writes reports/GATE-V-REPORT.md
+```
+My own checklist:
+- [x] Runtime between 2 and 4 minutes: 3:45
 - [x] Every drawing shows "CONSTRUCTED · not built yet"
 - [x] Nothing described in past tense unless it exists today
 - [x] All seven questions answered
