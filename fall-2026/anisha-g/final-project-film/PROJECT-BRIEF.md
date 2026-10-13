@@ -58,6 +58,8 @@ I picked this project because it is small enough for one person to finish and it
 
 ## Exists today
 - This brief, the beat sheet, and the pitch film, made for this assignment
+- My dated ChatGPT comparison screenshots (`evidence/`, 2026-10-13)
+- The toolkit's Gate V report on this film (`reports/`), passed
 - No code, contracts, test postings, or results exist yet
 
 ## Will exist
