@@ -6,7 +6,6 @@
     "skill": "show-tell",
     "style_preset": "show-tell",
     "channel": "atharva-chonkar",
-    "channel_title": "Atharva C",
     "author": "Atharva C",
     "voice": "am_michael",
     "voice_kokoro": "am_michael",
@@ -35,7 +34,7 @@
       "INFO 7375"
     ],
     "build": {
-      "at": "2026-10-10T20:54:54",
+      "at": "2026-10-12T22:02:06",
       "cut": "master",
       "filled": 11,
       "of": 11,
@@ -76,7 +75,7 @@
         "status": "MANIM",
         "src": "manim/B00.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T20:54:54"
+        "at": "2026-10-12T22:02:06"
       }
     },
     {
@@ -109,7 +108,7 @@
         "status": "MANIM",
         "src": "manim/B01.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T20:54:54"
+        "at": "2026-10-12T22:02:06"
       }
     },
     {
@@ -141,7 +140,7 @@
         "status": "MANIM",
         "src": "manim/B02.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T20:54:54"
+        "at": "2026-10-12T22:02:06"
       }
     },
     {
@@ -174,7 +173,7 @@
         "status": "MANIM",
         "src": "manim/B03.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T20:54:54"
+        "at": "2026-10-12T22:02:06"
       }
     },
     {
@@ -207,7 +206,7 @@
         "status": "MANIM",
         "src": "manim/B04.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T20:54:54"
+        "at": "2026-10-12T22:02:06"
       }
     },
     {
@@ -239,7 +238,7 @@
         "status": "MANIM",
         "src": "manim/B05.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T20:54:54"
+        "at": "2026-10-12T22:02:06"
       }
     },
     {
@@ -271,7 +270,7 @@
         "status": "MANIM",
         "src": "manim/B06.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T20:54:54"
+        "at": "2026-10-12T22:02:06"
       }
     },
     {
@@ -303,7 +302,7 @@
         "status": "MANIM",
         "src": "manim/B07.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T20:54:54"
+        "at": "2026-10-12T22:02:06"
       }
     },
     {
@@ -336,7 +335,7 @@
         "status": "MANIM",
         "src": "manim/B08.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T20:54:54"
+        "at": "2026-10-12T22:02:06"
       }
     },
     {
@@ -368,7 +367,7 @@
         "status": "MANIM",
         "src": "manim/B09.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T20:54:54"
+        "at": "2026-10-12T22:02:06"
       }
     },
     {
@@ -402,7 +401,7 @@
         "status": "MANIM",
         "src": "manim/BOUT.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T20:54:54"
+        "at": "2026-10-12T22:02:06"
       }
     }
   ]

@@ -56,7 +56,7 @@ for b in beats:   # carry measured audio forward only if the narration hasn't ch
 
 sheet = {"metadata": {
     "slug": SLUG, "title": TITLE, "topic": "DATA ENGINEERING · FINAL PROJECT PITCH", "skill": "show-tell",
-    "style_preset": "show-tell", "channel": "atharva-chonkar", "channel_title": "Atharva C",
+    "style_preset": "show-tell", "channel": "atharva-chonkar",
     "author": "Atharva C", "voice": VOICE, "voice_kokoro": VOICE, "engine": "kokoro", "clock": "narration",
     "palette": "claude", "fps": 24, "aspect_ratio": "16:9", "width": 3840, "height": 2160, "caption_policy": "none",
     "bookend_exempt": ["cold-open", "bvdt", "bhtf"],

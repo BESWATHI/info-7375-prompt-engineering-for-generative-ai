@@ -2,10 +2,12 @@
 [run] GATE SHAPE — finance chart-shape enforcement
 [run] GATE A — static pre-flight
 [static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[static-check] 1 scene(s): 0 clean · 1 warn · 0 error
+[run] gate A warning on B01_PlannedRepo (continuing)
 [static-check] 1 scene(s): 1 clean · 0 warn · 0 error
 [static-check] 1 scene(s): 1 clean · 0 warn · 0 error
-[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
-[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[static-check] 1 scene(s): 0 clean · 1 warn · 0 error
+[run] gate A warning on B04_ReadmeMock (continuing)
 [static-check] 1 scene(s): 1 clean · 0 warn · 0 error
 [static-check] 1 scene(s): 1 clean · 0 warn · 0 error
 [static-check] 1 scene(s): 1 clean · 0 warn · 0 error
@@ -58,5 +60,3 @@
 [run] done → ~/Projects/seeded-faults-film-build/seeded-faults-pitch  (QC gates: on)
 [run] REVIEW built; no final exported. Use ./art final <reel> for a verified master.
 [run] any remaining slates are YOUR slots — see ~/Projects/seeded-faults-film-build/seeded-faults-pitch/SHOTLIST.md
-[art] SKIN LINT: B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk
-[art] SKIN LINT: BOUT: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro

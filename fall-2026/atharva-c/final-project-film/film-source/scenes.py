@@ -29,8 +29,16 @@ C30 = 0.8660254
 config.background_color = STAGE
 
 
-def T(s, size=36, color=INK, bold=False):
-    return Text(s, font=SERIF, color=color, font_size=size, weight="BOLD" if bold else "NORMAL")
+TYPE_FLOOR = 44   # feedback 2026-10-12: enlarge small text; no label below 44
+
+
+def T(s, size=44, color=INK, bold=False):
+    return Text(s, font=SERIF, color=color, font_size=max(size, TYPE_FLOOR), weight="BOLD" if bold else "NORMAL")
+
+
+def M(s, size=40, color=INK):
+    """Monospace for REAL program output, copied verbatim from evidence/ logs."""
+    return Text(s, font="Menlo", color=color, font_size=size)
 
 
 class Iso:
@@ -402,7 +410,7 @@ def arrow(a, b, color=KRAFT_EDGE):
 
 def stamp(word, x, y):
     """The honesty label for constructed material: ink type beside a grey rule."""
-    t = T(word, 34, INK, bold=True).move_to([x, y, 0])
+    t = T(word, 48, INK, bold=True).move_to([x, y, 0])
     rule = Line([x - t.width / 2, y - 0.32, 0], [x + t.width / 2, y - 0.32, 0], color=BAR1, stroke_width=4)
     return VGroup(t, rule)
 
@@ -430,7 +438,7 @@ class B01_PlannedRepo(Scene):
         iso = Iso(0.0, -2.4, 1.0)
         back, front = iso.open_box(-1.6, -1.6, 0, 3.2, 3.2, 1.4)
         lab = T("planned repo", 40).move_to([-4.6, -1.2, 0])
-        st = stamp("CONSTRUCTED", 3.8, 2.8)
+        st = stamp("CONSTRUCTED", 3.4, 2.8)
         go(self, FadeIn(back), FadeIn(front), rt=0.8)
         go(self, FadeIn(lab), FadeIn(st), rt=0.5)
         parts = [
@@ -443,8 +451,8 @@ class B01_PlannedRepo(Scene):
             m.set_z_index(1)
             at(self, phrase, FadeIn(m, shift=DOWN * 0.5), rt=0.6)
             go(self, m.animate.shift(DOWN * 1.9), rt=0.5, rate_func=ease_in)
-        mark = T("one test, by hand", 36).move_to([4.6, -1.2, 0])
-        tick = check(4.6, -0.4, s=0.3, color=TERRA, w=9)
+        mark = T("one test, by hand", 44).move_to([4.3, -2.6, 0])
+        tick = check(4.3, -1.8, s=0.3, color=TERRA, w=9)
         at(self, "one small test", FadeIn(mark), GrowFromCenter(tick), rt=0.6)
         finish(self)
 
@@ -466,26 +474,34 @@ class B02_CrackedPass(Scene):
 
 
 class B03_FiftyCaught(Scene):
+    """Real output from evidence/2026-10-09-first-planted-fault/output/ (ge_fault.txt, dbt_clean.txt, dbt_faulted.txt)."""
     def construct(self):
-        tags = VGroup(T("GX 1.24", 36), T("dbt", 36), T("dbt-expectations", 36)).arrange(RIGHT, buff=0.9).move_to([0, 2.9, 0])
-        go(self, FadeIn(tags[0]), rt=0.5)
-        iso = Iso(-3.0, -1.9, 1.0)
-        table = data_table(iso, 0, 0, 3.4, 2.4, 5)
-        go(self, FadeIn(table), rt=0.6)
-        rng = np.random.default_rng(7)
-        pts = [iso.p(0.3 + 2.8 * rng.random(), 0.2 + 2.0 * rng.random(), 0.36) for _ in range(50)]
-        dots = VGroup(*[Dot(p, radius=0.055, color=TERRA) for p in pts])
-        at(self, "I planted fifty", LaggedStart(*[FadeIn(d) for d in dots], lag_ratio=0.02), rt=1.0)
-        page = paper(2.2, 0.2, 1.8, 2.2)
-        tick = check(2.15, 0.3, s=0.35, color=INK, w=9)
-        score = T("50 / 50", 56, INK, bold=True).move_to([2.2, -1.8, 0])
-        at(self, "my check caught all fifty", FadeIn(page), rt=0.5)
-        go(self, Create(tick), FadeIn(score), rt=0.6)
-        at(self, "dbt did the same", FadeIn(tags[1]), rt=0.5)
-        at(self, "dbt-expectations package", FadeIn(tags[2]), rt=0.5)
-        sb = scoreboard(5.0, -0.2, 2.0, 3)
-        ml = T("missed?", 36).move_to([5.0, -1.9, 0])
-        at(self, "Nothing told me", FadeIn(sb), FadeIn(ml), rt=0.6)
+        head = T("real output · 2026-10-09", 48, INK, bold=True).move_to([0, 2.95, 0])
+        rule = Line([-6.0, 2.45, 0], [6.0, 2.45, 0], color=BAR1, stroke_width=4)
+        go(self, FadeIn(head), Create(rule), rt=0.6)
+        def row(y, tool, cond, out):
+            g = VGroup()
+            if tool:
+                g.add(T(tool, 44, bold=True).move_to([0, y, 0]).align_to([-6.0, 0, 0], LEFT))
+            g.add(T(cond, 44).move_to([0, y, 0]).align_to([-3.7, 0, 0], LEFT))
+            g.add(M(out, 40).move_to([0, y, 0]).align_to([-0.9, 0, 0], LEFT))
+            return g
+        gx_clean = row(1.65, "GX 1.24", "clean", "unexpected_count=0")
+        gx_fault = row(0.85, "", "50 planted", "unexpected_count=50")
+        sep = Line([-6.0, 0.25, 0], [6.0, 0.25, 0], color=BAR2, stroke_width=3)
+        dbt_clean = row(-0.35, "dbt", "clean", "PASS")
+        dbt_fault = row(-1.15, "", "50 planted", "FAIL 50")
+        at(self, "In Great Expectations", FadeIn(gx_clean), rt=0.6)
+        at(self, "I planted fifty", FadeIn(gx_fault), rt=0.6)
+        hit = check(-5.45, 0.9, s=0.28, color=TERRA, w=9)
+        at(self, "my check caught all fifty", Create(hit), rt=0.5)
+        hit2 = check(-5.45, -1.1, s=0.28, color=TERRA, w=9)
+        at(self, "dbt did the same", Create(sep), FadeIn(dbt_clean), FadeIn(dbt_fault), Create(hit2), rt=0.7)
+        dx = T("dbt-expectations: still hand-written", 44).move_to([0, -2.25, 0]).align_to([-6.0, 0, 0], LEFT)
+        at(self, "dbt-expectations package", FadeIn(dx), rt=0.6)
+        ring = Circle(radius=0.28, stroke_color=BAR1, stroke_width=5).move_to([-5.7, -3.0, 0])
+        mq = T("what was missed: not reported", 44).move_to([0, -3.0, 0]).align_to([-5.2, 0, 0], LEFT)
+        at(self, "Nothing told me", GrowFromCenter(ring), FadeIn(mq), rt=0.6)
         finish(self)
 
 
@@ -495,7 +511,7 @@ class B04_ReadmeMock(Scene):
                                  stroke_color=INK, stroke_width=5).move_to([-0.6, -0.2, 0])
         bar = Rectangle(width=7.4, height=0.5, fill_color=BAR1, fill_opacity=1, stroke_width=0).move_to([-0.6, 1.85, 0])
         lab = T("README", 40).move_to([-0.6, 2.8, 0])
-        st = stamp("CONSTRUCTED", 3.8, 2.8)
+        st = stamp("CONSTRUCTED", 3.4, 2.8)
         go(self, FadeIn(panel), FadeIn(bar), rt=0.6)
         go(self, FadeIn(lab), FadeIn(st), rt=0.5)
         rows = VGroup()
@@ -559,7 +575,7 @@ class B06_Scope(Scene):
         wl = T("warehouse", 34).move_to([4.6, -1.0, 0])
         at(self, "It won't repair data", FadeIn(lo), FadeIn(srv), FadeIn(wl), rt=0.6)
         go(self, Create(strike), rt=0.4)
-        one = VGroup(Circle(radius=0.32, fill_color=CARD, fill_opacity=1, stroke_color=INK, stroke_width=5).move_to([0.1, 0.6, 0]),
+        one = VGroup(Circle(radius=0.42, fill_color=CARD, fill_opacity=1, stroke_color=INK, stroke_width=5).move_to([0.1, 0.6, 0]),
                      T("1", 36, INK, bold=True).move_to([0.1, 0.6, 0]))
         at(self, "The first thing I'll build", GrowFromCenter(one[0]), FadeIn(one[1]), rt=0.5)
         sb = scoreboard(4.6, -2.3, 2.6, 2)
@@ -606,9 +622,9 @@ class B08_TwoColumns(Scene):
         at(self, "Crime Rate Management System", FadeIn(db, shift=DOWN * 0.3), FadeIn(repo), rt=0.7)
         tick = check(-1.6, 1.4, s=0.3, color=TERRA, w=9)
         at(self, "its own testing script", Create(tick), rt=0.4)
-        pages = VGroup(paper(2.0, 0.3, 1.4, 1.8, -0.08), paper(3.4, 0.4, 1.4, 1.8, 0.0), paper(4.8, 0.3, 1.4, 1.8, 0.08))
-        names = VGroup(T("contracts", 32).move_to([2.0, -1.2, 0]), T("evaluation", 32).move_to([3.4, -1.9, 0]),
-                       T("faults", 32).move_to([4.8, -1.2, 0]))
+        pages = VGroup(paper(2.1, 0.75, 1.2, 1.5, -0.08), paper(3.4, 0.85, 1.2, 1.5, 0.0), paper(4.7, 0.75, 1.2, 1.5, 0.08))
+        names = VGroup(T("prompt contracts", 44).move_to([3.4, -1.15, 0]), T("evaluation", 44).move_to([3.4, -1.85, 0]),
+                       T("fault injection", 44).move_to([3.4, -2.55, 0]))
         at(self, "The new part for me", FadeIn(lb), LaggedStart(*[FadeIn(p, shift=DOWN * 0.3) for p in pages], lag_ratio=0.25), rt=0.9)
         go(self, FadeIn(names), rt=0.5)
         finish(self)
