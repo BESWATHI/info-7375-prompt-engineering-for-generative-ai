@@ -68,6 +68,7 @@ _To be written by me._
   - **Text size:** every label now has a 44-point minimum (it was 32–42), the CONSTRUCTED stamps are 48, and I removed the toolkit's tiny corner name on B00 (`channel_title`). My name is spoken in B00 and large on the outro.
   - **My own reflection:** added the "Who wrote what" note at the top and "In my own words" sections for me to write.
 - Re-render: the 1080p test first failed Gate B (strict) because the larger CONSTRUCTED stamp in B01 crossed the safe area → moved it inward. After that, all gates passed at 1080p. 4K re-render started.
+- 4K re-render done: Gates A, W, B, V passed (0 BLOCKER/MAJOR), GATE T PASS, master "ready" (3840×2160, 216.8 s, sha256 fd90da0c…c84b). Replaced the film and gate reports in this folder; the old master is kept outside the repo.
 
 ### In my own words (2026-10-12)
 _To be written by me._
