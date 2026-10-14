@@ -34,7 +34,7 @@
       "INFO 7375"
     ],
     "build": {
-      "at": "2026-10-12T22:02:06",
+      "at": "2026-10-14T15:38:54",
       "cut": "master",
       "filled": 11,
       "of": 11,
@@ -75,7 +75,7 @@
         "status": "MANIM",
         "src": "manim/B00.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T22:02:06"
+        "at": "2026-10-14T15:38:54"
       }
     },
     {
@@ -108,7 +108,7 @@
         "status": "MANIM",
         "src": "manim/B01.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T22:02:06"
+        "at": "2026-10-14T15:38:54"
       }
     },
     {
@@ -140,7 +140,7 @@
         "status": "MANIM",
         "src": "manim/B02.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T22:02:06"
+        "at": "2026-10-14T15:38:54"
       }
     },
     {
@@ -173,7 +173,7 @@
         "status": "MANIM",
         "src": "manim/B03.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T22:02:06"
+        "at": "2026-10-14T15:38:54"
       }
     },
     {
@@ -206,7 +206,7 @@
         "status": "MANIM",
         "src": "manim/B04.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T22:02:06"
+        "at": "2026-10-14T15:38:54"
       }
     },
     {
@@ -238,7 +238,7 @@
         "status": "MANIM",
         "src": "manim/B05.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T22:02:06"
+        "at": "2026-10-14T15:38:54"
       }
     },
     {
@@ -270,7 +270,7 @@
         "status": "MANIM",
         "src": "manim/B06.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T22:02:06"
+        "at": "2026-10-14T15:38:54"
       }
     },
     {
@@ -302,7 +302,7 @@
         "status": "MANIM",
         "src": "manim/B07.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T22:02:06"
+        "at": "2026-10-14T15:38:54"
       }
     },
     {
@@ -335,7 +335,7 @@
         "status": "MANIM",
         "src": "manim/B08.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T22:02:06"
+        "at": "2026-10-14T15:38:54"
       }
     },
     {
@@ -367,7 +367,7 @@
         "status": "MANIM",
         "src": "manim/B09.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T22:02:06"
+        "at": "2026-10-14T15:38:54"
       }
     },
     {
@@ -394,14 +394,14 @@
         "sparse_by_design": true,
         "sparse_reason": "Title card: one title and one name by design."
       },
-      "actual_duration_s": 3.56,
+      "actual_duration_s": 3.176,
       "audio_file": "mp3/beat-BOUT.mp3",
-      "render_duration_s": 3.5833333333333335,
+      "render_duration_s": 3.2083333333333335,
       "build": {
         "status": "MANIM",
         "src": "manim/BOUT.mp4",
         "filled_by": "manim",
-        "at": "2026-10-12T22:02:06"
+        "at": "2026-10-14T15:38:54"
       }
     }
   ]

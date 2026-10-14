@@ -4,8 +4,8 @@
 - **Course:** INFO 7375, Fall 2026
 - **Working title:** Seeded Faults — data-quality tests, tested
 - **Target role:** Data Engineer / BI Engineer
-- **Runtime:** 3:37 (216.8 s)
-- **Film:** `seeded-faults-pitch.mp4` (3840×2160, rendered 2026-10-10 with Brutalist show-tell, free local pipeline)
+- **Runtime:** 3:36 (216.5 s)
+- **Film:** `seeded-faults-pitch.mp4` (3840×2160, re-rendered 2026-10-14 with Brutalist show-tell, free local pipeline)
 
 ## What's in this folder
 | File | What it is |

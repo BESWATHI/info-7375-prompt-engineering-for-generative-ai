@@ -37,7 +37,7 @@ Pronunciation was checked with faster-whisper (base.en) on every beat. B01 and B
 python3 runtime/qc/factcheck_check.py $B
 python3 runtime/scripts/bookend_check.py $B                # expected FAIL, see gate-reports/README.md
 ```
-Output: `$B/exports/landscape/seeded-faults-pitch.mp4` (sha256 `fd90da0c60dd1f1e81aaed31f6f1cf450b962cd4cca7f2bc3465c712af1ec84b` for this submission's render).
+Output: `$B/exports/landscape/seeded-faults-pitch.mp4` (sha256 `96f04f518e9daef164aa1bb3a910df45efde21e98418d9bfe1421e987961a68e` for this submission's render).
 
 ## Prompts given to Claude Code (summarised; full conversation not included)
 1. 2026-10-09: explain the assignment; suggest projects for Data Engineering / BI roles; create the submission files.

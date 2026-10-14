@@ -1,6 +1,6 @@
 # Gate reports — Seeded Faults pitch film
 
-Toolkit: Brutalist (github.com/nikbearbrown/brutalist.art) at commit `b21f625`, free local pipeline only. Final run 2026-10-12 (re-render after feedback: real output on screen in B03, 44-pt minimum text).
+Toolkit: Brutalist (github.com/nikbearbrown/brutalist.art) at commit `b21f625`, free local pipeline only. Final run 2026-10-14 (outro re-rendered to show "Atharva C"; earlier 2026-10-12 re-render after feedback: real output on screen in B03, 44-pt minimum text).
 
 | Gate | What it checks | Result | File |
 |---|---|---|---|
@@ -10,7 +10,7 @@ Toolkit: Brutalist (github.com/nikbearbrown/brutalist.art) at commit `b21f625`, 
 | B (layout audit) | rendered text inside the safe area, no collisions | **PASS** (CLEAN) | `GATE-B-layout_audit.md` |
 | V (frame-level visual QC) | 22 sampled frames | **PASS** (0 BLOCKER, 0 MAJOR) | `GATE-V-REPORT.md`, `GATE-V-contact_sheet.png` |
 | T (type lock, before final) | text size, overlap, contrast at each clip midpoint | **PASS** | `GATE-T-TYPECHECK.md` |
-| Render integrity (`art final`) | 4K master, hashes of every input | **ready**: 3840×2160, 216.8 s, sha256 `fd90da0c…c84b` | `render-integrity.verified.json`, `art-final-4k.log` |
+| Render integrity (`art final`) | 4K master, hashes of every input | **ready**: 3840×2160, 216.5 s, sha256 `96f04f51…a68e` | `render-integrity.verified.json`, `art-final-4k.log` |
 | Bookend check (standalone, not wired into run/final) | toolkit house opening and closing cards | **FAIL — expected and explained below** | `bookend_check.txt` |
 
 ## Known, explained non-passes
