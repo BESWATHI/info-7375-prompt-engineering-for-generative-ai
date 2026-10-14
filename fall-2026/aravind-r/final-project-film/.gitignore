@@ -40,3 +40,6 @@ case-study/data/raw/
 
 # OS
 .DS_Store
+
+# Root copy of the Gate T report (kept in gates/TYPECHECK.md)
+/TYPECHECK.md

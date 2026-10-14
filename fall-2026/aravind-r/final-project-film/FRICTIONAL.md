@@ -168,3 +168,94 @@ Replaced `PROJECT-BRIEF.md` with my final text, with no draft markers left. It w
 - **Every record** reports `claude-opus-5-5` and `2.1.283 (Claude Code)`, with `is_error: false`. All ten used the same system-prompt SHA-256 (`6a047888…`). That hash covers only the prompt text below the `---` line; my header edit isn't part of the prompt.
 - **Recap lengths** by plain whitespace count, which includes headings and timestamps: 224–276 words. This is a crude count, not a rubric judgment. Pass/fail on any clause waits for my labels, which are out of scope for this deadline.
 - **Updated** "Exists today" in `PROJECT-BRIEF.md` to list the AMI sample, the constructed docs and the feature outputs, with dates.
+
+## 2026-10-14 — Phase 3: beat sheet drafted (awaiting my narration review)
+
+- **Generator:** `make_sheet.py` writes `beat_sheet.json` in the show-tell format: the hesitant-writer hook, then 8 drawn Manim body beats (Q1 to Q7, then exists vs will), then the outro.
+- **Extra fields** `question_ids`, `claim_status`, `evidence` and `on_screen_label` sit inline on each beat. The toolkit schema (`runtime/schema/beat_sheet.schema.json`) allows additional properties on a beat, so no `beat_claims.json` sidecar is needed.
+- **Bookends:** `bookend_exempt: ["cold-open", "bvdt", "bhtf"]`. These are valid values in `bookend_check.py` and drop the Claude.ai composer and verdict card. The outro check can't be exempted, so BOUT keeps `ClaudeTitleOutro` with my handle (`channel_title` "Aravind Ravi · INFO 7375"). The terms card is left out, because my beat order doesn't include it.
+- **Too long at first:** the first draft was 703 words, about 4:40 at 150 wpm, which is over the 4:00 limit. Tightened to 567 words.
+- **Expected runtime:** Week 1's sheet measured 604 words over 203.5 s of audio including added holds, about 2.97 words per second. At that rate this script comes to about 3:10 before holds.
+- **Kokoro pronunciation:** written out as "A I", "P M", "A M I", "Ork dot A I", "Tech for Dev", "Koine Arth" and "Claude Opus five point five". The whisper check comes after audio.
+- **Still mine to decide:** the Kokoro voice. The sheet uses `am_onyx` as a placeholder (it's the toolkit default; the "Liam" persona name is dropped).
+
+## 2026-10-14 — Phase 4: audio, pronunciation, scenes, paperwork
+
+- **Narration approved as written (Aravind); voice `am_onyx`.** It's synthesized locally with Kokoro: `generate_audio_kokoro.py`, then `add_holds.py` (my Week 1 script, copied in) adds a 1.0 s hold after each beat and 1.5 s after B08.
+- **First whisper check (base.en) found real mispronunciations:**
+  - "A I" came out as "eye" ("an eye feature", "IPM").
+  - "Maxim A I" came out as "Maxima I".
+  - "to-dos" came out as "Todas".
+- **Testing variants** with `small.en` showed that plain "AI", "AMI", "Maxim AI" in context, "E-vals" and "to-do items" are voiced correctly. I applied only those spelling changes; the wording is unchanged except "to-dos" → "to-do items".
+- **New runtime:** 557 words, 171.6 s of speech, 181.66 s with holds (about 3:02).
+- **scenes.py:** the show-tell iso kit pasted unchanged, plus 8 scenes, a midpoint guard (`P()`), a question marker top-left and an honesty tag bottom-left on every beat.
+  - B08's excerpt is asserted as a verbatim substring of `case-study/outputs/feature-run/ES2007a.json`.
+- **Low-res stills** (`manim -ql -s`) showed overlaps and fixes were needed:
+  - "per clause" was on top of the table (B03).
+  - "10 AMI meetings" was on top of the pages, and the B05 tag ran off-frame.
+  - The B06 padlock shackle was hidden behind its body; fixed with `arc_center`.
+  - The B07 PR tags collided.
+  - The B08 excerpt overflowed its card.
+  - The judge blocks were packed so tightly they'd fuse under GATE T.
+  - All fixed and re-rendered.
+- **Week 1 claim checked before it went in FACTCHECK:** "verified every on-screen number". Week 1's `verify_numbers.py` docstring says "Print every number that appears on screen in the video, from a real run", and every Week 1 FACTCHECK row is PASS, CORRECTED or EXEMPT.
+- **Wrote** `FACTCHECK.md` (20 rows; future-tense lines marked EXEMPT), `SHOTLIST.md` and `PROMPTS.md` before the first `art run`, because Gate F refuses to render without them.
+- **Render height 1080, not the skill's 2160:** that's what Week 1 used, and it's quicker against the deadline.
+
+## 2026-10-14 — Phase 4: first `art run` blocked by Gate A
+
+- **Broke:** `GATE A FAILED: B02_Difference has static errors — nothing rendered`. Running `static_scene_check.py` on each class showed the cause in B02 and B08: "explicit coord(s) outside the frame, e.g. (7.8,-3.0) in move_to". My `tag()` and `marker()` helpers placed text at `-6.0 + t.width / 2`. Gate A's stub gives text a placeholder width that's far too big (the same stub quirk as Week 1), so the computed x landed off-frame.
+- **Fix:** `move_to([0, y, 0]).align_to([-6.0, 0, 0], LEFT)`. Real Manim left-aligns the text exactly, and the stub treats `align_to` as a no-op. All 8 scenes are then clean in Gate A. The log is kept as `gates/art-run-1-gateA-fail.log`.
+
+## 2026-10-14 — Phase 4: render–gate–fix cycles (logs in `gates/`)
+
+1. **`art-run-2`: Gate B (strict) didn't slot B05.**
+   - Problem: "outside safe area": the B05 tag text box ran to x = 6.92, past the ±6.3 limit.
+   - Fix: shortened it to "AMI data · CC BY 4.0 · downloaded 14 Oct 2026" and moved "CONSTRUCTED" under B05's rubric page. The B08 tag, which was almost as long, was shortened too; it now reads "real output · Claude Opus 5.5 · 14 Oct 2026 · grey = will". The model ID `claude-opus-5-5` stays in FACTCHECK and the output JSON.
+2. **`art-run-3`: Gate V MAJOR.**
+   - Problem: `low-contrast` 0.28 < 0.30 on the B02 midpoint frame, caused by the pale grey tool boxes.
+   - Fix: kraft fill (`BOX_R`); the old clip was moved to `_superseded/`. **`art-run-4`: Gate V clean** (20 frames, 0 BLOCKER, 0 MAJOR).
+3. **Watching the review cut found two problems no gate caught:**
+   - **(a) The hook never corrected.** The hesitant writer stayed on "Does my feature pass the rubric". `BrutalistHesitantWriter` matches `triggerWords` one word at a time (comma-separated list), so my three-word trigger never fired. Changed the typed line to "Does the judge score my rubric", with `score` → `misread`. The narration is unchanged.
+   - **(b) The stock outro draws the Claude mascot.** That conflicts with my no-logos / no-affiliation rule, and `ClaudeTitleOutro` had no switch for it. I extended my Week 1 toolkit patch with an optional `hideMascot` prop and set it on BOUT. The combined patch against `cd4bf20` is in `toolkit-patches/ClaudeTitleOutro-handle-hideMascot.patch`.
+   - **`art-run-5`: all gates clean.** Frames confirm "Does the judge misread my rubric" and an outro with no mascot.
+4. **`art-final-1`: GATE T FAIL.**
+   - Problem: B02 "bbox-overlap §8.6b … two labels are printing on top of" each other. The tool names sat inside ink-outlined boxes, which breaks the show-tell law "labels beside objects, never inside an outline".
+   - Fix: names moved above the boxes. Then `art-run-6` was clean, and **`art-final-2` gave GATE T: PASS**.
+5. **Master:** `exports/landscape/aravind-r-readback-pitch.mp4`, copied to `aravind-r-readback-pitch.mp4`.
+   - 1920×1080, 24 fps, H.264/AAC, 181.92 s (3:02).
+   - SHA-256 `4ed0aba1…f8e60e`; `verified.json` status "ready".
+   - Advisory only: "SKIN LINT: COLD OPEN LAW" on BIDEA, which the skill says to expect under `bookend_exempt`.
+
+## 2026-10-14 — Phase 5: gates, runtime, honesty audit, frame spot-check
+
+- **Toolkit gates on the final build, reports in `gates/`:**
+  - F: paperwork present; `factcheck_check.py` clean, 20 rows.
+  - L: clean.
+  - A: 8/8 clean.
+  - W: 8/8 clean.
+  - B: 0 errors, 0 warnings.
+  - V: 20 frames, 0 BLOCKER, 0 MAJOR.
+  - T: PASS.
+  - `bookend_check.py`: PASS.
+  - Master: `verified.json` status "ready".
+- **Runtime:** 181.92 s (3:02), inside 2:00–4:00.
+- **Honesty audit** (`gates/honesty-audit.md`, my own check, not a toolkit gate): every narration sentence and on-screen claim is checked. It raises 10 flags, none applied yet: 5 medium (F3, F5, F7, F8, F9) and 5 low. **I decide the fixes.**
+- **Frame spot-check:** one frame per beat from the master, in `gates/frames/` and `gates/frame-spotcheck.png`. Every label is legible, there are no logos, and no review overlays remain in the master.
+
+## 2026-10-14 — Phase 5: audit fixes, then re-render and re-gate (Aravind's decisions)
+
+- **Decided:**
+  - Fix F3 (B03 "the question Readback asked" → "will ask").
+  - Fix F5 (B04 "That I evaluate" → "That I'll evaluate").
+  - Reword F8 as my own view (B07: "I think e-vals are becoming core to AI PM work").
+  - Fix F9 (B05: "3 judges · planned" and a "planned" label before the commit line).
+  - Keep F7 as disclosed.
+- **Rebuilt:**
+  - Re-ran `make_sheet.py`, Kokoro, `add_holds.py` and `align.py`. Only B03, B04 and B07 changed length; whisper hears all three as written.
+  - Moved `manim/B03`, `B04`, `B05` and `B07` and the Manim media cache to `_superseded/`.
+  - `art-run-7`: the four scenes were re-rendered; Gate B 0/0, Gate V 0 BLOCKER, 0 MAJOR.
+  - Gate A and Gate W re-run on all 8 scenes, all clean (`gates/gateA-gateW-all-scenes.txt`).
+  - `art-final-3`: GATE T PASS. Bookend check PASS; factcheck clean (row 20a added for the reworded B07 line).
+- **New master:** 1920×1080, 182.46 s (3:02), SHA-256 `18f0d50c…581c131c`, `verified.json` "ready".
+- **Updated:** `gates/honesty-audit.md` (second pass and a Resolution table) and `gates/frames/` + `gates/frame-spotcheck.png` (re-extracted from the new master).
