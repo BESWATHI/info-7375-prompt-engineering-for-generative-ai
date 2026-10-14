@@ -381,3 +381,20 @@ below.
 - Claude asked Aditya. **Aditya chose to keep "Aditya Raj"**, matching Week 1 and the film's
   outro. The conflict is recorded here rather than settled silently.
 - The commit author is "Aditya Raj" with the GitHub noreply address, as in Week 1.
+
+**Posting result (Claude):**
+- Pushed commit `6d4b1b86bd7d52a021ba00233c76315cf05d54eb` to `main`: a fast-forward from `4cdb783`,
+  no force, adding 75 files under `fall-2026/aditya-r/final-project-film/`. Nothing else in the repo
+  changed (`git diff --stat 4cdb783 6d4b1b8 -- ':!fall-2026/aditya-r/final-project-film'` is empty).
+- **Remote verification after a fresh fetch:**
+  - All 75 remote blobs match the ZIP's files by git blob hash.
+  - The only files in the ZIP and not on GitHub are the 38 ignored `.mp3`/`.mp4` files.
+  - The README downloaded from raw.githubusercontent.com has the same sha256 as the ZIP's copy.
+  - The folder URL at that commit returns HTTP 200.
+- **CI `validate (3.13)` failed; 3.11 and 3.12 were cancelled by fail-fast.** Claude ran
+  `scripts/validate_course.py` (Python 3.13) on a full checkout at `4cdb783` and at `6d4b1b8`.
+  Both runs give the **same 18 failure lines**: broken links and `.tsx`/`.ts` files in other
+  students' folders, plus `nik-bear-brown/SYNC.md`. **None are in `aditya-r`.** CI on `main` was
+  already failing before this push. Not fixed, because those folders belong to other people.
+- This entry is part of a small follow-up commit, so that the GitHub folder and the Canvas ZIP still
+  match. The follow-up commit's hash is the one to give Canvas.
