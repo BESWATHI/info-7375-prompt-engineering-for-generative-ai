@@ -49,7 +49,7 @@ B = [
       "A server stack labelled 'loan API' lights up; two rule tags clip onto it: 'min income', 'step order'.",
       [{"at": 0.15, "event": "server"}, {"at": 0.55, "event": "rule tags"}]),
  beat("B03", "B03_SmokeRun", "REAL",
-      "This part exists. On October twelfth I ran it on made up applicants. An income of fourteen thousand, nine hundred and ninety nine rupees was rejected. "
+      "This part exists. On October twelfth, I ran it on made up applicants with Claude Code. An income of fourteen thousand, nine hundred and ninety nine rupees was rejected. "
       "Fifteen thousand got an offer. And paying out a loan before the earlier steps was refused. It has no tests yet.",
       "Three applicant cards ride up to the server one at a time: one gets an X, one a check, one a stop bar with '409'.",
       [{"at": 0.25, "event": "card 1, X"}, {"at": 0.5, "event": "card 2, check"}, {"at": 0.75, "event": "card 3, 409"}]),

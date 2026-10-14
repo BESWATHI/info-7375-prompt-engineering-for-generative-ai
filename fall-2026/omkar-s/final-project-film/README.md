@@ -4,8 +4,8 @@
 
 - **Working title:** BiteCheck: do Claude's API tests actually catch bugs?
 - **Target role:** new-grad Software Engineer / AI Engineer
-- **Runtime:** 3:57 (236.9 s), 1920×1080, 24 fps, synthetic narration in my words (Kokoro `am_michael`, free and local)
-- **Film:** `bitecheck-pitch.mp4` (sha256 `ae0a9e4c013351cef3391fff7af80a0f6bfeb6527923a3f7b13b9a758d869506`).
+- **Runtime:** 3:58 (238.0 s), 1920×1080, 24 fps, synthetic first-person narration (Kokoro `am_michael`, free and local) of a script Claude drafted and I approved
+- **Film:** `bitecheck-pitch.mp4` (sha256 `235d146d608672f2602d8809f0d5a0179fd74398896b01610d7bd3bed35a4b2d`).
   It is in the Canvas zip. The course repo's `.gitignore` keeps `*.mp4` out of Git, so the GitHub folder has everything else and rebuilds the same film from `scenes.py` + `beat_sheet.json`.
 
 **The pitch in one sentence:** BiteCheck will be a Claude Code workflow that writes API regression tests for my loan-origination demo and then checks that each test fails when a business rule is broken on purpose, with a log of every test Claude got wrong.

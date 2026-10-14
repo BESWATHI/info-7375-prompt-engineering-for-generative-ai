@@ -14,6 +14,7 @@ Evidence: `evidence/los_smoke_test.txt` (a live run of the local InstaLoan backe
 | 5 | B02 | It uses made-up applicants and mock vendors | PASS | LOS README ("mock adapters"); smoke test used a synthetic applicant | — |
 | 6 | B02 | It checks a minimum income and the order of steps | PASS | `constants.ts` RULES.MIN_MONTHLY_INCOME = 15000; STAGE_PRECONDITION map | — |
 | 7 | B03 | On 2026-10-12, income ₹14,999 was rejected | PASS | `los_smoke_test.txt`: REJECTED, "Monthly income below minimum ₹15000" | — |
+| 7a | B03 | "On October twelfth, I ran it on made-up applicants with Claude Code" | PASS | Claude Code ran the smoke test during the build Omkar asked for (`evidence/los_smoke_test.txt`). | Was "I ran it", which wrongly suggested Omkar ran it himself, so "with Claude Code" was added on 2026-10-14 |
 | 8 | B03 | ₹15,000 got an offer | PASS | `los_smoke_test.txt`: status OFFER_GENERATED | — |
 | 9 | B03 | Paying out before the earlier steps was refused (409) | PASS | `los_smoke_test.txt`: HTTP 409, "expected 'ESIGN_COMPLETED'" | — |
 | 10 | B03 | It has no tests yet | PASS | `find LOS -name '*.test.*' -o -name '*.spec.*'` (excluding node_modules) returned nothing on 2026-10-12 | — |
