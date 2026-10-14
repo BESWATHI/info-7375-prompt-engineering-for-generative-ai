@@ -15,6 +15,8 @@
 
 - 2026-10-14: "see [brutalist.art] and tell me I have done every part like the minor parts too" → Claude compared the folder with the show-tell workflow, wrote FACTCHECK.md, SHOTLIST.md and PROMPTS.md, and `tools/run_gate_f.sh`
 
+- 2026-10-14: "did u see brutalist and tell if u did same way professor asked" → tried `./setup --install`; log saved to `reports/brutalist-setup-log.txt`
+
 ## 2. Brutalist
 ```bash
 git clone https://github.com/nikbearbrown/brutalist.art

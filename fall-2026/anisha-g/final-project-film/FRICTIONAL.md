@@ -31,4 +31,6 @@ Anisha Gaikar
 
 **2026-10-14, ~3:02 PM** — Compared my folder with the toolkit's show-tell workflow: it requires FACTCHECK.md, SHOTLIST.md and PROMPTS.md ("Gate F refuses to render without all three"), which I didn't have. Added them (Claude listed the claims; I checked each against its source) and ran the toolkit's Gate F with `tools/run_gate_f.sh` (brutalist.art 6a8380a): PASSED (clean). Report in `reports/GATE-F-REPORT.md`.
 
+**2026-10-14, ~3:53 PM** — Tried to install Brutalist on my Mac (`./setup --install` in ~/brutalist.art). Node (Remotion) packages, fonts and the Kokoro voice model installed, but the Python dependencies FAILED: Homebrew's Python 3.14 refuses `pip install` into the system Python ("externally-managed-environment" error). Setup then stopped (exit 1) at the toolkit's own ElevenLabs guard, which flagged files inside the toolkit's own youtube/ example folders, so the readiness table never printed. With Manim and the Python dependencies missing, the toolkit's renderer can't run here, so the film stays rendered with `tools/render.py`; the toolkit's Gate V and Gate F were still run on it with their own scripts (both passed). Full log: `reports/brutalist-setup-log.txt`.
+
 **What I'd do differently:** Start earlier, so there's time to get Brutalist running and use its quality gates.
