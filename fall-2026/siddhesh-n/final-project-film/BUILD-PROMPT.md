@@ -33,3 +33,8 @@ python3 runtime/scripts/bookend_check.py  <reel>
 ```
 
 To change the script: edit the narration in `build/make_sheet.py`, re-run `./build_film.sh`. To re-render one scene: delete `<reel>/manim/<BEAT>.mp4` (and `<reel>/media/videos`) and re-run.
+
+## Two fixes the script applies (found 2026-10-14)
+
+- Before rendering it sets `meanSize` 48 -> 52 in `runtime/remotion/src/scenes/ClaudeDefinitions.tsx`. At 48 the terms card fails Gate T (40px < 41px).
+- `./art final` writes the master to `brutalist.art/renders/`, so the script copies it into the reel folder before the render-integrity check.
