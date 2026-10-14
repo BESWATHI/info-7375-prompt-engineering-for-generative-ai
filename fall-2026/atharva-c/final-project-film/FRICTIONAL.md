@@ -96,3 +96,8 @@ I also had to roll back an assumption I had made in the brief. I thought Great E
 Most of the time lost went to small setup and formatting issues. I accidentally ran ./setup while my sandbox virtual environment was still active, so packages installed into the wrong place. Later, Gate T's text-size check failed because Manim squiggles and drawn scale parts were being measured as undersized text, and Gate B rejected B01 because a label sat outside the safe margin.
 
 If a TA asks me to explain the core test in person: ge_fault.py uses random_state=7 to deterministically set 50 random values of passenger_count to null. Running the check against that file outputs an unexpected_count of 50, which simply means 50 rows violated the not-null rule. The clean data proved the rule doesn't produce false positives; the faulted data proved it actually detects the failure.
+
+## 2026-10-13 – 2026-10-14
+- Read the 11 claims in `film-source/FACTCHECK.md` and signed it off. Confirmed I made no narration edits of my own after Claude's rewrite. Checked the folder against the assignment with Claude: updated the brief's exists/will-exist lists, removed a stray `.Rhistory`, replaced the SOURCES.md placeholders.
+- Watched the final 4K film all the way through (2026-10-14). It looks right; no changes needed.
+
