@@ -1,0 +1,40 @@
+# Pronunciation check, 2026-10-13: Whisper-tiny (mlx-community/whisper-tiny) transcript of each beat's Kokoro audio vs. the script.
+# Differences that are only digits vs. words (15 000 / fifteen thousand) are Whisper formatting, not mispronunciation.
+B00 match=0.96
+    script:'bitecheck tells'                          heard:'by checktells'
+B01 match=0.97
+    script:'bitecheck'                                heard:'bite check'
+B02 match=1.00
+B03 match=0.83
+    script:'twelfth'                                  heard:'12th'
+    script:'fourteen thousand nine hundred and ninety nine' heard:'14 999'
+    script:'fifteen thousand'                         heard:'15 000'
+B04 match=0.92
+    script:'fifteen thousand'                         heard:'15 000'
+    script:'fifteen hundred'                          heard:'1500'
+B05 match=1.00
+B06 match=0.81
+    script:'docs postbot'                             heard:'docks post bot'
+    script:'schemathesis'                             heard:'schema that says'
+    script:'thirteenth'                               heard:'13th'
+    script:'stryker'                                  heard:'striker'
+    script:'ninety two'                               heard:'92'
+    script:'fifteen thousand'                         heard:'15 000'
+    script:'bitecheck'                                heard:'by check'
+B07 match=0.97
+    script:'claude'                                   heard:'the cloud'
+B08 match=0.94
+    script:'claude writes'                            heard:'clawed rights'
+B09 match=1.00
+B10 match=0.93
+    script:'in github'                                heard:'and get hub'
+    script:'and'                                      heard:'in'
+B11 match=0.96
+    script:'to'                                       heard:'too'
+    script:'git'                                      heard:'get'
+B12 match=1.00
+B13 match=0.90
+    script:'loan'                                     heard:'lone'
+    script:'and'                                      heard:'in'
+    script:'bitecheck'                                heard:'bite check'
+    script:'salian'                                   heard:'salien'
