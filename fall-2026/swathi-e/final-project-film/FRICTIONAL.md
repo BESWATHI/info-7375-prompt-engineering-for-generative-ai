@@ -8,7 +8,7 @@ At first, I was not sure what project to choose. I looked at ideas Claude sugges
 
 I thought that asking the same tax questions to different chatbots would give me mostly similar answers. I tested three questions in ChatGPT, Gemini, and Claude, using a new chat for each question. I noticed ChatGPT was using personal details I hadn't typed in the question. I tried a temporary chat and then logged out to check again, but the answers still made me question how much I could trust them.
 
-The biggest surprise was that ChatGPT gave me two different numbers for the same tax year: $15,750 and $15,000. I went to the IRS website and found the 2025 Form 1040-NR instructions. Claude helped me locate the passage on page 7, and I [confirmed it myself / EDIT THIS TO WHAT YOU DID]. That helped me understand why my project should show the actual IRS source and tax year instead of just giving a confident answer. I also learned to be careful with the wording: the $15,750 figure on that page is a filing threshold for eligible students.
+The biggest surprise was that ChatGPT gave me two different numbers for the same tax year: $15,750 and $15,000. Claude guided me to the right page on the IRS website, where I found the 2025 Form 1040-NR instructions. Claude also helped me locate the passage on page 7, and I opened the PDF and read the $15,750 line myself. That helped me understand why my project should show the actual IRS source and tax year instead of just giving a confident answer. I also learned to be careful with the wording: the $15,750 figure on that page is a filing threshold for eligible students.
 
 ## October 10, 2026 (Saturday)
 
@@ -30,4 +30,4 @@ The main thing I learned was that passing technical checks does not mean a video
 
 - **Claude (chat)** suggested project ideas, drafted PROJECT-BRIEF.md, TEST-NOTES.md, beat_sheet.json, and the build prompt, and helped me locate the page 7 passage in the IRS instructions.
 - **Claude Code** wrote the scenes, generated the narration, rendered the film, ran the quality gates, and drafted README.md, SOURCES.md, and BUILD-PROMPT.md.
-- **I** chose the project and the personal reason for it, ran all nine chatbot tests and the reruns, found the IRS instructions, reviewed the brief and narration, approved each fix, chose the female voice, caught the "AI" pronunciation problem, and picked the final spelling by listening.
+- **I** chose the project and the personal reason for it, ran all nine chatbot tests and the reruns, found the IRS instructions with Claude's guidance and read page 7 myself, reviewed the brief and narration, approved each fix, chose the female voice, caught the "AI" pronunciation problem, and picked the final spelling by listening.
