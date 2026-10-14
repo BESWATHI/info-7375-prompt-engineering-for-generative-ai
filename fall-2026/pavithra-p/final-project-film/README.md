@@ -45,6 +45,5 @@ ART_HOME=$PWD python3 ../final-project-film/build_scenes.py && ./art run ../fina
 
 ## Narration and credits
 
-- The narration is a **synthetic voice** (Kokoro `af_heart`, local and free) reading my script. It is not a recording of my voice.
-- Built with help from Claude Code (Anthropic); `SOURCES.md` lists exactly what it contributed.
-- No instructor name, persona or credit line is used.
+- The narration is a synthetic voice (Kokoro `af_heart`, run locally) reading my script.
+- Built with help from Claude Code; see `SOURCES.md`.
