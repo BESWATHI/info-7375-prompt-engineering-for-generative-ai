@@ -102,3 +102,9 @@ I watched the first master and found three problems:
 - I scanned the submission folder for private data (passwords, keys, emails, local paths) and for the instructor's name or persona. No private data. The instructor references are only sentences explaining why the defaults were removed. None appear in the film.
 - I fixed a stale description in `beat_sheet.json` ("box, title, my name" → "box and title").
 - Left out of the submission: caches, rendered intermediate clips, audio files, the `_superseded/` archive, and the Kokoro model. The `build/` folder plus Brutalist rebuild everything.
+
+## 2026-10-14: GitHub posting
+- Before posting, I noticed the professor's convention for the public class repo: first name plus last initial ("Lavanya R"). I changed my full name to "Lavanya R" in README, PROJECT-BRIEF, the FACTCHECK sign-off, beat_sheet.json and the build files. The film only ever shows "Lavanya", so it didn't need a re-render. The Canvas zip keeps the full-name filename the assignment requires.
+- I pulled the course repo first (fast-forward, classmates' folders only), then pushed my folder to `main` as commit `405d2eb`.
+- **The film was missing from that commit.** The repo's `.gitignore` ignores `*.mp4`, and `git add` skipped it silently. I caught it because only 16 files were staged instead of 17. Other final-project folders contain force-added films, so I did the same (`git add -f`) and pushed it as commit `66094dc`. I confirmed through the GitHub API that the 17.7 MB `readme-checker-film.mp4` is on the remote.
+- My first commit had only a title line, while several classmates' commits have a full description. I decided **not** to rewrite that commit: it was already on the shared `main`, and changing it would mean a force-push that could erase classmates' work. Instead, this commit carries the full description.
