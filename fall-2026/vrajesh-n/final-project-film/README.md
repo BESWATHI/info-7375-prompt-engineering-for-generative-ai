@@ -16,7 +16,7 @@
 | `beat_sheet.json` | narration and visual plan per beat, synced to measured audio |
 | `build_beats.py` | writes and syncs `beat_sheet.json` |
 | `evidence/` | the real probe script and its dated raw responses (public posting data only) |
-| `toolkit/EarlyBirdPitch.tsx` | copy of the ten Remotion scenes (they run from the brutalist.art clone) |
+| `toolkit/EarlyBirdPitch.tsx.txt` (stored as .txt: the course CI rejects .tsx files; copy it to `runtime/remotion/src/EarlyBirdPitch.tsx` to use it) | copy of the ten Remotion scenes (they run from the brutalist.art clone) |
 | `BUILD-PROMPT.md` | prompts and commands that rebuild the film |
 | `FACTCHECK.md` | every on-screen figure and its source |
 | `SOURCES.md` | sources, my material, Claude's contributions, third-party licenses |

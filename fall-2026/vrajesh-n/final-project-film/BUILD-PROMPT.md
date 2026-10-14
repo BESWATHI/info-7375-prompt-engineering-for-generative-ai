@@ -8,7 +8,7 @@ Toolkit: the brutalist.art clone at `../../../../brutalist.art` (commit `519fcbb
 
 | File | Change |
 |---|---|
-| `runtime/remotion/src/EarlyBirdPitch.tsx` | **New.** Ten reel-local compositions: EbOpen, EbWhatItIs, EbProbe, EbAlternatives, EbFirstMinute, EbProves, EbFirstRun, EbRisk, EbWhyMe, EbOutro. A copy is kept in this folder as `toolkit/EarlyBirdPitch.tsx`. |
+| `runtime/remotion/src/EarlyBirdPitch.tsx` | **New.** Ten reel-local compositions: EbOpen, EbWhatItIs, EbProbe, EbAlternatives, EbFirstMinute, EbProves, EbFirstRun, EbRisk, EbWhyMe, EbOutro. A copy is kept in this folder as `toolkit/EarlyBirdPitch.tsx.txt` (stored as .txt: the course CI rejects .tsx files; copy it to `runtime/remotion/src/EarlyBirdPitch.tsx` to use it). |
 | `runtime/remotion/src/Root.tsx` | Import plus a `<Folder name="EarlyBirdPitch">` registering the ten compositions; duration from `props.durationSeconds`. |
 | (from my Doorman draft, 2026-10-13) `remotion_scenes.py` `npx` via `shutil.which`; `compile.py` filtergraph-escaped font path; `public/fonts/PTMono-Regular.ttf` | Windows fixes the pipeline needs (a bare `npx` is `npx.CMD` on Windows; `C:\` broke ffmpeg's filter parser). |
 
