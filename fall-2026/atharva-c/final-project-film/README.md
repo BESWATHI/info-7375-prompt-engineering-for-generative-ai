@@ -1,6 +1,6 @@
 # Final Project Pitch Film — Seeded Faults
 
-- **Name:** Atharva C
+- **Name:** Atharva Chonkar
 - **Course:** INFO 7375, Fall 2026
 - **Working title:** Seeded Faults — data-quality tests, tested
 - **Target role:** Data Engineer / BI Engineer
