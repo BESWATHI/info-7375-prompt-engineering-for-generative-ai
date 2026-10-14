@@ -36,7 +36,7 @@ It is a mix of learning and showing off.
 
 ## Exists today
 - This brief
-- TEST-NOTES.md: dated notes and screenshots from testing ChatGPT, Gemini, and Claude on Oct 9, 2026
+- TEST-NOTES.md: dated notes from testing ChatGPT, Gemini, and Claude on Oct 9, 2026
 - A check of the 2025 Instructions for Form 1040-NR (page 7 and pages 20–21) against the chatbot answers
 
 ## Will exist
