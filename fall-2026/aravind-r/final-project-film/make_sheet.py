@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""make_sheet.py — beat_sheet.json for the Readback pitch film (show-tell format).
+"""make_sheet.py — beat_sheet.json for the Readback pitch film (show-tell format; v2 visuals).
 
 Toolkit: brutalist.art @ cd4bf20, skill show-tell. Every body beat is one drawn
 isometric scene (Manim) with a few labels; the narration carries the idea.
@@ -143,6 +143,36 @@ OUTRO = {"beat_id": "BOUT", "act": "outro", "lane": "bookend", "proof_gate": "SH
          "question_ids": [], "claim_status": "exists", "evidence": None, "on_screen_label": HANDLE}
 
 BEATS = [HOOK] + B + [OUTRO]
+
+# ── v2 visuals (2026-10-14): the hook becomes a drawn Manim scene; every beat names its v2 class and label.
+#    Narration and durations are unchanged from v1.
+V2_CLASS = {"BIDEA": "BIDEA_Hook", "B01": "B01_WhatItIs", "B02": "B02_Difference", "B03": "B03_FirstMinute",
+            "B04": "B04_Proves", "B05": "B05_InOutFirst", "B06": "B06_Risk", "B07": "B07_WhyMe", "B08": "B08_ExistsWill"}
+V2_LABEL = {"BIDEA": "CONSTRUCTED — no judges have run yet",
+            "B01": "CONSTRUCTED · grey = planned",
+            "B02": "per their public docs, as of 14 Oct 2026 · names only (no logos)",
+            "B03": "CONSTRUCTED mock-up — values will be measured",
+            "B04": "CONSTRUCTED · grey = planned · real pair: AMI ES2007a [00:17:52] + recap (Claude Opus 5.5, 14 Oct 2026)",
+            "B05": "AMI sample · CC BY 4.0 · downloaded 14 Oct 2026 · rubric CONSTRUCTED · first run planned",
+            "B06": "CONSTRUCTED — planned method",
+            "B07": "PR status as of 14 Oct 2026 · roles internal, not shown",
+            "B08": "real output · Claude Opus 5.5 · 14 Oct 2026 · grey = will"}
+HOOK_V2 = ("The rubric page draws clause by clause; a recap card slides in; three judge tokens stamp pass, pass, fail; "
+           "C4 marks red; the line 'Does the judge misread my rubric?' types in.")
+for b in BEATS:
+    bid = b["beat_id"]
+    if bid not in V2_CLASS:
+        continue
+    if bid == "BIDEA":
+        b["lane"] = "manim"
+        b["shot"] = {"type": "GRAPHIC", "source": "own", "manim": {"class": "BIDEA_Hook"}, "visual_intent": HOOK_V2,
+                     "show": [{"at": 0.02, "event": "rubric C1–C5 draw"}, {"at": 0.32, "event": "recap card"},
+                              {"at": 0.4, "event": "3 judges"}, {"at": 0.45, "event": "pass, pass, fail"},
+                              {"at": 0.56, "event": "C4 red"}, {"at": 0.73, "event": "typed question"}]}
+        b["motion_claim"] = HOOK_V2
+    else:
+        b["shot"]["manim"] = {"class": V2_CLASS[bid]}
+    b["on_screen_label"] = V2_LABEL[bid]
 # Silent hold after each beat (add_holds.py pads the measured audio), so the last reveal can be read.
 HOLDS = {"BIDEA": 1.0, "B08": 1.5, "BOUT": 1.0}
 for b in BEATS:
@@ -157,6 +187,7 @@ sheet = {"metadata": {
                               "hesitant-writer hook replaces the composer cold open; no verdict card and no Claude.ai "
                               "composer Your Turn, so no Claude interface is shown. The outro stays (never exempt)."),
     "audience": "an AI product manager hiring manager",
+    "visual_version": "v2 (see ../gates/v2-visual-plan.md)",
     "source_doc": "PROJECT-BRIEF.md (final, 2026-10-14)",
     "tags": ["Readback", "LLM-as-a-judge", "eval rubric", "AI product management", "INFO 7375"]},
     "beats": BEATS}

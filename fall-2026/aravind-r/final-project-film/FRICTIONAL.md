@@ -259,3 +259,83 @@ Replaced `PROJECT-BRIEF.md` with my final text, with no draft markers left. It w
   - `art-final-3`: GATE T PASS. Bookend check PASS; factcheck clean (row 20a added for the reworded B07 line).
 - **New master:** 1920×1080, 182.46 s (3:02), SHA-256 `18f0d50c…581c131c`, `verified.json` "ready".
 - **Updated:** `gates/honesty-audit.md` (second pass and a Resolution table) and `gates/frames/` + `gates/frame-spotcheck.png` (re-extracted from the new master).
+
+## 2026-10-14 — v2 visual upgrade started (Aravind's decision); timebox set
+
+- **Decision (Aravind):** v1 passes every gate but doesn't hold attention when watched without audio. I'm building a visuals-only v2 to a new file, `aravind-r-readback-pitch-v2.mp4`. The narration clips and durations stay locked, and v1 (`31005a1`) stays untouched.
+- **Timebox:** the deadline is 2026-10-14 23:59 EDT, so the hard stop is **22:44 EDT**. If v2 isn't fully gated by then, v1 gets submitted. Started 15:10 EDT.
+- **v1 baseline (Claude Code, measured):** `ffmpeg freezedetect n=0.003 d=3` on the clean master finds 23 holds of ≥3 s, totalling 163.7 s of 182.46 s (89.7 %). The `-slate` review copy measures 90.6 %.
+- **Clean master confirmed:** the committed `aravind-r-readback-pitch.mp4` (SHA-256 `18f0d50c…`) is the `art final` export with no overlays. The copy I watched was the git-ignored `-slate` review cut (`4186bbe0…`).
+- **Beat IDs:** the sheet's BIDEA, B01–B08 and BOUT are kept, and my brief's B01–B10 map onto them (Aravind). BIDEA becomes a Manim scene.
+- **Plan:** `gates/v2-visual-plan.md`. It flags two adjustments for my review: text stays ink because red and grey type fail the 4.5:1 floor, and the 250-word cap goes on its own word-count axis.
+
+## 2026-10-14 — v2 probe: B05 (the real-data beat), built first
+
+- **Setup:** v2 is built in its own reel folder, `v2/`. It holds copies of `beat_sheet.json`, `mp3/` (all ten clips byte-identical to v1, checked by SHA-256) and the paperwork, plus a new `scenes.py` with the v2 design system. v1's sources and outputs aren't touched.
+- **Real numbers come from files at render time.** `scenes.py` reads `selection.csv` and the ten feature-run JSONs and asserts every DECISIONS count, duration and recap word count shown on screen.
+- **Fix cycles on the probe (each Gate A/W/B-checked and rendered at 1080p):**
+  1. **First render:** one 3.5 s freeze at 12.5–16.0 s, and another from 16.0 s to the end. After 12.5 s only small text and grey outlines were added, which is under `freezedetect`'s n = 0.003 threshold.
+  2. **Focus dims added:** the chart dims at "Out", the rubric block at "agreement table", the plan at "commit", and everything is restored for the closing state. That left a 3.2 s freeze, because the dims are only meaningful at those cues; I moved the rubric-block dim to "agreement table". Result: 0 holds of ≥3 s.
+  3. **Gate B:** 6 warnings, then 1 error. "Why me" and "OUT" ran outside the safe area. "CONSTRUCTED" touched the PM ring, and the commit line crossed "labels". The rubric page, scaled up at "asks", ran into "OUT"; I replaced the scaling with an arrow from the red C4 dot to the "?" chip, which also says what the question comes from.
+  4. **The last frame showed a black disc:** `set_opacity(1)` had filled the outline-only PM ring. Switched to `save_state()` / `Restore`.
+  5. **Overlaps Gate B didn't flag:** the C1–C5 labels stacked on the small page, "PM" overflowed its ring, and "my labels", "250 cap" and the checklist arrow collided. Small pages now label only C4 (the clause in question); the cap label is "250".
+- **Result:** 19.33 s against 19.35 s of audio. Gates A and W clean; Gate B 0 errors, 0 warnings. `freezedetect` d = 3: **0 holds**. At d = 2 there are 2 holds, of 2.5 s and 2.2 s.
+- **Contact sheet:** `gates/v2-probe-B05-contact.png`, 1 frame every 2 s.
+
+## 2026-10-14 — v2 built and gated; it isn't swapped in until I approve it
+
+- **Timebox:** v2 is fully gated by about 16:35 EDT, well before the 22:44 hard stop.
+- **Building the other eight scenes, what broke (all logged in `gates/v2/`):**
+  1. **The first full pass still froze for 4–6 s in most beats.** `freezedetect` measures against a reference frame and averages over the luma and chroma planes, so a new word, a thin line or a grey outline barely registers.
+     - Fix, using only meaningful changes:
+       - a dark header band on the rubric page (its moves now register);
+       - larger tan judge discs and filled pass/fail stamps;
+       - real evidence on larger tan cards;
+       - focus dims at topic changes;
+       - a light grey fill under planned outlines;
+       - the on-screen synthetic-voice disclosure in the hook.
+     - B06's `Rotate` on the revise loop was removed (no spinning).
+  2. **Gate A:** `Intersection` and zero-length text don't exist in its stub. Replaced with a drawn lens and string-based timing.
+  3. **Gate B:** about a dozen labels-on-lines and overlaps across B01, B03, B07 and B08. Fixed by re-laying them out:
+     - B01's diagram collapses into the rubric icon, and B02 opens by growing it back (a match-cut).
+     - B08's closing fades the rest out instead of dimming it under the growing page.
+  4. **`AddTextLetterByLetter` keeps its own per-letter clock,** which delayed B03's cues by about 1 s per row. Headers now fade in; the two typed lines get an explicit per-letter time.
+  5. **The midpoint guard pushed some cues late.** It now shortens a move to finish before the midpoint when there's room.
+  6. **Gate V MAJOR (low contrast) on B01, B02 and B06.** Large pale fills pulled the average under 0.30. Pale fills were lightened, then the clips superseded and re-rendered.
+  7. **Gate T, several rounds:**
+     - Ink-outlined containers holding text are read as overlapping text runs (the README window, the excerpt card), so text containers now get grey outlines.
+     - A tiny padlock in the held-out box read as 39 px type; removed.
+     - The bullet dots; removed.
+     - The small rubric icon's header band was too thin; it now has a minimum height of 0.19 units.
+     - A slightly slanted connector read as sub-floor type; it's now level.
+     - The B04 title touched the first chip; moved.
+  8. **Found by my own frame checks (no gate flags these):**
+     - B04's "AI features" label collided with the anchor.
+     - The "verification" connector crossed the rubric icon.
+     - Both fixed and re-rendered.
+- **Final v2:** `aravind-r-readback-pitch-v2.mp4`, 182.458 s, SHA-256 `513e26d0…`.
+  - Every gate is clean in strict mode: F, L, A, W, B and V in `art run`, then T in `art final`, plus bookend, factcheck (37 rows) and `verified.json` "ready".
+  - **freezedetect:** v1 had 23 holds of ≥3 s, 163.7 s (89.7 %). v2 has 5, 17.1 s (9.4 %), longest 3.9 s, plus the static outro card.
+  - The narration audio PCM is identical to v1.
+- **Paperwork for v2:** `v2/FACTCHECK.md` (rows 21–36), `v2/SHOTLIST.md`, `gates/v2/honesty-audit-v2.md` (3 low flags: V1–V3), `gates/v2/GATES.md`, and a v2 section in `SOURCES.md`.
+- **v1 is untouched:** `aravind-r-readback-pitch.mp4` still matches commit `31005a1`. Nothing is committed.
+
+## 2026-10-14 — v2 approved after a frame-by-frame overlap pass; swapped in (Aravind's decision)
+
+- **Decision (Aravind):** "Avoid all text overlaps. Everything else look good to go. Check every frame by frame."
+- **The check:** Claude Code wrote `overlap_check.py`. It runs each Manim scene at 24 fps and, on every frame, inspects the live geometry: text-box against text-box intersections, and any visible line, outline or shape boundary inside a text box.
+- **First run:** overlaps in all nine scenes. Most were transient (an exit fading while an entrance slid through it, text sliding across the rail, a transforming page passing over labels). A few were static:
+  - B05's checklist rows touched;
+  - B02's header grazed the column panel and its rule;
+  - the B04 anchor met "held-out";
+  - B08's first row crossed the divider;
+  - B07's requirements icon met the role line, and one link crossed "KoineArth".
+- **Fixes:** exits finish before entrances begin; no shift passes through text; rows are spaced and bands made taller; emphasis scaling is gentler; the bracket ticks point down; the role line moved up; B07 got a single bracket-to-Readback arrow; a few labels moved.
+- **Second run:** 4 scenes still had 1–2 cases each. After fixing those, a third run gave **0 overlaps on every frame of all nine scenes** (`gates/v2/overlap-check.txt`). The outro card and the toolkit's small name line on the hook were checked by eye; neither overlaps anything.
+- **Full strict rebuild:** every gate clean (A, W, B, V, T, bookend, factcheck 37 rows, `verified.json` "ready").
+  - freezedetect: 8 holds of ≥3 s, 26.3 s (14.4 %), longest 3.9 s. That's up from the first candidate's 9.4 %, because the overlap fixes removed some slide-ins; still under the 25 % target, with no hold over 4 s.
+  - Runtime 182.458 s; narration PCM identical to v1.
+- **Swap:**
+  - The v2 sources (`scenes.py`, `beat_sheet.json`, `FACTCHECK.md`, `SHOTLIST.md`, `overlap_check.py`) were promoted to the top-level folder, and `make_sheet.py` now emits the v2 sheet.
+  - Rebuilding from the top level with the toolkit's commands gave a file **byte-identical** to the gated v2 candidate: SHA-256 `4334b59e…`, all 4,378 decoded frames identical. That file is now `aravind-r-readback-pitch.mp4`.
+  - The `v2/` build folder was retired (git-ignored under `_superseded/`). v1 remains in git history at `31005a1`.

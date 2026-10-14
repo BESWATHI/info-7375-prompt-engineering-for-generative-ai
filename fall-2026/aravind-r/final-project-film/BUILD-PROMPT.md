@@ -273,3 +273,71 @@ ffmpeg -ss <t> -i aravind-r-readback-pitch.mp4 -frames:v 1 gates/frames/<beat>.p
 ```
 
 A whisper pronunciation check (`faster_whisper.WhisperModel("small.en")`) was run over `mp3/beat-*.mp3`.
+
+## 4. The v2 visual-upgrade prompt (my prompt, 2026-10-14)
+
+Given in the same session after v1 was committed (`31005a1`). Here it is in condensed form, with every rule and requirement kept.
+
+```text
+Claude Code prompt: Readback film v2 (visual upgrade)
+The v1 film passes every gate but doesn't hold attention: watched without audio it reads as small static icons on a
+mostly empty canvas. Upgrade the visuals into v2; the narration audio stays the same. These rules override the
+show-tell skill's defaults where they conflict, except the toolkit's gates, which still apply.
+
+Diagnosis: the screen is frozen ~93% of the time (freezedetect n=0.003 d=3); a 15 s frozen text card opens it; the frame
+is mostly empty; the "Q1 · …" headers read like a form; the real evidence barely appears; there's no shared visual system.
+
+Hard rules: (1) ask for the deadline and set a hard stop 75 min before it; if v2 isn't fully gated by then, submit v1 and
+log the outcome. (2) v1 stays intact; build v2 to aravind-r-readback-pitch-v2.mp4 and don't overwrite v1 until v2 passes
+every gate and I approve it. (3) Narration audio is locked: reuse the clips and durations exactly; ask before any line
+change. (4) Honesty: only real numbers from existing files (selection.csv DECISIONS/ACTIONS counts and durations, recap
+word counts, dates, PR numbers); planned metrics only as an empty cell, "—" or "will be measured". (5) CONSTRUCTED labels;
+real material with its source and date; planned things in the grey "will" style. (6) No logos or brand marks; tool names
+as plain text only; the mascot stays hidden; no instructor name, persona or credit. (7) Free local pipeline; run the
+gates; fix render-integrity failures. (8) No attribution trailers; verify with git log --format=%B.
+
+Design system: fill the frame (12-column grid, main graphic ≥60% of the width); readable type (body ≥~36 px, titles
+≥~64 px, ≤~8 words except real excerpts); colours with one role each (ink = Readback and the PM's instruction, kraft =
+existing tools and evidence, one red accent = disagreement or the clause in question, grey outlines = planned), every pair
+above Gate W's floor; a recurring rubric page (C1–C5, red on C4 or C5) that carries through the film; a progress rail
+(What · Why · Who · Proves · Scope · Risk · Why me) instead of form headers; something meaningful changes every 2–3 s, no
+static hold over 4 s except the outro, cues timed to the whisper word timestamps; motion vocabulary Create / Write /
+FadeIn with shift / Transform / LaggedStart / Indicate / Circumscribe / ValueTracker, transitions 0.4–0.8 s, no
+decorative motion; match-cuts through the rubric page, never a hard cut to an empty frame.
+
+Beat-by-beat visuals: hook (the rubric draws; a recap card; three judges stamp pass, pass, fail; C4 pulses red; "Does the
+judge misread my rubric?"); Q1 (rays converge on the clause; "Did you mean…?" → PM; repo, `readback-pm check rubric.md`,
+a case-study folder, all grey); Q2 (a comparison grid built row by row, from FRICTIONAL.md only, ✓ / "not found in docs",
+never ✗; a grey Readback column; footer "per their public docs, as of 14 Oct 2026"; a Spec Kit row "specs (later
+module)"); Q3 (a README table with "—" cells and a "first 60 seconds" arc); Q4 (skills → evidence map, git commits
+labels → judge runs, one real AMI line + the real recap line that cites it); Q5 (the 10 meeting cards → real DECISIONS bars,
+the 250-word cap and the IS1004d tension, OUT stamp, grey first-run checklist); Q6 (dev / held-out split, padlock,
+same-model vs cross-model blind spots); Q7 (a timeline of roles "internal — not shown", PR #8 · open, PR #23 · open · DRAFT,
+grey Readback, a "new to me" bracket); exists vs will (two columns); outro (the rubric page shrinks into "Readback.").
+
+Process: write gates/v2-visual-plan.md and STOP; build B05 first as a probe (contact sheet at 1 frame / 2 s plus
+freezedetect) and STOP; build the rest; run all toolkit gates strict; freezedetect ≤25% of runtime in holds ≥3 s;
+runtime equal to v1 within ±1 s; a contact sheet; a frame per beat checked for legibility, logos and unsourced numbers;
+re-run the honesty audit; FACTCHECK rows for every real number; update SHOTLIST, SOURCES and FRICTIONAL; STOP with the
+comparison. Only after I approve: swap v2 in as the master, force-add it, rebuild the zip, re-diff against git
+ls-files, commit, push to the fork, ask about the PR. The submitted master must have no slate or review overlays.
+```
+
+**Follow-up instruction (Aravind, 2026-10-14):** "Avoid all text overlaps. Everything else look good to go. Check every frame by frame."
+
+## 5. Commands added for v2
+
+```bash
+# frame-by-frame text-overlap check: every frame at 24 fps, all nine Manim scenes (expect 0)
+for c in BIDEA_Hook B01_WhatItIs B02_Difference B03_FirstMinute B04_Proves B05_InOutFirst B06_Risk B07_WhyMe B08_ExistsWill; do
+  manim -r 384,216 --fps 24 --disable_caching --media_dir /tmp/ov overlap_check.py $c | grep '\[overlap\]'
+done
+# freeze measurement (holds of 3 s or more)
+ffmpeg -hide_banner -nostats -i aravind-r-readback-pitch.mp4 -vf freezedetect=n=0.003:d=3 -map 0:v -f null -
+# contact sheet, one frame every 2 s
+ffmpeg -i aravind-r-readback-pitch.mp4 -vf "fps=1/2,scale=384:-1,tile=10x10:padding=4:color=white" -frames:v 1 gates/v2/v2-contact-1frame-per-2s.png
+# narration audio identical to v1 (decoded PCM hash)
+ffmpeg -v error -i aravind-r-readback-pitch.mp4 -vn -f s16le -ac 2 -ar 48000 - | shasum -a 256
+```
+
+The film commands in section 3 are unchanged. `make_sheet.py` now emits the v2 sheet, and `scenes.py` holds the v2 scenes.

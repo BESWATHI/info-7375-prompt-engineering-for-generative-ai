@@ -34,57 +34,62 @@
       "INFO 7375"
     ],
     "build": {
-      "at": "2026-10-14T14:34:34",
+      "at": "2026-10-14T16:52:01",
       "cut": "master",
       "filled": 10,
       "of": 10,
       "slates": [],
       "skin_warnings": [
-        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+        "BIDEA: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
       ]
-    }
+    },
+    "visual_version": "v2 (see ../gates/v2-visual-plan.md)"
   },
   "beats": [
     {
       "beat_id": "BIDEA",
       "act": "hook",
-      "lane": "bookend",
+      "lane": "manim",
       "proof_gate": "SHOW",
       "narration_text": "Hi, I'm Aravind Ravi, and this pitch is read by a synthetic voice. When you own an AI feature, a judge model scores it against your rubric. So the question isn't only whether my feature passes. It's whether the judge reads my rubric the way I meant it.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "lead_silence_s": 0.8,
       "shot": {
-        "type": "REMOTION",
+        "type": "GRAPHIC",
         "source": "own",
+        "manim": {
+          "class": "BIDEA_Hook"
+        },
+        "visual_intent": "The rubric page draws clause by clause; a recap card slides in; three judge tokens stamp pass, pass, fail; C4 marks red; the line 'Does the judge misread my rubric?' types in.",
         "show": [
           {
-            "at": 0.0,
-            "event": "types 'Does the judge score'"
+            "at": 0.02,
+            "event": "rubric C1–C5 draw"
+          },
+          {
+            "at": 0.32,
+            "event": "recap card"
           },
           {
             "at": 0.4,
-            "event": "backspaces 'score' → 'misread', then 'my rubric'"
+            "event": "3 judges"
+          },
+          {
+            "at": 0.45,
+            "event": "pass, pass, fail"
+          },
+          {
+            "at": 0.56,
+            "event": "C4 red"
+          },
+          {
+            "at": 0.73,
+            "event": "typed question"
           }
-        ],
-        "remotion": {
-          "pattern": "BrutalistHesitantWriter",
-          "props": {
-            "text": "Does the judge score my rubric",
-            "triggerWords": "score",
-            "replacementWords": "misread",
-            "fontSize": 70,
-            "charMs": 22,
-            "hesitateBetween": 6,
-            "hesitateWithin": 1,
-            "mistakeRate": 2,
-            "jitter": 20,
-            "seed": "aravind-r-readback-pitch",
-            "banner": ""
-          }
-        }
+        ]
       },
-      "motion_claim": "The writer types the naive question and corrects it to the real one: does the judge read the rubric as meant.",
+      "motion_claim": "The rubric page draws clause by clause; a recap card slides in; three judge tokens stamp pass, pass, fail; C4 marks red; the line 'Does the judge misread my rubric?' types in.",
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "Hesitant-writer hook: the correction is the motion."
@@ -92,16 +97,16 @@
       "question_ids": [],
       "claim_status": "constructed",
       "evidence": null,
-      "on_screen_label": "none (typed question only)",
+      "on_screen_label": "CONSTRUCTED — no judges have run yet",
       "hold_after_s": 1.0,
       "audio_file": "mp3/beat-BIDEA.mp3",
       "actual_duration_s": 15.08,
       "render_duration_s": 15.083333333333334,
       "build": {
-        "status": "VIDEO",
-        "src": "media/BIDEA.mp4",
-        "filled_by": "media",
-        "at": "2026-10-14T14:34:34"
+        "status": "MANIM",
+        "src": "manim/BIDEA.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T16:52:01"
       }
     },
     {
@@ -147,7 +152,7 @@
       "evidence": [
         "PROJECT-BRIEF.md (2026-10-14)"
       ],
-      "on_screen_label": "CONSTRUCTED — illustration",
+      "on_screen_label": "CONSTRUCTED · grey = planned",
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn scene on a cream stage per beat, minimal labels, the voice carries the explanation; only underfill and clustered are waived."
@@ -160,7 +165,7 @@
         "status": "MANIM",
         "src": "manim/B01.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T14:34:34"
+        "at": "2026-10-14T16:52:01"
       }
     },
     {
@@ -207,7 +212,7 @@
         "FRICTIONAL.md, alternative checks dated 2026-10-14",
         "PROJECT-BRIEF.md (2026-10-14)"
       ],
-      "on_screen_label": "'As far as I could find in their docs, 14 Oct 2026' · names only, no logos",
+      "on_screen_label": "per their public docs, as of 14 Oct 2026 · names only (no logos)",
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn scene on a cream stage per beat, minimal labels, the voice carries the explanation; only underfill and clustered are waived."
@@ -220,7 +225,7 @@
         "status": "MANIM",
         "src": "manim/B02.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T14:34:34"
+        "at": "2026-10-14T16:52:01"
       }
     },
     {
@@ -279,7 +284,7 @@
         "status": "MANIM",
         "src": "manim/B03.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T14:34:34"
+        "at": "2026-10-14T16:52:01"
       }
     },
     {
@@ -325,7 +330,7 @@
       "evidence": [
         "PROJECT-BRIEF.md (2026-10-14)"
       ],
-      "on_screen_label": "CONSTRUCTED — planned commit order",
+      "on_screen_label": "CONSTRUCTED · grey = planned · real pair: AMI ES2007a [00:17:52] + recap (Claude Opus 5.5, 14 Oct 2026)",
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn scene on a cream stage per beat, minimal labels, the voice carries the explanation; only underfill and clustered are waived."
@@ -338,7 +343,7 @@
         "status": "MANIM",
         "src": "manim/B04.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T14:34:34"
+        "at": "2026-10-14T16:52:01"
       }
     },
     {
@@ -385,7 +390,7 @@
         "case-study/data/sample/ (AMI Meeting Corpus, CC BY 4.0, downloaded 2026-10-14)",
         "case-study/constructed/rubric-v0.md (CONSTRUCTED, 2026-10-14)"
       ],
-      "on_screen_label": "Real data — AMI Meeting Corpus, CC BY 4.0, downloaded 14 Oct 2026 · rubric CONSTRUCTED",
+      "on_screen_label": "AMI sample · CC BY 4.0 · downloaded 14 Oct 2026 · rubric CONSTRUCTED · first run planned",
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn scene on a cream stage per beat, minimal labels, the voice carries the explanation; only underfill and clustered are waived."
@@ -398,7 +403,7 @@
         "status": "MANIM",
         "src": "manim/B05.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T14:34:34"
+        "at": "2026-10-14T16:52:01"
       }
     },
     {
@@ -453,7 +458,7 @@
         "status": "MANIM",
         "src": "manim/B06.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T14:34:34"
+        "at": "2026-10-14T16:52:01"
       }
     },
     {
@@ -500,7 +505,7 @@
         "Week 1: github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/pull/8 (open)",
         "Week 2: github.com/nikbearbrown/the-reallocation-engine/pull/23 (open, not merged, DRAFT)"
       ],
-      "on_screen_label": "PR #8 · open · PR #23 · open, not merged — status as of 14 Oct 2026",
+      "on_screen_label": "PR status as of 14 Oct 2026 · roles internal, not shown",
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn scene on a cream stage per beat, minimal labels, the voice carries the explanation; only underfill and clustered are waived."
@@ -513,7 +518,7 @@
         "status": "MANIM",
         "src": "manim/B07.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T14:34:34"
+        "at": "2026-10-14T16:52:01"
       }
     },
     {
@@ -557,7 +562,7 @@
         "case-study/constructed/rubric-v0.md (CONSTRUCTED, 2026-10-14)",
         "case-study/outputs/feature-run/ (Claude Opus 5.5, claude-opus-5-5, 2026-10-14)"
       ],
-      "on_screen_label": "Real output — Claude Opus 5.5 (claude-opus-5-5), 14 Oct 2026 · rubric CONSTRUCTED · ghost = will",
+      "on_screen_label": "real output · Claude Opus 5.5 · 14 Oct 2026 · grey = will",
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn scene on a cream stage per beat, minimal labels, the voice carries the explanation; only underfill and clustered are waived."
@@ -570,7 +575,7 @@
         "status": "MANIM",
         "src": "manim/B08.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T14:34:34"
+        "at": "2026-10-14T16:52:01"
       }
     },
     {
@@ -601,6 +606,10 @@
             "handle": "Aravind Ravi · INFO 7375",
             "subline": "",
             "hideMascot": true
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-10-14T20:50:47.591116+00:00"
           }
         }
       },
@@ -615,8 +624,8 @@
       "build": {
         "status": "VIDEO",
         "src": "media/BOUT.mp4",
-        "filled_by": "media",
-        "at": "2026-10-14T14:34:34"
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-10-14T16:52:01"
       }
     }
   ]

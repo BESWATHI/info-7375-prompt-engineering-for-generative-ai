@@ -101,3 +101,24 @@ Claude Code (Opus 5.5) in this project's session, at my direction:
   - Running every gate and diagnosing each failure.
 - **Summaries:** found and summarized the Maxim AI, orq.ai and Spec Kit pages, which I then opened and confirmed.
 - **Recap outputs:** the 10 recaps in `case-study/outputs/feature-run/` are Claude Opus 5.5 (`claude-opus-5-5`) responses to my constructed prompt, received 2026-10-14. They are the feature under test, not authored by me.
+
+## v2 visuals (built 2026-10-14; approved by me and submitted)
+
+- **Used:** the same toolkit, components and licences as above.
+  - The narration clips are reused byte for byte; no new audio was generated.
+  - Fonts: EB Garamond (OFL) for all text, plus PT Mono for the one CLI line in B01. PT Mono is a macOS system font (ParaType, SIL OFL), rendered locally and not redistributed.
+- **Made by me (Aravind):**
+  - The decision to upgrade the visuals and the full v2 brief: diagnosis, design system, beat-by-beat visuals, the timebox and the hard rules.
+  - Approving the plan (including the two adjustments and "never" in the grid) and approving the B05 probe.
+  - Requiring that no text overlap anything on any frame, and approving v2 for submission.
+- **Contributed by Claude (Claude Code, Opus 5.5):**
+  - `gates/v2-visual-plan.md`.
+  - The v2 `scenes.py`: colour roles, progress rail, the recurring `Rubric` page, judge tokens and stamps, the midpoint guard, word-clock cue timing, and the nine Manim scenes (BIDEA, B01–B08).
+  - The render-time assertions tying every on-screen number and excerpt to its source file.
+  - The v2 `beat_sheet.json` edits: BIDEA moved to the Manim lane, the v2 labels and the v2 slug, with narration and durations asserted unchanged.
+  - `FACTCHECK.md` rows 21–36 and the v2 `SHOTLIST.md`.
+  - `gates/v2/honesty-audit-v2.md` and `gates/v2/GATES.md`.
+  - `overlap_check.py`, the frame-by-frame text-overlap check, and the fixes it drove.
+  - The freezedetect, contact-sheet and frame checks.
+  - The top-level rebuild that proved the submitted file reproduces byte for byte.
+  - Diagnosing each gate failure.
