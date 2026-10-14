@@ -5,7 +5,7 @@
     "topic": "DATA ENGINEERING · FINAL PROJECT PITCH",
     "skill": "show-tell",
     "style_preset": "show-tell",
-    "channel": "atharva-chonkar",
+    "channel": "atharva-c",
     "author": "Atharva C",
     "voice": "am_michael",
     "voice_kokoro": "am_michael",
@@ -327,7 +327,7 @@
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, narration carries the explanation; only underfill and clustered are waived."
       },
-      "evidence": "Public repos checked 2026-10-09 via GitHub API: github.com/Arc-211/DMDD_FinalProject (CRMS, solo; SQL + testing.sql) and github.com/Arc-211/Chinook_ADF (ADF pipeline JSON). LA crime project is not public, so not cited.",
+      "evidence": "Public repos checked 2026-10-09 via GitHub API: github.com/Arc-211/DMDD_FinalProject (CRMS, solo; SQL + testing.sql) and github.com/Arc-211/Chinook_ADF (ADF pipeline JSON).",
       "actual_duration_s": 22.98,
       "audio_file": "mp3/beat-B08.mp3",
       "render_duration_s": 23.0,

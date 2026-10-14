@@ -46,7 +46,6 @@ A mix of showing off and learning.
 - **Skills I already have:** SQL, relational modelling, data pipelines. *Evidence (public repos, checked 2026-10-09):*
   - [github.com/Arc-211/DMDD_FinalProject](https://github.com/Arc-211/DMDD_FinalProject) — Crime Rate Management System, an Oracle schema with PL/SQL, permissions, transactions and a `testing.sql` script. Solo work.
   - [github.com/Arc-211/Chinook_ADF](https://github.com/Arc-211/Chinook_ADF) — an Azure Data Factory pipeline (pipeline, dataflow, dataset and linked-service JSON).
-  - Not cited: my LA crime Databricks project, because it is not public and was a team project.
 - **Skills that are new to me:** prompt contracts, LLM evaluation, agent workflows in Claude Code, fault injection / mutation-style testing, dbt on DuckDB.
 
 ---
