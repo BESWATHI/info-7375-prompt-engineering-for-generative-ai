@@ -339,3 +339,11 @@ Replaced `PROJECT-BRIEF.md` with my final text, with no draft markers left. It w
   - The v2 sources (`scenes.py`, `beat_sheet.json`, `FACTCHECK.md`, `SHOTLIST.md`, `overlap_check.py`) were promoted to the top-level folder, and `make_sheet.py` now emits the v2 sheet.
   - Rebuilding from the top level with the toolkit's commands gave a file **byte-identical** to the gated v2 candidate: SHA-256 `4334b59e…`, all 4,378 decoded frames identical. That file is now `aravind-r-readback-pitch.mp4`.
   - The `v2/` build folder was retired (git-ignored under `_superseded/`). v1 remains in git history at `31005a1`.
+
+## 2026-10-14 — PR #18 opened to the course repo (Aravind)
+
+- **What I did:** I approved the PR title and body as drafted (Claude Code wrote them to `Assignments/A03/PR-DRAFT.md`, outside the repo; no attribution line). Claude Code opened GitHub's compare page, and I signed in and created the PR myself: https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai/pull/18. It merges `aravindravi7:final-project-film-aravind-r` (3 commits, 126 files, all under `fall-2026/aravind-r/final-project-film/`) into `nikbearbrown:main`.
+- **Title:** I used "final-project-film: add aravind-r pitch film : Readback" (a colon where the draft had a dash).
+- **CI:** the PR showed 0 checks when I opened it. The course workflow (`scripts/validate_course.py`) normally waits for a maintainer to approve workflows on a fork's PR. It passes locally on this branch (13 tests, OK).
+- **Status:** open, not merged. The Week 1 film is PR #8 (open) and the Week 2 recipe is PR #23 (open, not merged).
+- **This entry:** added after the PR opened, in its own commit. PR #18 picks the commit up automatically, and the Canvas zip is rebuilt from it.
