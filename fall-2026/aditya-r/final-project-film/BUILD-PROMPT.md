@@ -8,6 +8,8 @@ the toolkit lists it as "ADVANCED — Bear only", and this is not a claim of Bea
 ## The prompts Aditya gave (verbatim, in order)
 
 Claude's replies are not reproduced. What came of each prompt is logged in `FRICTIONAL.md`.
+The prompts are verbatim, except for one phrase removed from Prompt 4 at Aditya's request
+(2026-10-14); the removal is marked `[…]`.
 
 ### Prompt 1 — brief
 > I'm Aditya Raj. Help me make a 2–4 minute final project pitch film for my Prompt Engineering and Agentic AI class.
@@ -197,7 +199,7 @@ Claude's replies are not reproduced. What came of each prompt is logged in `FRIC
 > - A one-page PROJECT-BRIEF.md answering all seven questions and ending with "exists today" and "will exist."
 > - beat_sheet.json.
 > - BUILD-PROMPT.md with the actual prompts, commands, and toolkit revision.
-> - SOURCES.md with source links, licenses, and accurate attribution to me, Claude, and ChatGPT/Codex.
+> - SOURCES.md with source links, licenses, and accurate attribution to me, Claude[…].
 > - Actual final-render gate reports.
 > - FRICTIONAL.md with the real decisions, attempts, fixes, and unresolved issues.
 > - Source assets and any documented toolkit changes needed to rebuild.
@@ -213,6 +215,28 @@ Claude's replies are not reproduced. What came of each prompt is logged in `FRIC
 > 4. The remaining steps for posting the matching GitHub version and submitting its actual folder link and final commit hash on Canvas.
 >
 > Continue through rendering, checks, fixes, and packaging rather than stopping after a plan. Leave the final film approval and submission to me.
+
+### Prompt 5 — GitHub posting
+> Let's finish and push my DayThread pitch submission to:
+> https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai
+>
+> Use fall-2026/aditya-r/final-project-film/, alongside my Week 1 folder. Don't change other assignments.
+>
+> Push the required documents, beat sheet, rebuild source, evidence, and gate reports. Respect the repo's media exclusions: don't force-add MP4 or MP3 files or change its ignore rules.
+>
+> Keep the finished film and required audio in Raj_Aditya_INFO7375_FinalProjectFilm.zip for Canvas. In the README, state that the film is in the Canvas ZIP and include its filename and SHA-256 checksum. Verify that the shared files match between GitHub and the ZIP, with the media difference clearly documented.
+>
+> You're authorized to commit and push once those items are resolved. Follow the course repo's workflow, using a pull request if required. Don't force-push, include unrelated files, or upload the ZIP to GitHub.
+>
+> After verifying the remote submission, give me the final ZIP location and ready-to-paste Canvas text with the assignment-folder link, full commit hash, and PR link and status if applicable. I'll submit the ZIP to Canvas myself.
+
+During this prompt, Claude asked how to handle the repo's no-full-names rule. Aditya chose
+"Keep 'Aditya Raj'" (see `FRICTIONAL.md`, 17:35 entry).
+
+### Prompts 6–8 — attribution correction and log answers (summarized)
+Aditya asked about one attribution line in `SOURCES.md` and had it removed. Aditya confirmed that
+no AI tool other than Claude was used, and asked for the change to be pushed with a new ZIP. Aditya
+then answered Claude's questions for the log. Those answers are quoted in `FRICTIONAL.md`.
 
 ## Commands actually used for the film (in order)
 
@@ -236,3 +260,13 @@ cd ~/Desktop/Brutalist
 python brutalist.art/runtime/scripts/bookend_check.py my-videos/youtube/daythread/film   # outro rule fails by design (see SCRIPT.md)
 ```
 Each render-fix-rerun cycle is recorded in `FRICTIONAL.md`. The exact final-run logs are in `gate-reports/`.
+
+## Commands used to package and post
+```bash
+cd ~/Desktop/Brutalist/my-videos/youtube/daythread && python3 package.py   # folder + Canvas ZIP + MANIFEST.json
+git clone --filter=blob:none --sparse https://github.com/nikbearbrown/info-7375-prompt-engineering-for-generative-ai.git <clone>
+cd <clone> && git sparse-checkout set fall-2026/aditya-r prerequisites scripts .github
+rsync -a <package>/fall-2026/aditya-r/final-project-film/ fall-2026/aditya-r/final-project-film/
+git add fall-2026/aditya-r/final-project-film      # no -f: the repo's .gitignore keeps *.mp3/*.mp4 out
+git commit && git push origin main                 # fast-forward, never forced
+```

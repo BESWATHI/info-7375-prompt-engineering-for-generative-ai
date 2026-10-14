@@ -7,9 +7,9 @@ An honest, dated log of the work on this film, using the entry prompts in the co
 learning and uncertainty · traceable process).
 
 **Who wrote what.** Claude (Claude Code, model Opus 5.5) keeps this log as it works. Entries
-marked **Claude** describe what Claude did or saw. Lines marked `[ADITYA: …]` are left for
-Aditya to fill in from Aditya's own experience. Claude never fills them. Nothing here says Aditya
-checked something unless Aditya said so.
+marked **Claude** describe what Claude did or saw. Aditya's own words are quoted and attributed
+to Aditya; Claude did not write them. Nothing here says Aditya checked something unless Aditya
+said so.
 
 **Status of the project.** DayThread is a *proposed* project. No application exists. The film
 pitches the plan.
@@ -61,7 +61,7 @@ seven questions. Aditya supplies the content before any script is written or any
 **Human and AI contributions:**
 - Claude: inspected the toolkit, ran setup, read the final-project brief, opened this log, and
   drafted the seven questions with prompts tied to the grading rows.
-- Aditya: set the brief, the folder, the skill, and the grading. `[ADITYA: anything you want to add]`
+- Aditya: set the brief, the folder, the skill, and the grading.
 
 **Learning and uncertainty:**
 - Open: whether the earlier drafts were removed on purpose.
@@ -110,7 +110,11 @@ Claude drafts a script for Aditya's review. Nothing is rendered before Aditya ap
 - Aditya: the idea, all seven answers, the alternatives to compare, the decisions above.
 - Claude: source fetching and checking, the narrowed comparison wording, the beat structure and
   visual plan, compressing the answers into narration (`SCRIPT.md` v1).
-- `[ADITYA: what you accepted, changed or rejected in script v1, and why]`
+- Aditya, in Aditya's own words (given 2026-10-14): "I wanted the pitch to sound like me and
+  accurately describe what I'm proposing. I accepted the cautious comparison because we hadn't
+  tested the competing products. I changed the introduction so the film represented me while being
+  clear about the synthesized voice. The wording changes separated my plans from actual results,
+  and shortening the script kept it focused." 
 
 **Unresolved:** whether Aditya has read S1–S4; the tool and permission list; the review-screen
 form; evidence for the planning claims in answer 7 (the earlier session logs are gone); the
@@ -191,7 +195,10 @@ render until it is approved.
 
 **Human and AI contributions:** Aditya: every decision and revision listed above. Claude: script
 compression, preview drawings and code, the timing, the GATE T diagnosis, and the checks.
-`[ADITYA: what you think of the preview after watching and listening — accept, change, reject]`
+Aditya on the preview, in Aditya's own words (2026-10-14): "I've reviewed the 15-second preview
+and approve it. The visual style and pacing work for me." And: "I approved the 15-second
+preview's visual style and pacing. I also chose to keep the toolkit's native 4K settings and
+shorten the preview instead of spending more time changing the rendering setup." 
 
 **Unresolved / waiting on Aditya:** watch and listen to the preview; confirm the new-skills list;
 confirm the GitHub address for the outro; confirm reading S1–S4; OK the "It brings them" split.
@@ -315,16 +322,16 @@ B08, B13) are being re-rendered.
   unchanged. **Needs Aditya's ear.**
 
 **Human checks:** none on the finished film. Aditya approved only the 15-second preview.
-`[ADITYA: after watching and listening — what you accept, change or reject in the finished film]`
+Aditya, later on 2026-10-14 (after this entry; see the 17:58 entry): "Yes, i have watched the film
+and approve of what Claude created." 
 
 **Still unresolved:**
 1. Aditya's review of the finished film, including the name pronunciation and "fall detection".
 2. B14's new-skills sentence. It uses Aditya's own answer-7 wording, but Aditya never confirmed the
    sentence itself.
-3. The ChatGPT/Codex attribution in `SOURCES.md`, a slot for Aditya to fill.
-4. The brutalist.art toolkit has no LICENSE file in the clone. Its kit and prop code are copied into
+3. The brutalist.art toolkit has no LICENSE file in the clone. Its kit and prop code are copied into
    `scenes.py`.
-5. The GitHub posting and the Canvas submission are Aditya's to do. The commit hash can only exist
+4. The GitHub posting and the Canvas submission are Aditya's to do. The commit hash can only exist
    after Aditya pushes.
 
 **Packaging:** `package.py` builds `submission/fall-2026/aditya-r/final-project-film/` and
@@ -398,3 +405,43 @@ below.
   already failing before this push. Not fixed, because those folders belong to other people.
 - This entry is part of a small follow-up commit, so that the GitHub folder and the Canvas ZIP still
   match. The follow-up commit's hash is the one to give Canvas.
+
+---
+
+## 2026-10-14 17:58 EDT · Attribution corrected; log completed; film approved by Aditya
+
+**Aditya's statements (this session, quoted):**
+- Asked why `SOURCES.md` named another AI tool. Claude explained that Prompt 4 had asked for that
+  attribution, and that it had left a fill-in slot because it had no record of that tool being used.
+- Aditya then said no AI tool other than Claude was used for this film, and asked for every mention
+  to be removed from the submission.
+- Answers for the log:
+  - "Nothing else to add. You can delete that empty slot. Keep the decisions already recorded."
+  - On the finished film: "Yes, i have watched the film and approve of what Claude created."
+  - On the new-skills list in B14: "All of those skills are new to me."
+  - The answers on script v1 and the preview are quoted in place in the 11:14 and 11:43 entries.
+
+**What Claude changed (described to Aditya before editing; Aditya then answered the questions):**
+- **`SOURCES.md`:** removed the placeholder attribution section. Added "Other AI tools: none", the
+  film approval and the confirmed skills list.
+- **`README.md`:** removed the sentence about the placeholder.
+- **`FRICTIONAL.md`:** removed the matching open item. Replaced the four fill-in slots with
+  Aditya's quoted words, or deleted the slot where Aditya asked. Updated the header note.
+- **`BUILD-PROMPT.md`:** removed one phrase from the quoted Prompt 4, marked `[…]` with a note
+  saying so. Added Prompt 5 verbatim and a summary of Prompts 6–8. Added the packaging and
+  posting commands.
+- **`SCRIPT.md`, `FACTCHECK.md`, `gate-reports/FINAL-CHECKS.md`:** recorded Aditya's confirmation of
+  the new-skills list and Aditya's approval of the finished film.
+  - FINAL-CHECKS notes that Aditya did not comment separately on the two pronunciation items
+    flagged for listening.
+- **The film is unchanged** (sha256 `be9d096c…e8eb`).
+
+**Limit (told to Aditya):** the two earlier commits (`6d4b1b8`, `6630824`) still contain the old
+placeholder text in the repo's history. Removing it would mean rewriting history and force-pushing,
+which Aditya ruled out. The new commit's folder has no mention, and that is the version for Canvas.
+
+**Resolved by this entry:** Aditya's review of the finished film; the B14 new-skills sentence; the
+attribution slot.
+
+**Still open:** the toolkit's missing LICENSE file (recorded in `SOURCES.md`); the Canvas upload,
+which is Aditya's to do.

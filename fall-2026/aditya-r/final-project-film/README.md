@@ -100,8 +100,7 @@ in the Canvas submission text instead.
   observed result.
 - Lifeline and DailyCall are described only from their own documentation, which Aditya read on
   2026-10-14. Neither product was tested, and the film does not claim they lack anything.
-- **What Aditya contributed and what Claude contributed:** see `SOURCES.md`. ChatGPT/Codex
-  attribution is left for Aditya to complete.
+- **What Aditya contributed and what Claude contributed:** see `SOURCES.md`.
 
 ## Credits
 

@@ -11,8 +11,8 @@ source of the narration. Earlier drafts: `drafts/SCRIPT-v1.md`, `drafts/SCRIPT-v
 - **B07.** Now says Aditya *read their documentation* (Aditya confirmed reading S1–S4 on
   2026-10-14). It does not say anyone tested the products.
 - **B14.** The new-skills list now uses Aditya's own answer-7 wording almost verbatim. Aditya
-  didn't explicitly confirm the condensed v2 sentence, so this one is still open for Aditya's
-  final review. "AI helped draft the material" also follows Aditya's answer 7.
+  didn't explicitly confirm the condensed v2 sentence. Aditya later confirmed this one
+  (2026-10-14): "All of those skills are new to me."  "AI helped draft the material" also follows Aditya's answer 7.
 - **Outro.** Shows DayThread, Aditya Raj, and github.com/aditya-raj-sde (Aditya's profile link,
   confirmed 2026-10-14). Spoken: "This was DayThread, by Aditya Raj."
 - **Two rewordings for pronunciation, from measured audio.** Kokoro voiced "AI engineer roles" as

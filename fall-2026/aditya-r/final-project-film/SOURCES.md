@@ -94,7 +94,10 @@ No stock images, no music, no generated images or video, and no Professor Bear p
 - The film decisions: identity, narrator, no people on screen, no key terms or Your Turn, outro
   content, preview first, keeping the native 4K settings.
 - Every wording revision listed in `FRICTIONAL.md`, and approval of the 15-second preview.
-- Aditya has not yet approved the finished film.
+- Watched the finished film and approved it (2026-10-14).
+- Confirmed the film's new-skills list (2026-10-14).
+- **Other AI tools:** none. Aditya used no AI tool other than Claude for this film (confirmed by
+  Aditya, 2026-10-14).
 
 **Claude (Claude Code, model Opus 5.5, this session, 2026-10-14)**
 - Inspected the toolkit and ran setup.
@@ -105,11 +108,5 @@ No stock images, no music, no generated images or video, and no Professor Bear p
   (18 drawn scenes), and the preview's equivalents.
 - Generated the Kokoro audio, ran the gates, diagnosed and fixed gate failures, and inspected frames.
 - Wrote `README.md`, `PROJECT-BRIEF.md`, `BUILD-PROMPT.md`, this file, `FACTCHECK.md`,
-  `SHOTLIST.md`, the gate and check reports, and the `FRICTIONAL.md` entries. Lines marked
-  `[ADITYA: …]` are left for Aditya.
-
-**ChatGPT / Codex**
-- `[ADITYA: describe what ChatGPT and/or Codex contributed, if anything — e.g. drafting the seven
-  answers or the prompts you gave Claude.]`
-- Claude has no record of ChatGPT or Codex use in this session, so it cannot attribute anything to
-  them. **Unresolved until Aditya fills this in.**
+  `SHOTLIST.md`, the gate and check reports, and the `FRICTIONAL.md` entries. Aditya's own words
+  in `FRICTIONAL.md` are quoted and attributed to Aditya.

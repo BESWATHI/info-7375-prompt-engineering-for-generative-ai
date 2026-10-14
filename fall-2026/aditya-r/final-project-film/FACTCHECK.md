@@ -24,6 +24,6 @@ workflow". Every frame carries "Synthesized voice reading Aditya's script".
 | 16 | B12 | Core / excluded / extensions; Python and SQLite | EXEMPT (plan) | Aditya's answers 1 and 5 | — |
 | 17 | B13 | Motivation | PASS | Aditya's answer 7 | — |
 | 18 | B14 | AI helped draft and check sources; Aditya set requirements, required sources before any comparison, cut overstated wording | PASS | FRICTIONAL.md, 2026-10-14 entries | Uses only this session's logged revisions |
-| 19 | B14 | New skills list | PASS (Aditya's own answer-7 wording) | Aditya's answer 7 | Flagged in FRICTIONAL: the final sentence still needs Aditya's review of the finished film |
+| 19 | B14 | New skills list | PASS (Aditya's own answer-7 wording) | Aditya's answer 7; Aditya confirmed 2026-10-14: "All of those skills are new to me." | — |
 | 20 | B15 | Exists today: plan, film, decision log; no DayThread prototype or evaluation results yet | PASS | This folder | — |
 | 21 | BOUT | DayThread, Aditya Raj, github.com/aditya-raj-sde | PASS | Aditya's confirmation, 2026-10-14 (profile link, not the assignment folder) | — |

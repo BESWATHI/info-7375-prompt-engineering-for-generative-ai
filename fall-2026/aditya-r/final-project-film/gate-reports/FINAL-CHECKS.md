@@ -38,7 +38,7 @@ Manim ran at `-qk --fps 24 -r 3840,2160` (run.sh defaults). No rendering configu
 
 ## C. Human viewing and listening
 
-**None yet.** Aditya approved the 15-second preview; Aditya has **not** watched or listened to this finished film. To check by ear: the name in the opening and outro, "fall detection" (~1:18–1:30), "DayThread" throughout, and pacing.
+When these checks were run, no human had viewed the finished film; Aditya had approved only the 15-second preview. **Later on 2026-10-14, Aditya watched the finished film:** "Yes, i have watched the film and approve of what Claude created." Aditya did not comment separately on the items flagged for listening: the name in the opening and outro, and "fall detection" (~1:18–1:30).
 
 ## Not checked
 Playback in QuickTime / a browser / Canvas; other displays; captions/subtitles for accessibility (none produced — the narration is not captioned as a transcript).
