@@ -13,6 +13,8 @@
 - 2026-10-13: "have we pushed everything and covered every requirement … I don't want to lose marks" → Claude ran the toolkit's Gate V, fixed the design until it passed, and added `tools/run_gate_v.sh`
 - 2026-10-13: tried ChatGPT myself on a real posting for question 2 (screenshots in `evidence/`); gave my MBTA pipeline repo as question 7 evidence
 
+- 2026-10-14: "see [brutalist.art] and tell me I have done every part like the minor parts too" → Claude compared the folder with the show-tell workflow, wrote FACTCHECK.md, SHOTLIST.md and PROMPTS.md, and `tools/run_gate_f.sh`
+
 ## 2. Brutalist
 ```bash
 git clone https://github.com/nikbearbrown/brutalist.art
@@ -35,6 +37,7 @@ Scene timing comes from the narration: each drawing appears when its phrase is s
 Toolkit gate (Brutalist GATE V, `runtime/qc/final_frame_check.py`), run on the finished film:
 ```bash
 bash tools/run_gate_v.sh      # clones brutalist.art if needed, writes reports/GATE-V-REPORT.md
+bash tools/run_gate_f.sh      # Gate F: paperwork present + factcheck_check.py, writes reports/GATE-F-REPORT.md
 ```
 My own checklist:
 - [x] Runtime between 2 and 4 minutes: 3:45

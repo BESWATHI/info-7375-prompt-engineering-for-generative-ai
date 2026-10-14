@@ -29,4 +29,6 @@ Anisha Gaikar
 
 **2026-10-13, ~11:15 AM** — Ran the toolkit's Gate V on the final film with `tools/run_gate_v.sh` (brutalist.art commit 6a8380a): PASSED. Report in `reports/GATE-V-REPORT.md`.
 
+**2026-10-14, ~3:02 PM** — Compared my folder with the toolkit's show-tell workflow: it requires FACTCHECK.md, SHOTLIST.md and PROMPTS.md ("Gate F refuses to render without all three"), which I didn't have. Added them (Claude listed the claims; I checked each against its source) and ran the toolkit's Gate F with `tools/run_gate_f.sh` (brutalist.art 6a8380a): PASSED (clean). Report in `reports/GATE-F-REPORT.md`.
+
 **What I'd do differently:** Start earlier, so there's time to get Brutalist running and use its quality gates.

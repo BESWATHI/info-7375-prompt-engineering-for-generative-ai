@@ -25,6 +25,9 @@ Format: show-tell style (as in the Brutalist toolkit's show-tell skill): a typin
 | `evidence/` | My dated screenshots of the chatbot alternative (question 2) |
 | `reports/` | The toolkit's Gate V report and contact sheet for the final film |
 | `tools/run_gate_v.sh` | Runs the toolkit's Gate V on the film |
+| `FACTCHECK.md` | Every claim in the narration, its verdict and source (toolkit format) |
+| `SHOTLIST.md` | What each beat shows and why |
+| `PROMPTS.md` | Generation prompts: none used |
 | `BUILD-PROMPT.md` | Prompts and commands that rebuild the film |
 | `SOURCES.md` | What I used, what I made, what Claude contributed |
 | `FRICTIONAL.md` | Dated log of what happened while making it |
@@ -35,4 +38,7 @@ Format: show-tell style (as in the Brutalist toolkit's show-tell skill): a typin
 python3 tools/render.py beat_sheet.json tools/fonts clips
 # 2. narration (macOS voice) + join scenes into the film
 bash make_film.sh Gaikar
+# 3. toolkit checks
+bash tools/run_gate_v.sh   # visual QC
+bash tools/run_gate_f.sh   # paperwork + fact-check
 ```
