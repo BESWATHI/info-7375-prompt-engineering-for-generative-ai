@@ -1,0 +1,942 @@
+{
+  "metadata": {
+    "slug": "remnix-agent-pitch",
+    "title": "Remnix Agent",
+    "topic": "INFO 7375 · FINAL PROJECT PITCH",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "revan-chonnad",
+    "channel_title": "Revan C",
+    "persona": "Revan C (first person, synthetic Kokoro voice)",
+    "voice": "af_bella",
+    "voice_kokoro": "af_bella",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Plain",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Spanish (Hola)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt",
+      "bhtf"
+    ],
+    "bookend_exempt_reason": "Student pitch on the show-tell chassis: opens on the hesitant writer + terms card, no verdict card, and no Claude.ai Your Turn composer (the film shows no Claude interface or response). Outro is the student's own card, narrated as themselves.",
+    "audience": "hiring managers and engineers at fintech and crypto companies; INFO 7375 reviewers",
+    "source_doc": "PROJECT-BRIEF.md (2026-10-14); Money Map, https://mit-dci.github.io/payments-dashboard/ (viewed and screenshotted 2026-10-14); World Bank Remittance Prices Worldwide methodology and US→Mexico corridor pages (viewed 2026-10-14); Wise and Monito checks by Revan (2026-10-14)",
+    "tags": [
+      "Remnix",
+      "remittances",
+      "USD to MXN",
+      "stablecoins",
+      "source grounding",
+      "evaluation",
+      "INFO 7375"
+    ],
+    "build": {
+      "at": "2026-10-14T17:57:12",
+      "cut": "master",
+      "filled": 19,
+      "of": 19,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "BOUT: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hola. I'm Revan. This voice is synthetic; the words are mine. This film pitches a project that doesn't exist yet. My question: not just which way to Mexico is cheapest, but why, and where each number comes from.",
+      "estimated_duration_s": 15.2,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types the naive question"
+          },
+          {
+            "at": 0.75,
+            "event": "'is cheapest' → 'is cheapest and why' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Which way to send $500\nto Mexico is cheapest?",
+            "triggerWords": "is cheapest",
+            "replacementWords": "is cheapest and why",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "remnix-agent-pitch",
+            "banner": "",
+            "brandLabel": "Synthetic voice (Kokoro) · words by Revan",
+            "durationSeconds": 14.347
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-10-14T21:53:36.706674+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive 'cheapest' question and corrects it to 'cheapest and why'.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 14.347,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 14.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Remittance: money sent to family abroad. Stablecoin: a digital token pegged to the U S dollar. Source grounding: every number traced to where it came from.",
+      "estimated_duration_s": 10.4,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "'remittance'"
+          },
+          {
+            "at": 0.45,
+            "event": "'stablecoin'"
+          },
+          {
+            "at": 0.75,
+            "event": "'source grounding'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "remittance",
+                "meaning": "money sent to family abroad"
+              },
+              {
+                "term": "stablecoin",
+                "meaning": "a digital token pegged to the U.S. dollar"
+              },
+              {
+                "term": "source grounding",
+                "meaning": "every number traced to where it came from"
+              }
+            ],
+            "folderLabel": "Revan C",
+            "durationSeconds": 10.325
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-10-14T21:54:04.769941+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 10.325,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 10.333333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "First, what's real. As a software engineer co-op at the MIT Digital Currency Initiative, I built Money Map, a public dashboard that's live today. It compares banks, apps, transfer services and stablecoins for sending dollars to Mexico.",
+      "estimated_duration_s": 14.8,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "STILL",
+        "source": "own",
+        "visual_intent": "The real Money Map screenshot (cropped header + map) slides onto the stage inside an ink frame; a tag beside it lands: 'real screenshot · 2026-10-14'.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "screenshot slides in"
+          },
+          {
+            "at": 0.4,
+            "event": "date tag"
+          }
+        ],
+        "manim": {
+          "class": "B00_MoneyMap"
+        },
+        "motion_claim": "The real Money Map screenshot (cropped header + map) slides onto the stage inside an ink frame; a tag beside it lands: 'real screenshot · 2026-10-14'."
+      },
+      "actual_duration_s": 15.979,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 16.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Money Map is a dashboard: you pick filters and read numbers. But a sender's question might come in plain words: why is Wise cheaper than my bank? Remnix will answer that, with the math written out.",
+      "estimated_duration_s": 14.4,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A stack of three ranked cards (the dashboard list) sits left; a question page with a scribbled plain-words question drops in on the right; a dashed line draws from the question toward the list.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "list"
+          },
+          {
+            "at": 0.45,
+            "event": "question page drops"
+          },
+          {
+            "at": 0.75,
+            "event": "dashed line draws"
+          }
+        ],
+        "manim": {
+          "class": "B01_Gap"
+        },
+        "motion_claim": "A stack of three ranked cards (the dashboard list) sits left; a question page with a scribbled plain-words question drops in on the right; a dashed line draws from the question toward the list."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 11.861,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 11.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "So I will build Remnix: an agent that will answer U S to Mexico remittance cost questions with Money Map's data, showing the math and the source behind every number. None of it exists yet.",
+      "estimated_duration_s": 14.0,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A sealed kraft crate drops onto the stage, drawn in dashed outline (not built); labels 'Remnix' and 'proposed' sit beside it.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "dashed crate drops"
+          },
+          {
+            "at": 0.6,
+            "event": "'proposed' tag"
+          }
+        ],
+        "manim": {
+          "class": "B02_Remnix"
+        },
+        "motion_claim": "A sealed kraft crate drops onto the stage, drawn in dashed outline (not built); labels 'Remnix' and 'proposed' sit beside it."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 12.096,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 12.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "When it's done, it will be a public GitHub repository: a Fast API service, a Postgres database of Mexico prices, and a set of tests.",
+      "estimated_duration_s": 10.0,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The crate lid lifts; three parts rise out of it in a row: a server tower (FastAPI), memory drawers (PostgreSQL), and a page stack (tests).",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "lid lifts"
+          },
+          {
+            "at": 0.35,
+            "event": "server"
+          },
+          {
+            "at": 0.55,
+            "event": "drawers"
+          },
+          {
+            "at": 0.75,
+            "event": "pages"
+          }
+        ],
+        "manim": {
+          "class": "B03_Parts"
+        },
+        "motion_claim": "The crate lid lifts; three parts rise out of it in a row: a server tower (FastAPI), memory drawers (PostgreSQL), and a page stack (tests)."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 9.237,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 9.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Here's how one answer will work. You'll ask a question, Claude will pick a tool, the tool will read prices from Postgres, and Python, not the language model, will do the math.",
+      "estimated_duration_s": 12.8,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A question page slides into an agent workstation; a dark tool block undocks; a cable draws to the drawers and one drawer slides out.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "question in"
+          },
+          {
+            "at": 0.45,
+            "event": "tool undocks"
+          },
+          {
+            "at": 0.7,
+            "event": "drawer slides out"
+          }
+        ],
+        "manim": {
+          "class": "B04_ToolCall"
+        },
+        "motion_claim": "A question page slides into an agent workstation; a dark tool block undocks; a cable draws to the drawers and one drawer slides out."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 10.133,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 10.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Its rule will be a prompt contract: no number without a source. This card is a constructed mock-up, not real output. Its number is real, from my Money Map screenshot: sending a thousand dollars with Wise cost seven fifty-four.",
+      "estimated_duration_s": 15.6,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An answer page with a large hero number '$7.54'; a source tag 'Money Map · Oct 14' clips to its edge; a big 'CONSTRUCTED' label sits beside the page the whole beat.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "'CONSTRUCTED' label"
+          },
+          {
+            "at": 0.35,
+            "event": "$7.54 lands"
+          },
+          {
+            "at": 0.7,
+            "event": "source tag clips on"
+          }
+        ],
+        "manim": {
+          "class": "B05_Answer"
+        },
+        "motion_claim": "An answer page with a large hero number '$7.54'; a source tag 'Money Map · Oct 14' clips to its edge; a big 'CONSTRUCTED' label sits beside the page the whole beat."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 14.443,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 14.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Money Map models a stablecoin sandwich: dollars become a digital dollar, cross a blockchain, then become pesos. Remnix will show the cost of each layer.",
+      "estimated_duration_s": 10.0,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three slabs stack one at a time (buy, send, sell); a terracotta dot lights on each slab as it lands.",
+        "show": [
+          {
+            "at": 0.25,
+            "event": "buy slab"
+          },
+          {
+            "at": 0.45,
+            "event": "send slab"
+          },
+          {
+            "at": 0.65,
+            "event": "sell slab"
+          }
+        ],
+        "manim": {
+          "class": "B06_Sandwich"
+        },
+        "motion_claim": "Three slabs stack one at a time (buy, send, sell); a terracotta dot lights on each slab as it lands."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 9.984,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 10.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "I checked three alternatives on October fourteenth. Wise's comparison page and Monito didn't include stablecoin routes. The World Bank's database covers this corridor, but its newest data is from August twenty twenty-five. So a sender will get stablecoin routes next to the usual options, every number sourced.",
+      "estimated_duration_s": 18.8,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three comparison trays in a row labelled Wise, Monito, World Bank; the sandwich slab tries each of the first two and doesn't fit; a dated tag drops on the third.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "three trays"
+          },
+          {
+            "at": 0.45,
+            "event": "slab misses Wise, Monito"
+          },
+          {
+            "at": 0.75,
+            "event": "date tag on World Bank"
+          }
+        ],
+        "manim": {
+          "class": "B07_Alternatives"
+        },
+        "motion_claim": "Three comparison trays in a row labelled Wise, Monito, World Bank; the sandwich slab tries each of the first two and doesn't fit; a dated tag drops on the third."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 19.349,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 19.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Who opens it? Hiring managers and engineers at fintech and crypto companies, my target role as a software engineer, plus researchers and policymakers who study remittance costs. In sixty seconds, they'll read the read-me, run one command, and trace every number to a database row.",
+      "estimated_duration_s": 18.0,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A README page opens; a dark terminal block runs (a terracotta cursor light); an answer page appears and leader lines run from it to one drawer; a '60 s' counter climbs.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "README"
+          },
+          {
+            "at": 0.45,
+            "event": "terminal runs"
+          },
+          {
+            "at": 0.7,
+            "event": "answer → drawer"
+          }
+        ],
+        "manim": {
+          "class": "B08_Reviewer"
+        },
+        "motion_claim": "A README page opens; a dark terminal block runs (a terracotta cursor light); an answer page appears and leader lines run from it to one drawer; a '60 s' counter climbs."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 18.005,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 18.041666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The first piece I'll make run: load Money Map's Mexico data into Postgres, and answer one question correctly, with sources. You'll know it ran when the answer prints its source rows and timestamp, and the total matches Money Map's snapshot.",
+      "estimated_duration_s": 16.0,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Records drop into the drawers; one answer page and one Money Map page sit side by side with the same number; a check mark draws between them.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "records load"
+          },
+          {
+            "at": 0.55,
+            "event": "two matching pages"
+          },
+          {
+            "at": 0.8,
+            "event": "check"
+          }
+        ],
+        "manim": {
+          "class": "B09_FirstRun"
+        },
+        "motion_claim": "Records drop into the drawers; one answer page and one Money Map page sit side by side with the same number; a check mark draws between them."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 14.827,
+      "audio_file": "mp3/beat-B09.mp3",
+      "render_duration_s": 14.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Then I'll build twenty known-answer questions, scored the same way every run. Every wrong answer will go in a log, with how it was caught.",
+      "estimated_duration_s": 10.0,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A queue of question cards in a row passes a checkpoint scanner one by one; a hero '20' sits above; one card is pulled aside into an open binder (the wrong-answer log).",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "20"
+          },
+          {
+            "at": 0.4,
+            "event": "cards pass the scanner"
+          },
+          {
+            "at": 0.75,
+            "event": "one card into the log"
+          }
+        ],
+        "manim": {
+          "class": "B10_TestSet"
+        },
+        "motion_claim": "A queue of question cards in a row passes a checkpoint scanner one by one; a hero '20' sits above; one card is pulled aside into an open binder (the wrong-answer log)."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 8.021,
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 8.041666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What's out: Remnix will not move money, or tell anyone which provider to choose. It will explain costs, for one corridor only: U S to Mexico.",
+      "estimated_duration_s": 10.4,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A parcel rolls toward a permission gate; the barrier drops and stops it; one single arrow 'US → MX' draws beside it.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "parcel"
+          },
+          {
+            "at": 0.45,
+            "event": "barrier drops"
+          },
+          {
+            "at": 0.75,
+            "event": "US → MX"
+          }
+        ],
+        "manim": {
+          "class": "B11_Out"
+        },
+        "motion_claim": "A parcel rolls toward a permission gate; the barrier drops and stops it; one single arrow 'US → MX' draws beside it."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 9.643,
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 9.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What could sink it? Money Map's prices are live. On October fourteenth, the stablecoin route moved from seven forty-two to eight ninety-nine within about an hour. So known answers go stale. I'll freeze a dated snapshot for testing.",
+      "estimated_duration_s": 15.2,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A price page's number ticks up (7.42 → 8.99); then a copy of the page is clamped and dropped into a vault with a date tag; the vault bar locks.",
+        "show": [
+          {
+            "at": 0.25,
+            "event": "number ticks"
+          },
+          {
+            "at": 0.6,
+            "event": "snapshot clamped"
+          },
+          {
+            "at": 0.8,
+            "event": "vault locks"
+          }
+        ],
+        "manim": {
+          "class": "B12_Risk"
+        },
+        "motion_claim": "A price page's number ticks up (7.42 → 8.99); then a copy of the page is clamped and dropped into a vault with a date tag; the vault bar locks."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 14.229,
+      "audio_file": "mp3/beat-B12.mp3",
+      "render_duration_s": 14.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What will this prove? Source grounding, tool calling, prompt contracts and evaluation. A reviewer could fairly conclude I can build a small, checked AI tool on real payment data. The evidence will be the test scores and the wrong-answer log.",
+      "estimated_duration_s": 16.0,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A review desk: a results page slides onto it (test scores); an evidence binder lands beside it (wrong-answer log).",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "results page onto the desk"
+          },
+          {
+            "at": 0.8,
+            "event": "binder lands"
+          }
+        ],
+        "manim": {
+          "class": "B13_Proves"
+        },
+        "motion_claim": "A review desk: a results page slides onto it (test scores); an evidence binder lands beside it (wrong-answer log)."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 14.997,
+      "audio_file": "mp3/beat-B13.mp3",
+      "render_duration_s": 15.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Why this project? It's a mix. I picked it because it builds on Money Map and points at the fintech work I want. Cost modeling, dashboard work and GitHub Pages deployment I already have; Money Map is the evidence. New to me: source grounding, agent tool calling, evaluation test sets, Postgres and Fast API.",
+      "estimated_duration_s": 21.6,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two shelves: left 'have' holds three solid blocks next to the Money Map page; right 'new' shows five dashed outlines that draw in one by one.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "'have' shelf"
+          },
+          {
+            "at": 0.55,
+            "event": "'new' outlines draw"
+          }
+        ],
+        "manim": {
+          "class": "B14_Skills"
+        },
+        "motion_claim": "Two shelves: left 'have' holds three solid blocks next to the Money Map page; right 'new' shows five dashed outlines that draw in one by one."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 19.456,
+      "audio_file": "mp3/beat-B14.mp3",
+      "render_duration_s": 19.458333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "So today, one thing exists: Money Map. Everything else in this film is a plan.",
+      "estimated_duration_s": 6.0,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Left: Money Map page, solid, a check mark draws. Right: the Remnix crate and its parts, all dashed. Labels 'exists' and 'will exist'.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "check on Money Map"
+          },
+          {
+            "at": 0.55,
+            "event": "dashed Remnix parts"
+          }
+        ],
+        "manim": {
+          "class": "B15_ExistsWill"
+        },
+        "motion_claim": "Left: Money Map page, solid, a check mark draws. Right: the Remnix crate and its parts, all dashed. Labels 'exists' and 'will exist'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "actual_duration_s": 4.864,
+      "audio_file": "mp3/beat-B15.mp3",
+      "render_duration_s": 4.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B15.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Remnix Agent. Revan C.",
+      "estimated_duration_s": 1.6,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Title 'Remnix Agent' and 'Revan C' on the cream stage; a small line beneath reads 'synthetic voice · pitch, not a build'; the dashed crate from B02 sits beside.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title and name"
+          },
+          {
+            "at": 0.4,
+            "event": "crate"
+          }
+        ],
+        "manim": {
+          "class": "BOUT_Close"
+        },
+        "motion_claim": "Title 'Remnix Agent' and 'Revan C' on the cream stage; a small line beneath reads 'synthetic voice · pitch, not a build'; the dashed crate from B02 sits beside."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived."
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 2.835,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 2.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/BOUT.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T17:57:12"
+      }
+    }
+  ]
+}
