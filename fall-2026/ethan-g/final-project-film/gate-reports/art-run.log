@@ -1,0 +1,206 @@
+[run] skip BIDEA_Title — BIDEA already filled
+[run] skip B00_Scanner — B00 already filled
+[run] skip B01_Repo — B01 already filled
+[run] skip B03_Writer — B03 already filled
+[run] skip B04_Planter — B04 already filled
+[run] skip B05_TwoRuns — B05 already filled
+[run] skip B06_Dbt — B06 already filled
+[run] skip B07_Gx — B07 already filled
+[run] skip B08_Gap — B08 already filled
+[run] skip B09_FirstMinute — B09 already filled
+[run] skip B10_Proves — B10 already filled
+[run] skip B10A_Conclude — B10A already filled
+[run] skip B11_Scope — B11 already filled
+[run] skip B12_Loose — B12 already filled
+[run] skip B13_Why — B13 already filled
+[run] skip B14_Exists — B14 already filled
+[run] skip BEND_Close — BEND already filled
+[run] GATE L — beat-mix lint
+[beat-lint] clean — beat mix OK (beat_sheet.json)
+[run] GATE SHAPE — finance chart-shape enforcement
+[gate-shape] skip — not a finance reel (beat_sheet.json)
+[run] GATE A — static pre-flight
+
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[run] GATE W — WCAG contrast + margins + text-overlap (independent second check)
+[gateW] B02_Table clean
+[run] rendering B02_Table
+Manim Community v0.20.1
+
+Animation 0: FadeIn(VGroup of 2 submobjects):   0%|          | 0/15 [00:00<?, ?it/s]Animation 0: FadeIn(VGroup of 2 submobjects):  60%|██████    | 9/15 [00:00<00:00, 87.08it/s]                                                                                            [10/14/26 20:11:17] INFO     Animation 0 : Partial      scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             697911619_1522274032_22313                         
+                             2457.mp4'                                          
+[10/14/26 20:11:18] INFO     Animation 1 : Partial      scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_3523136396_25307                         
+                             2826.mp4'                                          
+Animation 2: FadeIn(Text('NYC taxi trips')):   0%|          | 0/10 [00:00<?, ?it/s]                                                                                                       INFO     Animation 2 : Partial      scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_762006840_285587                         
+                             6820.mp4'                                          
+[10/14/26 20:11:19] INFO     Animation 3 : Partial      scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_3878543012_37118                         
+                             55867.mp4'                                         
+Animation 4: LaggedStart(Group):   0%|          | 0/29 [00:00<?, ?it/s]Animation 4: LaggedStart(Group):  66%|██████▌   | 19/29 [00:00<00:00, 187.25it/s]                                                                                 [10/14/26 20:11:20] INFO     Animation 4 : Partial      scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_2807616174_32132                         
+                             14362.mp4'                                         
+Animation 5: FadeIn(VGroup of 2 submobjects):   0%|          | 0/10 [00:00<?, ?it/s]                                                                                                        INFO     Animation 5 : Partial      scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_1743654870_36093                         
+                             67109.mp4'                                         
+Animation 6: GrowFromCenter(RoundedRectangle):   0%|          | 0/8 [00:00<?, ?it/s]                                                                                                        INFO     Animation 6 : Partial      scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_2079689671_49814                         
+                             5582.mp4'                                          
+                    INFO     Animation 7 : Partial      scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_3532463013_12891                         
+                             72861.mp4'                                         
+Animation 8: GrowFromCenter(RoundedRectangle):   0%|          | 0/8 [00:00<?, ?it/s]                                                                                                        INFO     Animation 8 : Partial      scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_3908955666_14329                         
+                             17479.mp4'                                         
+[10/14/26 20:11:21] INFO     Animation 9 : Partial      scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_1981711729_11958                         
+                             46706.mp4'                                         
+Animation 10: GrowFromCenter(RoundedRectangle):   0%|          | 0/8 [00:00<?, ?it/s]                                                                                                         INFO     Animation 10 : Partial     scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_1678984739_32553                         
+                             28925.mp4'                                         
+                    INFO     Animation 11 : Partial     scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_3629276036_17765                         
+                             08999.mp4'                                         
+Animation 12: GrowFromCenter(RoundedRectangle):   0%|          | 0/8 [00:00<?, ?it/s]                                                                                                         INFO     Animation 12 : Partial     scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_1241719639_35232                         
+                             4763.mp4'                                          
+                    INFO     Animation 13 : Partial     scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_1734048319_17110                         
+                             04972.mp4'                                         
+Animation 14: GrowFromCenter(RoundedRectangle):   0%|          | 0/8 [00:00<?, ?it/s]                                                                                     [10/14/26 20:11:22] INFO     Animation 14 : Partial     scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_3513728757_42818                         
+                             79493.mp4'                                         
+                    INFO     Animation 15 : Partial     scene_file_writer.py:601
+                             movie file written in                              
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/parti                         
+                             al_movie_files/B02_Table/1                         
+                             167814662_1824762634_13276                         
+                             79616.mp4'                                         
+                    INFO     Combining to Movie file.   scene_file_writer.py:753
+                    INFO                                scene_file_writer.py:904
+                             File ready at                                      
+                             '/Users/ethangomes/Desktop                         
+                             /Prompt_Engineering/Final_                         
+                             Project_Pitch/film/media/v                         
+                             ideos/scenes/2160p24/B02_T                         
+                             able.mp4'                                          
+                                                                                
+                    INFO     Rendered B02_Table                     scene.py:278
+                             Played 16 animations                               
+You are using manim version v0.20.1, but version v0.22.0 is available.
+You should consider upgrading via pip install -U manim
+Animation 0: FadeIn(VGroup of 2 submobjects):   0%|          | 0/9 [00:00<?, ?it/s]                                                                                   Animation 2: FadeIn(Text('NYC taxi trips')):   0%|          | 0/6 [00:00<?, ?it/s]                                                                                  /Users/ethangomes/Desktop/Prompt_Engineering/Brutalist/runtime/qc/manim_layout_audit.py:149: DeprecationWarning: This method is not guaranteed to stay around. Please prefer getting the attribute normally.
+  if float(mob.get_stroke_opacity()) <= 0.02:
+Animation 4: LaggedStart(Group):   0%|          | 0/18 [00:00<?, ?it/s]                                                                       Animation 5: FadeIn(VGroup of 2 submobjects):   0%|          | 0/6 [00:00<?, ?it/s]                                                                                   Animation 6: GrowFromCenter(RoundedRectangle):   0%|          | 0/5 [00:00<?, ?it/s]                                                                                    Animation 8: GrowFromCenter(RoundedRectangle):   0%|          | 0/5 [00:00<?, ?it/s]                                                                                    Animation 10: GrowFromCenter(RoundedRectangle):   0%|          | 0/5 [00:00<?, ?it/s]                                                                                     Animation 12: GrowFromCenter(RoundedRectangle):   0%|          | 0/5 [00:00<?, ?it/s]                                                                                     Animation 14: GrowFromCenter(RoundedRectangle):   0%|          | 0/5 [00:00<?, ?it/s]                                                                                     [audit] scenes: 20 snapshots → CLEAN
+[audit] report: /Users/ethangomes/Desktop/Prompt_Engineering/Final_Project_Pitch/film/layout_audit.md
+[remotion] BDEFS: filled already (skip)
+[remotion] done — run `bash scripts/run.sh <REEL>` to compile the cut
+[art] compiled B02  MANIM    12.4s  ← B02.mp4
+[art] motion histogram: graphic:18  remotion:1
+[art] SKIN LINT: BIDEA: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk
+[art] SKIN LINT: BEND: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro
+[art] build stamp → beat_sheet.json (19/19 filled)
+[art] QC contact sheet → /Users/ethangomes/Desktop/Prompt_Engineering/Final_Project_Pitch/film/qc-sheet.png
+[art] wrote /Users/ethangomes/Desktop/Prompt_Engineering/Final_Project_Pitch/film/datasentry-pitch-slate.mp4  (237.8s, audio: per-beat timeline (source audio preserved), drawtext: no — PIL overlays)
+[art] slots: 19/19 filled — BIDEA:MANIM BDEFS:VIDEO B00:MANIM B01:MANIM B02:MANIM B03:MANIM B04:MANIM B05:MANIM B06:MANIM B07:MANIM B08:MANIM B09:MANIM B10:MANIM B10A:MANIM B11:MANIM B12:MANIM B13:MANIM B14:MANIM BEND:MANIM
+[run] GATE V — frame-level visual QC on the compiled reel
+[gate-v] frames=38 BLOCKER=0 MAJOR=0 → /Users/ethangomes/Desktop/Prompt_Engineering/Final_Project_Pitch/film/_qc/REPORT.md
+[run] done → /Users/ethangomes/Desktop/Prompt_Engineering/Final_Project_Pitch/film  (QC gates: on)
+[run] REVIEW built; no final exported. Use ./art final <reel> for a verified master.
+[run] any remaining slates are YOUR slots — see /Users/ethangomes/Desktop/Prompt_Engineering/Final_Project_Pitch/film/SHOTLIST.md
+RUN EXIT 0
