@@ -1,0 +1,1052 @@
+{
+  "metadata": {
+    "slug": "ai-product-failure-lab-pitch",
+    "title": "AI Product Failure Lab",
+    "topic": "PITCH · FINAL PROJECT",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "aditya-hasija",
+    "channel_title": "Aditya Hasija",
+    "persona": "Aditya Hasija (first person)",
+    "voice": "am_michael",
+    "voice_kokoro": "am_michael",
+    "voice_note": "Synthetic local Kokoro voice reading Aditya's script in first person (disclosed in SOURCES.md).",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Plain",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt",
+      "bhtf"
+    ],
+    "bookend_exempt_reason": "Course pitch film (INFO7375 final project pitch, 2–4 min): opens on the hesitant writer + terms card, no verdict card, and no Your Turn beat, which would spend runtime on a viewer exercise instead of the seven required pitch answers. The spoken outro stays.",
+    "audience": "INFO7375 instructor and TAs; hiring managers for AI product manager roles",
+    "source_doc": "PROJECT-BRIEF.md; research/ (baseline tests 2026-10-14); dimeadozen.ai homepage (read 2026-10-14)",
+    "honesty": "Past tense only for the idea, the blueprint doc and the baseline tests. Drawings of the unbuilt product are tagged 'constructed'.",
+    "tags": [
+      "AI product management",
+      "pre-mortem",
+      "multi-agent",
+      "evaluation",
+      "Claude"
+    ],
+    "build": {
+      "at": "2026-10-14T22:09:09",
+      "cut": "master",
+      "filled": 20,
+      "of": 20,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hi, I'm Aditya Hasija. Every product starts with one question: will it work? I think the more useful question is how it will fail.",
+      "estimated_duration_s": 9.6,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'Will my product idea work?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'work?' → 'fail?' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Will my product idea work?",
+            "triggerWords": "work?",
+            "replacementWords": "fail?",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "ai-product-failure-lab-pitch",
+            "banner": ""
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the hopeful question and corrects it to the useful one: how will it fail.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "actual_duration_s": 9.39,
+      "render_duration_s": 9.416666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Two terms. A pre-mortem: you imagine the product has already failed, and ask why. And an evaluator: an agent that checks the other agents' work.",
+      "estimated_duration_s": 10.0,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Left: a cracked idea crate with a question mark rising from it (pre-mortem). Right: a review desk where a page lands under a lamp (evaluator). One label each.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "cracked crate + ?"
+          },
+          {
+            "at": 0.6,
+            "event": "review desk + page"
+          }
+        ],
+        "manim": {
+          "class": "BDEFS_Terms"
+        },
+        "motion_claim": "Left: a cracked idea crate with a question mark rising from it (pre-mortem). Right: a review desk where a page lands under a lamp (evaluator). One label each.",
+        "labels": [
+          "pre-mortem",
+          "evaluator"
+        ],
+        "honesty_tag": null
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "actual_duration_s": 10.18,
+      "render_duration_s": 10.208333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/BDEFS.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Most ideas don't fail on day one. They fail months later, on an assumption nobody checked. I want to catch that assumption before anyone builds.",
+      "estimated_duration_s": 10.0,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft idea box drops onto the stage. Its lid lifts and three pages rise; one page's outline turns terracotta and a crack line draws across it.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "box drops"
+          },
+          {
+            "at": 0.4,
+            "event": "pages rise"
+          },
+          {
+            "at": 0.75,
+            "event": "one page cracks"
+          }
+        ],
+        "manim": {
+          "class": "B00_IdeaBox"
+        },
+        "motion_claim": "A kraft idea box drops onto the stage. Its lid lifts and three pages rise; one page's outline turns terracotta and a crack line draws across it.",
+        "labels": [
+          "idea",
+          "assumption"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 9.92,
+      "render_duration_s": 9.958333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "I'm proposing the AI Product Failure Lab. A product manager gives it an idea and public sources, and it will return a pre-mortem: five failure risks, every claim labelled, and three tests to run first.",
+      "estimated_duration_s": 14.0,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The idea box and a source binder slide into a dark machine block; three report pages slide out on the other side, one after another.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "box + binder enter"
+          },
+          {
+            "at": 0.5,
+            "event": "machine lights"
+          },
+          {
+            "at": 0.7,
+            "event": "three pages out"
+          }
+        ],
+        "manim": {
+          "class": "B01_InOut"
+        },
+        "motion_claim": "The idea box and a source binder slide into a dark machine block; three report pages slide out on the other side, one after another.",
+        "labels": [
+          "sources",
+          "pre-mortem"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 14.49,
+      "render_duration_s": 14.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "It will live in a GitHub repository: a small web app, a test set of made-up product ideas, and a log that scores it.",
+      "estimated_duration_s": 9.6,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A release parcel opens; a browser window, a fan of test cards and a log page rise out of it.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "parcel opens"
+          },
+          {
+            "at": 0.4,
+            "event": "app"
+          },
+          {
+            "at": 0.6,
+            "event": "test cards"
+          },
+          {
+            "at": 0.8,
+            "event": "log"
+          }
+        ],
+        "manim": {
+          "class": "B02_Repo"
+        },
+        "motion_claim": "A release parcel opens; a browser window, a fan of test cards and a log page rise out of it.",
+        "labels": [
+          "GitHub repo"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 8.47,
+      "render_duration_s": 8.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Inside, an orchestrator will pass the idea to market, customer and risk agents. An evaluator will challenge what they found, and can send one back once. One retry, never a loop.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A junction routes the idea packet to three dark agent blocks; their pages travel to a review desk under a lamp; one page goes back to one block exactly once, then returns.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "packet splits to three blocks"
+          },
+          {
+            "at": 0.5,
+            "event": "pages reach review desk"
+          },
+          {
+            "at": 0.8,
+            "event": "one page sent back once"
+          }
+        ],
+        "manim": {
+          "class": "B03_Agents"
+        },
+        "motion_claim": "A junction routes the idea packet to three dark agent blocks; their pages travel to a review desk under a lamp; one page goes back to one block exactly once, then returns.",
+        "labels": [
+          "market",
+          "customer",
+          "risk"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 12.82,
+      "render_duration_s": 12.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Before pitching it, I tested the obvious alternative: just asking a chatbot. I gave plain Claude and ChatGPT the same idea, with a fake statistic planted in it. Both caught the fake number.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two comparison trays, each holding one idea page with a planted number; a terracotta check lands on the planted number in each tray.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "two trays"
+          },
+          {
+            "at": 0.5,
+            "event": "planted number appears"
+          },
+          {
+            "at": 0.8,
+            "event": "both checks land"
+          }
+        ],
+        "manim": {
+          "class": "B04_Baseline"
+        },
+        "motion_claim": "Two comparison trays, each holding one idea page with a planted number; a terracotta check lands on the planted number in each tray.",
+        "labels": [
+          "Claude",
+          "ChatGPT"
+        ],
+        "honesty_tag": "real test · Oct 14"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 13.72,
+      "render_duration_s": 13.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "But in three runs, plain Claude cited no sources, yet stated claims as facts. ChatGPT sourced just two paragraphs and left most claims unlabelled. You can't tell evidence from guesses.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The same two trays: lines of claims fill each page in grey; source dots appear next to claims: none in the Claude tray; in the ChatGPT tray, dots beside just two paragraphs. A large ink 0 rises over the Claude tray.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "claim lines fill"
+          },
+          {
+            "at": 0.5,
+            "event": "source dots: 0 and 2"
+          },
+          {
+            "at": 0.75,
+            "event": "hero 0"
+          }
+        ],
+        "manim": {
+          "class": "B05_Gap"
+        },
+        "motion_claim": "The same two trays: lines of claims fill each page in grey; source dots appear next to claims: none in the Claude tray; in the ChatGPT tray, dots beside just two paragraphs. A large ink 0 rises over the Claude tray.",
+        "labels": [
+          "0"
+        ],
+        "honesty_tag": "real test · Oct 14"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 13.4,
+      "render_duration_s": 13.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Paid tools exist too. DimeADozen's homepage promises hundred-page validation reports with hundreds of citations. I haven't bought one, so I can't judge them.",
+      "estimated_duration_s": 9.2,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A very thick stack of report pages builds up beside a price tag; a question mark draws over the stack.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "stack builds"
+          },
+          {
+            "at": 0.55,
+            "event": "price tag"
+          },
+          {
+            "at": 0.8,
+            "event": "question mark"
+          }
+        ],
+        "manim": {
+          "class": "B06_PaidReport"
+        },
+        "motion_claim": "A very thick stack of report pages builds up beside a price tag; a question mark draws over the stack.",
+        "labels": [
+          "paid report"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 11.73,
+      "render_duration_s": 11.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Here's what will be different. Every claim will get a label, and code, not the model, will check each citation against the sources. The test scores will be public, including where it loses.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Claim pages ride a conveyor through a checkpoint scanner beside the source binder; each page gets a tag, ink for sourced, grey for guess; one page fails the scan and is tagged guess.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "pages ride in"
+          },
+          {
+            "at": 0.4,
+            "event": "scan beam"
+          },
+          {
+            "at": 0.7,
+            "event": "tags: sourced / guess"
+          }
+        ],
+        "manim": {
+          "class": "B07_Scanner"
+        },
+        "motion_claim": "Claim pages ride a conveyor through a checkpoint scanner beside the source binder; each page gets a tag, ink for sourced, grey for guess; one page fails the scan and is tagged guess.",
+        "labels": [
+          "sourced",
+          "guess"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 12.31,
+      "render_duration_s": 12.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Who opens it? A hiring manager for AI product roles. In the first minute, they'll read the README, one real sample report, and the score table against plain chat.",
+      "estimated_duration_s": 11.6,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three pages land on a desk in order, each with a one-word label; a cursor touches each in turn.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "README"
+          },
+          {
+            "at": 0.45,
+            "event": "report"
+          },
+          {
+            "at": 0.7,
+            "event": "scores"
+          }
+        ],
+        "manim": {
+          "class": "B08_FirstMinute"
+        },
+        "motion_claim": "Three pages land on a desk in order, each with a one-word label; a cursor touches each in turn.",
+        "labels": [
+          "README",
+          "report",
+          "scores"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 11.9,
+      "render_duration_s": 11.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What should it prove? That I can write prompt contracts, instructions plus a schema each agent's output must pass, and then measure whether they held. It won't prove I'm a machine learning engineer.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A skill page and a gate: an agent's output parcel reaches the gate; the barrier lifts only after the parcel's shape matches the outline on the page.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "contract page"
+          },
+          {
+            "at": 0.5,
+            "event": "parcel at gate"
+          },
+          {
+            "at": 0.75,
+            "event": "shape matches, barrier lifts"
+          }
+        ],
+        "manim": {
+          "class": "B09_Contract"
+        },
+        "motion_claim": "A skill page and a gate: an agent's output parcel reaches the gate; the barrier lifts only after the parcel's shape matches the outline on the page.",
+        "labels": [
+          "contract",
+          "schema"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 12.65,
+      "render_duration_s": 12.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The evidence will be saved run logs, the score table, and a written list of where it failed.",
+      "estimated_duration_s": 7.2,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The evidence binder's cover opens; three tabbed sections slide out: logs, scores, failures.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "cover opens"
+          },
+          {
+            "at": 0.5,
+            "event": "logs, scores"
+          },
+          {
+            "at": 0.8,
+            "event": "failures tab"
+          }
+        ],
+        "manim": {
+          "class": "B10_Binder"
+        },
+        "motion_claim": "The evidence binder's cover opens; three tabbed sections slide out: logs, scores, failures.",
+        "labels": [
+          "logs",
+          "failures"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 5.72,
+      "render_duration_s": 5.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What comes first: the risk agent and the evaluator, on one test idea, from the command line. You'll know it ran when a run log appears that passes the schema check.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "One idea parcel rides a short conveyor past one agent block and the review desk; a single log page drops out and a check draws on it.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "one parcel"
+          },
+          {
+            "at": 0.5,
+            "event": "agent + evaluator"
+          },
+          {
+            "at": 0.8,
+            "event": "log page + check"
+          }
+        ],
+        "manim": {
+          "class": "B11_FirstRun"
+        },
+        "motion_claim": "One idea parcel rides a short conveyor past one agent block and the review desk; a single log page drops out and a check draws on it.",
+        "labels": [
+          "first run"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 11.09,
+      "render_duration_s": 11.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What it will never do: give a percent chance of success, turning guesses into a probability. Live web search, accounts and forecasts are out too.",
+      "estimated_duration_s": 10.0,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A parcel stamped with a percent sign rides up to a permission gate; the barrier drops and blocks it; it slides off the stage.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "% parcel"
+          },
+          {
+            "at": 0.5,
+            "event": "barrier drops"
+          },
+          {
+            "at": 0.8,
+            "event": "parcel removed"
+          }
+        ],
+        "manim": {
+          "class": "B12_NoScore"
+        },
+        "motion_claim": "A parcel stamped with a percent sign rides up to a permission gate; the barrier drops and blocks it; it slides off the stage.",
+        "labels": [
+          "no score"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 9.51,
+      "render_duration_s": 9.541666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What could sink it? The evaluator rubber-stamps, the same model grading its own team. Chatbots already catch obvious fakes, so my test ideas will plant subtler flaws, like a price that contradicts the audience.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A flawed page (a hairline terracotta crack) slides under an approval stamp; the stamp comes down and approves it anyway.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "flawed page"
+          },
+          {
+            "at": 0.5,
+            "event": "stamp descends"
+          },
+          {
+            "at": 0.8,
+            "event": "approved anyway"
+          }
+        ],
+        "manim": {
+          "class": "B13_RubberStamp"
+        },
+        "motion_claim": "A flawed page (a hairline terracotta crack) slides under an approval stamp; the stamp comes down and approves it anyway.",
+        "labels": [
+          "rubber stamp"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 14.83,
+      "render_duration_s": 14.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "So I'll count how many planted flaws it catches. If that number is low, I'll move checks out of the model and into plain code, and report the result either way.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Sample cards with planted flaws slide into an experiment bench one by one; a tally of marks grows; a small dark code block docks next to the review desk.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "samples in"
+          },
+          {
+            "at": 0.5,
+            "event": "tally grows"
+          },
+          {
+            "at": 0.8,
+            "event": "code block docks"
+          }
+        ],
+        "manim": {
+          "class": "B14_CatchRate"
+        },
+        "motion_claim": "Sample cards with planted flaws slide into an experiment bench one by one; a tally of marks grows; a small dark code block docks next to the review desk.",
+        "labels": [
+          "catch rate"
+        ],
+        "honesty_tag": "constructed"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 10.22,
+      "render_duration_s": 10.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Why this project? It's a mix. Requirements and challenging assumptions are years of my product work; WorkShip and SkillPort are on my GitHub. New to me: agent orchestration and evaluation design.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two shelves: the left one already holds three filled blocks; on the right shelf, three outlined empty slots draw in.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "have shelf"
+          },
+          {
+            "at": 0.6,
+            "event": "new shelf outlines"
+          }
+        ],
+        "manim": {
+          "class": "B15_Shelves"
+        },
+        "motion_claim": "Two shelves: the left one already holds three filled blocks; on the right shelf, three outlined empty slots draw in.",
+        "labels": [
+          "have",
+          "new"
+        ],
+        "honesty_tag": null
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 14.14,
+      "render_duration_s": 14.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B15.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "So, where it stands. What exists today: the idea, a blueprint I drafted with ChatGPT, and those chatbot tests. Everything else I will build with Claude Code, in two weeks.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two trays: a small 'exists' tray with three items, and a long 'will build' tray whose slots are dashed outlines that draw in one by one.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "exists tray"
+          },
+          {
+            "at": 0.55,
+            "event": "will build outlines"
+          }
+        ],
+        "manim": {
+          "class": "B16_Status"
+        },
+        "motion_claim": "Two trays: a small 'exists' tray with three items, and a long 'will build' tray whose slots are dashed outlines that draw in one by one.",
+        "labels": [
+          "exists",
+          "will build"
+        ],
+        "honesty_tag": null
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "audio_file": "mp3/beat-B16.mp3",
+      "actual_duration_s": 12.48,
+      "render_duration_s": 12.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B16.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T22:09:09"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "AI Product Failure Lab. Aditya Hasija.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; name"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "AI Product Failure Lab",
+            "slug": "ai-product-failure-lab-pitch",
+            "handle": "Aditya Hasija",
+            "subline": ""
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": 4.48,
+      "render_duration_s": 4.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-10-14T22:09:09"
+      }
+    }
+  ]
+}
