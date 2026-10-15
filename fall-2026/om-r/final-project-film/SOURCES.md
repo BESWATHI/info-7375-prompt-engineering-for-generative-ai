@@ -23,14 +23,20 @@ project idea, in a 2026 agent-evaluation methodology article:
   own content, not just a search snippet): for "pass@3 vs. pass^3," it
   reports **97%** vs. **~34% for the same agent**, a **−63 percentage
   point gap**. These two figures are quoted directly from the source.
-- **What I do NOT attribute to the source:** an earlier draft of this
-  project's materials additionally stated the two figures imply a flat
-  70%-per-trial success rate (mathematically consistent: 0.7³≈34%,
-  1−0.3³≈97%) and described that 70% figure as if the source itself stated
-  it. The source does not state a per-trial rate anywhere — only the two
-  headline percentages above. That inferred 70% figure has been removed
-  from the film's narration and from `PROJECT-BRIEF.md`; only the two
-  directly-quoted figures (97%, ~34%) are used.
+- **Correction to an earlier draft of this document.** An earlier version of
+  this file stated that the source does not mention a 70%-per-trial rate,
+  and that an earlier narration draft had wrongly attributed that figure to
+  the source as if stated directly. On rereading the full published article
+  (not just a search snippet), this is incorrect: the source states the
+  70%-per-trial figure directly and explicitly, in several places,
+  including its Key Takeaways ('A 70%-per-trial agent reads as ~97% on
+  pass@3 but ~34% on pass^3') and the Section 01 worked example.
+  The 97% and 34% figures used in the film were correct regardless, since
+  they are the source's own headline numbers either way — but the claim that
+  70% was my own inference rather than the source's own stated figure was
+  itself inaccurate, and is corrected here. Caught by independently
+  rereading the full source rather than trusting an earlier pass's summary
+  of it.
 - **What is mine:** the decision to build a tool that actually reports
   pass^k by default against a real tool-using agent, and to pair it with a
   fault-injection harness — the article does not propose or describe this

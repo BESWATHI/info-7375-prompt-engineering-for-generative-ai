@@ -38,6 +38,8 @@ went missing (see #4).
 
 ## 2. pass@k / pass^k: an inferred number attributed to the source
 
+(See entry 6: this 'correction' was itself wrong — the source does state 70% directly.)
+
 **Date:** 2026-10-11, on or before 19:04, which is before the first render
 (the corrected narration is already in `make_sheet.py` at that time; the
 first manim renders are dated 19:17)
@@ -171,3 +173,38 @@ from 2026-10-14:
   have added the tail automatically. I rejected it because it would bring
   back the hardcoded @NikBearBrown branding the outro was removed to avoid
   (#1). I chose to pad the audio by hand, knowing it's fragile.
+
+---
+
+## 6. Rechecking the cited source myself — catching an error in my own fact-check
+
+**Date:** 2026-10-14
+
+After the build was done, I went back and independently checked the two
+things the film cites as real — the GitHub pull request in B07, and the
+pass@k/pass^k article in B02/B03 — rather than just trusting what was
+reported to me during the build.
+
+The PR checked out exactly as described. The article is where I found a
+real problem: my own SOURCES.md claimed the source never states a
+70%-per-trial figure, and that an earlier narration draft had wrongly
+attributed that number to the source. Reading the full article myself, that
+claim is wrong — the source states the 70%-per-trial figure directly and
+explicitly, in several places, including its Key Takeaways and the
+Section 01 worked example. The 'correction' recorded earlier in
+this build was itself based on an incomplete read of the source material,
+not the full published article.
+
+The numbers actually used in the film (97%, 34%) were never wrong, since
+they're the source's own headline figures regardless of which framing is
+used. But a factual claim about the source's own content was wrong, and
+I only caught it by going back and reading the primary source myself
+instead of relying on a prior pass's summary of it. SOURCES.md and
+FACTCHECK.md are both corrected accordingly.
+
+The full read also turned up a small inconsistency inside the source
+itself: its body text gives the gap as 62 points, while its stat block,
+reliability table and closing callout all say 63. The film's
+"sixty-three" is correct by direct arithmetic (97.3 − 34.3 = 63) and
+matches the source's own stat block, table and callout; the source's body
+text alone has an internal typo.
