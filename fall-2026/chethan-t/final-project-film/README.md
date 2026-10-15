@@ -27,9 +27,9 @@ You need the brutalist.art toolkit cloned next to `fall-2026/`, with its `.venv`
 ```bash
 cd brutalist.art && source .venv/bin/activate
 # the film's custom scenes live in the toolkit: runtime/remotion/src/ApiImpactPitch.tsx, registered in Root.tsx
-python3 runtime/scripts/generate_audio_kokoro.py ../fall-2026/chethan-g/final-project-film
-./art run   ../fall-2026/chethan-g/final-project-film --height 1080
-./art final ../fall-2026/chethan-g/final-project-film --out ../fall-2026/chethan-g/final-project-film
+python3 runtime/scripts/generate_audio_kokoro.py ../fall-2026/chethan-t/final-project-film
+./art run   ../fall-2026/chethan-t/final-project-film --height 1080
+./art final ../fall-2026/chethan-t/final-project-film --out ../fall-2026/chethan-t/final-project-film
 ```
 
 Full steps are in `BUILD-PROMPT.md`.
