@@ -9,6 +9,7 @@ I'm doing my MS in AI Systems Engineering at Northeastern, finishing in December
 | Week | Assignment | What it is | Status |
 |---|---|---|---|
 | 1 | [`week-01-video/`](week-01-video/) | **Temperature Is Concentration, Not Truth**: a 3-minute explainer on what the temperature setting really controls | Posted; the video goes to Canvas |
+| Final | [`final-project-film/`](final-project-film/) | **Electricity Supplier Check**: a 3:38 pitch film for a tool that will read a Massachusetts electric bill and show what you paid versus basic service, with the math done in code | Posted; the film goes to Canvas |
 
 ## Week 1
 
@@ -25,3 +26,9 @@ python3 -c "from main import sample; print(sample([1, 2, 3], temperature=2.0))" 
 ```
 
 The video itself goes to Canvas, since this repo doesn't keep media files in Git. Everything you'd need to rebuild it is in [`week-01-video/`](week-01-video/): the beat sheet, the Manim scenes, captions, the build steps, and my log of what broke along the way.
+
+## Final project pitch film
+
+I overpaid on my own electric bill because I was on a competitive supplier and didn't catch it. The Massachusetts Attorney General found that residential customers on competitive supply paid $738.7 million more than basic service over the last decade. **Electricity Supplier Check** will read a bill and tell you exactly how much more, or less, you paid than basic service. Claude will read the bill and explain the result; Python will do all the math, and a verifier will reject any number that code didn't compute.
+
+Nothing is built yet; the film is a pitch. As before, the film itself goes to Canvas because this repo keeps audio and video out of Git. Everything else is in [`final-project-film/`](final-project-film/): the brief, the beat sheet, the scene code, the gate reports, and my log.
