@@ -1,0 +1,851 @@
+{
+  "metadata": {
+    "slug": "source-check-pitch",
+    "title": "Source Check for Support AI",
+    "topic": "FINAL PROJECT PITCH",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "mayank",
+    "persona": "Mayank (narrating as myself)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "plain",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "caption_policy": "none",
+    "greeting_language": "Spanish (Hola)",
+    "folderLabel": "@Mayank",
+    "in_for_bear": false,
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt",
+      "handoff"
+    ],
+    "bookend_exempt_reason": "Pitch film (INFO 7375 Final Project Pitch): show-tell bookends (hesitant writer + terms card) with no verdict card and no Your Turn prompt; the assignment requires narrating as myself, so no instructor persona or credit line; the outro is the reel-local TcTitleOutro (@Mayank).",
+    "audience": "hiring managers for AI automation engineers; INFO 7375 reviewers",
+    "source_doc": "PROJECT-BRIEF.md (2026-10-14); Moffatt v. Air Canada (BC CRT, 2024); fin.ai public page (read 2026-10-14)",
+    "honesty": "pitch only: nothing is built; tool described in 'will'; body beats tagged 'proposed design' on screen",
+    "tags": [
+      "AI automation",
+      "n8n",
+      "Claude",
+      "support AI",
+      "source grounding",
+      "INFO 7375"
+    ],
+    "build": {
+      "at": "2026-10-14T07:27:26",
+      "cut": "master",
+      "filled": 17,
+      "of": 17,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "BOUT: palette=claude but the outro is 'TcTitleOutro' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hola, I'm Muh-yunk, and this is my final project pitch. It starts with one question. Can a support bot answer policy questions from a current source?",
+      "estimated_duration_s": 10.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'Can a support bot answer policy questions safely'"
+          },
+          {
+            "at": 0.6,
+            "event": "'safely' is deleted and retyped as 'from a current source'"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Can a support bot answer\npolicy questions safely",
+            "triggerWords": "safely",
+            "replacementWords": "from a current source",
+            "fontSize": 70,
+            "charMs": 24,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "source-check-pitch",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-10-14T11:05:45.134160+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer corrects a vague goal (safely) into the checkable one (from a current source).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 9.72,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 9.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Three terms. A policy answer: anything a bot tells a customer about refunds, fees, or eligibility. A source: the dated policy document that answer relies on. And a hold: the answer waits for a person instead of being sent.",
+      "estimated_duration_s": 15.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "'policy answer' lands"
+          },
+          {
+            "at": 0.5,
+            "event": "'source' lands"
+          },
+          {
+            "at": 0.78,
+            "event": "'hold' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "policy answer",
+                "meaning": "the bot's claims about refunds, fees, eligibility"
+              },
+              {
+                "term": "source",
+                "meaning": "the dated policy behind the reply"
+              },
+              {
+                "term": "hold",
+                "meaning": "the reply waits until staff decide"
+              }
+            ],
+            "folderLabel": "",
+            "durationSeconds": 12.93,
+            "startCue": 47,
+            "rowGap": 97
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-10-14T11:21:33.762628+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Terms card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 12.93,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 12.958333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "This really happened. In 2024, a Canadian tribunal ruled on a case against Air Canada. The airline's chatbot told a customer he could claim a bereavement fare after he travelled. The policy said the request had to come before. The tribunal held the airline responsible for its chatbot.",
+      "estimated_duration_s": 19.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A conveyor carries an answer parcel straight out to the customer with no check; a policy page beside it; a case caption.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "conveyor and policy page"
+          },
+          {
+            "at": 0.3,
+            "event": "answer parcel rides out unchecked"
+          },
+          {
+            "at": 0.75,
+            "event": "caption: Moffatt v. Air Canada, 2024"
+          }
+        ],
+        "manim": {
+          "class": "B00_RealCase"
+        },
+        "motion_claim": "A conveyor carries an answer parcel straight out to the customer with no check; a policy page beside it; a case caption."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 16.73,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 16.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "So my project is Source Check for Support AI. It will sit between a support bot and the customer, and check every policy answer against the company's current policy before it is sent.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The same conveyor, now with a checkpoint scanner arch over it; label 'Source Check'.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "scanner arch rises over the conveyor"
+          },
+          {
+            "at": 0.65,
+            "event": "label"
+          }
+        ],
+        "manim": {
+          "class": "B01_Scanner"
+        },
+        "motion_claim": "The same conveyor, now with a checkpoint scanner arch over it; label 'Source Check'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.39,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 10.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step one. Claude will break the bot's answer into claims, like 'refund after travel', and return them in a fixed format that my code checks before using them.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The answer parcel opens; three claim pages rise out of it in a row.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "parcel lid lifts"
+          },
+          {
+            "at": 0.35,
+            "event": "three claim pages rise"
+          }
+        ],
+        "manim": {
+          "class": "B02_Claims"
+        },
+        "motion_claim": "The answer parcel opens; three claim pages rise out of it in a row."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.87,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 8.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Step two. Python code, not the model, will look up the current, dated version of the policy, and compare each claim with it: the numbers, the dates, and conditions like before or after.",
+      "estimated_duration_s": 13.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Version shelves; the newest policy page slides out; it lands beside a claim page in comparison trays.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "shelves"
+          },
+          {
+            "at": 0.35,
+            "event": "current version slides out"
+          },
+          {
+            "at": 0.7,
+            "event": "claim and policy side by side"
+          }
+        ],
+        "manim": {
+          "class": "B03_Versions"
+        },
+        "motion_claim": "Version shelves; the newest policy page slides out; it lands beside a claim page in comparison trays."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.24,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 10.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "If every claim matches, the answer goes out, and a log records which policy version it relied on.",
+      "estimated_duration_s": 7.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A permission gate barrier lifts; the parcel passes; a check and a log page appear.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "barrier lifts"
+          },
+          {
+            "at": 0.6,
+            "event": "log page with a check"
+          }
+        ],
+        "manim": {
+          "class": "B04_Pass"
+        },
+        "motion_claim": "A permission gate barrier lifts; the parcel passes; a check and a log page appear."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 6.1,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 6.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "If a claim has no source, relies on an outdated version, or contradicts the policy, the answer is held. A person sees the reason in Slack and decides.",
+      "estimated_duration_s": 11.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The parcel is diverted to a human handoff desk; label 'HOLD'; a person marker appears.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "handoff desk"
+          },
+          {
+            "at": 0.35,
+            "event": "parcel slides to the person"
+          },
+          {
+            "at": 0.7,
+            "event": "HOLD label"
+          }
+        ],
+        "manim": {
+          "class": "B05_Hold"
+        },
+        "motion_claim": "The parcel is diverted to a human handoff desk; label 'HOLD'; a person marker appears."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.32,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 9.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "An n8n workflow will run all of this: answer in, check, then pass or hold. It works in front of any bot, so it doesn't replace one.",
+      "estimated_duration_s": 10.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The answer box sits between a 'pass' tray and a 'hold' tray; it slides into 'hold'.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "junction"
+          },
+          {
+            "at": 0.35,
+            "event": "packet routes"
+          },
+          {
+            "at": 0.7,
+            "event": "labels"
+          }
+        ],
+        "manim": {
+          "class": "B06_Router"
+        },
+        "motion_claim": "The answer box sits between a 'pass' tray and a 'hold' tray; it slides into 'hold'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.19,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 8.208333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "I looked at three alternatives: Intercom Fin, Zendesk's AI agents, and manual review of transcripts. The two products answer from your help content and hand off to people. Manual review happens after the answer is sent. What I didn't find on their public pages is a check of each answer against the current policy version before it goes out.",
+      "estimated_duration_s": 23.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three trays labelled Fin, Zendesk, manual; a fourth tray with the scanner mark; the gap is the check before sending.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "three trays"
+          },
+          {
+            "at": 0.7,
+            "event": "the fourth tray: check before sending"
+          }
+        ],
+        "manim": {
+          "class": "B07_Alternatives"
+        },
+        "motion_claim": "Three trays labelled Fin, Zendesk, manual; a fourth tray with the scanner mark; the gap is the check before sending."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 18.07,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 18.083333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Who opens it? A hiring manager for an AI automation engineer. In the first minute they'll run one command and watch an outdated refund answer get held, with the reason.",
+      "estimated_duration_s": 12.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A workstation monitor; a terminal line appears; a HOLD tag comes back.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "workstation"
+          },
+          {
+            "at": 0.35,
+            "event": "command"
+          },
+          {
+            "at": 0.7,
+            "event": "HOLD returns"
+          }
+        ],
+        "manim": {
+          "class": "B08_Demo"
+        },
+        "motion_claim": "A workstation monitor; a terminal line appears; a HOLD tag comes back."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.26,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 10.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What it will prove: prompt contracts, source grounding, verification, approval gates, and evaluation. The evidence will be tests and a labelled test set, with the miss rate reported. It won't prove it's ready for production.",
+      "estimated_duration_s": 14.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An evidence binder opens; test pages and an evaluation page come out.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "binder"
+          },
+          {
+            "at": 0.35,
+            "event": "cover opens"
+          },
+          {
+            "at": 0.7,
+            "event": "evidence pages"
+          }
+        ],
+        "manim": {
+          "class": "B09_Evidence"
+        },
+        "motion_claim": "An evidence binder opens; test pages and an evaluation page come out."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.31,
+      "audio_file": "mp3/beat-B09.mp3",
+      "render_duration_s": 12.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The scope. It will only check policy answers for one fictional company, on synthetic data. It won't write answers. The first piece will be the checker and one test: the Air Canada case must come out held.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An experiment bench; one test sample slides in; a terracotta light comes on.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "bench"
+          },
+          {
+            "at": 0.35,
+            "event": "test sample inserted"
+          },
+          {
+            "at": 0.75,
+            "event": "light"
+          }
+        ],
+        "manim": {
+          "class": "B10_FirstTest"
+        },
+        "motion_claim": "An experiment bench; one test sample slides in; a terracotta light comes on."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.31,
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 11.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "What could sink it: a dropped condition word. If extraction turns before into after, a wrong answer could pass. So uncertain answers will default to hold, and my test set will be full of condition flips.",
+      "estimated_duration_s": 14.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An inspection lamp swings onto a claim page; labels 'before' and 'after'.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "lamp and page"
+          },
+          {
+            "at": 0.35,
+            "event": "lamp head focuses"
+          },
+          {
+            "at": 0.7,
+            "event": "before / after"
+          }
+        ],
+        "manim": {
+          "class": "B11_Risk"
+        },
+        "motion_claim": "An inspection lamp swings onto a claim page; labels 'before' and 'after'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.56,
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 11.583333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Why this project? I've already built n8n workflows with Claude in my public repos. What's new for me is building an evaluation set and measuring the misses. And Week one taught me that a confident answer isn't a checked one.",
+      "estimated_duration_s": 16.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A skill stack; one page lifts out (new); labels 'have' and 'new'.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "stack of pages (have)"
+          },
+          {
+            "at": 0.4,
+            "event": "one page lifts (new)"
+          }
+        ],
+        "manim": {
+          "class": "B12_Skills"
+        },
+        "motion_claim": "A skill stack; one page lifts out (new); labels 'have' and 'new'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.74,
+      "audio_file": "mp3/beat-B12.mp3",
+      "render_duration_s": 12.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Today, three things exist: the project brief, the research behind it, and this film. The workflow, the checker, and the tests will come next.",
+      "estimated_duration_s": 9.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two trays: 'exists' holds three real pages; 'will exist' holds three ghost outlines.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "two trays"
+          },
+          {
+            "at": 0.35,
+            "event": "three pages in 'exists'"
+          },
+          {
+            "at": 0.7,
+            "event": "three ghost outlines in 'will exist'"
+          }
+        ],
+        "manim": {
+          "class": "B13_ExistsWill"
+        },
+        "motion_claim": "Two trays: 'exists' holds three real pages; 'will exist' holds three ghost outlines."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 8.06,
+      "audio_file": "mp3/beat-B13.mp3",
+      "render_duration_s": 8.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-14T07:27:26"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Source Check for Support AI. At Muh-yunk.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "tts_note": "'Mayank' respelled for Kokoro; the screen shows @Mayank.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; @Mayank; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "TcTitleOutro",
+          "props": {
+            "title": "Source Check for Support AI.",
+            "slug": "source-check-pitch-film",
+            "handle": "@Mayank",
+            "showMascot": false,
+            "inkPeriod": true
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-10-14T11:18:41.778888+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.11,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:TcTitleOutro",
+        "at": "2026-10-14T07:27:26"
+      }
+    }
+  ]
+}

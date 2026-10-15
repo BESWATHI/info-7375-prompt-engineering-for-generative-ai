@@ -1,0 +1,213 @@
+[run] skip B00_RealCase — B00 already filled
+[run] skip B01_Scanner — B01 already filled
+[run] skip B02_Claims — B02 already filled
+[run] skip B03_Versions — B03 already filled
+[run] skip B04_Pass — B04 already filled
+[run] skip B05_Hold — B05 already filled
+[run] skip B06_Router — B06 already filled
+[run] skip B08_Demo — B08 already filled
+[run] skip B09_Evidence — B09 already filled
+[run] skip B10_FirstTest — B10 already filled
+[run] skip B11_Risk — B11 already filled
+[run] GATE L — beat-mix lint
+[beat-lint] clean — beat mix OK (beat_sheet.json)
+[run] GATE SHAPE — finance chart-shape enforcement
+[gate-shape] skip — not a finance reel (beat_sheet.json)
+[run] GATE A — static pre-flight
+
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+
+[static-check] 1 scene(s): 1 clean · 0 warn · 0 error
+[run] GATE W — WCAG contrast + margins + text-overlap (independent second check)
+[gateW] B07_Alternatives clean
+[gateW] B12_Skills clean
+[gateW] B13_ExistsWill clean
+[run] rendering B07_Alternatives
+Manim Community v0.18.1
+
+Animation 0: LaggedStart(Group), etc.:   0%|          | 0/27 [00:00<?, ?it/s]Animation 0: LaggedStart(Group), etc.:  15%|█▍        | 4/27 [00:00<00:00, 37.79it/s]Animation 0: LaggedStart(Group), etc.:  33%|███▎      | 9/27 [00:00<00:00, 41.16it/s]Animation 0: LaggedStart(Group), etc.:  52%|█████▏    | 14/27 [00:00<00:00, 41.32it/s]Animation 0: LaggedStart(Group), etc.:  70%|███████   | 19/27 [00:00<00:00, 40.86it/s]Animation 0: LaggedStart(Group), etc.:  89%|████████▉ | 24/27 [00:00<00:00, 39.11it/s]                                                                                      [10/14/26 07:24:38] INFO     Animation 0 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/partial_mov                         
+                             ie_files/B07_Alternatives/                         
+                             3429491395_3224210830_2358                         
+                             810818.mp4'                                        
+[10/14/26 07:24:44] INFO     Animation 1 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/partial_mov                         
+                             ie_files/B07_Alternatives/                         
+                             1606801221_3521500083_2811                         
+                             756141.mp4'                                        
+Animation 2: FadeIn(VGroup of 4 submobjects), etc.:   0%|          | 0/20 [00:00<?, ?it/s]Animation 2: FadeIn(VGroup of 4 submobjects), etc.:  30%|███       | 6/20 [00:00<00:00, 55.02it/s]Animation 2: FadeIn(VGroup of 4 submobjects), etc.:  65%|██████▌   | 13/20 [00:00<00:00, 59.30it/s]Animation 2: FadeIn(VGroup of 4 submobjects), etc.:  95%|█████████▌| 19/20 [00:00<00:00, 58.71it/s]                                                                                                   [10/14/26 07:24:45] INFO     Animation 2 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/partial_mov                         
+                             ie_files/B07_Alternatives/                         
+                             1606801221_1144055191_1145                         
+                             029577.mp4'                                        
+[10/14/26 07:24:49] INFO     Animation 3 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/partial_mov                         
+                             ie_files/B07_Alternatives/                         
+                             1606801221_2700512191_2815                         
+                             33254.mp4'                                         
+                    INFO     Combining to Movie file.   scene_file_writer.py:617
+                    INFO                                scene_file_writer.py:737
+                             File ready at                                      
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/B07_Alterna                         
+                             tives.mp4'                                         
+                                                                                
+                    INFO     Rendered B07_Alternatives              scene.py:247
+                             Played 4 animations                                
+You are using manim version v0.18.1, but version v0.22.0 is available.
+You should consider upgrading via pip install -U manim
+Animation 0: LaggedStart(Group), etc.:   0%|          | 0/17 [00:00<?, ?it/s]                                                                             /Users/mayank/Desktop/AgenticAI/brutalist.art/runtime/qc/manim_layout_audit.py:149: DeprecationWarning: This method is not guaranteed to stay around. Please prefer getting the attribute normally.
+  if float(mob.get_stroke_opacity()) <= 0.02:
+Animation 2: FadeIn(VGroup of 4 submobjects), etc.:   0%|          | 0/12 [00:00<?, ?it/s]                                                                                          [audit] scenes: 6 snapshots → CLEAN
+[audit] report: /Users/mayank/Desktop/AgenticAI/Assignment_5/final-project-film/layout_audit.md
+[run] rendering B12_Skills
+Manim Community v0.18.1
+
+Animation 0: FadeIn(VGroup of 2 submobjects), etc.:   0%|          | 0/17 [00:00<?, ?it/s]Animation 0: FadeIn(VGroup of 2 submobjects), etc.:  29%|██▉       | 5/17 [00:00<00:00, 49.34it/s]Animation 0: FadeIn(VGroup of 2 submobjects), etc.:  65%|██████▍   | 11/17 [00:00<00:00, 53.53it/s]Animation 0: FadeIn(VGroup of 2 submobjects), etc.: 100%|██████████| 17/17 [00:00<00:00, 54.37it/s]                                                                                                   [10/14/26 07:24:52] INFO     Animation 0 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/partial_mov                         
+                             ie_files/B12_Skills/342949                         
+                             1395_3830756483_223132457.                         
+                             mp4'                                               
+[10/14/26 07:24:56] INFO     Animation 1 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/partial_mov                         
+                             ie_files/B12_Skills/160680                         
+                             1221_606826305_3406810472.                         
+                             mp4'                                               
+Animation 2: FadeIn(VGroup of 3 submobjects), etc.:   0%|          | 0/20 [00:00<?, ?it/s]Animation 2: FadeIn(VGroup of 3 submobjects), etc.:  35%|███▌      | 7/20 [00:00<00:00, 67.11it/s]Animation 2: FadeIn(VGroup of 3 submobjects), etc.:  75%|███████▌  | 15/20 [00:00<00:00, 70.37it/s]                                                                                                                       INFO     Animation 2 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/partial_mov                         
+                             ie_files/B12_Skills/160680                         
+                             1221_1953860183_4293042603                         
+                             .mp4'                                              
+[10/14/26 07:24:59] INFO     Animation 3 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/partial_mov                         
+                             ie_files/B12_Skills/160680                         
+                             1221_329102674_1709865871.                         
+                             mp4'                                               
+                    INFO     Combining to Movie file.   scene_file_writer.py:617
+                    INFO                                scene_file_writer.py:737
+                             File ready at                                      
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/B12_Skills.                         
+                             mp4'                                               
+                                                                                
+                    INFO     Rendered B12_Skills                    scene.py:247
+                             Played 4 animations                                
+You are using manim version v0.18.1, but version v0.22.0 is available.
+You should consider upgrading via pip install -U manim
+Animation 0: FadeIn(VGroup of 2 submobjects), etc.:   0%|          | 0/11 [00:00<?, ?it/s]                                                                                          /Users/mayank/Desktop/AgenticAI/brutalist.art/runtime/qc/manim_layout_audit.py:149: DeprecationWarning: This method is not guaranteed to stay around. Please prefer getting the attribute normally.
+  if float(mob.get_stroke_opacity()) <= 0.02:
+Animation 2: FadeIn(VGroup of 3 submobjects), etc.:   0%|          | 0/12 [00:00<?, ?it/s]                                                                                          [audit] scenes: 6 snapshots → CLEAN
+[audit] report: /Users/mayank/Desktop/AgenticAI/Assignment_5/final-project-film/layout_audit.md
+[run] rendering B13_ExistsWill
+Manim Community v0.18.1
+
+Animation 0: LaggedStart(Group), etc.:   0%|          | 0/24 [00:00<?, ?it/s]Animation 0: LaggedStart(Group), etc.:  25%|██▌       | 6/24 [00:00<00:00, 57.67it/s]Animation 0: LaggedStart(Group), etc.:  54%|█████▍    | 13/24 [00:00<00:00, 61.02it/s]Animation 0: LaggedStart(Group), etc.:  83%|████████▎ | 20/24 [00:00<00:00, 63.06it/s]                                                                                      [10/14/26 07:25:02] INFO     Animation 0 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/partial_mov                         
+                             ie_files/B13_ExistsWill/34                         
+                             29491395_4065581630_235881                         
+                             0818.mp4'                                          
+[10/14/26 07:25:04] INFO     Animation 1 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/partial_mov                         
+                             ie_files/B13_ExistsWill/16                         
+                             06801221_1171737363_929267                         
+                             121.mp4'                                           
+Animation 2: LaggedStart(Group), etc.:   0%|          | 0/24 [00:00<?, ?it/s]Animation 2: LaggedStart(Group), etc.:  29%|██▉       | 7/24 [00:00<00:00, 67.98it/s]Animation 2: LaggedStart(Group), etc.:  58%|█████▊    | 14/24 [00:00<00:00, 68.35it/s]Animation 2: LaggedStart(Group), etc.:  88%|████████▊ | 21/24 [00:00<00:00, 68.53it/s]                                                                                                          INFO     Animation 2 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/partial_mov                         
+                             ie_files/B13_ExistsWill/16                         
+                             06801221_3228614731_265302                         
+                             7205.mp4'                                          
+[10/14/26 07:25:06] INFO     Animation 3 : Partial      scene_file_writer.py:527
+                             movie file written in                              
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/partial_mov                         
+                             ie_files/B13_ExistsWill/16                         
+                             06801221_2231819306_112875                         
+                             6590.mp4'                                          
+                    INFO     Combining to Movie file.   scene_file_writer.py:617
+                    INFO                                scene_file_writer.py:737
+                             File ready at                                      
+                             '/Users/mayank/Desktop/Age                         
+                             nticAI/Assignment_5/final-                         
+                             project-film/media/videos/                         
+                             scenes/2160p24/B13_ExistsW                         
+                             ill.mp4'                                           
+                                                                                
+                    INFO     Rendered B13_ExistsWill                scene.py:247
+                             Played 4 animations                                
+You are using manim version v0.18.1, but version v0.22.0 is available.
+You should consider upgrading via pip install -U manim
+Animation 0: LaggedStart(Group), etc.:   0%|          | 0/15 [00:00<?, ?it/s]                                                                             /Users/mayank/Desktop/AgenticAI/brutalist.art/runtime/qc/manim_layout_audit.py:149: DeprecationWarning: This method is not guaranteed to stay around. Please prefer getting the attribute normally.
+  if float(mob.get_stroke_opacity()) <= 0.02:
+Animation 2: LaggedStart(Group), etc.:   0%|          | 0/15 [00:00<?, ?it/s]                                                                             [audit] scenes: 6 snapshots → CLEAN
+[audit] report: /Users/mayank/Desktop/AgenticAI/Assignment_5/final-project-film/layout_audit.md
+[remotion] BIDEA: filled already (skip)
+[remotion] BDEFS: filled already (skip)
+[remotion] BOUT: filled already (skip)
+[remotion] done — run `bash scripts/run.sh <REEL>` to compile the cut
+[art] compiled B07  MANIM    18.1s  ← B07.mp4
+[art] compiled B12  MANIM    12.8s  ← B12.mp4
+[art] compiled B13  MANIM     8.1s  ← B13.mp4
+[art] motion histogram: graphic:14  remotion:3
+[art] SKIN LINT: BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk
+[art] SKIN LINT: BOUT: palette=claude but the outro is 'TcTitleOutro' — OUTRO LAW wants ClaudeTitleOutro
+[art] build stamp → beat_sheet.json (17/17 filled)
+[art] QC contact sheet → /Users/mayank/Desktop/AgenticAI/Assignment_5/final-project-film/qc-sheet.png
+[art] wrote /Users/mayank/Desktop/AgenticAI/Assignment_5/final-project-film/source-check-pitch-slate.mp4  (181.3s, audio: per-beat timeline (source audio preserved), drawtext: no — PIL overlays)
+[art] slots: 17/17 filled — BIDEA:VIDEO BDEFS:VIDEO B00:MANIM B01:MANIM B02:MANIM B03:MANIM B04:MANIM B05:MANIM B06:MANIM B07:MANIM B08:MANIM B09:MANIM B10:MANIM B11:MANIM B12:MANIM B13:MANIM BOUT:VIDEO
+[run] GATE V — frame-level visual QC on the compiled reel
+[gate-v] frames=34 BLOCKER=0 MAJOR=0 → /Users/mayank/Desktop/AgenticAI/Assignment_5/final-project-film/_qc/REPORT.md
+[run] done → /Users/mayank/Desktop/AgenticAI/Assignment_5/final-project-film  (QC gates: on)
+[run] REVIEW built; no final exported. Use ./art final <reel> for a verified master.
+[run] any remaining slates are YOUR slots — see /Users/mayank/Desktop/AgenticAI/Assignment_5/final-project-film/SHOTLIST.md

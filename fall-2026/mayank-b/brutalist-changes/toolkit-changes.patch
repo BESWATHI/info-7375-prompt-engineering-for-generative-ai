@@ -1,21 +1,8 @@
-diff --git a/examples/_smoke/beat_sheet.json b/examples/_smoke/beat_sheet.json
-index 83a4e7e..90b5b78 100644
---- a/examples/_smoke/beat_sheet.json
-+++ b/examples/_smoke/beat_sheet.json
-@@ -1,7 +1,7 @@
- {
-  "metadata": {
-   "title": "Smoke Test",
--  "slug": "_smoke",
-+  "slug": "smoke",
-   "topic": "PACKAGING SMOKE TEST",
-   "register": "fixture",
-   "engine": "kokoro",
 diff --git a/runtime/remotion/src/Root.tsx b/runtime/remotion/src/Root.tsx
-index b8b80af..13b9558 100644
+index 3b244b1..b7a2de1 100644
 --- a/runtime/remotion/src/Root.tsx
 +++ b/runtime/remotion/src/Root.tsx
-@@ -36,6 +36,17 @@ import {ClaudeComposerAsk, claudeComposerAskSchema} from './scenes/ClaudeCompose
+@@ -36,6 +36,18 @@ import {ClaudeComposerAsk, claudeComposerAskSchema} from './scenes/ClaudeCompose
  // bold sans headline + rule + decorative circle). Replaced by the two accepted forms.
  import {FormACard, formACardSchema} from './scenes/FormACard';
  import {TypesetMath, typesetMathSchema} from './scenes/TypesetMath';
@@ -29,15 +16,21 @@ index b8b80af..13b9558 100644
 +  TcBoundary, tcBoundarySchema,
 +  TcNextWord, tcNextWordSchema,
 +  TcTitleOutro, tcTitleOutroSchema,
++  TcSoftmaxIntro, tcSoftmaxIntroSchema,
 +} from './TemperatureConcentration';
  import {ExecutedData, executedDataSchema} from './scenes/ExecutedData';
  import {FormBCard, formBCardSchema} from './scenes/FormBCard';
  import {FormACard916, formACard916Schema} from './scenes/FormACard916';
-@@ -3956,6 +3967,53 @@ export const RemotionRoot: React.FC = () => {
+@@ -3981,6 +3993,58 @@ export const RemotionRoot: React.FC = () => {
            schema={reqRingWordSchema}
            defaultProps={reqRingWordSchema.parse({})} />
        </Folder>
 +      <Folder name="TemperatureConcentration">
++        <Composition id="TcSoftmaxIntro" component={TcSoftmaxIntro}
++          durationInFrames={360} fps={30} width={1920} height={1080}
++          calculateMetadata={({props}) => ({durationInFrames: Math.ceil(((props as any).durationSeconds ?? 12) * 30)})}
++          schema={tcSoftmaxIntroSchema}
++          defaultProps={tcSoftmaxIntroSchema.parse({})} />
 +        <Composition id="TcTitleOutro" component={TcTitleOutro}
 +          durationInFrames={150} fps={30} width={1920} height={1080}
 +          calculateMetadata={({props}) => ({durationInFrames: Math.ceil(((props as any).durationSeconds ?? 5) * 30)})}
@@ -89,10 +82,10 @@ index b8b80af..13b9558 100644
            durationInFrames={420} fps={30} width={1920} height={1080}
 diff --git a/runtime/remotion/src/TemperatureConcentration.tsx b/runtime/remotion/src/TemperatureConcentration.tsx
 new file mode 100644
-index 0000000..d3fcf1a
+index 0000000..52f973c
 --- /dev/null
 +++ b/runtime/remotion/src/TemperatureConcentration.tsx
-@@ -0,0 +1,701 @@
+@@ -0,0 +1,785 @@
 +/**
 + * TemperatureConcentration.tsx — reel-local Remotion components for
 + * "Temperature Is Not a Fact Checker." (INFO7375 Week 01, Chapter 1).
@@ -126,6 +119,9 @@ index 0000000..d3fcf1a
 +const BORDER = '#E5E2D9';
 +const ACC = '#D97757';
 +const ACC_TEXT = '#AF4B2D';
++/** v8: green for established claims (B08 SHOWN). Text shade clears 4.5:1 on white. */
++const GOOD = '#2F7D4A';
++const GOOD_TEXT = '#256B3D';
 +
 +const SERIF = '"EB Garamond", Georgia, "Times New Roman", serif';
 +const SANS = '-apple-system, "SF Pro Text", "Segoe UI", sans-serif';
@@ -600,9 +596,10 @@ index 0000000..d3fcf1a
 +  scores: z.array(z.number()).default([1, 2, 3]),
 +  correct: z.number().default(0),
 +  stampText: z.string().default('CONSTRUCTED HYPOTHETICAL · NOT AN OBSERVED CLAUDE ERROR'),
++  formula: mathRow.default({ src: 'temperature-concentration/softmax.svg', aspect: 3, expression: 'softmax' }),
 +  cues: z.object({ key: z.number(), lower: z.number(), never: z.number() }).default({ key: 3, lower: 7, never: 13 }),
 +});
-+export const TcWrongAnswer: React.FC<z.infer<typeof tcWrongAnswerSchema>> = ({ sparkLine, scores, correct, stampText, cues }) => {
++export const TcWrongAnswer: React.FC<z.infer<typeof tcWrongAnswerSchema>> = ({ sparkLine, scores, correct, stampText, formula, cues }) => {
 +  const t = useT();
 +  const T = tempAt(t, [{ t: cues.lower, T: 1 }, { t: cues.lower + 2, T: 0.5 }]);
 +  const probs = softmax(scores, T);
@@ -623,15 +620,20 @@ index 0000000..d3fcf1a
 +          <div style={{ fontFamily: SANS, fontSize: 28, color: SOFT }}>ANSWER KEY (stipulated)</div>
 +          <div style={{ fontFamily: SERIF, fontSize: 56, marginTop: 6 }}>A is correct</div>
 +        </div>
-+        <div style={{ height: 150, position: 'relative' }}>
-+          <div style={{ position: 'absolute', left: '50%', top: 12, bottom: 12, borderLeft: `4px dashed ${GHOST}` }} />
-+          <div style={{ position: 'absolute', left: 'calc(50% - 44px)', top: 36, fontFamily: SANS, fontWeight: 800, fontSize: 72,
-+            color: ACC_TEXT, opacity: neverO }}>✕</div>
-+          <div style={{ position: 'absolute', left: 'calc(50% + 48px)', top: 52, fontFamily: SANS, fontSize: 32, color: SOFT, opacity: neverO }}>not an input</div>
++        <div style={{ height: 130, position: 'relative' }}>
++          {/* v8: the line and the cross share one centre (left 50%, translate -50%) */}
++          <div style={{ position: 'absolute', left: '50%', top: 10, bottom: 10, width: 0, borderLeft: `4px dashed ${GHOST}`, transform: 'translateX(-50%)' }} />
++          <svg style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', opacity: neverO }} width={64} height={64} viewBox="0 0 64 64">
++            <line x1={10} y1={10} x2={54} y2={54} stroke={ACC_TEXT} strokeWidth={9} strokeLinecap="round" />
++            <line x1={54} y1={10} x2={10} y2={54} stroke={ACC_TEXT} strokeWidth={9} strokeLinecap="round" />
++          </svg>
++          <div style={{ position: 'absolute', left: 'calc(50% + 52px)', top: '50%', transform: 'translateY(-50%)', fontFamily: SANS, fontSize: 32, color: SOFT, opacity: neverO }}>not an input</div>
 +        </div>
-+        <div style={{ border: `3px solid ${INK}`, background: CARD, padding: '22px 28px' }}>
-+          <div style={{ fontFamily: SANS, fontSize: 28, color: SOFT }}>THE FORMULA SEES ONLY</div>
-+          <div style={{ fontFamily: MONO, fontSize: 44, marginTop: 8 }}>scores, T</div>
++        <div style={{ border: `3px solid ${INK}`, background: CARD, padding: '18px 24px' }}>
++          <div style={{ fontFamily: SANS, fontSize: 28, color: SOFT }}>THE FORMULA ONLY SEES z AND T</div>
++          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
++            <MathImg row={formula} height={104} />
++          </div>
 +        </div>
 +      </div>
 +      <div style={{ position: 'absolute', left: SX, bottom: 1080 - SB + 8, fontFamily: SANS, fontSize: 30, color: SOFT }}>
@@ -667,9 +669,9 @@ index 0000000..d3fcf1a
 +        const y = interpolate(p, [0, 1], [760, top + slot * 215]);
 +        return <div key={i} style={{ position: 'absolute', left: x, top: y, width: colW, minHeight: 180, boxSizing: 'border-box',
 +          opacity: ramp(t, it.at, 0.3), padding: '18px 26px', background: CARD,
-+          border: it.accent ? `4px solid ${ACC}` : `3px solid ${it.shown ? INK : GHOST}`,
-+          fontFamily: SERIF, fontSize: 54, lineHeight: 1.15, color: it.accent ? ACC_TEXT : INK, display: 'flex', alignItems: 'center', gap: 20 }}>
-+          <span style={{ fontFamily: SANS, fontWeight: 800, fontSize: 44, color: it.shown ? INK : (it.accent ? ACC_TEXT : SOFT) }}>{it.shown ? '✓' : '✕'}</span>
++          border: it.accent ? `4px solid ${ACC}` : it.shown ? `4px solid ${GOOD}` : `3px solid ${GHOST}`,
++          fontFamily: SERIF, fontSize: 54, lineHeight: 1.15, color: it.accent ? ACC_TEXT : it.shown ? GOOD_TEXT : INK, display: 'flex', alignItems: 'center', gap: 20 }}>
++          <span style={{ fontFamily: SANS, fontWeight: 800, fontSize: 44, color: it.shown ? GOOD_TEXT : (it.accent ? ACC_TEXT : SOFT) }}>{it.shown ? '✓' : '✕'}</span>
 +          <span>{it.text}</span>
 +        </div>;
 +      })}
@@ -762,9 +764,13 @@ index 0000000..d3fcf1a
 +  slug: z.string().default(''),
 +  handle: z.string().default(HANDLE),
 +  durationSeconds: z.number().positive().default(5),
++  /** v2 (pitch film): the mascot is the toolkit's brand mark; off when a film must not carry it. */
++  showMascot: z.boolean().default(true),
++  /** v2: ink period instead of terracotta (GATE T §8.3: terracotta on cream is 2.74:1). */
++  inkPeriod: z.boolean().default(false),
 +});
 +const seedHash = (str: string) => Array.from(str || 'default').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-+export const TcTitleOutro: React.FC<z.infer<typeof tcTitleOutroSchema>> = ({ title, slug, handle }) => {
++export const TcTitleOutro: React.FC<z.infer<typeof tcTitleOutroSchema>> = ({ title, slug, handle, showMascot, inkPeriod }) => {
 +  const frame = useCurrentFrame();
 +  const { fps } = useVideoConfig();
 +  const o = Math.min(1, Math.max(0, interpolate(frame, [0, 14], [0, 1])));
@@ -785,25 +791,83 @@ index 0000000..d3fcf1a
 +      <div style={{ position: 'absolute', right: 96, bottom: 123, width: 3, height: 3, background: '#D4D4D4' }} />
 +      <div style={{ fontFamily: CLAUDE_FONT.serif, fontWeight: 700, fontSize: 72, color: fg, letterSpacing: '-0.02em',
 +        textAlign: 'center', lineHeight: 1.08, maxWidth: 1080, padding: '0 60px' }}>
-+        {titleBody}<span style={{ color: fgSend }}>{titlePunct}</span>
++        {titleBody}<span style={{ color: inkPeriod ? fg : fgSend }}>{titlePunct}</span>
 +      </div>
 +      <div style={{ fontFamily: CLAUDE_FONT.serif, fontSize: 52, color: fg, marginTop: 28, opacity: 0.9 }}>{handle}</div>
-+      <div style={{ width: mascotW, height: mascotH, marginTop: 28, overflow: 'visible' }}>
++      {showMascot && <div style={{ width: mascotW, height: mascotH, marginTop: 28, overflow: 'visible' }}>
 +        <MascotSVG s={mascotState} scale={1} />
-+      </div>
++      </div>}
 +    </AbsoluteFill>
 +  );
 +};
-diff --git a/runtime/scripts/smoke_test.sh b/runtime/scripts/smoke_test.sh
-index 2c4d631..4aa9d56 100755
---- a/runtime/scripts/smoke_test.sh
-+++ b/runtime/scripts/smoke_test.sh
-@@ -57,7 +57,7 @@ if ! ART_FACTS=0 ART_QC=1 ART_STRICT=0 bash "$ROOT/scripts/run.sh" "$WORK" 2>&1
-   fail "run.sh exited non-zero — see $WORK/.run.log"
- fi
- 
--OUT="$WORK/_smoke-slate.mp4"
-+OUT="$WORK/smoke-slate.mp4"
- [ -f "$OUT" ] || fail "no compiled slate cut at $OUT — run.sh reported success but produced nothing"
- 
- echo "[smoke] --- GATE SIZE: non-zero, non-truncated mp4 on disk ---"
++
++// =============================================================================
++// B02 TcSoftmaxIntro (v8) — three sample scores → the softmax formula → what e is.
++// The e^x row values come from math.exp in build_props.py.
++// =============================================================================
++export const tcSoftmaxIntroSchema = z.object({
++  ...base,
++  scores: z.array(z.number()).default([1, 2, 3]),
++  formula: mathRow.default({ src: 'temperature-concentration/softmax.svg', aspect: 3, expression: 'softmax' }),
++  expRow: z.array(z.object({ x: z.number(), value: z.number(), label: mathRow })).default([]),
++  stampText: z.string().default('CONSTRUCTED TOY SCORES · CHAPTER 1'),
++  cues: z.object({ chips: z.number(), formula: z.number(), labels: z.number(), e: z.number(), positive: z.number(), base: z.number() })
++    .default({ chips: 1, formula: 6, labels: 10, e: 13, positive: 17, base: 21 }),
++});
++export const TcSoftmaxIntro: React.FC<z.infer<typeof tcSoftmaxIntroSchema>> = ({ sparkLine, scores, formula, expRow, stampText, cues }) => {
++  const t = useT();
++  const maxV = Math.max(...expRow.map((r) => r.value), 1);
++  const barMaxH = 150;
++  return (
++    <Stage>
++      <SparkLine line={sparkLine} o={ramp(t, 0, 0.5)} />
++      <Stamp text={stampText} o={ramp(t, cues.chips, 0.4)} />
++      {/* the three sample scores */}
++      <div style={{ position: 'absolute', left: SX, top: 150, display: 'flex', alignItems: 'center', gap: 26 }}>
++        <div style={{ fontFamily: SANS, fontSize: 30, color: SOFT, marginRight: 8, opacity: ramp(t, cues.chips, 0.4) }}>SAMPLE SCORES z</div>
++        {scores.map((zv, i) => (
++          <div key={i} style={{ width: 110, height: 90, border: `3px solid ${INK}`, background: CARD, display: 'flex', alignItems: 'center',
++            justifyContent: 'center', fontFamily: SANS, fontWeight: 700, fontSize: 54, opacity: ramp(t, cues.chips + i * 0.3, 0.4) }}>{zv}</div>
++        ))}
++      </div>
++      {/* the formula, large, with plain-language labels */}
++      <div style={{ position: 'absolute', left: SX, width: SR - SX, top: 280, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 70 }}>
++        <MathImg row={formula} height={200} o={ramp(t, cues.formula, 0.6)} />
++        <div style={{ fontFamily: SERIF, fontSize: 48, lineHeight: 1.4, opacity: ramp(t, cues.labels, 0.6) }}>
++          <div>top = <b>your weight</b></div>
++          <div>bottom = <b>everyone's total</b></div>
++          <div style={{ fontSize: 36, color: SOFT }}>(p = chance, z = score, T = temperature)</div>
++        </div>
++      </div>
++      {/* what e is */}
++      <div style={{ position: 'absolute', left: SX, top: 560, width: 440, border: `3px solid ${INK}`, background: CARD, padding: '20px 26px',
++        opacity: ramp(t, cues.e, 0.5) }}>
++        <div style={{ fontFamily: SANS, fontSize: 28, color: SOFT }}>WHAT IS e?</div>
++        <div style={{ fontFamily: SERIF, fontSize: 76, marginTop: 4 }}>e ≈ 2.71828</div>
++        <div style={{ fontFamily: SERIF, fontSize: 36, color: SOFT, marginTop: 6 }}>a fixed math constant</div>
++      </div>
++      {/* e^x is always positive and grows fast */}
++      <div style={{ position: 'absolute', left: SX + 540, top: 560, width: SR - SX - 540, height: 300 }}>
++        {expRow.map((r, i) => {
++          const o = ramp(t, cues.positive + i * 0.25, 0.4);
++          const slot = (SR - SX - 540) / expRow.length;
++          const h = barMaxH * (r.value / maxV) * o;
++          return (
++            <div key={i} style={{ position: 'absolute', left: slot * i, width: slot, top: 0, height: 300, opacity: o }}>
++              <div style={{ position: 'absolute', left: slot * 0.3, width: slot * 0.4, bottom: 110, height: Math.max(3, h), background: i === expRow.length - 1 ? ACC : INK, opacity: 0.85 }} />
++              <div style={{ position: 'absolute', width: slot, bottom: 110 + Math.max(3, h) + 8, textAlign: 'center', fontFamily: SANS, fontWeight: 700, fontSize: 38 }}>{fmt(r.value)}</div>
++              <div style={{ position: 'absolute', width: slot, bottom: 40, display: 'flex', justifyContent: 'center' }}><MathImg row={r.label} height={60} /></div>
++            </div>
++          );
++        })}
++        <div style={{ position: 'absolute', left: 0, right: 0, bottom: 104, height: 3, background: INK, opacity: ramp(t, cues.positive, 0.4) }} />
++      </div>
++      <div style={{ position: 'absolute', left: SX + 540, top: 880, fontFamily: SERIF, fontSize: 40, opacity: ramp(t, cues.positive + 1.2, 0.5) }}>
++        always <b>positive</b> · bigger scores grow <b>much faster</b>
++      </div>
++      <div style={{ position: 'absolute', left: SX, bottom: 1080 - SB + 8, fontFamily: SANS, fontSize: 28, color: SOFT, whiteSpace: 'nowrap', opacity: ramp(t, cues.base, 0.5) }}>
++        any base above 1 keeps the order · e is the standard choice because it keeps the math simple
++      </div>
++    </Stage>
++  );
++};

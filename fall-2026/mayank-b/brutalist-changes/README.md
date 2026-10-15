@@ -4,8 +4,9 @@ Every change I made to the [brutalist.art](https://github.com/nikbearbrown/bruta
 while building the Week 01 video ([../week-01-video/](../week-01-video/README.md)), as one patch.
 Nothing else in the toolkit was modified.
 
-- **Built against:** brutalist.art commit `6a8380a`. Also checked with `git apply --check` against
-  upstream `cd4bf20` (2026-09-27): applies cleanly.
+- **Refreshed 2026-10-14.** Checked with `git apply --check` against upstream `4115560`: applies cleanly.
+- The two smoke-test fixes that were in the first version are **no longer needed**: upstream fixed the same
+  bug (slug `smoke`, output `smoke-slate.mp4`), so they were dropped from the patch.
 - **File:** `toolkit-changes.patch` (plain `git diff`; a `.patch` so the course repo's
   no-TypeScript CI rule is not tripped by the `.tsx` content inside it).
 
@@ -13,10 +14,8 @@ Nothing else in the toolkit was modified.
 
 | File | Change | Why |
 |---|---|---|
-| `examples/_smoke/beat_sheet.json` | slug `_smoke` → `smoke` | the toolkit's own slug check rejects a leading underscore, so `./art smoke` failed on a fresh clone |
-| `runtime/scripts/smoke_test.sh` | expected output filename updated to match | same smoke-test fix (see week-01-video/FRICTIONAL.md, 2026-09-21) |
-| `runtime/remotion/src/TemperatureConcentration.tsx` | **new**: nine Remotion scenes for the video (TcNextWord, TcScoresToOdds, TcTemperatureDial, TcRatio, TcCode, TcSampleCounts, TcWrongAnswer, TcBoundary, TcTitleOutro) | the library had no temperature/softmax scene |
-| `runtime/remotion/src/Root.tsx` | registers those nine compositions in a `TemperatureConcentration` folder | Remotion can only render registered compositions |
+| `runtime/remotion/src/TemperatureConcentration.tsx` | **new**: ten Remotion scenes: nine for the Week 1 film (TcNextWord, TcScoresToOdds, TcTemperatureDial, TcRatio, TcCode, TcSampleCounts, TcWrongAnswer, TcBoundary, TcTitleOutro) and TcSoftmaxIntro; `TcTitleOutro` gained `showMascot` / `inkPeriod` for the Final Project pitch film | the library had no temperature/softmax scene |
+| `runtime/remotion/src/Root.tsx` | registers those ten compositions in a `TemperatureConcentration` folder | Remotion can only render registered compositions |
 
 `TcTitleOutro` is a copy of the toolkit's `ClaudeTitleOutro` with a `handle` prop. The original
 (hardcoded to @NikBearBrown by OUTRO-LOCK.md) is left untouched.
