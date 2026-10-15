@@ -6,7 +6,8 @@
 - **Canvas file:** `JayaramanGopalakrishnan_ShyamSundar_INFO7375_FinalProjectFilm.zip`
 - **GitHub folder:** `fall-2026/shyam-g/final-project-film/`
 - **Runtime:** 2:59 (178.75 s), 3840×2160, 8.8 MB
-- **Film:** `film/stopline-pitch.mp4` (rendered 2026-10-15; SHA-256 `5b743436f5b37a8abb0a46735d7e258d0d079e2cbccd42740db77aa640da7710`)
+- **Film:** `film/stopline-pitch.mp4` (rendered 2026-10-15; SHA-256 `5b743436f5b37a8abb0a46735d7e258d0d079e2cbccd42740db77aa640da7710`).
+  **Not in this GitHub folder:** the course repo's `.gitignore` keeps generated audio and video out of Git (`*.mp4`). The film is in the Canvas ZIP; its SHA-256 above lets you confirm the copy matches.
 - **Quality gates:** all passed. See `film/gate_reports/`.
 
 All incident data in this folder is **synthetic**. Claude Code wrote most of the code; the author reviewed every check on 2026-10-14 (see FRICTIONAL.md).
