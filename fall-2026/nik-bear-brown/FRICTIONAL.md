@@ -415,6 +415,7 @@ Where to check each claim in this log. Commits in this repository are listed in 
   - `sync.sh` had no way to sync one class, so it gained `--only <word in the repo name>`. It was run with `--only prompt`; Branding and AI was not touched.
   - **Checked, not assumed:** this folder's collector was run on the saved 2026-10-18 board payloads (2,465 postings) next to the master's. Both kept the same 81 postings under filter version 0.5.2. The repository's validator ran 13 tests and passed.
   - Not in this folder, on purpose: posting new listings to Discord and the daily run script live only in the master (see `SYNC.md`), so nothing here posts anywhere.
+  - **Then, Replit removed from the watch list.** I said: *"Let's remove Replit from the job search"* and, asking for it to be logged, *"It's not really educational AI. It's just AI."* The change is made in the master (Computational Skepticism folder, where its log has the full note) and `lectern/sources.json` here was brought in line by the same sync; the watch list is now 15 boards. Nothing from Replit is posted from the next run.
 - **What I did:** Gave the instruction. I have not read the diff of the copied files.
 - **What Claude or another person contributed:** Claude Code ran the drift check, added the `--only` option, copied the shared files, ran the two checks above, and committed only the shared job-search files and this entry. Other uncommitted edits already in this folder (the 2026-10-14 pitch-film entry above, the project brief, the sync note) were left uncommitted and are not part of this commit.
 - **What I understand now / still do not understand:** Not yet stated by me.
@@ -538,3 +539,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-10-11 | docs(fall-2026): log the request to rewrite the INFO 7375 chapters around conduct, check and drive |
 | 2026-10-11 | docs(fall-2026): log pushing the rewritten chapters to GitHub for reading |
 | 2026-10-19 | feat(fall-2026): bring the job-search code up to the master: collectors, delta publisher, faculty list |
+| 2026-10-19 | docs(fall-2026): remove Replit from the shared watch list, not educational AI |
