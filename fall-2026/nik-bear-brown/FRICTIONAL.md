@@ -421,6 +421,21 @@ Where to check each claim in this log. Commits in this repository are listed in 
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:** `lectern/collect.py`, `lectern/sources.json`, `lectern/faculty_config.json`, `lectern/collectors/`, `lectern/publish_delta.py` against the master; the smoke test used the master's saved payloads, which are not committed. Next: what this class's job-search assignment should show differently from the master, which is mine to say.
 
+### 2026-10-19 — Doing my own Mode Build assignment
+
+- **Date and what I was working on:** 2026-10-19. The 100-point Reallocation Engine Mode Build assignment, which I give students and now do myself.
+- **I tried / expected:** I pasted the full brief and said: *"375 [INFO 7375], this is what we need to do for this assignment. The folder you build should be called mode build assignment."* I expected a mode for my own situation, run for real, with the honesty rule applied to me.
+- **What happened:**
+  - Claude Code built `mode-build-assignment/` in this folder: a recipe (`recipes/case-part-time-funded-research-lab.md`), the one-page case, a worked run with pasted output and attestation, the log entry, show-and-tell notes and a new script (`scripts/funding/check-awards.py`, 17 tests). The idea it chose is mine from earlier the same day: part-time paid research, found by starting from the federal award databases instead of from lab pages.
+  - **What ran:** on a clean clone of the engine, `npm run verify`, `npm run doctor`, `npm run ats:scan -- --dry-run`, `npm run ats:liveness`; the new script live against NIH RePORTER and the NSF Award Search for six Boston-area institutions (349 awards, 223 that could pay for work starting 2027-01-01).
+  - **What the run found about the engine:** `bls:local-wage` cannot run on a fresh copy (its data is not in the repository); `ats:liveness` says `uncertain`, not `expired`, for a posting that does not exist; `ats:scan` kept an accounting role on the substring "Account".
+  - **What broke in the new script and was fixed:** a control query that paged through thousands of awards, a silent 25-result cap on the NSF search, a loose NSF name match that inflated the headline (588 against 350), and an investigator file that came out empty. One assumption in the recipe was wrong (the database accepts partial organisation names); the break attempt showed it.
+  - **Stage claimed: DRAFT.** Six typed TODOs are decisions that are mine, so the recipe cannot honestly be called a later stage.
+- **What I did:** Gave the instruction and the folder name. I have not read the recipe, the run or the attestation, and none of the six decisions has been made by me.
+- **What Claude or another person contributed:** Claude Code wrote everything in the folder, ran every command and made the pasted outputs. Real award numbers and investigators' names went to a private file outside this repository; the tracked outputs carry neither.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `mode-build-assignment/02-worked-run.md` and `mode-build-assignment/runs/`. Next: my six decisions, then the first human look at one institution's funded projects, which is the step the recipe needs before it can leave DRAFT. No pull request has been opened to the engine repository.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -540,3 +555,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-10-11 | docs(fall-2026): log pushing the rewritten chapters to GitHub for reading |
 | 2026-10-19 | feat(fall-2026): bring the job-search code up to the master: collectors, delta publisher, faculty list |
 | 2026-10-19 | docs(fall-2026): remove Replit from the shared watch list, not educational AI |
+| 2026-10-19 | feat(fall-2026): my own Mode Build assignment: a funded-research mode, its script and a real run |
