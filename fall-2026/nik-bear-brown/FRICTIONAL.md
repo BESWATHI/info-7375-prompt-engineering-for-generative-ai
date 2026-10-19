@@ -406,6 +406,20 @@ Where to check each claim in this log. Commits in this repository are listed in 
 - **Evidence and next step:** `chapters/01-…` to `chapters/15-…` and `docs/concept-spine.md`, first uncommitted in the course repository, then pushed at my request (below). The review sidecars still read `verified: false`; the human rewrite and sign-off (Gate 3) are mine. Next: I read the chapters on GitHub, decide the first-person lines and the three device names, and say what to change.
 - **Later the same day, my words:** "That looks great. Rewrite the fifteen chapters according to the fifteen you just laid out there." Claude told me the fifteen were already rewritten to that map, so nothing was rerun. Then: "Commit what you have to the GitHub. I read on the GitHub. It can always be updated on the GitHub, but I read it on the GitHub." Claude committed each of the fifteen chapters separately, plus the brief, and pushed them to `main`. The other uncommitted instructor edits in the repository (the courseloop prompt, the assignments README, the instructor decisions) were not part of this and were left alone. Still not read by me; the chapters are Claude's draft until I do.
 
+### 2026-10-19 — The job search in this course brought up to the master again
+
+- **Date and what I was working on:** 2026-10-19. The shared job-search code in this folder, which is copied from the Computational Skepticism folder (the master, see `SYNC.md`).
+- **I tried / expected:** I said: *"we're now updating the job search for info7375 prompt."* I expected this folder's copy to match the master's.
+- **What happened:**
+  - The drift check found five shared things that differed: `lectern/collect.py`, `lectern/sources.json`, `lectern/faculty_config.json`, `lectern/collectors/` and `lectern/publish_delta.py`. The filter rules (`keywords.json`) already matched.
+  - `sync.sh` had no way to sync one class, so it gained `--only <word in the repo name>`. It was run with `--only prompt`; Branding and AI was not touched.
+  - **Checked, not assumed:** this folder's collector was run on the saved 2026-10-18 board payloads (2,465 postings) next to the master's. Both kept the same 81 postings under filter version 0.5.2. The repository's validator ran 13 tests and passed.
+  - Not in this folder, on purpose: posting new listings to Discord and the daily run script live only in the master (see `SYNC.md`), so nothing here posts anywhere.
+- **What I did:** Gave the instruction. I have not read the diff of the copied files.
+- **What Claude or another person contributed:** Claude Code ran the drift check, added the `--only` option, copied the shared files, ran the two checks above, and committed only the shared job-search files and this entry. Other uncommitted edits already in this folder (the 2026-10-14 pitch-film entry above, the project brief, the sync note) were left uncommitted and are not part of this commit.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `lectern/collect.py`, `lectern/sources.json`, `lectern/faculty_config.json`, `lectern/collectors/`, `lectern/publish_delta.py` against the master; the smoke test used the master's saved payloads, which are not committed. Next: what this class's job-search assignment should show differently from the master, which is mine to say.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -523,3 +537,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-10-08 | docs(fall-2026): revise the film 2 layout to the agentic-approach title and the iteration idea |
 | 2026-10-11 | docs(fall-2026): log the request to rewrite the INFO 7375 chapters around conduct, check and drive |
 | 2026-10-11 | docs(fall-2026): log pushing the rewritten chapters to GitHub for reading |
+| 2026-10-19 | feat(fall-2026): bring the job-search code up to the master: collectors, delta publisher, faculty list |
