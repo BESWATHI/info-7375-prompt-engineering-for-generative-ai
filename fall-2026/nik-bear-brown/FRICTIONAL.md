@@ -417,6 +417,7 @@ Where to check each claim in this log. Commits in this repository are listed in 
   - Not in this folder, on purpose: posting new listings to Discord and the daily run script live only in the master (see `SYNC.md`), so nothing here posts anywhere.
   - **Then, Replit removed from the watch list.** I said: *"Let's remove Replit from the job search"* and, asking for it to be logged, *"It's not really educational AI. It's just AI."* The change is made in the master (Computational Skepticism folder, where its log has the full note) and `lectern/sources.json` here was brought in line by the same sync; the watch list is now 15 boards. Nothing from Replit is posted from the next run.
   - **Then, eight more companies off the watch list.** I said Vercel, Webflow, Airtable, GitLab, Twilio, Netlify, Jasper AI and Supabase are *"not really educational AI"*: software products, not institutional or university AI. The full note is in the master's log; `lectern/sources.json` here was brought in line (7 boards).
+  - **Then, HubSpot removed.** I said HubSpot's education is training for its own product and does not look relevant; Miro I am still researching. `lectern/sources.json` here was brought in line (6 boards); the master's log has the full note.
 - **What I did:** Gave the instruction. I have not read the diff of the copied files.
 - **What Claude or another person contributed:** Claude Code ran the drift check, added the `--only` option, copied the shared files, ran the two checks above, and committed only the shared job-search files and this entry. Other uncommitted edits already in this folder (the 2026-10-14 pitch-film entry above, the project brief, the sync note) were left uncommitted and are not part of this commit.
 - **What I understand now / still do not understand:** Not yet stated by me.
@@ -558,3 +559,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-10-19 | docs(fall-2026): remove Replit from the shared watch list, not educational AI |
 | 2026-10-19 | feat(fall-2026): my own Mode Build assignment: a funded-research mode, its script and a real run |
 | 2026-10-20 | docs(fall-2026): remove eight software-product companies from the shared watch list |
+| 2026-10-20 | docs(fall-2026): remove HubSpot from the shared watch list; Miro stays |
