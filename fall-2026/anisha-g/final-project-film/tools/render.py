@@ -179,13 +179,13 @@ class Scene:
         i = self.text.find(phrase)
         assert i >= 0, phrase
         return self.est * i / len(self.text) + off
-    def add(self, t, dur, fn): self.items.append((t, dur, fn))
+    def add(self, t, dur, fn, until=1e9): self.items.append((t, dur, fn, until))
     def loop(self, t, fn): self.loops.append((t, fn))
-    def end(self): return max(t + d for t, d, _ in self.items) + 0.6
+    def end(self): return max(t + d for t, d, _f, _u in self.items) + 0.6
     def frame(self, t):
         c = Ctx()
-        for t0, dur, fn in self.items:
-            if t >= t0: fn(c, ease((t - t0) / dur) if dur > 0 else 1.0)
+        for t0, dur, fn, until in self.items:
+            if t0 <= t < until: fn(c, ease((t - t0) / dur) if dur > 0 else 1.0)
         return c.save()
 
 def drop(fn, h=60):
@@ -228,6 +228,26 @@ def S_B01(s):
             col = [ACC, MUSC, SKYC][i]
             c.d.ellipse([(222) * SS, (y - 9) * SS, (240) * SS, (y + 9) * SS], fill=lerp(col, k))
         s.add(s.at(ph), 0.6, row)
+
+def pill(c, cx, y, txt, k, fill=None, fg=(255, 255, 255)):
+    fill = fill or INK
+    f = font('Inter_28pt-Medium.ttf', 20); w = c.d.textlength(txt, font=f) / SS
+    c.d.rounded_rectangle([(cx - w / 2 - 18) * SS, (y - 20) * SS, (cx + w / 2 + 18) * SS, (y + 20) * SS], radius=20 * SS, fill=lerp(fill, k))
+    c.text(cx, y, txt, f, fg if k > 0.5 else lerp(fill, k), 1)
+
+EVID = os.path.join(os.path.dirname(os.path.abspath(sheet)), 'evidence')
+_SHOTS = {}
+def shot(c, name, crop, x, y, w, k):
+    key = (name, crop, w)
+    if key not in _SHOTS:
+        im = Image.open(os.path.join(EVID, name)).convert('RGB').crop(crop)
+        h = round(w * im.height / im.width)
+        _SHOTS[key] = im.resize((int(w * SS), int(h * SS)), Image.LANCZOS)
+    im = _SHOTS[key]; h = im.height / SS
+    c.d.rectangle([(x + 8) * SS, (y + 8) * SS, (x + w + 8) * SS, (y + h + 8) * SS], fill=lerp((214, 222, 220), k))
+    c.im.paste(im, (int(x * SS), int(y * SS)), Image.new('L', im.size, int(255 * clamp(k))))
+    c.d.rectangle([x * SS, y * SS, (x + w) * SS, (y + h) * SS], outline=lerp(INK, k), width=3 * SS)
+    return h
 
 def CONS(c, k):
     f = font('Inter_28pt-Medium.ttf', 20); txt = 'CONSTRUCTED · NOT BUILT YET'
@@ -278,16 +298,36 @@ def _travel(s, t0, segs, period=2.4):
         c.d.ellipse([(x - 9) * SS, (y - 9) * SS, (x + 9) * SS, (y + 9) * SS], fill=ACC)
     s.loop(t0, f)
 
+LINK_CROP = (90, 30, 1700, 380)
+PASTE_CROP = (200, 30, 1830, 850)
+GREEN = (33, 110, 92)
 def S_B03(s):
-    s.add(0, 0.5, CONS)
-    tc = s.at('Pasting'); ts = s.at('Copying'); tm = s.at('In my tool')
+    tp = s.at('Pasting'); tlink = s.at('I tried a real'); tpaste = s.at('with the text pasted')
+    tsrc = s.at("didn't show which line"); tloc = s.at('under location it added'); ts = s.at('Copying'); tm = s.at('In my tool')
+    # A: who it is for (until the alternatives start)
     for i in range(6):
-        s.add(0.3 + i * 0.25, 0.5, drop(lambda c, k, o, i=i: page(c, 760 + i * 70, 300 + o - i * 6, 30, k, n=3), 40))
-    s.add(1.6, 0.5, lambda c, k: c.text(1240, 290, 'lots of postings', F_SUB(), DIM, k, 'lm'))
-    s.add(tc, 0.8, drop(lambda c, k, o: (monitor(c, 420, 600 + o, 70, k), label(c, 420, 720, 'chatbot', k, 'no source shown'))))
-    s.add(tc + 2.5, 0.5, lambda c, k: c.text(420, 330, '?', font('EBGaramond-Medium.ttf', 90), ACC, k))
-    s.add(s.at('added a detail'), 0.6, lambda c, k: (c.text(420, 790, 'added a fact not in the posting', F_SUB(), ACC, k),
-                                                    c.text(420, 826, 'tried 2026-10-13', F_SUB(), DIM, k)))
+        s.add(0.3 + i * 0.25, 0.5, drop(lambda c, k, o, i=i: page(c, 760 + i * 70, 440 + o - i * 6, 34, k, n=3), 40), tp)
+    s.add(1.6, 0.5, lambda c, k: c.text(1270, 430, 'lots of postings', F_SUB(), DIM, k, 'lm'), tp)
+    s.add(2.4, 0.5, lambda c, k: label(c, 960, 620, 'job seekers comparing roles', k), tp)
+    # B: the REAL ChatGPT test, shown with my own screenshots
+    s.add(tp, 0.5, lambda c, k: pill(c, 1580, 92, 'REAL · MY CHATGPT TEST · 2026-10-13', k, GREEN), ts)
+    s.add(tlink, 0.6, lambda c, k: (shot(c, 'chatgpt-link-2026-10-13.png', LINK_CROP, 1230, 190, 560, k),
+                                   c.text(1510, 352, "couldn't open the LinkedIn link", F_SUB(), INK, k)), ts)
+    s.add(tpaste, 0.6, lambda c, k: shot(c, 'chatgpt-pasted-2026-10-13.png', PASTE_CROP, 130, 180, 1000, k), ts)
+    s.add(tsrc, 0.5, lambda c, k: (c.text(1240, 470, 'no source for any field', F_LAB(), ACC, k, 'lm')), ts)
+    def hl(c, k):
+        # Location row of the pasted screenshot (crop coords -> screen)
+        sc = 1000 / (PASTE_CROP[2] - PASTE_CROP[0])
+        y0 = 180 + (690 - PASTE_CROP[1]) * sc; y1 = 180 + (768 - PASTE_CROP[1]) * sc
+        c.d.rounded_rectangle([140 * SS, (y0 - 4) * SS, 1120 * SS, (y1 + 4) * SS], radius=8 * SS, outline=lerp(ACC, k), width=5 * SS)
+        arrow(c, 1125, (y0 + y1) / 2, 1228, 600, k)
+        c.text(1240, 590, 'added a fact not in the posting', F_LAB(), ACC, k, 'lm')
+        c.text(1240, 632, '"headquartered near Boston"', F_SUB(), INK, k, 'lm')
+    s.add(tloc, 0.6, hl, ts)
+    # C: compare the three, side by side
+    s.add(ts, 0.6, lambda c, k: (shot(c, 'chatgpt-pasted-2026-10-13.png', PASTE_CROP, 150, 400, 400, k),
+                                 pill(c, 350, 360, 'REAL · 2026-10-13', k, GREEN),
+                                 label(c, 350, 720, 'chatbot', k, 'no source shown')))
     def sheet(c, k, o):
         box(c, 960, 560 + o, 60, 2.6, 2.0, 0.12, PAGE, k)
         for i in range(1, 5):
@@ -297,11 +337,12 @@ def S_B03(s):
             x0, y0 = P(960, 560 + o, 60, -1.3 + i * 0.87, -1, 0.12); x1, y1 = P(960, 560 + o, 60, -1.3 + i * 0.87, 1, 0.12)
             c.line([(x0, y0), (x1, y1)], (165, 182, 180), k, 2)
         label(c, 960, 720, 'spreadsheet', k, 'slow, by hand')
-    s.add(ts, 0.8, drop(sheet))
+    s.add(ts + 0.3, 0.8, drop(sheet))
     def clock(c, k):
         c.d.ellipse([(960 - 40) * SS, (380 - 40) * SS, (960 + 40) * SS, (380 + 40) * SS], outline=lerp(INK, k), width=4 * SS, fill=lerp(CARD, k))
         c.line([(960, 380), (960, 352)], INK, k, 4); c.line([(960, 380), (982, 392)], INK, k, 4)
     s.add(ts + 1.5, 0.5, clock)
+    s.add(tm, 0.5, lambda c, k: pill(c, 1520, 380, 'CONSTRUCTED · NOT BUILT YET', k))
     s.add(tm, 0.8, drop(lambda c, k, o: (page(c, 1400, 590 + o, 50, k, n=5), tray(c, 1640, 560 + o, 46, 2.0, 2.0, k, faces=SKY))))
     def links(c, k):
         for i in range(3):
@@ -314,12 +355,6 @@ def S_B03(s):
         a0 = P(1400, 590, 50, 0.2, -0.65 + i * 0.66, 0.12); a1 = P(1640, 560, 46, -0.6, -0.5 + i * 0.5, 0.36)
         segs.append((a0, a1))
     _travel(s, tm + 2.8, segs, 3.0)
-    def mon(c, dt):  # chatbot screen keeps "typing"
-        n = int(dt * 3) % 5
-        for i in range(n):
-            x, y = 352 + i * 30, 560
-            c.d.rectangle([(x) * SS, (y) * SS, (x + 18) * SS, (y + 4) * SS], fill=ACC)
-    s.loop(tc + 1.0, lambda c, dt: None)
 
 def S_B04(s):
     s.add(0, 0.5, CONS)
@@ -479,8 +514,8 @@ def wrap(c, s_, f, maxw):
 
 def draw(s, bid, t):
     c = Ctx()
-    for t0, dur, fn in s.items:
-        if t >= t0: fn(c, ease((t - t0) / dur) if dur > 0 else 1)
+    for t0, dur, fn, until in s.items:
+        if t0 <= t < until: fn(c, ease((t - t0) / dur) if dur > 0 else 1)
     for t0, fn in s.loops:
         if t >= t0: fn(c, t - t0)
     if hasattr(s, 'typing'): render_typing(s, t, c.im)

@@ -33,4 +33,6 @@ Anisha Gaikar
 
 **2026-10-14, ~3:53 PM** — Tried to install Brutalist on my Mac (`./setup --install` in ~/brutalist.art). Node (Remotion) packages, fonts and the Kokoro voice model installed, but the Python dependencies FAILED: Homebrew's Python 3.14 refuses `pip install` into the system Python ("externally-managed-environment" error). Setup then stopped (exit 1) at the toolkit's own ElevenLabs guard, which flagged files inside the toolkit's own youtube/ example folders, so the readiness table never printed. With Manim and the Python dependencies missing, the toolkit's renderer can't run here, so the film stays rendered with `tools/render.py`; the toolkit's Gate V and Gate F were still run on it with their own scripts (both passed). Full log: `reports/brutalist-setup-log.txt`.
 
+**2026-10-21, ~4:03 PM** — Ran the toolkit's Gate V on the final film with `tools/run_gate_v.sh` (brutalist.art commit 6a8380a): PASSED. Report in `reports/GATE-V-REPORT.md`.
+
 **What I'd do differently:** Start earlier, so there's time to get Brutalist running and use its quality gates.
