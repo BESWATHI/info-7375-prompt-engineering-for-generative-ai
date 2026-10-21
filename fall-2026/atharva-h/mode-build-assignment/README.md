@@ -50,4 +50,4 @@ The live runs used my real profile. My OPT end date, unemployment days, buffer a
 
 ## Relation to my earlier submission
 
-[`../reallocation-engine-recipe/`](../reallocation-engine-recipe/README.md) is my earlier (25-point) recipe-design submission, left as it was. This folder supersedes it for the Mode Build. No pull request to the engine repository has been opened for this assignment yet.
+[`../reallocation-engine-recipe/`](../reallocation-engine-recipe/README.md) is my earlier (25-point) recipe-design submission, left as it was. This folder supersedes it for the Mode Build. The same files are in pull request [nikbearbrown/the-reallocation-engine#73](https://github.com/nikbearbrown/the-reallocation-engine/pull/73), opened 2026-10-21 from my fork. It only adds files under my own paths.
