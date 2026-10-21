@@ -35,4 +35,8 @@ Anisha Gaikar
 
 **2026-10-21, ~4:03 PM** — Ran the toolkit's Gate V on the final film with `tools/run_gate_v.sh` (brutalist.art commit 6a8380a): PASSED. Report in `reports/GATE-V-REPORT.md`.
 
+**2026-10-21, ~4:13 PM** — Ran the toolkit's Gate V on the final film with `tools/run_gate_v.sh` (brutalist.art commit 6a8380a): PASSED. Report in `reports/GATE-V-REPORT.md`.
+
 **What I'd do differently:** Start earlier, so there's time to get Brutalist running and use its quality gates.
+
+**2026-10-21, ~4:13 PM** — Grader feedback: scene 2 described the ChatGPT result instead of showing it, and carried the CONSTRUCTED tag on a real part. Fixed only that scene: it now shows my real screenshots (evidence/, 2026-10-13), labelled REAL, and the CONSTRUCTED tag sits only on the planned tool. The rest of the film is unchanged.
