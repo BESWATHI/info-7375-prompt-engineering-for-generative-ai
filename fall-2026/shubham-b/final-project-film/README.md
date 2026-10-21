@@ -48,6 +48,13 @@ cd ../brutalist.art
 cp ../final-project-film/final/marino-desk-assistant-pitch.mp4 ../final-project-film/Bagwe_Shubham_INFO7375_FinalProjectFilm.mp4
 ```
 
+## Status update, 2026-10-21 (resubmission)
+
+The first submission was graded 45/50. The TA's note: this log read as written from Claude's side rather than in my own words, and the repo hadn't yet caught up to what the film promises (SharePoint still described as in scope, no `eval/report.md`). Both are addressed now — see `FRICTIONAL.md`'s final entry for the full account. In short:
+- `FRICTIONAL.md` is rewritten in the first person throughout, with every date, time and decision unchanged.
+- marino-rag now has a real public-only index (60 pages crawled from `recreation.northeastern.edu`, 2026-10-21) and a real `eval/report.md`: 48/50 (96%) of a 50-question retrieval check finds its expected source page in the top 3. README and `docs/PRD.md` there no longer describe SharePoint ingestion as in scope.
+- The film, `PROJECT-BRIEF.md` and `beat_sheet.json` are unchanged, because they describe this milestone as "will exist" and the narration can't be re-recorded for this resubmission — the repo now backs up that promise, a week later than the film claims it will.
+
 ## Honesty notes
 
 - Past tense on screen and in the brief means it exists and was re-run on 2026-10-13. Everything else is "will".
