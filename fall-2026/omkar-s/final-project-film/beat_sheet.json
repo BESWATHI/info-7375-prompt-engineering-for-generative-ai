@@ -24,7 +24,7 @@
       "bvdt",
       "bhtf"
     ],
-    "bookend_exempt_reason": "Course assignment forbids the instructor's name, persona or credit line and any fabricated Claude response, so the Liam greeting, the composer cards and the @NikBearBrown outro are dropped. The film closes on the narrator's own name in B13 instead of ClaudeTitleOutro.",
+    "bookend_exempt_reason": "v2 2026-10-21. Course assignment forbids the instructor's name, persona or credit line and any fabricated Claude response, so the Liam greeting, the composer cards and the @NikBearBrown outro are dropped. The film closes on the narrator's own name in B13 instead of ClaudeTitleOutro.",
     "audience": "INFO 7375 graders; hiring managers screening new-grad SWE / AI engineers",
     "source_doc": "PROJECT-BRIEF.md (2026-10-12); evidence/los_smoke_test.txt",
     "tags": [
@@ -35,7 +35,7 @@
       "Claude Code"
     ],
     "build": {
-      "at": "2026-10-14T15:20:45",
+      "at": "2026-10-22T16:22:47",
       "cut": "master",
       "filled": 14,
       "of": 14,
@@ -52,46 +52,42 @@
       "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "Claude can draft a whole suite of API tests that all come back green. But a green test only means something if it would turn red when the code is wrong. BiteCheck tells an engineer reviewing AI written tests which ones would catch a broken business rule.",
-      "estimated_duration_s": 18.8,
+      "narration_text": "Hi, I'm Omkar Salian, a software engineering master's student at Northeastern. This is my final project, BiteCheck. I'm building it myself, with Claude Code as my coding assistant.",
+      "estimated_duration_s": 11.2,
       "voice": "am_michael",
       "engine": "kokoro",
-      "honesty_tag": "PROPOSED",
+      "honesty_tag": "WHO",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "A crate of test pages drops in; check marks pop on each page; a question mark appears beside the crate.",
+        "visual_intent": "A name card: Omkar Salian, MS Software Engineering, Northeastern; beside it a laptop box labelled 'me + Claude Code'.",
         "show": [
           {
             "at": 0.1,
-            "event": "crate drops"
+            "event": "name card"
           },
           {
-            "at": 0.35,
-            "event": "checks pop"
-          },
-          {
-            "at": 0.75,
-            "event": "question mark"
+            "at": 0.6,
+            "event": "laptop: me + Claude Code"
           }
         ],
         "manim": {
-          "class": "B00_GreenCrate"
+          "class": "B00_Who"
         },
-        "motion_claim": "A crate of test pages drops in; check marks pop on each page; a question mark appears beside the crate."
+        "motion_claim": "A name card: Omkar Salian, MS Software Engineering, Northeastern; beside it a laptop box labelled 'me + Claude Code'."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
       },
-      "actual_duration_s": 17.19,
+      "actual_duration_s": 13.16,
       "audio_file": "mp3/beat-B00.mp3",
-      "render_duration_s": 17.208333333333332,
+      "render_duration_s": 13.166666666666666,
       "build": {
         "status": "MANIM",
         "src": "manim/B00.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
+        "at": "2026-10-22T16:22:47"
       }
     },
     {
@@ -99,8 +95,102 @@
       "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "It's called BiteCheck. When it's done, it will be a public GitHub repository with four parts: a prompt that tells Claude how to write the tests, a list of bugs I put into the code on purpose, a runner, and a one page report.",
-      "estimated_duration_s": 17.6,
+      "narration_text": "First, the simple version. How do you know a smoke alarm works? You blow a little smoke at it. If it beeps, good. If it stays quiet, it's broken, and you'd only find out in a real fire.",
+      "estimated_duration_s": 15.2,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "honesty_tag": "ANALOGY",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two smoke alarms; a puff of smoke drifts to each; the first sends beep waves and gets a check, the second stays silent and gets an X.",
+        "show": [
+          {
+            "at": 0.3,
+            "event": "smoke puffs"
+          },
+          {
+            "at": 0.5,
+            "event": "alarm 1 beeps"
+          },
+          {
+            "at": 0.7,
+            "event": "alarm 2 silent, X"
+          }
+        ],
+        "manim": {
+          "class": "B01_SmokeAlarm"
+        },
+        "motion_claim": "Two smoke alarms; a puff of smoke drifts to each; the first sends beep waves and gets a check, the second stays silent and gets an X."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
+      },
+      "actual_duration_s": 12.44,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 12.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-22T16:22:47"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Software has alarms too. They're called tests. Claude can write hundreds of them, and they can all pass. BiteCheck is the smoke. It breaks one rule in the code on purpose, then checks which tests go off.",
+      "estimated_duration_s": 14.8,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "honesty_tag": "ANALOGY",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A row of test pages, each with an alarm light; one bug block (the smoke) slides in; two pages beep, two stay silent.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "test pages"
+          },
+          {
+            "at": 0.6,
+            "event": "bug block slides in"
+          },
+          {
+            "at": 0.8,
+            "event": "two beep, two silent"
+          }
+        ],
+        "manim": {
+          "class": "B02_TestsAreAlarms"
+        },
+        "motion_claim": "A row of test pages, each with an alarm light; one bug block (the smoke) slides in; two pages beep, two stay silent."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
+      },
+      "actual_duration_s": 13.46,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 13.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-22T16:22:47"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "When it's done, BiteCheck will be a public GitHub repo with four parts: a prompt that tells Claude how to write tests, a list of planted bugs, a runner, and a one page report.",
+      "estimated_duration_s": 13.6,
       "voice": "am_michael",
       "engine": "kokoro",
       "honesty_tag": "PROPOSED",
@@ -123,7 +213,7 @@
           }
         ],
         "manim": {
-          "class": "B01_Repo"
+          "class": "B03_Repo"
         },
         "motion_claim": "A box labelled 'GitHub repo' opens; four parts rise out of it in turn: prompt page, bug block, runner server, report page."
       },
@@ -131,104 +221,14 @@
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
       },
-      "actual_duration_s": 15.32,
-      "audio_file": "mp3/beat-B01.mp3",
-      "render_duration_s": 15.333333333333334,
-      "build": {
-        "status": "MANIM",
-        "src": "manim/B01.mp4",
-        "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
-      }
-    },
-    {
-      "beat_id": "B02",
-      "act": "pitch",
-      "lane": "manim",
-      "proof_gate": "SHOW",
-      "narration_text": "The tests will run against a small loan application API that I built earlier with Claude's help. It uses made up applicants and mock vendors, and it checks rules like a minimum income and the order of each step.",
-      "estimated_duration_s": 15.6,
-      "voice": "am_michael",
-      "engine": "kokoro",
-      "honesty_tag": "REAL",
-      "shot": {
-        "type": "GRAPHIC",
-        "source": "own",
-        "visual_intent": "A server stack labelled 'loan API' lights up; two rule tags clip onto it: 'min income', 'step order'.",
-        "show": [
-          {
-            "at": 0.15,
-            "event": "server"
-          },
-          {
-            "at": 0.55,
-            "event": "rule tags"
-          }
-        ],
-        "manim": {
-          "class": "B02_LoanApi"
-        },
-        "motion_claim": "A server stack labelled 'loan API' lights up; two rule tags clip onto it: 'min income', 'step order'."
-      },
-      "qc": {
-        "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
-      },
-      "actual_duration_s": 13.8,
-      "audio_file": "mp3/beat-B02.mp3",
-      "render_duration_s": 13.833333333333334,
-      "build": {
-        "status": "MANIM",
-        "src": "manim/B02.mp4",
-        "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
-      }
-    },
-    {
-      "beat_id": "B03",
-      "act": "pitch",
-      "lane": "manim",
-      "proof_gate": "SHOW",
-      "narration_text": "This part exists. On October twelfth, I ran it on made up applicants with Claude Code. An income of fourteen thousand, nine hundred and ninety nine rupees was rejected. Fifteen thousand got an offer. And paying out a loan before the earlier steps was refused. It has no tests yet.",
-      "estimated_duration_s": 20.0,
-      "voice": "am_michael",
-      "engine": "kokoro",
-      "honesty_tag": "REAL",
-      "shot": {
-        "type": "GRAPHIC",
-        "source": "own",
-        "visual_intent": "Three applicant cards ride up to the server one at a time: one gets an X, one a check, one a stop bar with '409'.",
-        "show": [
-          {
-            "at": 0.25,
-            "event": "card 1, X"
-          },
-          {
-            "at": 0.5,
-            "event": "card 2, check"
-          },
-          {
-            "at": 0.75,
-            "event": "card 3, 409"
-          }
-        ],
-        "manim": {
-          "class": "B03_SmokeRun"
-        },
-        "motion_claim": "Three applicant cards ride up to the server one at a time: one gets an X, one a check, one a stop bar with '409'."
-      },
-      "qc": {
-        "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
-      },
-      "actual_duration_s": 19.35,
+      "actual_duration_s": 11.8,
       "audio_file": "mp3/beat-B03.mp3",
-      "render_duration_s": 19.375,
+      "render_duration_s": 11.833333333333334,
       "build": {
         "status": "MANIM",
         "src": "manim/B03.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
+        "at": "2026-10-22T16:22:47"
       }
     },
     {
@@ -236,46 +236,46 @@
       "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "Here's the core idea. I break one rule on purpose. Say the minimum income drops from fifteen thousand to fifteen hundred. Then I run the tests again. If a test goes red, it bites. If everything stays green, the tests just missed a real bug.",
-      "estimated_duration_s": 18.0,
+      "narration_text": "It will test a loan API I built earlier with Claude's help, in TypeScript and Express, with made up applicants. On October twelfth, I ran it with Claude Code. An income of fourteen thousand, nine hundred and ninety nine rupees was rejected, fifteen thousand got an offer, and paying out too early was refused.",
+      "estimated_duration_s": 21.6,
       "voice": "am_michael",
       "engine": "kokoro",
-      "honesty_tag": "PROPOSED",
+      "honesty_tag": "REAL",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "The rule block '15,000' is swapped for '1,500' with a spark; the test crate rides through a gate; one page flips to an X.",
+        "visual_intent": "Three synthetic applicant cards point at the loan API: X, check, and a stop bar with '409'.",
         "show": [
           {
-            "at": 0.2,
-            "event": "rule swaps"
+            "at": 0.4,
+            "event": "card 1, X"
           },
           {
-            "at": 0.5,
-            "event": "crate through gate"
+            "at": 0.65,
+            "event": "card 2, check"
           },
           {
-            "at": 0.7,
-            "event": "one page red X"
+            "at": 0.85,
+            "event": "card 3, 409"
           }
         ],
         "manim": {
-          "class": "B04_BreakARule"
+          "class": "B04_LoanRun"
         },
-        "motion_claim": "The rule block '15,000' is swapped for '1,500' with a spark; the test crate rides through a gate; one page flips to an X."
+        "motion_claim": "Three synthetic applicant cards point at the loan API: X, check, and a stop bar with '409'."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
       },
-      "actual_duration_s": 16.77,
+      "actual_duration_s": 21.5,
       "audio_file": "mp3/beat-B04.mp3",
-      "render_duration_s": 16.791666666666668,
+      "render_duration_s": 21.5,
       "build": {
         "status": "MANIM",
         "src": "manim/B04.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
+        "at": "2026-10-22T16:22:47"
       }
     },
     {
@@ -283,42 +283,46 @@
       "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "It works the other way too. A test that fails on the correct code means Claude got something wrong. Every one of those goes into a dated log, with how I caught it.",
-      "estimated_duration_s": 13.2,
+      "narration_text": "Here's how it will work. Step one: I write a numbered list of rules, and a list of mutants. A mutant is a copy of the code with one rule broken, like the income limit dropped to fifteen hundred. Step two: Claude Code writes the tests in TypeScript, and every test must name the rule it checks.",
+      "estimated_duration_s": 22.8,
       "voice": "am_michael",
       "engine": "kokoro",
       "honesty_tag": "PROPOSED",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "A test page with an X on a green server; a quill writes lines onto a log page beside it.",
+        "visual_intent": "Step 1: a rules page and a mutant block. Step 2: test pages, each with a cable to a rule.",
         "show": [
           {
             "at": 0.2,
-            "event": "X on correct code"
+            "event": "rules page"
           },
           {
-            "at": 0.55,
-            "event": "quill writes the log"
+            "at": 0.4,
+            "event": "mutant block"
+          },
+          {
+            "at": 0.75,
+            "event": "tests cabled to rules"
           }
         ],
         "manim": {
-          "class": "B05_ClaudeLog"
+          "class": "B05_PipelineA"
         },
-        "motion_claim": "A test page with an X on a green server; a quill writes lines onto a log page beside it."
+        "motion_claim": "Step 1: a rules page and a mutant block. Step 2: test pages, each with a cable to a rule."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
       },
-      "actual_duration_s": 10.5,
+      "actual_duration_s": 19.54,
       "audio_file": "mp3/beat-B05.mp3",
-      "render_duration_s": 10.5,
+      "render_duration_s": 19.541666666666668,
       "build": {
         "status": "MANIM",
         "src": "manim/B05.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
+        "at": "2026-10-22T16:22:47"
       }
     },
     {
@@ -326,15 +330,66 @@
       "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "From their docs, Postbot generates test scripts, and Schemathesis checks an API against its schema. On October thirteenth, I ran Stryker on my loan rules with Claude Code. It made ninety two mutants, but none changed the fifteen thousand limit, and its one step order mutant deletes every guard at once. BiteCheck adds those business rule bugs, one at a time.",
-      "estimated_duration_s": 24.4,
+      "narration_text": "Step three: the runner runs every test on the real API, where they must all pass, then on each mutant, where at least one should fail. A mutant nobody catches is a gap in the tests. A test that fails on the correct code is Claude's mistake, and it goes into a dated log.",
+      "estimated_duration_s": 21.6,
+      "voice": "am_michael",
+      "engine": "kokoro",
+      "honesty_tag": "PROPOSED",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two servers: 'real API' with all checks; 'mutant' with one X; a survivor flag and a log page below.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "real API, all pass"
+          },
+          {
+            "at": 0.35,
+            "event": "mutant, one fails"
+          },
+          {
+            "at": 0.6,
+            "event": "gap"
+          },
+          {
+            "at": 0.8,
+            "event": "log"
+          }
+        ],
+        "manim": {
+          "class": "B06_PipelineB"
+        },
+        "motion_claim": "Two servers: 'real API' with all checks; 'mutant' with one X; a survivor flag and a log page below."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
+      },
+      "actual_duration_s": 18.79,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 18.791666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-22T16:22:47"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Other tools exist. From their docs, Postbot generates test scripts, and Schemathesis checks an API against its schema. On October thirteenth, I ran Stryker on my loan rules with Claude Code. It made ninety two mutants, but none changed the fifteen thousand limit. BiteCheck adds those business rule bugs, one at a time.",
+      "estimated_duration_s": 21.2,
       "voice": "am_michael",
       "engine": "kokoro",
       "honesty_tag": "MIXED",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Two closed boxes (docs only), the Stryker box with the hero number 92 and '0 change 15,000', then the open BiteCheck box with a rule page.",
+        "visual_intent": "Postbot and Schemathesis boxes (docs only); the Stryker box with 92 and '15,000 changed: 0'; then the open BiteCheck box.",
         "show": [
           {
             "at": 0.15,
@@ -345,78 +400,31 @@
             "event": "Schemathesis"
           },
           {
-            "at": 0.42,
-            "event": "Stryker"
+            "at": 0.45,
+            "event": "Stryker 92"
           },
           {
-            "at": 0.65,
-            "event": "BiteCheck box"
+            "at": 0.85,
+            "event": "BiteCheck"
           }
         ],
         "manim": {
-          "class": "B06_Alternatives"
+          "class": "B07_Alternatives"
         },
-        "motion_claim": "Two closed boxes (docs only), the Stryker box with the hero number 92 and '0 change 15,000', then the open BiteCheck box with a rule page."
+        "motion_claim": "Postbot and Schemathesis boxes (docs only); the Stryker box with 92 and '15,000 changed: 0'; then the open BiteCheck box."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
       },
-      "actual_duration_s": 24.28,
-      "audio_file": "mp3/beat-B06.mp3",
-      "render_duration_s": 24.291666666666668,
-      "build": {
-        "status": "MANIM",
-        "src": "manim/B06.mp4",
-        "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
-      }
-    },
-    {
-      "beat_id": "B07",
-      "act": "pitch",
-      "lane": "manim",
-      "proof_gate": "SHOW",
-      "narration_text": "The reader is a hiring manager or engineer screening me for a new grad software or AI role. In the first minute, they run one command and read one page: did the tests pass on the real API, which bugs were caught, which survived, and where Claude was wrong.",
-      "estimated_duration_s": 19.6,
-      "voice": "am_michael",
-      "engine": "kokoro",
-      "honesty_tag": "PROPOSED",
-      "shot": {
-        "type": "GRAPHIC",
-        "source": "own",
-        "visual_intent": "A terminal window types one command; a report page slides out with three bars growing.",
-        "show": [
-          {
-            "at": 0.3,
-            "event": "command"
-          },
-          {
-            "at": 0.55,
-            "event": "report page"
-          },
-          {
-            "at": 0.75,
-            "event": "bars grow"
-          }
-        ],
-        "manim": {
-          "class": "B07_FirstMinute"
-        },
-        "motion_claim": "A terminal window types one command; a report page slides out with three bars growing."
-      },
-      "qc": {
-        "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
-      },
-      "actual_duration_s": 17.86,
+      "actual_duration_s": 22.21,
       "audio_file": "mp3/beat-B07.mp3",
-      "render_duration_s": 17.875,
+      "render_duration_s": 22.25,
       "build": {
         "status": "MANIM",
         "src": "manim/B07.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
+        "at": "2026-10-22T16:22:47"
       }
     },
     {
@@ -424,46 +432,46 @@
       "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "What would it show about me? First, a prompt contract: every test Claude writes must name the rule it checks. That's source grounding. A test that can't point to a rule gets thrown out.",
-      "estimated_duration_s": 13.6,
+      "narration_text": "The reader is a hiring manager screening me for a new grad software or AI role. In one minute, they run one command and read one page: what passed, which bugs were caught, which slipped through, and where Claude was wrong.",
+      "estimated_duration_s": 16.4,
       "voice": "am_michael",
       "engine": "kokoro",
       "honesty_tag": "PROPOSED",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "A rule page and a test page; a cable draws from the test to the rule; a test page with no cable drops into a bin.",
+        "visual_intent": "A terminal types one command; a report page slides out with four bars growing.",
         "show": [
           {
-            "at": 0.2,
-            "event": "pages"
+            "at": 0.35,
+            "event": "command"
           },
           {
-            "at": 0.45,
-            "event": "cable to rule"
+            "at": 0.55,
+            "event": "report"
           },
           {
             "at": 0.75,
-            "event": "orphan test to bin"
+            "event": "bars"
           }
         ],
         "manim": {
-          "class": "B08_Contract"
+          "class": "B08_FirstMinute"
         },
-        "motion_claim": "A rule page and a test page; a cable draws from the test to the rule; a test page with no cable drops into a bin."
+        "motion_claim": "A terminal types one command; a report page slides out with four bars growing."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
       },
-      "actual_duration_s": 12.14,
+      "actual_duration_s": 14.53,
       "audio_file": "mp3/beat-B08.mp3",
-      "render_duration_s": 12.166666666666666,
+      "render_duration_s": 14.541666666666666,
       "build": {
         "status": "MANIM",
         "src": "manim/B08.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
+        "at": "2026-10-22T16:22:47"
       }
     },
     {
@@ -471,46 +479,46 @@
       "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "Second, an agent loop with limits. Claude Code may edit the tests, never the API, and stops after a fixed number of tries. Third, evaluation: a score, plus every miss. It won't prove this works on every API. I'll measure it on one.",
-      "estimated_duration_s": 17.2,
+      "narration_text": "It shows four skills from this course: a prompt contract, source grounding, an agent loop with limits, where Claude edits tests but never the API, and evaluation, a score plus every miss. It's measured on one API, not every API.",
+      "estimated_duration_s": 16.0,
       "voice": "am_michael",
       "engine": "kokoro",
       "honesty_tag": "PROPOSED",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "A loop arrow circles between Claude's test pages and the runner; a lock clicks onto the API server; a score bar fills.",
+        "visual_intent": "Loop arrows between tests and the API; a lock on the API; a score bar fills.",
         "show": [
           {
-            "at": 0.2,
+            "at": 0.3,
             "event": "loop"
           },
           {
-            "at": 0.4,
-            "event": "lock on API"
+            "at": 0.55,
+            "event": "lock"
           },
           {
-            "at": 0.7,
-            "event": "score bar"
+            "at": 0.75,
+            "event": "score"
           }
         ],
         "manim": {
-          "class": "B09_Loop"
+          "class": "B09_Proves"
         },
-        "motion_claim": "A loop arrow circles between Claude's test pages and the runner; a lock clicks onto the API server; a score bar fills."
+        "motion_claim": "Loop arrows between tests and the API; a lock on the API; a score bar fills."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
       },
-      "actual_duration_s": 17.47,
+      "actual_duration_s": 17.0,
       "audio_file": "mp3/beat-B09.mp3",
-      "render_duration_s": 17.5,
+      "render_duration_s": 17.0,
       "build": {
         "status": "MANIM",
         "src": "manim/B09.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
+        "at": "2026-10-22T16:22:47"
       }
     },
     {
@@ -518,15 +526,15 @@
       "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "What's out: it won't be a tool for any API, and it will never fix application code. What comes first: the income rule. One bug, run in GitHub Actions. You'll know it ran when a committed report shows the real API passing and that bug caught.",
-      "estimated_duration_s": 18.4,
+      "narration_text": "It won't be a tool for every API, and it will never fix the app's code. The first piece now runs. On October twenty second, GitHub Actions ran the income rule tests. They passed on the real rule, and caught both planted bugs: the one I chose, and Claude's.",
+      "estimated_duration_s": 19.6,
       "voice": "am_michael",
       "engine": "kokoro",
-      "honesty_tag": "PROPOSED",
+      "honesty_tag": "CIRAN",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "A wrench over the API is crossed out; then a three-gate CI belt carries one bug block to a check.",
+        "visual_intent": "A wrench over the API is crossed out; one bug block rides a three-gate CI belt to a check.",
         "show": [
           {
             "at": 0.15,
@@ -544,20 +552,20 @@
         "manim": {
           "class": "B10_OutAndFirst"
         },
-        "motion_claim": "A wrench over the API is crossed out; then a three-gate CI belt carries one bug block to a check."
+        "motion_claim": "A wrench over the API is crossed out; one bug block rides a three-gate CI belt to a check."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
       },
-      "actual_duration_s": 17.11,
+      "actual_duration_s": 18.22,
       "audio_file": "mp3/beat-B10.mp3",
-      "render_duration_s": 17.125,
+      "render_duration_s": 18.25,
       "build": {
         "status": "MANIM",
         "src": "manim/B10.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
+        "at": "2026-10-22T16:22:47"
       }
     },
     {
@@ -565,46 +573,46 @@
       "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "The biggest risk is me. I write the bugs, so I could make them easy to catch without meaning to. So I'll commit the full bug list before Claude writes any test, and the git history will show the order. The report will list every bug that survived, not just the score.",
-      "estimated_duration_s": 20.8,
+      "narration_text": "The biggest risk is me. I write the bugs, so I could make them too easy. So I'll commit the bug list before Claude writes any test, and report every bug that survived.",
+      "estimated_duration_s": 13.2,
       "voice": "am_michael",
       "engine": "kokoro",
       "honesty_tag": "PROPOSED",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "A timeline: the 'bugs' commit dot lands first with a lock, then the 'tests' dot; a survivors page slides out.",
+        "visual_intent": "A git timeline: the bug list commit lands first with a lock, then the tests commit; a survivors page slides out.",
         "show": [
           {
-            "at": 0.3,
-            "event": "bugs commit + lock"
+            "at": 0.4,
+            "event": "bug list + lock"
           },
           {
-            "at": 0.55,
-            "event": "tests commit"
+            "at": 0.65,
+            "event": "tests"
           },
           {
-            "at": 0.8,
-            "event": "survivors page"
+            "at": 0.85,
+            "event": "survivors"
           }
         ],
         "manim": {
           "class": "B11_Risk"
         },
-        "motion_claim": "A timeline: the 'bugs' commit dot lands first with a lock, then the 'tests' dot; a survivors page slides out."
+        "motion_claim": "A git timeline: the bug list commit lands first with a lock, then the tests commit; a survivors page slides out."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
       },
-      "actual_duration_s": 17.3,
+      "actual_duration_s": 11.07,
       "audio_file": "mp3/beat-B11.mp3",
-      "render_duration_s": 17.333333333333332,
+      "render_duration_s": 11.083333333333334,
       "build": {
         "status": "MANIM",
         "src": "manim/B11.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
+        "at": "2026-10-22T16:22:47"
       }
     },
     {
@@ -612,42 +620,46 @@
       "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "Why this project? Mostly learning. I've done API testing and CI gates at my last job, but that work is private. What I can show is my public Reallocation Engine pull request, a Claude workflow with a run log. Mutation testing and evaluation design are new to me. Finding out how well Claude's tests do is the point.",
-      "estimated_duration_s": 23.2,
+      "narration_text": "Why this project? I've done API testing and CI gates at my last job, but that work is private. My public Reallocation Engine pull request shows the Claude workflow side. Mutation testing and evaluation design are new to me, so it's a mix.",
+      "estimated_duration_s": 17.2,
       "voice": "am_michael",
       "engine": "kokoro",
-      "honesty_tag": "PROPOSED",
+      "honesty_tag": "SELF",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Two shelves: 'have' with two private blocks and one public PR block; 'new to me' with two outlined blocks.",
+        "visual_intent": "Two shelves: 'have' with API tests + CI gates (private) and PR #37 (public); 'new to me' with mutants, evals.",
         "show": [
           {
             "at": 0.2,
-            "event": "have shelf"
+            "event": "have"
           },
           {
-            "at": 0.6,
-            "event": "new shelf"
+            "at": 0.5,
+            "event": "PR #37"
+          },
+          {
+            "at": 0.75,
+            "event": "new"
           }
         ],
         "manim": {
           "class": "B12_WhyMe"
         },
-        "motion_claim": "Two shelves: 'have' with two private blocks and one public PR block; 'new to me' with two outlined blocks."
+        "motion_claim": "Two shelves: 'have' with API tests + CI gates (private) and PR #37 (public); 'new to me' with mutants, evals."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
       },
-      "actual_duration_s": 22.76,
+      "actual_duration_s": 17.98,
       "audio_file": "mp3/beat-B12.mp3",
-      "render_duration_s": 22.791666666666668,
+      "render_duration_s": 18.0,
       "build": {
         "status": "MANIM",
         "src": "manim/B12.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
+        "at": "2026-10-22T16:22:47"
       }
     },
     {
@@ -655,23 +667,23 @@
       "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "So, where it stands today. The loan API exists, and it ran. This brief and this film exist. Everything else, the prompt, the bugs, the tests, the runner and the report, is still to be built. This is BiteCheck. I'm Omkar Salian.",
-      "estimated_duration_s": 16.8,
+      "narration_text": "So, where it stands. The loan API exists, and it ran, and so did the Stryker check. Claude Code wrote the first income rule tests, I chose a second bug for them to catch, and GitHub Actions ran them all. Everything else is still to be built. I'm Omkar Salian, and this is BiteCheck.",
+      "estimated_duration_s": 21.6,
       "voice": "am_michael",
       "engine": "kokoro",
-      "honesty_tag": "REAL",
+      "honesty_tag": "STATUS",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Two columns: 'exists' with two solid blocks; 'will exist' with five dashed outlines; the title lands.",
+        "visual_intent": "Two columns: 'exists' with solid blocks; 'will exist' with dashed outlines; the title and name land.",
         "show": [
           {
-            "at": 0.2,
-            "event": "exists column"
+            "at": 0.25,
+            "event": "exists"
           },
           {
-            "at": 0.5,
-            "event": "will-exist column"
+            "at": 0.55,
+            "event": "will exist"
           },
           {
             "at": 0.85,
@@ -681,20 +693,20 @@
         "manim": {
           "class": "B13_ExistsWill"
         },
-        "motion_claim": "Two columns: 'exists' with two solid blocks; 'will exist' with five dashed outlines; the title lands."
+        "motion_claim": "Two columns: 'exists' with solid blocks; 'will exist' with dashed outlines; the title and name land."
       },
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "show-tell style: one drawn object per beat on a cream stage; only underfill/clustered are waived."
       },
-      "actual_duration_s": 15.81,
+      "actual_duration_s": 19.58,
       "audio_file": "mp3/beat-B13.mp3",
-      "render_duration_s": 15.833333333333334,
+      "render_duration_s": 19.583333333333332,
       "build": {
         "status": "MANIM",
         "src": "manim/B13.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T15:20:45"
+        "at": "2026-10-22T16:22:47"
       }
     }
   ]

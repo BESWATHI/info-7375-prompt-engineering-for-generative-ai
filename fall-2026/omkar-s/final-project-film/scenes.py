@@ -1,5 +1,5 @@
 """
-scenes.py — BiteCheck pitch film (Omkar Salian, INFO 7375 Fall 2026, final project pitch).
+scenes.py — BiteCheck pitch film v2 (Omkar Salian, INFO 7375 Fall 2026, final project pitch; revised 2026-10-21).
 
 Show-tell format: one drawn picture per beat, minimal labels, the narration explains.
 The drawing kit below is pasted from brutalist.art skills/make/show-tell/templates/iso_kit.py
@@ -292,10 +292,13 @@ def P(self, *anims, rt=0.8, **kw):
 def tag(self, kind):
     s = {"REAL": "REAL · ran 2026-10-12",
          "READ": "REAL · read 2026-10-12",
-         "STATUS": "STATUS · 2026-10-13",
+         "STATUS": "STATUS · 2026-10-22",
          "MIXED": "REAL · docs read 10-12 · Stryker ran 10-13",
          "SELF": "SELF-REPORT · PR #37 is public",
-         "PROPOSED": "PROPOSED · constructed drawing"}[kind]
+         "PROPOSED": "PROPOSED · constructed drawing",
+         "WHO": "WHO · the person building it",
+         "ANALOGY": "ANALOGY · constructed drawing",
+         "CIRAN": "REAL · CI ran 2026-10-22"}[kind]
     t = T(s, 32)
     t.move_to(np.array([-6.1 + t.width / 2, 3.0, 0]))
     self.add(t)
@@ -328,25 +331,97 @@ def lock(x, y, s=0.5):
     return VGroup(shackle, body, hole)
 
 
-# ═════════════════════════════ scenes, one per beat ═════════════════════════════
+# ═════════════════════════════ scenes, one per beat (v2) ═════════════════════════════
 
-class B00_GreenCrate(Scene):
+def alarm(x, y, r=0.7):
+    """A ceiling smoke alarm: kraft disc, ink ring, inner ring and an indicator light (returned separately)."""
+    disc = Circle(radius=r, fill_color=BOX_TOP, fill_opacity=1, stroke_color=INK, stroke_width=5).move_to([x, y, 0])
+    inner = Circle(radius=r * 0.55, fill_opacity=0, stroke_color="#9C8462", stroke_width=4).move_to([x, y, 0])
+    light = Dot([x, y, 0], radius=0.1, color=GHOST)
+    return VGroup(disc, inner), light
+
+
+def puff(x, y, s=1.0):
+    return VGroup(*[Circle(radius=r * s, fill_color=GHOST, fill_opacity=1, stroke_color=DIM, stroke_width=3).move_to([x + dx * s, y + dy * s, 0])
+                    for r, dx, dy in ((0.32, 0, 0), (0.24, 0.34, 0.1), (0.22, -0.3, 0.12), (0.2, 0.08, 0.3))])
+
+
+def beeps(x, y, r0=0.95, n=3):
+    return VGroup(*[Arc(radius=r0 + i * 0.3, start_angle=-PI / 4, angle=PI / 2, color=INK, stroke_width=6).move_arc_center_to([x, y, 0])
+                    for i in range(n)])
+
+
+class B00_Who(Scene):
     def construct(self):
-        tag(self, "PROPOSED")
-        pages = VGroup(*[tpage(-4.2 + i * 2.1, 0.3) for i in range(4)])
-        lbl = lab("Claude's tests", 0, -1.55)
-        P(self, LaggedStart(*[FadeIn(p, shift=DOWN * 0.4) for p in pages], lag_ratio=0.2), lbl, rt=1.4)
-        until(self, "all come back green")
-        checks = VGroup(*[check(-4.2 + i * 2.1 + 0.05, 1.45, 0.22) for i in range(4)])
-        P(self, LaggedStart(*[Create(c) for c in checks], lag_ratio=0.2), rt=1.2)
-        until(self, "only means something")
-        q = T("?", 120, bold=True).move_to([4.6, 0.3, 0])
-        ring = Circle(radius=0.85, color=TERRA, stroke_width=6).move_to([4.6, 0.3, 0])
-        P(self, FadeIn(q), Create(ring), rt=0.9)
+        tag(self, "WHO")
+        card = paper(-2.4, 0.3, 6.2, 3.0)
+        name = T("Omkar Salian", 64, bold=True).move_to([-2.4, 0.9, 0])
+        line = lab("MS Software Engineering", -2.4, -0.05, 36)
+        uni = lab("Northeastern University", -2.4, -0.7, 36)
+        P(self, FadeIn(card, shift=UP * 0.3), FadeIn(name), FadeIn(line), FadeIn(uni), rt=1.0)
+        until(self, "This is my final project")
+        proj = lab("final project: BiteCheck", -2.4, -2.05, 38)
+        P(self, FadeIn(proj), rt=0.5)
+        until(self, "I'm building it myself")
+        iso = Iso(4.0, -0.6, 0.8)
+        base = iso.box(-1.0, -0.7, 0, 2.0, 1.4, 0.18, DARK_TOP, DARK_L, DARK_R)
+        screen = Polygon(iso.p(-1.0, 0.7, 0.18), iso.p(1.0, 0.7, 0.18), iso.p(1.0, 0.7, 1.6), iso.p(-1.0, 0.7, 1.6),
+                         fill_color=CARD, fill_opacity=1, stroke_color=INK, stroke_width=4)
+        cur = Dot(iso.p(0, 0.7, 0.9), radius=0.09, color=TERRA)
+        who = lab("me + Claude Code", 4.0, -1.75, 36)
+        P(self, FadeIn(base), FadeIn(screen), FadeIn(who), rt=0.7)
+        P(self, GrowFromCenter(cur), rt=0.3)
         finish(self)
 
 
-class B01_Repo(Scene):
+class B01_SmokeAlarm(Scene):
+    def construct(self):
+        tag(self, "ANALOGY")
+        ceil = Line([-6.0, 2.2, 0], [6.0, 2.2, 0], color="#9C8462", stroke_width=6)
+        a1, l1 = alarm(-3.0, 1.5); a2, l2 = alarm(3.0, 1.5)
+        n1, n2 = lab("smoke alarm", -3.0, 0.2, 34), lab("smoke alarm", 3.0, 0.2, 34)
+        P(self, Create(ceil), FadeIn(a1), FadeIn(l1), FadeIn(a2), FadeIn(l2), FadeIn(n1), FadeIn(n2), rt=0.9)
+        until(self, "blow a little smoke")
+        p1, p2 = puff(-3.0, -2.2), puff(3.0, -2.2)
+        P(self, FadeIn(p1), FadeIn(p2), rt=0.4)
+        P(self, p1.animate.move_to([-3.0, -0.75, 0]), p2.animate.move_to([3.0, -0.75, 0]), rt=1.0)
+        until(self, "If it beeps")
+        b = beeps(-3.0, 1.5, 0.85, 2)
+        P(self, Create(b), l1.animate.set_color(TERRA), rt=0.6)
+        P(self, Create(check(-0.6, 1.5, 0.3)), FadeIn(lab("works", -0.6, 0.75, 36)), rt=0.5)
+        until(self, "If it stays quiet")
+        P(self, Create(xmark(5.2, 1.5, 0.3, w=9)), FadeIn(lab("broken", 5.2, 0.75, 36)), rt=0.6)
+        finish(self)
+
+
+class B02_TestsAreAlarms(Scene):
+    def construct(self):
+        tag(self, "ANALOGY")
+        xs = [-4.6, -2.5, -0.4, 1.7]
+        pages = VGroup(*[tpage(x, 0.6, 1.3, 1.6) for x in xs])
+        lights = [Dot([x - 0.35, 1.75, 0], radius=0.11, color=GHOST) for x in xs]
+        tl = lab("tests", -1.45, -0.9, 38)
+        P(self, FadeIn(pages), *[FadeIn(l) for l in lights], FadeIn(tl), rt=1.0)
+        until(self, "they can all pass")
+        checks = [check(x + 0.4, 1.75, 0.16) for x in xs]
+        P(self, *[Create(c) for c in checks], rt=0.6)
+        until(self, "BiteCheck is the smoke")
+        bug = VGroup(Square(0.9, fill_color=DARK_TOP, fill_opacity=1, stroke_color=INK, stroke_width=4),
+                     Dot([0, 0, 0], radius=0.12, color=TERRA)).move_to([5.6, -1.2, 0])
+        bl = lab("one bug, on purpose", 4.2, -2.95, 34)
+        P(self, FadeIn(bug), rt=0.3)
+        P(self, bug.animate.move_to([4.2, -2.0, 0]), FadeIn(bl), rt=0.8)
+        until(self, "checks which tests go off")
+        P(self, Create(beeps(xs[0] - 0.35, 1.75, 0.28, 1).rotate(PI, about_point=[xs[0] - 0.35, 1.75, 0])),
+          Create(beeps(xs[2] - 0.35, 1.75, 0.28, 1).rotate(PI, about_point=[xs[2] - 0.35, 1.75, 0])),
+          lights[0].animate.set_color(TERRA), lights[2].animate.set_color(TERRA),
+          FadeOut(checks[0]), FadeOut(checks[2]), rt=0.6)
+        P(self, Create(xmark(xs[0] + 0.4, 1.75, 0.16)), Create(xmark(xs[2] + 0.4, 1.75, 0.16)), rt=0.4)
+        P(self, FadeIn(lab("2 caught it, 2 missed it", -1.45, -1.65, 34)), rt=0.4)
+        finish(self)
+
+
+class B03_Repo(Scene):
     def construct(self):
         tag(self, "PROPOSED")
         iso = Iso(0, -2.3, 0.6)
@@ -369,7 +444,7 @@ class B01_Repo(Scene):
         labels = [lab(n, x, 0.45, 40) for n, x in zip(names, xs)]
         until(self, "a prompt that tells")
         P(self, FadeIn(parts[0], shift=UP * 0.5), FadeIn(labels[0]), rt=0.7)
-        until(self, "a list of bugs")
+        until(self, "a list of planted bugs")
         P(self, FadeIn(parts[1], shift=UP * 0.5), FadeIn(labels[1]), rt=0.7)
         until(self, "a runner")
         P(self, FadeIn(parts[2], shift=UP * 0.5), FadeIn(labels[2]), rt=0.6)
@@ -379,25 +454,7 @@ class B01_Repo(Scene):
         finish(self)
 
 
-class B02_LoanApi(Scene):
-    def construct(self):
-        tag(self, "REAL")
-        iso = Iso(-1.2, -1.1, 1.0)
-        st, lights = iso.server(-0.9, -0.9, 0, 1.8, 1.8, 0.55, 3)
-        name = lab("loan API", -1.2, -2.6)
-        P(self, FadeIn(st, shift=UP * 0.3), FadeIn(lights), name, rt=1.0)
-        self.play(lights.animate.set_color(TERRA), run_time=0.4)
-        until(self, "it checks rules")
-        r1 = VGroup(Iso(3.2, 0.9, 0.7).box(-0.5, -0.5, 0, 1.0, 1.0, 0.5), lab("min income", 3.2, 0.2))
-        r2 = VGroup(Iso(3.2, -1.5, 0.7).box(-0.5, -0.5, 0, 1.0, 1.0, 0.5), lab("step order", 3.2, -2.2))
-        c1 = Line([0.6, 0.9, 0], [2.3, 1.1, 0], color="#9C8462", stroke_width=5)
-        c2 = Line([0.6, -0.6, 0], [2.3, -1.3, 0], color="#9C8462", stroke_width=5)
-        P(self, FadeIn(r1, shift=LEFT * 0.4), Create(c1), rt=0.8)
-        P(self, FadeIn(r2, shift=LEFT * 0.4), Create(c2), rt=0.8)
-        finish(self)
-
-
-class B03_SmokeRun(Scene):
+class B04_LoanRun(Scene):
     def construct(self):
         tag(self, "REAL")
         iso = Iso(3.8, -1.6, 0.85)
@@ -420,58 +477,64 @@ class B03_SmokeRun(Scene):
         bar = Rectangle(width=0.9, height=0.18, fill_color=INK, fill_opacity=1, stroke_width=0).move_to([-4.6, ys[2], 0])
         code = lab("409", -4.6, ys[2] - 0.75, 32)
         P(self, FadeIn(bar), FadeIn(code), rt=0.4)
-        until(self, "It has no tests yet")
-        zero = lab("tests: none", 3.8, 1.7)
-        P(self, FadeIn(zero), rt=0.5)
+        stack = lab("TypeScript · Express", 3.8, 1.7, 34)
+        P(self, FadeIn(stack), rt=0.4)
         finish(self)
 
 
-class B04_BreakARule(Scene):
+class B05_PipelineA(Scene):
     def construct(self):
         tag(self, "PROPOSED")
-        rule = Iso(-4.2, -0.6, 0.9).box(-0.7, -0.7, 0, 1.4, 1.4, 0.8)
-        rlab = lab("min income", -4.2, -1.6)
-        val = lab("15,000", -4.2, 1.4, 40)
-        tests = VGroup(*[tpage(1.4 + i * 1.7, 0.2, 1.3, 1.6) for i in range(3)])
-        tl = lab("tests", 3.1, -1.4)
-        P(self, FadeIn(rule), rlab, FadeIn(val), FadeIn(tests), FadeIn(tl), rt=1.0)
-        until(self, "drops from fifteen thousand")
-        spark = Dot(Iso(-4.2, -0.6, 0.9).p(0, 0, 0.8), radius=0.12, color=TERRA)
-        new = lab("1,500", -4.2, 1.4, 40)
-        P(self, GrowFromCenter(spark), FadeOut(val), FadeIn(new), rt=0.8)
-        until(self, "run the tests again")
-        scan = Line([0.4, 1.3, 0], [0.4, -0.9, 0], color=TERRA, stroke_width=6)
-        P(self, Create(scan), rt=0.3)
-        P(self, scan.animate.shift(RIGHT * 5.4), rt=1.2)
-        P(self, FadeOut(scan), rt=0.2)
-        until(self, "it bites")
-        P(self, Create(xmark(1.4, 1.4, 0.24)), rt=0.4)
-        until(self, "If everything stays green")
-        P(self, Create(check(3.05, 1.42, 0.2)), Create(check(4.75, 1.42, 0.2)), rt=0.5)
+        s1 = lab("1. rules + mutants", -3.6, 2.25, 38)
+        rules = tpage(-4.6, 0.3, 1.6, 2.0)
+        rl = lab("rules R1, R2", -4.6, -1.05, 34)
+        P(self, FadeIn(s1), FadeIn(rules), FadeIn(rl), rt=0.8)
+        until(self, "A mutant is a copy")
+        mut = VGroup(Square(1.1, fill_color=DARK_TOP, fill_opacity=1, stroke_color=INK, stroke_width=4),
+                     Dot([0, 0, 0], radius=0.12, color=TERRA)).move_to([-1.6, 0.3, 0])
+        ml = lab("mutant: 15,000 → 1,500", -1.6, -1.7, 34)
+        P(self, FadeIn(mut, shift=DOWN * 0.3), FadeIn(ml), rt=0.6)
+        until(self, "Step two")
+        s2 = lab("2. Claude writes tests", 3.4, 2.25, 38)
+        tests = [tpage(x, 0.3, 1.2, 1.5) for x in (2.2, 3.7, 5.2)]
+        P(self, FadeIn(s2), *[FadeIn(t) for t in tests], rt=0.7)
+        until(self, "must name the rule")
+        cab = CubicBezier(np.array([1.5, 1.0, 0]), np.array([0.2, 1.9, 0]), np.array([-2.6, 1.9, 0]), np.array([-3.7, 1.0, 0]),
+                          color="#9C8462", stroke_width=6)
+        end = Dot([-3.7, 1.0, 0], radius=0.1, color=TERRA)
+        tag2 = lab("each test names a rule", 3.7, -1.05, 34)
+        P(self, Create(cab), FadeIn(tag2), rt=0.8)
+        P(self, GrowFromCenter(end), rt=0.3)
         finish(self)
 
 
-class B05_ClaudeLog(Scene):
+class B06_PipelineB(Scene):
     def construct(self):
         tag(self, "PROPOSED")
-        st, lights = Iso(-4.0, -1.2, 0.85).server(-0.8, -0.8, 0, 1.6, 1.6, 0.5, 3)
-        cl = lab("correct code", -4.0, -2.55)
-        tp = tpage(-1.3, 0.4, 1.3, 1.6)
-        P(self, FadeIn(st), FadeIn(lights), cl, FadeIn(tp), rt=1.0)
-        self.play(lights.animate.set_color(TERRA), run_time=0.3)
-        until(self, "fails on the correct code")
-        P(self, Create(xmark(-1.3, 1.55, 0.24)), rt=0.4)
-        log = paper(3.3, 0.2, 3.2, 3.6)
-        ll = lab("log", 3.3, -2.15)
-        q = quill(5.6, 2.2, 0.9)
-        until(self, "Every one of those")
-        P(self, FadeIn(log), FadeIn(ll), FadeIn(q), rt=0.6)
-        lines = [scribble(2.0, 1.4 - i * 0.55, 2.4 if i < 3 else 1.5) for i in range(4)]
-        write_lines(self, q, lines, speed=3.2)
+        s3 = lab("3. run on both", 0, 2.25, 38)
+        st1, li1 = Iso(-3.6, -0.4, 0.75).server(-0.7, -0.7, 0, 1.4, 1.4, 0.45, 3)
+        st2, li2 = Iso(3.0, -0.4, 0.75).server(-0.7, -0.7, 0, 1.4, 1.4, 0.45, 3)
+        l1, l2 = lab("real API", -3.6, -1.25, 34), lab("mutant", 3.0, -1.25, 34)
+        spark = Dot(Iso(3.0, -0.4, 0.75).p(0, 0, 1.4), radius=0.12, color=TERRA)
+        P(self, FadeIn(s3), FadeIn(st1), FadeIn(li1), FadeIn(st2), FadeIn(li2), FadeIn(l1), FadeIn(l2), rt=0.9)
+        P(self, GrowFromCenter(spark), rt=0.3)
+        until(self, "where they must all pass")
+        P(self, *[Create(check(-5.2 + i * 0.55, 1.75, 0.15)) for i in range(4)], FadeIn(lab("all pass", -4.4, 2.3, 32)), rt=0.6)
+        until(self, "where at least one should fail")
+        P(self, Create(xmark(1.4, 1.75, 0.2)), *[Create(check(1.95 + i * 0.55, 1.75, 0.15)) for i in range(3)],
+          FadeIn(lab("one fails = caught", 4.3, 2.3, 32)), rt=0.6)
+        until(self, "A mutant nobody catches")
+        gap = lab("nobody fails = a gap", -3.0, -2.2, 34)
+        P(self, FadeIn(gap), rt=0.4)
+        until(self, "goes into a dated log")
+        log = paper(3.3, -2.35, 2.4, 0.9)
+        ll = lab("Claude's mistakes → log", 3.3, -3.05, 32)
+        P(self, FadeIn(log), FadeIn(ll), rt=0.5)
+        P(self, Create(scribble(2.4, -2.35, 1.8)), rt=0.4)
         finish(self)
 
 
-class B06_Alternatives(Scene):
+class B07_Alternatives(Scene):
     def construct(self):
         tag(self, "MIXED")
         docs = []
@@ -504,7 +567,7 @@ class B06_Alternatives(Scene):
         finish(self)
 
 
-class B07_FirstMinute(Scene):
+class B08_FirstMinute(Scene):
     def construct(self):
         tag(self, "PROPOSED")
         win = RoundedRectangle(width=7.0, height=2.6, corner_radius=0.12, fill_color=CARD, fill_opacity=1,
@@ -522,38 +585,13 @@ class B07_FirstMinute(Scene):
         bars = [Rectangle(width=1.6 * f, height=0.32, fill_color=c, fill_opacity=1, stroke_width=0)
                 .move_to([2.9 + 0.8 * f, 1.2 - i * 0.65, 0])
                 for i, (f, c) in enumerate([(1.0, BAR1), (0.75, BAR2), (0.4, BAR1), (0.25, BAR2)])]
-        for b, phrase in zip(bars, ["did the tests pass", "which bugs were caught", "which survived", "where Claude was wrong"]):
+        for b, phrase in zip(bars, ["what passed", "which bugs were caught", "which slipped through", "where Claude was wrong"]):
             until(self, phrase)
             P(self, GrowFromEdge(b, LEFT), rt=0.4)
         finish(self)
 
 
-class B08_Contract(Scene):
-    def construct(self):
-        tag(self, "PROPOSED")
-        rule = tpage(-4.0, 0.6, 1.6, 2.0, amp=0.09)
-        rl = lab("rule R1", -4.0, -0.85, 38)
-        test = tpage(0.2, 0.6, 1.4, 1.7, amp=0.09)
-        tl = lab("test", 0.2, -0.7, 38)
-        P(self, FadeIn(rule), rl, FadeIn(test), tl, rt=0.9)
-        until(self, "must name the rule")
-        cab = CubicBezier(np.array([-0.6, 0.9, 0]), np.array([-1.6, 1.9, 0]), np.array([-2.4, 1.9, 0]), np.array([-3.1, 1.0, 0]),
-                          color="#9C8462", stroke_width=6)
-        end = Dot([-3.1, 1.0, 0], radius=0.1, color=TERRA)
-        P(self, Create(cab), rt=0.8)
-        P(self, GrowFromCenter(end), rt=0.3)
-        until(self, "can't point to a rule")
-        iso = Iso(4.3, -2.2, 0.8)
-        back, front = iso.open_box(-0.8, -0.8, 0, 1.6, 1.6, 1.0)
-        bl = lab("thrown out", 4.3, -2.95, 40)
-        orphan = tpage(4.3, 2.0, 1.0, 1.2, n=2, amp=0.09)
-        orphan.set_z_index(1)
-        P(self, FadeIn(back), FadeIn(front), FadeIn(bl), FadeIn(orphan), rt=0.6)
-        P(self, orphan.animate.move_to([4.3, -1.3, 0]).scale(0.7), rt=0.7, rate_func=ease_in)
-        finish(self)
-
-
-class B09_Loop(Scene):
+class B09_Proves(Scene):
     def construct(self):
         tag(self, "PROPOSED")
         tests = VGroup(*[tpage(-4.6 + i * 0.25, 0.7 - i * 0.2, 1.3, 1.6) for i in range(3)])
@@ -568,7 +606,7 @@ class B09_Loop(Scene):
         until(self, "never the API")
         lk = lock(3.6, 1.9, 0.6)
         P(self, FadeIn(lk, shift=DOWN * 0.4), rt=0.5)
-        until(self, "Third, evaluation")
+        until(self, "and evaluation")
         track = Rectangle(width=5.0, height=0.36, fill_color=GHOST, fill_opacity=1, stroke_width=0).move_to([-0.4, -2.6, 0])
         fill = Rectangle(width=3.1, height=0.36, fill_color=BAR1, fill_opacity=1, stroke_width=0)
         fill.move_to([-0.4 - 2.5 + 1.55, -2.6, 0])
@@ -580,7 +618,7 @@ class B09_Loop(Scene):
 
 class B10_OutAndFirst(Scene):
     def construct(self):
-        tag(self, "PROPOSED")
+        tag(self, "CIRAN")
         st, lights = Iso(-4.2, -1.5, 0.7).server(-0.7, -0.7, 0, 1.4, 1.4, 0.45, 3)
         handle = Rectangle(width=0.3, height=1.6, fill_color=BOX_R, fill_opacity=1, stroke_color=INK, stroke_width=4)
         head = Circle(radius=0.38, fill_color=BOX_R, fill_opacity=1, stroke_color=INK, stroke_width=4).move_to([0, 0.95, 0])
@@ -588,9 +626,9 @@ class B10_OutAndFirst(Scene):
         wrench = VGroup(handle, head, notch).rotate(-PI / 5).move_to([-4.2, 1.6, 0])
         wl = lab("no auto-fix", -4.2, -2.3)
         P(self, FadeIn(st), FadeIn(lights), FadeIn(wrench), wl, rt=0.9)
-        until(self, "never fix application code")
+        until(self, "never fix the app")
         P(self, Create(xmark(-4.2, 1.6, 0.75, w=10)), rt=0.5)
-        until(self, "What comes first")
+        until(self, "The first piece now runs")
         belt = Rectangle(width=7.0, height=0.7, fill_color="#E6E1D4", fill_opacity=1, stroke_color="#9C8462", stroke_width=4).move_to([2.2, -0.4, 0])
         gates = VGroup(*[VGroup(Rectangle(width=0.16, height=1.5, fill_color=DARK_L, fill_opacity=1, stroke_width=0).move_to([x, 0.15, 0]))
                          for x in (0.6, 2.2, 3.8)])
@@ -598,9 +636,9 @@ class B10_OutAndFirst(Scene):
         bug = VGroup(Square(0.6, fill_color=DARK_TOP, fill_opacity=1, stroke_color=INK, stroke_width=3),
                      Dot([0, 0, 0], radius=0.09, color=TERRA)).move_to([-0.9, 0.2, 0])
         P(self, FadeIn(belt), FadeIn(gates), FadeIn(gl), FadeIn(bug), rt=0.8)
-        until(self, "One bug, run in GitHub Actions")
+        until(self, "GitHub Actions ran")
         P(self, bug.animate.move_to([5.0, 0.2, 0]), rt=2.0, rate_func=linear)
-        until(self, "that bug caught")
+        until(self, "caught both planted bugs")
         P(self, Create(check(5.6, 1.4, 0.3)), rt=0.5)
         finish(self)
 
@@ -611,12 +649,12 @@ class B11_Risk(Scene):
         line = Arrow([-5.6, 0.0, 0], [5.6, 0.0, 0], color=INK, stroke_width=5, buff=0)
         tlab = lab("git history", 4.4, -0.6, 32)
         P(self, Create(line), FadeIn(tlab), rt=0.8)
-        until(self, "commit the full bug list")
+        until(self, "commit the bug list")
         d1 = Dot([-3.4, 0, 0], radius=0.16, color=TERRA)
         l1 = lab("1. bug list", -3.4, -0.65)
         lk = lock(-3.4, 1.1, 0.55)
         P(self, GrowFromCenter(d1), FadeIn(l1), FadeIn(lk, shift=DOWN * 0.3), rt=0.6)
-        until(self, "the git history will show")
+        until(self, "before Claude writes")
         d2 = Dot([0.6, 0, 0], radius=0.16, color=INK)
         l2 = lab("2. tests", 0.6, -0.65)
         P(self, GrowFromCenter(d2), FadeIn(l2), rt=0.5)
@@ -644,7 +682,7 @@ class B12_WhyMe(Scene):
         until(self, "that work is private")
         priv = lab("private", -3.8, -1.95, 34)
         P(self, FadeIn(priv), rt=0.4)
-        until(self, "What I can show")
+        until(self, "My public Reallocation")
         pr = Rectangle(width=1.6, height=1.3, fill_color=BOX_R, fill_opacity=1, stroke_color=INK, stroke_width=4).move_to([-0.2, 0.18, 0])
         prl, pub = lab("PR #37", -0.2, -1.2, 34), lab("public", -0.2, -1.95, 34)
         P(self, FadeIn(pr, shift=DOWN * 0.3), FadeIn(prl), FadeIn(pub), rt=0.6)
@@ -653,7 +691,7 @@ class B12_WhyMe(Scene):
         outl = [Rectangle(width=1.5, height=1.3, fill_color=STAGE, fill_opacity=1, stroke_color=INK, stroke_width=4).move_to([x, 0.18, 0]) for x in xs]
         nl = [lab(n, x, -1.2, 32) for n, x in zip(["mutants", "evals"], xs)]
         P(self, *[Create(o) for o in outl], *[FadeIn(l) for l in nl], rt=0.7)
-        until(self, "Finding out")
+        until(self, "so it's a mix")
         dots = VGroup(*[Dot([x, 0.18, 0], radius=0.12, color=TERRA) for x in xs])
         P(self, LaggedStart(*[GrowFromCenter(d) for d in dots], lag_ratio=0.3), rt=0.6)
         finish(self)
@@ -663,23 +701,29 @@ class B13_ExistsWill(Scene):
     def construct(self):
         tag(self, "STATUS")
         h1, h2 = lab("exists", -4.4, 2.2, 38), lab("will exist", 2.1, 2.2, 38)
-        div = Line([-2.5, 2.4, 0], [-2.5, -0.9, 0], color=GHOST, stroke_width=4)
+        div = Line([-2.5, 2.4, 0], [-2.5, 0.0, 0], color=GHOST, stroke_width=4)
         P(self, FadeIn(h1), FadeIn(h2), Create(div), rt=0.6)
         until(self, "The loan API exists")
-        e = [Rectangle(width=0.7, height=0.7, fill_color=BOX_L, fill_opacity=1, stroke_color=INK, stroke_width=4).move_to([-5.6, y, 0]) for y in (1.1, -0.2)]
-        el = [lab("loan API", -4.0, 1.1, 34), lab("brief + film", -3.85, -0.2, 34)]
+        e = [Rectangle(width=0.7, height=0.7, fill_color=BOX_L, fill_opacity=1, stroke_color=INK, stroke_width=4).move_to([-5.6, y, 0]) for y in (1.3, 0.4)]
+        el = [lab("loan API", -4.15, 1.3, 34), lab("Stryker run", -3.95, 0.4, 34)]
         P(self, FadeIn(e[0]), FadeIn(el[0]), rt=0.5)
-        until(self, "This brief and this film")
+        until(self, "so did the Stryker check")
         P(self, FadeIn(e[1]), FadeIn(el[1]), rt=0.5)
+        until(self, "I chose a second bug")
+        e3 = Rectangle(width=0.7, height=0.7, fill_color=BOX_L, fill_opacity=1, stroke_color=INK, stroke_width=4).move_to([-5.6, -0.5, 0])
+        l3 = lab("tests + 2 bugs + CI", -3.3, -0.5, 34)
+        P(self, FadeIn(e3), FadeIn(l3), rt=0.5)
         until(self, "Everything else")
         xs = [-1.4, 0.2, 1.8, 3.4, 5.0]
-        names = ["prompt", "bugs", "tests", "runner", "report"]
+        names = ["prompt", "all bugs", "API tests", "runner", "report"]
         w = [DashedVMobject(Rectangle(width=1.35, height=0.9, color=INK, stroke_width=4), num_dashes=16).move_to([x, 1.0, 0]) for x in xs]
         wl = [lab(n, x, 0.1, 32) for n, x in zip(names, xs)]
         P(self, *[Create(b) for b in w], *[FadeIn(l) for l in wl], rt=0.8)
-        until(self, "This is BiteCheck")
-        title = T("BiteCheck", 72, bold=True).move_to([0, -1.8, 0])
-        who = lab("Omkar Salian", 0, -2.75, 36)
-        ul = Line([-1.9, -2.3, 0], [1.9, -2.3, 0], color=TERRA, stroke_width=6)
+        until(self, "this is BiteCheck")
+        title = T("BiteCheck", 72, bold=True).move_to([0, -2.0, 0])
+        who = lab("Omkar Salian", 0, -2.95, 36)
+        ul = Line([-1.9, -2.5, 0], [1.9, -2.5, 0], color=TERRA, stroke_width=6)
         P(self, FadeIn(title), FadeIn(who), Create(ul), rt=0.8)
         finish(self)
+
+

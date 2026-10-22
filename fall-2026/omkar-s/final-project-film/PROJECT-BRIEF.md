@@ -1,26 +1,31 @@
 # PROJECT-BRIEF — BiteCheck
-**Omkar Salian · INFO 7375 Fall 2026 · updated 2026-10-13** · Target role: new-grad Software / AI Engineer · Stack: TypeScript, Express, Jest + Supertest, Claude Code, GitHub Actions
+**Omkar Salian · INFO 7375 Fall 2026 · v2, 2026-10-22** · Target role: new-grad Software / AI Engineer · Stack: TypeScript, Express, Node's test runner, Claude Code, GitHub Actions
 
-**1. What is it?** BiteCheck will be a Claude Code workflow that writes API tests for my InstaLoan loan demo (Express + TypeScript, synthetic data, no tests today) and checks that each test **fails when a business rule is broken on purpose**. When it is done, it will be a public GitHub repo containing a test-writing prompt contract, a hand-written bug list ("mutants"), a runner, a one-page report and an evaluation log.
+**Who:** I'm Omkar Salian, a software engineering master's student at Northeastern, building this alone with Claude Code as my coding assistant.
+**Simple version:** you only know a smoke alarm works if you blow smoke at it. Tests are software's alarms. BiteCheck is the smoke: it breaks one rule on purpose and checks which tests go off.
 
-**2. Why would anyone care?** It tells an engineer reviewing a pull request full of AI-written API tests which of those tests would actually catch a broken business rule. *Postbot* and *Schemathesis* (docs read 2026-10-12) generate test scripts and check an API against its schema. Neither one checks business rules. *StrykerJS* I ran on my loan rules through Claude Code on 2026-10-13 (`evidence/stryker/`). It made 92 mutants, but **none changed the ₹15,000 limit**, and its only stage-order mutant deletes every guard at once. BiteCheck adds mutants that each break one business rule and are tied to a rule ID.
+**1. What is it?** A Claude Code workflow that writes API tests for my InstaLoan loan demo (Express + TypeScript, synthetic data) and checks that each test **fails when a business rule is broken on purpose**. When done: a public GitHub repo with a test-writing prompt contract, a planted-bug list ("mutants"), a runner, a one-page report and an evaluation log.
+**How it works:** (1) I write numbered rules and mutants, each a copy of the code with one rule broken. (2) Claude Code writes TypeScript tests, each naming its rule. (3) The runner runs every test on the real API (all must pass) and on each mutant (one must fail). A surviving mutant is a gap. A test failing on correct code is Claude's mistake and goes in a dated log.
 
-**3. Who opens it?** A hiring manager or engineer screening a new-grad SWE or AI engineer. In 60 seconds they run `npm run bitecheck` and read one page: did the tests pass on the real API, which mutants were caught or survived, and which tests Claude got wrong.
+**2. Why care?** It tells an engineer reviewing AI-written API tests which ones would catch a broken business rule. *Postbot* and *Schemathesis* (docs read 2026-10-12) write test scripts and check APIs against schemas, not business rules. *StrykerJS*, which I ran with Claude Code on 2026-10-13 (`evidence/stryker/`), made 92 mutants, but **none changed the ₹15,000 limit**. BiteCheck adds one-rule-at-a-time business mutants tied to rule IDs.
 
-**4. What does it prove?** Prompt contracts (each test cites a rule ID), source grounding (no rule, no test), a bounded agent loop (Claude edits tests, never the API, with a fixed number of tries) and evaluation (a mutation score plus a mistake log). The evidence will be the repo, its CI runs and the log. It will not show that it works on every API, because it is measured on one.
+**3. Who opens it?** A hiring manager screening a new-grad SWE or AI engineer. In 60 seconds: run `npm run bitecheck` and read one page showing what passed, which mutants were caught or survived, and Claude's wrong tests.
 
-**5. In / out / first.** *In:* one API, about 20 mutants, a runner, a report and a log. *Out:* not a general tool, and it never fixes application code. *First:* one mutant (minimum income 15,000 → 1,500) run in GitHub Actions. You'd know it ran from a committed CI report showing the real API passing and the mutant caught.
+**4. What does it prove?** Prompt contracts (each test cites a rule), source grounding (no rule, no test), a bounded agent loop (Claude edits tests, never the API, with fixed tries) and evaluation (mutation score plus mistake log). Evidence: repo, CI runs, log. It is measured on one API, not every API.
 
-**6. What could sink it?** I write the mutants, so I could make them too easy. I'll commit the mutant list before Claude writes any test, include hard boundary cases, and report every survivor.
+**5. In / out / first.** *In:* one API, ~20 mutants, runner, report, log. *Out:* not a general tool, and it never fixes app code. *First (done 2026-10-22):* my income mutant (15,000 → 1,500) in GitHub Actions. The run passed on the real rule and killed both mutants (`evidence/ci/`).
 
-**7. Why this project?** A mix, mostly learning. *Have (private):* API testing and CI gates at my last job, and TypeScript/Express (the InstaLoan API, built with Claude's help). *Have (public):* a Claude workflow with run logs, in my Reallocation Engine PR ([nikbearbrown/the-reallocation-engine#37](https://github.com/nikbearbrown/the-reallocation-engine/pull/37)). *New:* mutation testing and evaluation design. How well Claude's tests will do, I don't know yet. Finding out is the point.
+**6. What could sink it?** I write the mutants, so I could make them too easy. I'll commit the list before Claude writes tests, include boundary cases, and report every survivor.
 
-**Exists today (2026-10-13)**
-- InstaLoan API (local, private), run 2026-10-12 on synthetic applicants: ₹14,999 rejected, ₹15,000 offered, out-of-order payout refused with HTTP 409 (`evidence/los_smoke_test.txt`)
-- A StrykerJS run on its rules: 92 mutants, none on the 15,000 limit (`evidence/stryker/`)
+**7. Why this project?** A mix. *Have (private):* API testing and CI gates at my last job. *Have (public):* a Claude workflow with run logs ([nikbearbrown/the-reallocation-engine#37](https://github.com/nikbearbrown/the-reallocation-engine/pull/37)). *New:* mutation testing and evaluation design.
+
+**Exists today (2026-10-22)**
+- InstaLoan API (local, private), run 2026-10-12 with Claude Code: ₹14,999 rejected, ₹15,000 offered, early payout refused, HTTP 409 (`evidence/los_smoke_test.txt`)
+- StrykerJS run on its rules, 2026-10-13: 92 mutants, none on the 15,000 limit (`evidence/stryker/`)
+- Income-rule unit tests (4) and a mutant checker written by Claude Code (2026-10-21), plus two mutants: Claude's `<`→`<=` and mine, 15,000 → 1,500 (2026-10-22). GitHub Actions ran them in my private repo on 2026-10-22: all passed, 2 killed (`evidence/ci/`)
 - This brief, the beat sheet and the film
 
 **Will exist**
-- The prompt contract, the rules file and the mutant list (committed first)
-- Claude-written tests, the runner, the report, the log and CI
+- The prompt contract, rules file and full mutant list (committed first)
+- Claude-written API tests, the runner, the report, the log
 - The public repository

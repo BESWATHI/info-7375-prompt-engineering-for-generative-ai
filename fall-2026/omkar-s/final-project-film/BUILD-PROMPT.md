@@ -10,6 +10,12 @@ Given to Claude Code (Claude desktop app, Opus 5.5), in order, with the Canvas a
 5. 2026-10-13: `gather all the requirements i dont want to loose marks`
 6. `now as a TA rate my assignment`
 7. `i want full marks .. reslve the gaps`
+8. 2026-10-21 (after grading): `check why the dedeuctions were made and fix it … make sure the pitch video contains who is doing it, explains what you are doing easily to a 5 year old or a non-technical person clearly and make sure it is concise and explains your project to the fullest technical detail in the short format.`
+9. `fix everything`
+10. 2026-10-22: `go through the assignment after that read the comments. Fix all the issues`. Omkar then gave his mutant plan in chat, asked Claude to create the private repo and run CI (`fix this`), and asked Claude to write up the results (`write it`), which went in as a Claude-labelled log entry.
+
+## 6. Re-run the CI evidence (B10, B13)
+The loan app is in the private repo `O7580/instaloan-los`. Locally: `cd LOS/backend && npm ci && npm run typecheck && npm test && npm run test:mutants`. On GitHub, every push runs `.github/workflows/backend-ci.yml`. The first run (39843450055, 2026-10-22) is saved in `evidence/ci/`.
 
 Every decision after that is recorded in `FRICTIONAL.md`.
 
@@ -55,7 +61,7 @@ npm install --save-dev @stryker-mutator/core@8.7.1 typescript@5.5.4
 npx stryker run          # 92 mutants; open reports/mutation/mutation.html
 ```
 
-No tests exist, so the command runner (`node -e "process.exit(0)"`) makes every mutant "survive". The run only lists what Stryker generates. `evidence/stryker/mutation.html` is the report from 2026-10-13.
+No tests exist, so the command runner (`node -e "process.exit(0)"`) makes every mutant "survive". The run only lists what Stryker generates. The HTML report it writes embeds the loan app's source, so it is not in this folder (removed 2026-10-22). `evidence/stryker/stryker_summary.txt` holds the counts and the rule-line mutants.
 
 ## 5. Pronunciation check
 `evidence/pronunciation_check.txt` is a Whisper-tiny transcript of each `mp3/beat-*.mp3`, diffed against `narration_text`.

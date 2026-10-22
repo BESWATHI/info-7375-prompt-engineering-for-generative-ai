@@ -55,8 +55,40 @@ Dated log of the build. **Who wrote what:** every entry marked **(Claude)** was 
 - Omkar's previous assignment lost marks for AI-typed work labelled as his. So Claude re-checked this one for the same pattern and found it in four places: (1) B03 said "On October twelfth I ran it" about a run Claude Code did. The narration now says "…with Claude Code"; B03 was re-voiced and re-rendered, and the gates were re-run: Gate V 0 BLOCKER / 0 MAJOR, GATE T PASS. New master 238.0 s, sha256 `235d146d608672f2…`. (2) The Claude-written entries in this log used "I" for Claude's work. Each now names who did it. (3) `SOURCES.md` listed that run under "What I made", so it moved to Claude's list. (4) The README said the narration was "in my words"; it now says the script was drafted by Claude and approved by Omkar.
 - First push 2026-10-14 (commit `197f6da`, at Omkar's request). It was followed by this corrected version; the final commit hash is in the Canvas submission.
 
+## 2026-10-21 — after grading: film v2 (Claude)
+- **Grade 45/50.** TA Param Kamal Shah, on Canvas: *"Main deductions: Frictional 3/5 (-2). Next step: write the income-rule mutant and its CI run yourself, and log what happened in a few sentences of your own."* No other deductions were listed.
+- Omkar asked for a v2 that says who is building it, explains the idea simply enough for a child or a non-technical viewer, and stays short while covering the full technical detail. Claude rewrote the script around that:
+  - B00 names Omkar (MS Software Engineering, Northeastern), building it alone with Claude Code.
+  - B01–B02 give the plain version through a smoke alarm: an alarm only proves itself when you blow smoke at it, and BiteCheck is the smoke.
+  - B05–B06 spell out the pipeline: numbered rules and mutants, Claude-written TypeScript tests that each name a rule, a run on the real API (all pass) and on each mutant (one fails), and survivors and Claude's mistakes logged.
+  - Other beats were tightened. The film went from 14 beats in 3:58 to 14 beats in 3:48 (3:52 after the 2026-10-22 update to B10 and B13).
+- **Stack correction.** v1's brief said "Jest + Supertest". The first real tests, which Claude wrote today, use Node's built-in test runner, so the brief and B05 now say that.
+- **Status correction.** v1 said the loan app "has no tests yet". As of today that's false: a separate Claude Code session wrote 4 income-rule tests, a `<`→`<=` mutant and a CI workflow, checked locally only. B13 now says so and credits it to Claude. FACTCHECK rows 10 and 33 record the change.
+- **Gates.** Gate B blocked twice (B02: a bug block starting off-stage and a label past the right edge; B06: a label past the edge), and B13's new row crossed the column divider. Claude fixed each in the scene source, not the gate. The final build passed Gate A, W and V (0 BLOCKER / 0 MAJOR) and GATE T.
+- **Not done by Claude, on purpose:** the TA's next step (Omkar's own income-limit mutant, its GitHub Actions run, and his own log sentences). If Claude wrote those, they would be AI work presented as his, which is the pattern behind the deduction.
+
+## 2026-10-22 — the TA's next step: income mutant and first real CI run (Claude)
+- **Omkar's mutant.** In chat, Omkar chose the bug (minimum income ₹15,000 → ₹1,500), wrote the comment sentence and predicted "KILLED" (his words are in "My entries — Omkar" below). Editing in TextEdit kept failing to save, so on his instruction Claude typed his choice into `LOS/backend/test/mutants/BROKEN-income-limit.ts` and registered it in `scripts/check-mutants.mjs`. Before that, the checker had refused to run with "unregistered mutant": it would not quietly skip a bug file that wasn't on its list.
+- **Local result.** Both mutants were KILLED, by different tests. Omkar's (15,000 → 1,500) was caught by "income one rupee below the minimum is rejected". Claude's (`<` → `<=`) was caught by "income exactly at the minimum passes". Omkar's prediction was right. (`evidence/ci/local-run-2026-10-22.txt`)
+- **First real CI run.** At Omkar's request, Claude created the private repo `O7580/instaloan-los` and pushed the loan app. `.claude/` was added to `.gitignore` first, and no secrets or databases went in. The Mac's git (2.15) has no `git init -b`, so the branch was made with `git checkout -b main`. GitHub Actions run 39843450055 on commit `1a9df4c` passed all four steps (npm ci, typecheck, test, test:mutants): 2 killed, 0 survived. (`evidence/ci/github-actions-run-2026-10-22.txt`)
+- **Limit, stated plainly:** these are unit tests of the income-rule function, not API tests against the running server. API-level tests are still "will exist".
+
+## 2026-10-22 — Stryker HTML report removed (Claude)
+- `evidence/stryker/mutation.html` (Stryker's report) embeds the full source of two loan-app files, `bre.ts` and `constants.ts`. Omkar chose to keep the loan app private, and on 2026-10-22 he told Claude to do whatever was important. Claude removed the file from this folder. The film's Stryker numbers (92 mutants, none on the 15,000 limit) come from `stryker_summary.txt` and `stryker_run.log`, which stay.
+- The file is still in this course repo's history (commits `197f6da`, `a4c4956`). Removing it from history would mean rewriting the shared `main` branch, so that is a question for the instructor, not something to do here.
+
 ## My entries — Omkar
-*On 2026-10-13 Claude asked me these questions in chat, and I typed the answers. The questions are Claude's wording. The answers are mine, pasted unedited (including lowercase).*
+*2026-10-22, written by me in chat before the run. My words; only the headings were bolded and the quote marks straightened:*
+
+> **My income-rule mutant.** My file still has Claude's original code, so I need to add my own bug. I plan to change the minimum income from ₹15,000 to ₹1,500. This could let applicants qualify even though their income is below the actual requirement.
+>
+> **Registering and testing it.** The checker says "unregistered mutant" because mine isn't on its list yet. I need to register it and run the tests. I expect it to be KILLED, meaning a test catches the bug. If it SURVIVES, the tests missed it.
+>
+> **Running it on GitHub.** I still need to upload my loan app to a private GitHub repo and set up CI so the tests run automatically when I push code. Then I'll check the Actions tab to see whether they passed or failed and use that as evidence for the assignment.
+
+*Earlier answers, 2026-10-13:*
+
+*Claude asked me these questions in chat, and I typed the answers. The questions are Claude's wording. The answers are mine, pasted unedited (including lowercase).*
 
 **Q1. Did you build the InstaLoan app with Claude's help?**
 A: "Yes"
@@ -76,7 +108,7 @@ A: "keep the voice"
 
 **Q6 (2026-10-13). Look at the Stryker report. What do you notice about the income rule?**
 A: "stryker flips the < sign but never changes 15000"
-*(Claude's note: Omkar answered after reading the income-rule lines Claude showed him from `evidence/stryker/stryker_summary.txt`. The full report is `evidence/stryker/mutation.html`.)*
+*(Claude's note: Omkar answered after reading the income-rule lines Claude showed him from `evidence/stryker/stryker_summary.txt`. The full HTML report was later removed from this folder; see the 2026-10-22 entry.)*
 
 ## Checklist — Omkar
 - [x] Watch the final film once with sound. Done 2026-10-13; I told Claude "i have watched the video" and reported no problems.
