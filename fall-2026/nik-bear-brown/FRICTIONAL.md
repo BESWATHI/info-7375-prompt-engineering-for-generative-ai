@@ -14,6 +14,7 @@
 - **The portfolio (2026-09-26).** I decided to rewrite my figma-claude book as a Figma tutorial series, as portfolio evidence for the advocate roles. Then I moved it to a new repo, figma-for-educational-ai: a book, workshops and a YouTube playlist built on my Figma for Education account. There's a plan to review; nothing is drafted yet.
 - **The book rewrite (2026-10-11).** The chapters read as a recipe. I named three ideas that should run through all fifteen (guide the AI with gates, check it and sign, know what is the AI's and what is yours), and Claude rewrote the chapters against them. Unreviewed by me; pushed to GitHub at my request so I can read it there.
 - **My own question.** A first recipe asking whether Figma has advocate or education work on flexible terms. The board's answer is no: both advocate roles are full-time, nothing mentions universities, and nothing is part-time or contract. So it's a networking question.
+- **The midterm (2026-10-21).** I gave the topic list for a midterm on this course. Claude drafted a multiple-answer question bank and key, kept private because this log is public. I have not read it, and the midterm itself is not yet in the syllabus.
 
 Every push to GitHub is listed at the bottom with its date and commit note.
 
@@ -438,6 +439,32 @@ Where to check each claim in this log. Commits in this repository are listed in 
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:** `mode-build-assignment/02-worked-run.md` and `mode-build-assignment/runs/`. Next: my six decisions, then the first human look at one institution's funded projects, which is the step the recipe needs before it can leave DRAFT. No pull request has been opened to the engine repository.
 
+### 2026-10-21 — A midterm for this course: the topic list and a question bank
+
+- **Date and what I was working on:** 2026-10-21. A midterm for this course.
+- **I tried / expected:** I pasted this topic list under the title "Prompt Engineering INFO 7375 Midterm Questions" (spelling fixed, my wording otherwise):
+  1. How an LLM works: *"1942 AI was founded, AI famous 2010 image recognition. Research and extend this."*
+  2. Neural network structure, RNN.
+  3. A general high-level understanding of what a model is: input, output, language model.
+  4. How a programming language interacts with a computer differently from how a language model interacts with a computer (transformers).
+  5. The strength of using programming languages: the function.
+  6. What a token is, and how it is different from a word. Array size.
+  7. The attention mechanism in transformer models (Google Cloud Tech, YouTube).
+  8. What a softmax function is.
+  9. The GitHub chapters. Chapter 1: division of labor, the gate. Chapter 2: the three-response experiment, what the green can't distinguish.
+  10. What an agentic loop is.
+  11. Solve-verify asymmetry, fluency, falsifiability.
+  And the format: *"Multiple answer questions. Point deduction for missing answers."* I did not say whether I wanted questions, a study guide or a coverage check.
+- **What happened:** Claude Code read it as a request for a question bank. It read Chapters 1, 2 and 4 and the two companion-book chapters the topics point to, ran the course's own reference code to check every number and behavior an answer depends on, searched for the dates in item 1, and wrote 32 multiple-answer questions with an answer key and a student copy. Both files are in a folder outside this repository, on purpose: the key must not be public. What followed, with Claude's findings labeled as such and not yet reviewed by me:
+  - Some topics have no source in this repository. The RNN, how a programming language differs from a language model, and the strength of programming languages are not taught in the chapters or decks in these terms.
+  - There is no midterm anywhere in `SYLLABUS.md`, `ASSESSMENT.md` or `docs/instructor-decisions.md`. They describe graded Assignments only and call quizzes ungraded practice. A graded midterm with point deductions is a new policy. Claude proposed a scoring rule and recorded none.
+  - Claude also researched and extended item 1 as I asked. This entry leaves that research, its corrections and every answer out, because this log is public and the midterm has not been given. They are in the private key.
+  - Claude held this log entry at first, because this log is public and my message is the exam outline. I then said: *"Log my midterm message in FRICTIONAL.md now and push."* This entry is that.
+- **What I did:** Gave the topic list and the format, then told Claude to log it and push. I have not read the questions or the key. None of the open decisions has been made by me: the scoring rule, the midterm's weight, and what to do about topics this repository does not teach.
+- **What Claude or another person contributed:** Claude Code did all the reading, the code checks, the searching and the writing. It did not watch the Google Cloud Tech video named in item 7; it confirmed only the title and channel, so no question depends on what the video says. The questions and the key are unreviewed by me.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** The questions and key are private files outside this repository and are not committed. Every answer that depends on a number or on how the code behaves was checked by running `lessons/01-randomness-and-first-prompts/code/main.py`, `lessons/02-prompt-contracts-and-evaluation/code/main.py` and `lessons/04-the-agent-loop/code/main.py`; all those checks passed. Next: I read the questions and decide the scoring rule, the weight, and the topics with no source here.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -560,3 +587,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-10-19 | feat(fall-2026): my own Mode Build assignment: a funded-research mode, its script and a real run |
 | 2026-10-20 | docs(fall-2026): remove eight software-product companies from the shared watch list |
 | 2026-10-20 | docs(fall-2026): remove HubSpot from the shared watch list; Miro stays |
+| 2026-10-22 | docs(fall-2026): log my midterm topic list and the question bank request |
