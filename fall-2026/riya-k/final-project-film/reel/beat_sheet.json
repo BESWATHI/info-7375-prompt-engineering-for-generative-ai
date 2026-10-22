@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "slug": "riya-k-ground-truth-sql",
+    "slug": "riya-k-ground-truth-sql-v2",
     "title": "Ground Truth SQL",
     "topic": "INFO 7375 · FINAL PROJECT PITCH",
     "skill": "show-tell",
@@ -18,16 +18,18 @@
     "aspect_ratio": "16:9",
     "width": 3840,
     "height": 2160,
-    "caption_policy": "none",
-    "greeting_language": "Hindi/Marathi (Namaste)",
+    "caption_policy": "burned-in after master (burn_captions.py), from narration_text with word timings",
     "bookend_exempt": [
       "cold-open",
+      "bidea",
+      "bdefs",
       "bvdt",
-      "bhtf"
+      "bhtf",
+      "bout"
     ],
-    "bookend_exempt_reason": "Course pitch, not a channel explainer: opens on the hesitant writer + terms card per the show-tell skill; no verdict card; no Your Turn (a pitch has no viewer task); ends on a spoken conclusion beat (BCON) then the title outro. Instructor persona and credit line removed as the assignment requires. BOUT removed 2026-10-10: ClaudeTitleOutro hardcodes the '@NikBearBrown' handle and mascot (no override), which the assignment forbids; the film ends on the BCON conclusion instead. bookend_check.py reports this as a known FAIL.",
-    "audience": "INFO 7375 instructor and TAs; a hiring manager screening AI Engineer candidates",
-    "source_doc": "PROJECT-BRIEF.md; evidence/run_slice_output.txt and evidence/run_slice_output_v0_first_run.txt (run 2026-10-09); bird-bench.github.io and github.com/vanna-ai/vanna (read 2026-10-09)",
+    "bookend_exempt_reason": "Course pitch redo, not a channel explainer. The instructor's feedback asked for the problem to be shown first, so B01 is a narrated title card (project title + Riya's name + the problem) and B02 shows the problem with a real example, replacing the hesitant writer and the terms card (SQL is defined in the narration where it is first used). No Your Turn (a pitch has no viewer task). No ClaudeTitleOutro: it hardcodes the instructor's handle, which the assignment forbids; the film ends on its spoken conclusion B15.",
+    "audience": "INFO 7375 instructor and TAs; a hiring manager screening AI Engineer candidates; anyone who uses AI to ask a database questions",
+    "source_doc": "PROJECT-BRIEF.md; evidence/run_slice.py output and read-only Chinook queries (re-run 2026-10-19); bird-bench.github.io (read 2026-10-09); Vanna 2.0.2 run on Chinook (evidence/vanna_check.py, 2026-10-21); three blind Claude runs (evidence/claude_runs/2026-10-21)",
     "tags": [
       "text-to-SQL",
       "evaluation",
@@ -35,678 +37,801 @@
       "INFO 7375"
     ],
     "build": {
-      "at": "2026-10-10T01:37:41",
+      "at": "2026-10-21T23:44:55",
       "cut": "master",
-      "filled": 14,
-      "of": 14,
+      "filled": 16,
+      "of": 16,
       "slates": [],
       "skin_warnings": [
-        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk",
-        "BCON: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B16: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
       ]
     }
   },
   "beats": [
     {
-      "beat_id": "BIDEA",
-      "act": "the question",
-      "lane": "bookend",
+      "beat_id": "B01",
+      "act": "pitch",
+      "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "Namaste. I'm Riya Kapadnis, and this is my final project pitch for INFO seventy-three seventy-five. People ask whether an AI can write SQL. The better question is whether its SQL is right on your data, and how you would know.",
-      "estimated_duration_s": 16.0,
+      "narration_text": "Ground Truth SQL. I'm Riya Kapadnis, and this is my final project pitch. The problem: AI can write database code that runs with no errors, but gives the wrong answer.",
+      "estimated_duration_s": 11.1,
       "voice": "af_bella",
       "engine": "kokoro",
       "shot": {
-        "type": "REMOTION",
+        "type": "GRAPHIC",
         "source": "own",
+        "visual_intent": "Title card: the project name writes on, Riya Kapadnis and the course fade in under it, then the one-line problem appears with a small 'no errors' tick next to a wrong number.",
         "show": [
           {
             "at": 0.0,
-            "event": "banner with title, name and course; types the naive question"
+            "event": "title"
+          },
+          {
+            "at": 0.25,
+            "event": "name + course"
           },
           {
             "at": 0.6,
-            "event": "'any good' corrected to 'right on my data'"
+            "event": "the problem line"
           }
         ],
-        "remotion": {
-          "pattern": "BrutalistHesitantWriter",
-          "props": {
-            "text": "Is the AI's SQL\nany good",
-            "triggerWords": "any good",
-            "replacementWords": "right on my data",
-            "fontSize": 76,
-            "charMs": 24,
-            "hesitateBetween": 6,
-            "hesitateWithin": 1,
-            "mistakeRate": 2,
-            "jitter": 20,
-            "seed": "riya-k-ground-truth-sql",
-            "banner": "Ground Truth SQL · final project pitch · Riya Kapadnis · INFO 7375"
-          },
-          "rendered": {
-            "out": "media/BIDEA.mp4",
-            "at": "2026-10-10T05:25:12.962085+00:00"
-          }
-        }
+        "manim": {
+          "class": "B01_Title"
+        },
+        "motion_claim": "Title card: the project name writes on, Riya Kapadnis and the course fade in under it, then the one-line problem appears with a small 'no errors' tick next to a wrong number."
       },
+      "motion_claim": "Title card: the project name writes on, Riya Kapadnis and the course fade in under it, then the one-line problem appears with a small 'no errors' tick next to a wrong number.",
       "lead_silence_s": 0.8,
-      "motion_claim": "The writer types the naive question and corrects it to the real one.",
       "qc": {
         "sparse_by_design": true,
-        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 15.51,
-      "audio_file": "mp3/beat-BIDEA.mp3",
-      "render_duration_s": 15.541666666666666,
-      "build": {
-        "status": "VIDEO",
-        "src": "media/BIDEA.mp4",
-        "filled_by": "remotion:BrutalistHesitantWriter",
-        "at": "2026-10-10T01:37:41"
-      }
-    },
-    {
-      "beat_id": "BDEFS",
-      "act": "terms",
-      "lane": "bookend",
-      "proof_gate": "CARD",
-      "narration_text": "Three terms. Text to SQL: a model turns a plain English question into a database query. A gold set: questions with answers I checked by hand. And execution match: judging a query by the rows it returns, not its wording.",
-      "estimated_duration_s": 16.0,
-      "voice": "af_bella",
-      "engine": "kokoro",
-      "shot": {
-        "type": "REMOTION",
-        "source": "own",
-        "show": [
-          {
-            "at": 0.12,
-            "event": "'text-to-SQL'"
-          },
-          {
-            "at": 0.45,
-            "event": "'gold set'"
-          },
-          {
-            "at": 0.72,
-            "event": "'execution match'"
-          }
-        ],
-        "remotion": {
-          "pattern": "ClaudeDefinitions",
-          "props": {
-            "title": "Terms In This Film",
-            "terms": [
-              {
-                "term": "text-to-SQL",
-                "meaning": "turns English questions into SQL queries"
-              },
-              {
-                "term": "gold set",
-                "meaning": "the right SQL, checked by hand"
-              },
-              {
-                "term": "execution match",
-                "meaning": "judge SQL by its output table"
-              }
-            ],
-            "folderLabel": "RIYA KAPADNIS"
-          },
-          "rendered": {
-            "out": "media/BDEFS.mp4",
-            "at": "2026-10-10T04:46:40.254288+00:00"
-          }
-        }
-      },
-      "qc": {
-        "sparse_by_design": true,
-        "sparse_reason": "TERMS card: three prerequisites, one line each."
-      },
-      "actual_duration_s": 16.02,
-      "audio_file": "mp3/beat-BDEFS.mp3",
-      "render_duration_s": 16.041666666666668,
-      "build": {
-        "status": "VIDEO",
-        "src": "media/BDEFS.mp4",
-        "filled_by": "remotion:ClaudeDefinitions",
-        "at": "2026-10-10T01:37:41"
-      }
-    },
-    {
-      "beat_id": "B00",
-      "act": "show-tell",
-      "lane": "manim",
-      "proof_gate": "SHOW",
-      "narration_text": "Here is the project. Ground Truth SQL will be an evaluation harness. You give it your database and a set of questions, and it tells you which questions the model gets wrong, and why.",
-      "estimated_duration_s": 13.6,
-      "voice": "af_bella",
-      "engine": "kokoro",
-      "shot": {
-        "type": "GRAPHIC",
-        "source": "own",
-        "visual_intent": "A question page slides toward a dark database tower labelled 'Chinook'; a result tray lands beside it; a small terracotta mark appears on one wrong row block.",
-        "show": [
-          {
-            "at": 0.1,
-            "event": "database tower"
-          },
-          {
-            "at": 0.3,
-            "event": "question page"
-          },
-          {
-            "at": 0.6,
-            "event": "result tray, one row flagged"
-          }
-        ],
-        "manim": {
-          "class": "B00_WhatItIs"
-        },
-        "motion_claim": "A question page slides toward a dark database tower labelled 'Chinook'; a result tray lands beside it; a small terracotta mark appears on one wrong row block."
-      },
-      "qc": {
-        "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
-      },
-      "actual_duration_s": 11.78,
-      "audio_file": "mp3/beat-B00.mp3",
-      "render_duration_s": 11.791666666666666,
-      "build": {
-        "status": "MANIM",
-        "src": "manim/B00.mp4",
-        "filled_by": "manim",
-        "at": "2026-10-10T01:37:41"
-      }
-    },
-    {
-      "beat_id": "B01",
-      "act": "show-tell",
-      "lane": "manim",
-      "proof_gate": "SHOW",
-      "narration_text": "When it's done, it will be a public GitHub repository with three parts: about fifty checked questions, a runner that asks Claude each one, and a scorecard listing every failure and its cause. Today, only a first slice exists.",
-      "estimated_duration_s": 15.6,
-      "voice": "af_bella",
-      "engine": "kokoro",
-      "shot": {
-        "type": "GRAPHIC",
-        "source": "own",
-        "visual_intent": "An open kraft crate tagged 'repo' with a CONSTRUCTED stamp; three objects rise out in a row: a page stack ('gold set'), a dark block ('runner'), a binder ('scorecard').",
-        "show": [
-          {
-            "at": 0.1,
-            "event": "crate + CONSTRUCTED stamp"
-          },
-          {
-            "at": 0.3,
-            "event": "gold set"
-          },
-          {
-            "at": 0.5,
-            "event": "runner"
-          },
-          {
-            "at": 0.7,
-            "event": "scorecard"
-          }
-        ],
-        "manim": {
-          "class": "B01_Repo"
-        },
-        "motion_claim": "An open kraft crate tagged 'repo' with a CONSTRUCTED stamp; three objects rise out in a row: a page stack ('gold set'), a dark block ('runner'), a binder ('scorecard')."
-      },
-      "qc": {
-        "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
-      },
-      "actual_duration_s": 14.63,
+      "actual_duration_s": 12.27,
       "audio_file": "mp3/beat-B01.mp3",
-      "render_duration_s": 14.666666666666666,
+      "render_duration_s": 12.291666666666666,
       "build": {
         "status": "MANIM",
         "src": "manim/B01.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T01:37:41"
+        "at": "2026-10-21T23:44:55"
       }
     },
     {
       "beat_id": "B02",
-      "act": "show-tell",
+      "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "Why care? A query can run, look right, and still be wrong. In my first test, a query I wrote by hand to copy a common join mistake put US revenue at four thousand six hundred sixty seven dollars. The real number is five hundred twenty three. Nine times too high, and no error.",
-      "estimated_duration_s": 21.6,
+      "narration_text": "Picture an analyst asking an AI: what is our revenue by country? The AI writes SQL, the language for asking a database questions. It runs. No errors. It says the USA made four thousand six hundred sixty seven dollars. The real answer is five hundred twenty three.",
+      "estimated_duration_s": 17.4,
       "voice": "af_bella",
       "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Two bars side by side on a plinth: a short one '523' (checked) and a tall one '4,667' (join mistake) that grows about nine times taller; caption 'real run · 2026-10-09'.",
+        "visual_intent": "A chat box: the question types in; an SQL panel types itself out; a 'ran · 0 errors' pill ticks; the result table shows USA 4,667.06; a terracotta strike crosses it and 523.06 drops in beside it.",
         "show": [
           {
             "at": 0.1,
-            "event": "plinth + checked bar 523"
+            "event": "question"
           },
           {
-            "at": 0.45,
-            "event": "wrong bar grows to 4,667"
+            "at": 0.3,
+            "event": "SQL types out"
           },
           {
-            "at": 0.8,
-            "event": "9x"
+            "at": 0.5,
+            "event": "0 errors"
+          },
+          {
+            "at": 0.65,
+            "event": "USA $4,667"
+          },
+          {
+            "at": 0.9,
+            "event": "real answer $523"
           }
         ],
         "manim": {
-          "class": "B02_LooksRight"
+          "class": "B02_Problem"
         },
-        "motion_claim": "Two bars side by side on a plinth: a short one '523' (checked) and a tall one '4,667' (join mistake) that grows about nine times taller; caption 'real run · 2026-10-09'."
+        "motion_claim": "A chat box: the question types in; an SQL panel types itself out; a 'ran · 0 errors' pill ticks; the result table shows USA 4,667.06; a terracotta strike crosses it and 523.06 drops in beside it."
       },
+      "motion_claim": "A chat box: the question types in; an SQL panel types itself out; a 'ran · 0 errors' pill ticks; the result table shows USA 4,667.06; a terracotta strike crosses it and 523.06 drops in beside it.",
       "qc": {
         "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 18.56,
+      "actual_duration_s": 18.6,
       "audio_file": "mp3/beat-B02.mp3",
-      "render_duration_s": 18.583333333333332,
+      "render_duration_s": 18.625,
       "build": {
         "status": "MANIM",
         "src": "manim/B02.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T01:37:41"
+        "at": "2026-10-21T23:44:55"
       }
     },
     {
       "beat_id": "B03",
-      "act": "show-tell",
+      "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "I looked at two alternatives. BIRD is a benchmark of over twelve thousand questions, but on its own ninety five databases, not yours. Vanna writes SQL for your own database, but I didn't find a way in it to test that SQL against checked answers. Mine does that: your schema, checked answers, and a reason for every failure.",
-      "estimated_duration_s": 23.2,
+      "narration_text": "Claude and I drafted that SQL to copy a common mistake, on a free sample music store database. One order from Reno, Nevada cost three ninety six, for four songs. The SQL joined the order to its songs, so the three ninety six was counted four times. Do that for every US order, and the total is almost nine times too high.",
+      "estimated_duration_s": 23.0,
       "voice": "af_bella",
       "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Left: a tall shelf of many pages labelled 'BIRD'. Middle: a workstation labelled 'Vanna'. Right: the project's crate with a check, labelled 'your schema'.",
+        "visual_intent": "Order card #16 ($3.96) on the left; four song rows slide out of it; the $3.96 copies onto every row; a running sum counts 3.96, 7.92, 11.88, 15.84; zoom out to 91 orders becoming 494 rows and 523 becoming 4,667.",
         "show": [
           {
-            "at": 0.1,
-            "event": "BIRD shelf"
+            "at": 0.2,
+            "event": "order card"
           },
           {
-            "at": 0.35,
-            "event": "Vanna workstation"
+            "at": 0.4,
+            "event": "four songs"
           },
           {
-            "at": 0.7,
-            "event": "your schema + check"
+            "at": 0.6,
+            "event": "copied 4 times"
+          },
+          {
+            "at": 0.85,
+            "event": "91 orders -> 494 rows"
           }
         ],
         "manim": {
-          "class": "B03_Alternatives"
+          "class": "B03_Why"
         },
-        "motion_claim": "Left: a tall shelf of many pages labelled 'BIRD'. Middle: a workstation labelled 'Vanna'. Right: the project's crate with a check, labelled 'your schema'."
+        "motion_claim": "Order card #16 ($3.96) on the left; four song rows slide out of it; the $3.96 copies onto every row; a running sum counts 3.96, 7.92, 11.88, 15.84; zoom out to 91 orders becoming 494 rows and 523 becoming 4,667."
       },
+      "motion_claim": "Order card #16 ($3.96) on the left; four song rows slide out of it; the $3.96 copies onto every row; a running sum counts 3.96, 7.92, 11.88, 15.84; zoom out to 91 orders becoming 494 rows and 523 becoming 4,667.",
       "qc": {
         "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 20.91,
+      "actual_duration_s": 21.42,
       "audio_file": "mp3/beat-B03.mp3",
-      "render_duration_s": 20.916666666666668,
+      "render_duration_s": 21.458333333333332,
       "build": {
         "status": "MANIM",
         "src": "manim/B03.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T01:37:41"
+        "at": "2026-10-21T23:44:55"
       }
     },
     {
       "beat_id": "B04",
-      "act": "show-tell",
+      "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "The check is simple. Run the checked query and the model's query on the same read only database, and compare the rows. On my first eight questions, comparing the SQL text rejected all three correct rewrites. Comparing rows judged all nine test queries the way I did.",
-      "estimated_duration_s": 18.8,
+      "narration_text": "It's not the only mistake. Mix up milliseconds and seconds: three thousand five hundred long songs, not one thousand sixty nine. Count purchases, not people: eight hundred thirty five rock buyers, in a store with fifty nine customers. Link the wrong columns: no answer at all. And no errors.",
+      "estimated_duration_s": 18.1,
       "voice": "af_bella",
       "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Two trays side by side, 'gold' and 'model'; matching row blocks drop into each; a scan line passes and a check lands; a counter reads '9/9'.",
+        "visual_intent": "Three cards flip in one after another, each with the wrong number (struck) and the right one; at the end all three get the same 'no errors' tick.",
         "show": [
           {
-            "at": 0.1,
-            "event": "two trays"
+            "at": 0.2,
+            "event": "ms vs s"
           },
           {
-            "at": 0.3,
-            "event": "rows drop in"
+            "at": 0.5,
+            "event": "purchases vs people"
           },
           {
-            "at": 0.7,
-            "event": "check, 9/9"
+            "at": 0.78,
+            "event": "wrong link"
+          },
+          {
+            "at": 0.92,
+            "event": "no errors x3"
           }
         ],
         "manim": {
-          "class": "B04_CompareRows"
+          "class": "B04_More"
         },
-        "motion_claim": "Two trays side by side, 'gold' and 'model'; matching row blocks drop into each; a scan line passes and a check lands; a counter reads '9/9'."
+        "motion_claim": "Three cards flip in one after another, each with the wrong number (struck) and the right one; at the end all three get the same 'no errors' tick."
       },
+      "motion_claim": "Three cards flip in one after another, each with the wrong number (struck) and the right one; at the end all three get the same 'no errors' tick.",
       "qc": {
         "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 17.94,
+      "actual_duration_s": 18.86,
       "audio_file": "mp3/beat-B04.mp3",
-      "render_duration_s": 17.958333333333332,
+      "render_duration_s": 18.875,
       "build": {
         "status": "MANIM",
         "src": "manim/B04.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T01:37:41"
+        "at": "2026-10-21T23:44:55"
       }
     },
     {
       "beat_id": "B05",
-      "act": "show-tell",
+      "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "It also caught me. My first gold answer asked about revenue in twenty twenty three, but this data stops in twenty thirteen. The checked answer was empty, so a broken query matched it. Now the runner rejects any empty gold answer.",
-      "estimated_duration_s": 16.4,
+      "narration_text": "Why does this happen? People ask data questions in plain English, so most never see the SQL. The AI doesn't know your data. And wrong SQL doesn't crash. It just gives a number people trust.",
+      "estimated_duration_s": 13.0,
       "voice": "af_bella",
       "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "The gold tray sits empty; a broken query's empty tray slides beside it and they 'match'; then a barrier drops in front of the empty gold tray.",
+        "visual_intent": "Three reasons build left to right: a person who only sees the answer (SQL greyed out behind it); the AI at a database with question marks over its tables; a confident number landing on a meeting screen.",
         "show": [
           {
-            "at": 0.15,
-            "event": "empty gold tray"
+            "at": 0.2,
+            "event": "can't see the SQL"
           },
           {
-            "at": 0.4,
-            "event": "empty broken tray matches"
+            "at": 0.5,
+            "event": "doesn't know your data"
           },
           {
-            "at": 0.75,
-            "event": "barrier: rejected"
+            "at": 0.8,
+            "event": "a number people trust"
           }
         ],
         "manim": {
-          "class": "B05_EmptyGold"
+          "class": "B05_RealLife"
         },
-        "motion_claim": "The gold tray sits empty; a broken query's empty tray slides beside it and they 'match'; then a barrier drops in front of the empty gold tray."
+        "motion_claim": "Three reasons build left to right: a person who only sees the answer (SQL greyed out behind it); the AI at a database with question marks over its tables; a confident number landing on a meeting screen."
       },
+      "motion_claim": "Three reasons build left to right: a person who only sees the answer (SQL greyed out behind it); the AI at a database with question marks over its tables; a confident number landing on a meeting screen.",
       "qc": {
         "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 15.0,
+      "actual_duration_s": 12.63,
       "audio_file": "mp3/beat-B05.mp3",
-      "render_duration_s": 15.0,
+      "render_duration_s": 12.666666666666666,
       "build": {
         "status": "MANIM",
         "src": "manim/B05.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T01:37:41"
+        "at": "2026-10-21T23:44:55"
       }
     },
     {
       "beat_id": "B06",
-      "act": "show-tell",
+      "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "Who opens it? A hiring manager or engineer screening AI engineers. In the first minute, they'll read the scorecard, replay the saved results with one command and no key, and open one failure beside its checked answer.",
+      "narration_text": "Other tools don't do this on your data. BIRD tests AI only on its own databases. Vanna's built-in answer test looks for words, not right numbers. On this data, it passed the answer that was nine times too high.",
+      "estimated_duration_s": 14.4,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two panels: BIRD's shelf of its own databases with 'your data' outside it; Vanna's workstation with 'checks words, not numbers'; a pill 'USA 4,667 · passed' lands over it (real run of Vanna 2.0.2's OutputEvaluator, evidence/vanna_check.py, 2026-10-21); a gap opens between the panels.",
+        "show": [
+          {
+            "at": 0.25,
+            "event": "BIRD"
+          },
+          {
+            "at": 0.55,
+            "event": "Vanna"
+          },
+          {
+            "at": 0.8,
+            "event": "passed 4,667"
+          },
+          {
+            "at": 0.95,
+            "event": "the gap"
+          }
+        ],
+        "manim": {
+          "class": "B06_Others"
+        },
+        "motion_claim": "Two panels: BIRD's shelf of its own databases with 'your data' outside it; Vanna's workstation with 'checks words, not numbers'; a pill 'USA 4,667 · passed' lands over it (real run of Vanna 2.0.2's OutputEvaluator, evidence/vanna_check.py, 2026-10-21); a gap opens between the panels."
+      },
+      "motion_claim": "Two panels: BIRD's shelf of its own databases with 'your data' outside it; Vanna's workstation with 'checks words, not numbers'; a pill 'USA 4,667 · passed' lands over it (real run of Vanna 2.0.2's OutputEvaluator, evidence/vanna_check.py, 2026-10-21); a gap opens between the panels.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 14.36,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 14.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-21T23:44:55"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Ground Truth SQL fills that gap. Give it your database and questions with checked answers. It runs the AI's SQL and the checked SQL, compares the results, and gives a report card: what the AI got wrong, and why.",
+      "estimated_duration_s": 14.4,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The gap closes into a pipeline: question -> AI's SQL and checked SQL -> both run on the database -> two result tables meet at a compare step -> a report-card line prints 'Revenue by country · WRONG · counted orders 4 times'.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "question"
+          },
+          {
+            "at": 0.4,
+            "event": "two SQLs"
+          },
+          {
+            "at": 0.6,
+            "event": "run + compare"
+          },
+          {
+            "at": 0.85,
+            "event": "report card line"
+          }
+        ],
+        "manim": {
+          "class": "B07_WhatItIs"
+        },
+        "motion_claim": "The gap closes into a pipeline: question -> AI's SQL and checked SQL -> both run on the database -> two result tables meet at a compare step -> a report-card line prints 'Revenue by country · WRONG · counted orders 4 times'."
+      },
+      "motion_claim": "The gap closes into a pipeline: question -> AI's SQL and checked SQL -> both run on the database -> two result tables meet at a compare step -> a report-card line prints 'Revenue by country · WRONG · counted orders 4 times'.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 15.06,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 15.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-21T23:44:55"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Where will it be used? Anywhere people ask data questions in plain English: store sales, finance, hospitals, marketing, and AI data assistants. Analysts learn what to double check. Teams test a tool before buying. Engineers see what to fix.",
+      "estimated_duration_s": 14.4,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The report card sits in the middle; five places light up around it one by one (store, finance, hospital, marketing, AI assistant); then three people step in, each with a two-word takeaway.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "store"
+          },
+          {
+            "at": 0.2,
+            "event": "finance"
+          },
+          {
+            "at": 0.26,
+            "event": "hospital"
+          },
+          {
+            "at": 0.32,
+            "event": "marketing"
+          },
+          {
+            "at": 0.4,
+            "event": "AI assistant"
+          },
+          {
+            "at": 0.6,
+            "event": "analysts"
+          },
+          {
+            "at": 0.75,
+            "event": "teams"
+          },
+          {
+            "at": 0.9,
+            "event": "engineers"
+          }
+        ],
+        "manim": {
+          "class": "B08_WhereUsed"
+        },
+        "motion_claim": "The report card sits in the middle; five places light up around it one by one (store, finance, hospital, marketing, AI assistant); then three people step in, each with a two-word takeaway."
+      },
+      "motion_claim": "The report card sits in the middle; five places light up around it one by one (store, finance, hospital, marketing, AI assistant); then three people step in, each with a two-word takeaway.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 16.53,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 16.541666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-21T23:44:55"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "How does it judge? By results, not wording, since one answer can be written many ways. These two look different, but both give five hundred twenty three. On nine test queries, comparing wording judged six right. Comparing results: all nine.",
       "estimated_duration_s": 14.8,
       "voice": "af_bella",
       "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "A review desk; a binder ('scorecard') opens on it; one page slides out ('one failure'); CONSTRUCTED stamp because the scorecard does not exist yet.",
+        "visual_intent": "Two different SQL panels side by side; both run into the same result 523.06; a 'same wording?' check fails, a 'same results?' check passes; two bars grow to 6 of 9 and 9 of 9.",
         "show": [
           {
-            "at": 0.1,
-            "event": "desk + CONSTRUCTED"
+            "at": 0.3,
+            "event": "two SQLs"
           },
           {
-            "at": 0.35,
-            "event": "scorecard"
-          },
-          {
-            "at": 0.7,
-            "event": "one failure page"
-          }
-        ],
-        "manim": {
-          "class": "B06_Reviewer"
-        },
-        "motion_claim": "A review desk; a binder ('scorecard') opens on it; one page slides out ('one failure'); CONSTRUCTED stamp because the scorecard does not exist yet."
-      },
-      "qc": {
-        "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
-      },
-      "actual_duration_s": 14.59,
-      "audio_file": "mp3/beat-B06.mp3",
-      "render_duration_s": 14.625,
-      "build": {
-        "status": "MANIM",
-        "src": "manim/B06.mp4",
-        "filled_by": "manim",
-        "at": "2026-10-10T01:37:41"
-      }
-    },
-    {
-      "beat_id": "B07",
-      "act": "show-tell",
-      "lane": "manim",
-      "proof_gate": "SHOW",
-      "narration_text": "What should it prove? That I evaluate models instead of trusting them: a prompt contract that allows one read only select, verification by running the SQL, failures sorted by cause, and later a repair loop I'll measure. The evidence will be dated logs anyone can re-run.",
-      "estimated_duration_s": 18.4,
-      "voice": "af_bella",
-      "engine": "kokoro",
-      "shot": {
-        "type": "GRAPHIC",
-        "source": "own",
-        "visual_intent": "A row of four objects light up in turn: a contract page, a scanner gate, a sorted shelf, a loop arrow around a block.",
-        "show": [
-          {
-            "at": 0.15,
-            "event": "contract"
-          },
-          {
-            "at": 0.35,
-            "event": "verification"
-          },
-          {
-            "at": 0.55,
-            "event": "failure list"
+            "at": 0.5,
+            "event": "both 523.06"
           },
           {
             "at": 0.75,
-            "event": "repair loop (later)"
+            "event": "6/9"
+          },
+          {
+            "at": 0.9,
+            "event": "9/9"
           }
         ],
         "manim": {
-          "class": "B07_Proves"
+          "class": "B09_HowJudges"
         },
-        "motion_claim": "A row of four objects light up in turn: a contract page, a scanner gate, a sorted shelf, a loop arrow around a block."
+        "motion_claim": "Two different SQL panels side by side; both run into the same result 523.06; a 'same wording?' check fails, a 'same results?' check passes; two bars grow to 6 of 9 and 9 of 9."
       },
+      "motion_claim": "Two different SQL panels side by side; both run into the same result 523.06; a 'same wording?' check fails, a 'same results?' check passes; two bars grow to 6 of 9 and 9 of 9.",
       "qc": {
         "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 17.54,
-      "audio_file": "mp3/beat-B07.mp3",
-      "render_duration_s": 17.541666666666668,
-      "build": {
-        "status": "MANIM",
-        "src": "manim/B07.mp4",
-        "filled_by": "manim",
-        "at": "2026-10-10T01:37:41"
-      }
-    },
-    {
-      "beat_id": "B08",
-      "act": "show-tell",
-      "lane": "manim",
-      "proof_gate": "SHOW",
-      "narration_text": "In: one public sample database, Chinook, about fifty questions, and Claude. Out: no chat app, no write queries, no claims about production data. First: the slice that runs today. Next: the first real Claude run on those eight questions, saved with its date.",
-      "estimated_duration_s": 17.2,
-      "voice": "af_bella",
-      "engine": "kokoro",
-      "shot": {
-        "type": "GRAPHIC",
-        "source": "own",
-        "visual_intent": "A permission gate: 'Chinook' crate passes through; 'chat app' and 'write' blocks stay outside; a small 'first' tag on the existing slice.",
-        "show": [
-          {
-            "at": 0.15,
-            "event": "in: Chinook"
-          },
-          {
-            "at": 0.45,
-            "event": "out: blocked"
-          },
-          {
-            "at": 0.75,
-            "event": "first: the slice"
-          }
-        ],
-        "manim": {
-          "class": "B08_Scope"
-        },
-        "motion_claim": "A permission gate: 'Chinook' crate passes through; 'chat app' and 'write' blocks stay outside; a small 'first' tag on the existing slice."
-      },
-      "qc": {
-        "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
-      },
-      "actual_duration_s": 17.51,
-      "audio_file": "mp3/beat-B08.mp3",
-      "render_duration_s": 17.541666666666668,
-      "build": {
-        "status": "MANIM",
-        "src": "manim/B08.mp4",
-        "filled_by": "manim",
-        "at": "2026-10-10T01:37:41"
-      }
-    },
-    {
-      "beat_id": "B09",
-      "act": "show-tell",
-      "lane": "manim",
-      "proof_gate": "SHOW",
-      "narration_text": "What could sink it? I write both the questions and the answers, so the test could be too easy, or wrong, like twenty twenty three. So a classmate will check a sample of my answers, unclear questions will be marked unclear, and each question will run three times.",
-      "estimated_duration_s": 19.2,
-      "voice": "af_bella",
-      "engine": "kokoro",
-      "shot": {
-        "type": "GRAPHIC",
-        "source": "own",
-        "visual_intent": "One hand-held page ('my answers') on a desk; a second inspection lamp swings over it ('second check'); three small tokens appear in a row ('3 runs').",
-        "show": [
-          {
-            "at": 0.15,
-            "event": "my answers"
-          },
-          {
-            "at": 0.45,
-            "event": "second check"
-          },
-          {
-            "at": 0.75,
-            "event": "3 runs"
-          }
-        ],
-        "manim": {
-          "class": "B09_Risk"
-        },
-        "motion_claim": "One hand-held page ('my answers') on a desk; a second inspection lamp swings over it ('second check'); three small tokens appear in a row ('3 runs')."
-      },
-      "qc": {
-        "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
-      },
-      "actual_duration_s": 16.15,
+      "actual_duration_s": 14.95,
       "audio_file": "mp3/beat-B09.mp3",
-      "render_duration_s": 16.166666666666668,
+      "render_duration_s": 14.958333333333334,
       "build": {
         "status": "MANIM",
         "src": "manim/B09.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T01:37:41"
+        "at": "2026-10-21T23:44:55"
       }
     },
     {
       "beat_id": "B10",
-      "act": "show-tell",
+      "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "Why this project? It's a mix. SQL, Python, and building language model features into a BI product are skills I use in my AI engineer co-op, but that code is private, so my public evidence is this course's work. Evaluation sets, failure analysis, and measured repair loops are new to me, and that's what I want to learn.",
-      "estimated_duration_s": 23.2,
+      "narration_text": "Claude then answered my eight questions about the music store, three times. The checker passed twenty two of twenty four. The two fails were a tie my question never settled. Claude wasn't wrong; my question was.",
+      "estimated_duration_s": 13.3,
       "voice": "af_bella",
       "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Two shelves: left 'have' with a stack of pages and a check; right 'learning' with an empty slot a block slides into.",
+        "visual_intent": "A terminal window types the real score_claude_runs.py result (three blind Claude runs, 2026-10-21), shortened; the 22 / 24 line is underlined; the two Q02 fails light up; a card shows France 5 and Brazil 5: a tie.",
         "show": [
           {
-            "at": 0.15,
-            "event": "have"
+            "at": 0.1,
+            "event": "command"
           },
           {
-            "at": 0.5,
-            "event": "learning"
+            "at": 0.45,
+            "event": "22 / 24"
           },
           {
-            "at": 0.8,
-            "event": "block slides into the slot"
+            "at": 0.65,
+            "event": "two fails"
+          },
+          {
+            "at": 0.85,
+            "event": "a tie"
           }
         ],
         "manim": {
-          "class": "B10_Why"
+          "class": "B10_Runs"
         },
-        "motion_claim": "Two shelves: left 'have' with a stack of pages and a check; right 'learning' with an empty slot a block slides into."
+        "motion_claim": "A terminal window types the real score_claude_runs.py result (three blind Claude runs, 2026-10-21), shortened; the 22 / 24 line is underlined; the two Q02 fails light up; a card shows France 5 and Brazil 5: a tie."
       },
+      "motion_claim": "A terminal window types the real score_claude_runs.py result (three blind Claude runs, 2026-10-21), shortened; the 22 / 24 line is underlined; the two Q02 fails light up; a card shows France 5 and Brazil 5: a tie.",
       "qc": {
         "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 21.21,
+      "actual_duration_s": 13.25,
       "audio_file": "mp3/beat-B10.mp3",
-      "render_duration_s": 21.25,
+      "render_duration_s": 13.25,
       "build": {
         "status": "MANIM",
         "src": "manim/B10.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T01:37:41"
+        "at": "2026-10-21T23:44:55"
       }
     },
     {
-      "beat_id": "BCON",
-      "act": "show-tell",
+      "beat_id": "B11",
+      "act": "pitch",
       "lane": "manim",
       "proof_gate": "SHOW",
-      "narration_text": "So, what exists today is eight questions, one comparator, and one bug I caught in my own answers. Everything else is still to build. Models that write SQL are easy to find. Knowing when to trust them is the project.",
-      "estimated_duration_s": 16.0,
+      "narration_text": "It also caught a mistake in my answer key. One question asked about twenty twenty three, but the data ends in twenty thirteen. The right answer was empty, so broken SQL returning nothing looked correct. Now the tool rejects empty answers.",
+      "estimated_duration_s": 15.2,
       "voice": "af_bella",
       "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "The crate from B01 returns, small and mostly empty: one page stack inside with a check ('exists'); the other slots ghosted ('will exist').",
+        "visual_intent": "A timeline 2009-2013; a '2023' marker slides past the end; two empty result boxes show '=' ; a terracotta cross lands on the '='; a new rule card stamps on: 'empty right answer -> rejected'.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "timeline"
+          },
+          {
+            "at": 0.45,
+            "event": "empty = empty"
+          },
+          {
+            "at": 0.85,
+            "event": "rule"
+          }
+        ],
+        "manim": {
+          "class": "B11_CaughtMe"
+        },
+        "motion_claim": "A timeline 2009-2013; a '2023' marker slides past the end; two empty result boxes show '=' ; a terracotta cross lands on the '='; a new rule card stamps on: 'empty right answer -> rejected'."
+      },
+      "motion_claim": "A timeline 2009-2013; a '2023' marker slides past the end; two empty result boxes show '=' ; a terracotta cross lands on the '='; a new rule card stamps on: 'empty right answer -> rejected'.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 16.23,
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 16.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-21T23:44:55"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Who looks first? Hiring managers for AI engineers. They read the report card, rerun it with one command, and open one mistake. It shows I test AI instead of trusting it.",
+      "estimated_duration_s": 11.5,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A reviewer's screen: the report card page (marked planned), a one-line command, then one wrong row opens into the AI's SQL next to the checked SQL.",
+        "show": [
+          {
+            "at": 0.25,
+            "event": "report card"
+          },
+          {
+            "at": 0.45,
+            "event": "one command"
+          },
+          {
+            "at": 0.65,
+            "event": "one mistake opens"
+          }
+        ],
+        "manim": {
+          "class": "B12_WhoLooks"
+        },
+        "motion_claim": "A reviewer's screen: the report card page (marked planned), a one-line command, then one wrong row opens into the AI's SQL next to the checked SQL."
+      },
+      "motion_claim": "A reviewer's screen: the report card page (marked planned), a one-line command, then one wrong row opens into the AI's SQL next to the checked SQL.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.86,
+      "audio_file": "mp3/beat-B12.mp3",
+      "render_duration_s": 11.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-21T23:44:55"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The finished project will have one sample database, about fifty test questions, and Claude as the AI it tests. It won't be a chat app, and it never changes the data.",
+      "estimated_duration_s": 11.5,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two columns fill: 'the finished project will have' (1 sample database · Chinook, ~50 test questions, Claude as the AI being tested) and 'it will not' (be a chat app, change any data · read-only).",
         "show": [
           {
             "at": 0.15,
-            "event": "exists"
+            "event": "will have"
+          },
+          {
+            "at": 0.65,
+            "event": "will not"
+          }
+        ],
+        "manim": {
+          "class": "B13_Scope"
+        },
+        "motion_claim": "Two columns fill: 'the finished project will have' (1 sample database · Chinook, ~50 test questions, Claude as the AI being tested) and 'it will not' (be a chat app, change any data · read-only)."
+      },
+      "motion_claim": "Two columns fill: 'the finished project will have' (1 sample database · Chinook, ~50 test questions, Claude as the AI being tested) and 'it will not' (be a chat app, change any data · read-only).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 10.77,
+      "audio_file": "mp3/beat-B13.mp3",
+      "render_duration_s": 10.791666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-21T23:44:55"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The risk: I write the questions, so the test could be too easy, and Claude getting every answer right suggests it is. So I check every answer a second way, and next I'll add harder questions.",
+      "estimated_duration_s": 13.3,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three steps build down the frame: a risk card ('I write the test questions, so the test could be too easy'); an arrow to 'warning sign: Claude got all 8 right'; an arrow to 'what I'll do about it' with two ticks.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "risk"
+          },
+          {
+            "at": 0.45,
+            "event": "warning sign"
+          },
+          {
+            "at": 0.75,
+            "event": "what I'll do"
+          }
+        ],
+        "manim": {
+          "class": "B14_Risk"
+        },
+        "motion_claim": "Three steps build down the frame: a risk card ('I write the test questions, so the test could be too easy'); an arrow to 'warning sign: Claude got all 8 right'; an arrow to 'what I'll do about it' with two ticks."
+      },
+      "motion_claim": "Three steps build down the frame: a risk card ('I write the test questions, so the test could be too easy'); an arrow to 'warning sign: Claude got all 8 right'; an arrow to 'what I'll do about it' with two ticks.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.03,
+      "audio_file": "mp3/beat-B14.mp3",
+      "render_duration_s": 12.041666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-21T23:44:55"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Why this project? I already use SQL, Python and AI at my co-op. Testing AI and understanding why it fails is what I want to learn.",
+      "estimated_duration_s": 9.6,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A heading 'why this project?' opens the beat; two shelves: 'already use' fills with three blocks; 'want to learn' has two empty slots that two blocks slide into.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "heading"
+          },
+          {
+            "at": 0.3,
+            "event": "already use"
+          },
+          {
+            "at": 0.75,
+            "event": "want to learn"
+          }
+        ],
+        "manim": {
+          "class": "B15_WhyMe"
+        },
+        "motion_claim": "A heading 'why this project?' opens the beat; two shelves: 'already use' fills with three blocks; 'want to learn' has two empty slots that two blocks slide into."
+      },
+      "motion_claim": "A heading 'why this project?' opens the beat; two shelves: 'already use' fills with three blocks; 'want to learn' has two empty slots that two blocks slide into.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.45,
+      "audio_file": "mp3/beat-B15.mp3",
+      "render_duration_s": 9.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B15.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-21T23:44:55"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "pitch",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The problem: AI can give wrong answers that look right. Ground Truth SQL tests the AI on your own data and shows what's wrong, and why. Today the checker works; Claude's only fails were my question's fault. Next: fifty harder questions. Running SQL is easy. Being right is the test.",
+      "estimated_duration_s": 18.5,
+      "voice": "af_bella",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Four recap rows build (problem / solution / today / next), each with its own heading; then they clear and the closing two lines write on alone.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "problem"
+          },
+          {
+            "at": 0.3,
+            "event": "solution"
           },
           {
             "at": 0.5,
-            "event": "will exist (ghosted)"
+            "event": "today"
+          },
+          {
+            "at": 0.65,
+            "event": "next"
           },
           {
             "at": 0.8,
@@ -714,22 +839,23 @@
           }
         ],
         "manim": {
-          "class": "BCON_Close"
+          "class": "B16_Conclusion"
         },
-        "motion_claim": "The crate from B01 returns, small and mostly empty: one page stack inside with a check ('exists'); the other slots ghosted ('will exist')."
+        "motion_claim": "Four recap rows build (problem / solution / today / next), each with its own heading; then they clear and the closing two lines write on alone."
       },
+      "motion_claim": "Four recap rows build (problem / solution / today / next), each with its own heading; then they clear and the closing two lines write on alone.",
       "qc": {
         "sparse_by_design": true,
-        "sparse_reason": "show-tell style: one drawn object or scene on a cream stage per beat, minimal labels, the voice carries the explanation. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+        "sparse_reason": "Builds in step with the narration: each scene adds its parts on the spoken word and is full by the end, so the 50% sample shows a partly built picture. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
       },
-      "actual_duration_s": 14.38,
-      "audio_file": "mp3/beat-BCON.mp3",
-      "render_duration_s": 14.416666666666666,
+      "actual_duration_s": 19.2,
+      "audio_file": "mp3/beat-B16.mp3",
+      "render_duration_s": 19.208333333333332,
       "build": {
         "status": "MANIM",
-        "src": "manim/BCON.mp4",
+        "src": "manim/B16.mp4",
         "filled_by": "manim",
-        "at": "2026-10-10T01:37:41"
+        "at": "2026-10-21T23:44:55"
       }
     }
   ]

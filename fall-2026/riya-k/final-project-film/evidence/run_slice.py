@@ -2,7 +2,7 @@
 """First runnable slice of the text-to-SQL eval harness (2026-10-09).
 
 What this checks: the gold answers run, and the execution-based comparator
-judges hand-written variants the way a human would -- equivalent SQL passes,
+judges the variants (drafted with Claude, labels checked by Riya) the way a human would -- equivalent SQL passes,
 plausible wrong SQL fails. No model is called. Nothing here is model output.
 
 Usage:  python3 run_slice.py            (standard library only, offline)

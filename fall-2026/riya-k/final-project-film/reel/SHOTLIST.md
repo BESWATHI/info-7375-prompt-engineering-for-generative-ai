@@ -1,23 +1,28 @@
-# Shot list — Ground Truth SQL
+# Shot list — Ground Truth SQL pitch film v2
 
-All body beats are native Manim vector drawings from the toolkit's approved original props
-(`templates/iso_originals_25.py`) plus `iso_kit.py` boxes. No cards: no beat passed the card
-test, because each idea is a thing or a flow the drawings show directly.
+## Executive summary
 
-| Beat | Props | Motion (the claim) | Constructed? |
-|---|---|---|---|
-| BIDEA | BrutalistHesitantWriter | types "Is the AI's SQL any good", corrects to "right on my data"; banner "Ground Truth SQL · final project pitch · Riya Kapadnis · INFO 7375" | — |
-| BDEFS | ClaudeDefinitions | three terms land | — |
-| B00 | server-tower, skill-stack, context-inbox | database, question, result tray rise; one row flagged | illustration |
-| B01 | context-crate, skill-stack, tool-block, evidence-binder | the repo's three parts rise in a row | **CONSTRUCTED** on screen |
-| B02 | iso boxes on a plinth | checked bar (523); wrong bar grows 8.92× (4,667) | real numbers, "real run · 2026-10-09" |
-| B03 | version-shelves, agent-workstation, context-crate | BIRD, Vanna, then "your schema" + check | illustration |
-| B04 | comparison-trays | gold vs model trays; check; 9/9 | real number |
-| B05 | context-inbox ×2 (records removed) | empty = empty; X over gold; "now rejected" | real event |
-| B06 | evidence-binder, review-desk | scorecard; one failure page slides out | **CONSTRUCTED** on screen |
-| B07 | skill-stack, checkpoint-scanner, version-shelves, recovery-dock | four skills appear; repair loop marked "later" | illustration |
-| B08 | permission-gate, context-crate, tool-block ×2 | barrier lifts, Chinook passes; chat app / writes stay out | illustration |
-| B09 | inspection-lamp, budget-slots | lamp swings over "my answers"; "3 runs" | illustration |
-| B10 | version-shelves, budget-slots | "have" with check; token fills a "learning" slot | illustration |
-| BCON | skill-stack, ghost boxes | exists today (check) vs still to build (ghosted) | — |
-| ~~BOUT~~ | (removed 2026-10-10) | ClaudeTitleOutro hardcodes @NikBearBrown + mascot; the film ends on BCON | — |
+What is on screen in each beat and which motion carries the point. v2 replaces v1's one-still-
+icon-per-beat with animated scenes built around real examples, after the instructor said the
+problem was unclear, the animations weak, and examples missing. All scenes are native Manim
+vector code (`scenes.py`); no generated images. Captions are burned in after the master.
+
+| Beat | What moves (the claim) | Real data? |
+|---|---|---|
+| B01 | Title writes on; name and course rise; problem line appears and "the wrong answer" is underlined | — |
+| B02 | Question types into a chat box; the SQL types itself out; "ran · 0 errors"; result table; USA 4,667.06 struck; real answer 523.06 | real (example query drafted with Claude, checked by me, labelled) |
+| B03 | Order #16 ($3.96); four songs slide out; $3.96 copies onto each; running sum 3.96 → 15.84; zoom out to 91 → 494 rows, $523 → $4,667 | real |
+| B04 | Three mistake cards flip in; wrong numbers struck; three "0 errors" pills | real |
+| B05 | Three reasons build: person sees only the answer; database with question marks; trusted number on a screen | illustration |
+| B06 | BIRD shelf with "your data" crossed out; Vanna workstation with an empty "check?" slot; the gap line draws | illustration |
+| B07 | Pipeline builds: question → AI's SQL / checked SQL → database → two results → ≠ → report-card line types out | planned (tagged) |
+| B08 | Five uses light up around the report card; three people step in with their takeaways | illustration |
+| B09 | Two different SQL panels → both USA 523.06 → "=" → bars grow to 6/9 and 9/9 | real |
+| B10 | Terminal types `python3 run_slice.py`; result lines; 9/9 line underlined | real (shortened, tagged) |
+| B11 | Timeline 2009–2013; 2023 lands off the end; empty = empty "looked correct"; red cross; new rule | real |
+| B12 | Reviewer desk; report card rows; one-command pill; one wrong row opens into AI vs checked SQL; motto | planned (tagged) |
+| B13 | Included / not included lists; risk card; two fixes tick on | — |
+| B14 | Two shelves: blocks fill "already use"; two blocks drop into "want to learn" | — |
+| B15 | Recap rows (problem, solution, today/next) build, clear, and the closing line writes on, underlined | — |
+
+No ShowTellCard used: every beat is a drawing or real data drawn in the film's own style.

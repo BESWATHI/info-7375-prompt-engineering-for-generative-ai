@@ -2,6 +2,13 @@
 
 Riya Kapadnis · INFO 7375 · Fall 2026
 
+> **Who wrote what (added 2026-10-21).** The five entries dated 2026-10-09 to 2026-10-14 were
+> drafted by Claude from my decisions and the run outputs, as SOURCES.md says. They are kept
+> unchanged as the record of the first submission (commit `42d8c48`). One correction: the
+> 2026-10-14 entry says I confirmed "that I read the Vanna README myself". SOURCES.md said
+> Claude read and summarised it. That entry was wrong: I only read Claude's summary of the Vanna README, not the README itself. On 2026-10-21 I ran Vanna myself (see the last entry). The entries from 2026-10-19
+> on are written by me.
+
 ---
 
 ## Entry
@@ -189,3 +196,61 @@ invoices 2009–2013). I confirmed the two claims only I could: that I read the 
 myself (claim 5), and that the TwinAI co-op skills are accurate (claim 10). Signed off 2026-10-14.
 
 **Evidence and next step:** `gate-reports/`, `reel/`. Next: commit, zip, and submit to Canvas.
+
+---
+
+## Entry (written by me)
+
+**Date and what I was working on:** 2026-10-19: redoing the film after the instructor's feedback.
+
+**I tried / expected:** The problem I was trying to solve wasn't clear in the first film. It
+also lacked animations and explanations. I expected the redo to fix that.
+
+**What happened:** The new video shows examples and explains the problem I am trying to solve
+more properly, which shows how my project will really help people.
+
+**What I did:** I approved the new script and checked the numbers.
+
+**What Claude or another person contributed:** I accepted Claude's narration, but there were a
+few animations and scenes that I asked it to change.
+
+**What I understand now / still do not understand:** It taught me that we can't just depend on
+what the AI gives us. We should check it, question it, and ask it to make changes accordingly.
+
+**Evidence and next step:** `reel/` (v2 source), `reel/SCRIPT-v2.md`, `gate-reports/`
+
+---
+
+## Entry (written by me)
+
+**Date and what I was working on:** 2026-10-21: acting on the TA's feedback for the resubmission.
+
+**I tried / expected:** Honestly, because of the low grade (38.5/50) I decided to resubmit. I
+decided to fix the Vanna check and get a second check of my answers.
+
+**What happened:** What surprised me most was that my Vanna claim was wrong. My old film said
+Vanna had no way to check answers. It does have tests. I had only read a summary, so I had
+stated something I never checked. When I ran it, its own test passed the answer that was nine
+times too high, because it only checks that the right words are there. Claude passed 22 of 24
+on my questions, and the two fails were my question's fault (a France/Brazil tie it never
+settled). My classmate could not do the check, so I used a second method instead.
+
+**What I did:** I ran Vanna on Chinook (`evidence/vanna_check_output_2026-10-21.txt`). I checked
+the BIRD page myself (12,751 question-SQL pairs, 95 databases). I used a second-method check,
+`evidence/cross_check.py`, which recomputes every gold answer in plain Python from the raw
+tables. All 8 agreed, and it found 2 weak questions: Q02, whose top 5 has a tie the question
+never says how to break, and Q04, whose answer (59) is every customer in the store, so it can't
+tell "bought Rock" apart from "all customers". I feel good that I was able to check it myself
+and found a few problems along the way.
+
+**What Claude or another person contributed:** Claude wrote the Vanna check and the cross-check
+scripts, ran the three Claude tests, and re-edited the film. I ran Vanna, checked BIRD, and
+reviewed the results.
+
+**What I understand now / still do not understand:** My questions are too easy: Claude got every
+answer right. I also don't know yet how often Claude really fails. Next I will write harder
+questions, fix Q02 and Q04, and move to a messier database if Claude still rarely fails.
+
+**Evidence and next step:** `evidence/vanna_check.py`, `evidence/claude_runs/2026-10-21/`,
+`evidence/cross_check_output_2026-10-21.txt`, `reel/FACTCHECK.md` (rows 11, 15, 17, 20, 21)
+

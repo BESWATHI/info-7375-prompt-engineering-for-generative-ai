@@ -1,6 +1,6 @@
 # Project brief — Ground Truth SQL
 
-Riya Kapadnis · INFO 7375 · Final project pitch · written 2026-10-09, revised 2026-10-14
+Riya Kapadnis · INFO 7375 · Final project pitch · written 2026-10-09, revised 2026-10-14 and 2026-10-21
 Target role: **AI Engineer** (also readable for Data Analyst roles)
 Stack: Python 3 (standard library + `sqlite3`), Claude via Claude Code, the public Chinook sample database.
 
@@ -14,14 +14,18 @@ every failure, its cause, and the model's SQL beside the checked answer.
 ## 2. Why would anyone care?
 It is for an analyst deciding whether to trust an AI SQL assistant on their own schema. The
 danger is a query that runs, looks right, and returns the wrong number. In my first test
-(2026-10-09), a hand-written query with a common join mistake reported USA revenue as 4,667.06
-instead of 523.06, about nine times too high, with no error.
+(2026-10-09), an example query with a common join mistake (drafted with Claude, checked by me)
+reported USA revenue as 4,667.06 instead of 523.06, about nine times too high, with no error.
 
-Alternatives I looked at (2026-10-09):
-- **BIRD** (bird-bench.github.io): 12,751 question–SQL pairs over 95 databases, scored by
-  execution accuracy. It measures a model on *its* databases, not your schema or questions.
-- **Vanna** (github.com/vanna-ai/vanna, MIT): generates SQL for your own database. I did not
-  find a way in it to test that SQL against hand-checked answers and report where it fails.
+Alternatives I looked at:
+- **BIRD** (bird-bench.github.io, checked by me 2026-10-21): 12,751 question–SQL pairs over 95
+  databases, scored by execution accuracy. It measures a model on *its* databases, not your
+  schema or questions.
+- **Vanna 2.0.2** (github.com/vanna-ai/vanna, MIT; I ran it on Chinook 2026-10-21): writes SQL
+  for your database and has an evaluation module, but its checks look at tool calls, expected
+  *words* in the answer, time, or an LLM judge. None compares rows. Its `OutputEvaluator` gave
+  **PASS** to the 4,667.06 answer because "USA", "Canada" and "France" were present
+  (`evidence/vanna_check.py`). I did not run its LLM step, which needs a paid key.
 
 What mine adds: checked answers on *your* schema plus a written failure analysis. The output
 is not one accuracy number but the specific questions the model got wrong, sorted by cause
@@ -51,17 +55,22 @@ public database, and **not** anything about production warehouses: Chinook is 11
 - **Out (deliberately):** no chat app or UI, no write queries (the connection is read-only),
   no claims about production data or other models.
 - **First (already runs):** `evidence/run_slice.py`: 8 questions, gold SQL, and an execution
-  comparator tested on 9 hand-written variants. It ran if it prints
-  `execution comparator agreed with the hand label on 9/9 variants` and exits 0.
-- **Next:** the first real Claude run on those 8 questions, saved with its date and raw output.
+  comparator tested on 9 variants (drafted with Claude, labels checked by me). It ran if it
+  prints `execution comparator agreed with the hand label on 9/9 variants` and exits 0.
+- **First Claude run (2026-10-21):** three blind runs of Claude Opus 5.5 (schema and questions
+  only). `evidence/score_claude_runs.py` replays them offline: 22/24 pass by rows, 0/24 by SQL
+  text. Both fails are Q02, where France and Brazil tie and my question sets no tie order.
+- **Next:** fix Q02, then grow toward 50 harder questions.
 
 ## 6. What could sink it?
 I write both the questions and the answers, so the test can be too easy or the answers wrong.
-It already happened once: my Q08 gold asked about 2023 revenue, but Chinook's invoices run
-2009–2013, so the gold result was NULL and a broken query "matched" it
-(`evidence/run_slice_output_v0_first_run.txt`). What I will do: the runner now rejects any
-empty or all-NULL gold answer; a classmate will independently check a sample of the gold SQL;
-ambiguous questions get marked ambiguous; and every question runs three times.
+Both have happened. Q08's first gold asked about 2023, but the data ends in 2013, so an empty
+gold "matched" a broken query (`evidence/run_slice_output_v0_first_run.txt`); Q02's tie failed
+two correct Claude answers; and Claude got every answer right, so the set is too easy. What I
+do: the runner rejects empty gold answers; `evidence/cross_check.py` recomputes every gold answer
+in plain Python from the raw tables (8/8 agree; it flags Q02's tie and Q04, whose answer is every
+customer); ambiguous questions get fixed or marked; each question runs three times; harder
+questions come next; and a second person checks a sample once the full set exists.
 
 ## 7. Why this project?
 It's a mix. The SQL and Python side is something I already do and can show; checking, with
@@ -74,17 +83,17 @@ what AI Engineer roles screen for.
 - **New to me:** designing an evaluation set, execution-based checking, a failure taxonomy,
   and measuring whether a repair loop actually helps.
 
-## Exists today (2026-10-09)
-- `evidence/gold_set.json`: 8 questions with gold SQL and 9 hand-written variants (not model output)
-- `evidence/run_slice.py`: runs the gold set and the execution comparator (standard library, offline)
-- `evidence/run_slice_output.txt`: 9/9 variants judged as hand-labelled; exact-string matching rejected all 3 correct rewrites
-- `evidence/run_slice_output_v0_first_run.txt`: the first run, showing the Q08 gold-answer bug
+## Exists today (2026-10-21)
+- `evidence/gold_set.json`: 8 questions, gold SQL, 9 variants drafted with Claude and checked by me
+- `evidence/run_slice.py` + outputs (current 9/9, and the v0 run showing the Q08 bug)
+- `evidence/claude_runs/2026-10-21/` (prompt, three raw replies, score) and `score_claude_runs.py`
+- `evidence/vanna_check.py` + my own run's output; `evidence/cross_check.py` + output
 - `evidence/data/Chinook_Sqlite.sqlite`: Chinook v1.4.5 (MIT, Luis Rocha)
 
 ## Will exist
 - A gold set of about 50 questions, including ones marked ambiguous
-- The Claude runner with a prompt contract and saved, dated raw outputs
-- An offline replay command and a scorecard in the README
+- A Claude runner that calls the model directly (today's runs were done in Claude Code)
+- A scorecard in the README, built from the replay
 - A failure taxonomy with counts, and three-run variance per question
 - (Stretch) A measured repair loop
-- An independent check of a sample of the gold answers by a second person
+- A second person's check of a sample of the gold answers
