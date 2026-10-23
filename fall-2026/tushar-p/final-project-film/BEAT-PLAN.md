@@ -1,6 +1,6 @@
 # Beat plan — Agent Proving Ground pitch film
 
-Target: about 3:00. Final runtime: 3:22, after adding a short pause between sentences and the resubmission changes. `beat_sheet.json` is the source of truth; this table matches it. One picture and one idea per beat. Minimal on-screen text.
+Target: about 3:00. Final runtime: 3:14, after adding a short pause between sentences and the resubmission changes. `beat_sheet.json` is the source of truth; this table matches it. One picture and one idea per beat. Minimal on-screen text.
 Every mock-up carries a small on-screen label: **"Constructed — not built yet."**
 
 | Beat | Idea | Visual | Narration |
