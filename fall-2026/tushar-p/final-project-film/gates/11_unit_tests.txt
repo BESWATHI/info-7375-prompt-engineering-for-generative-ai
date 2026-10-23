@@ -125,6 +125,6 @@ test_code_math_not_confused_with_explanation (test_review_queue_audit.QueueAudit
 test_inventory_ignores_commands_and_review_prompts (test_review_queue_audit.QueueAuditTests.test_inventory_ignores_commands_and_review_prompts) ... ok
 
 ----------------------------------------------------------------------
-Ran 122 tests in 7.691s
+Ran 122 tests in 7.594s
 
 OK

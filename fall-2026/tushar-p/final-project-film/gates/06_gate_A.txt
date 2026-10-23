@@ -26,7 +26,7 @@
 [OK   ]   [5 distinct / None beats]
 
 [static-check] 1 scene(s): 1 clean · 0 warn · 0 error
-[OK   ]   [8 distinct / None beats]
+[OK   ]   [9 distinct / None beats]
 
 [static-check] 1 scene(s): 1 clean · 0 warn · 0 error
 [OK   ]   [2 distinct / None beats]

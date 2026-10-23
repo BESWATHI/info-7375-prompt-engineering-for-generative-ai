@@ -172,3 +172,67 @@ The rest of this prompt listed the contents of each file in this folder.
 > Then report results and show the diff. Don’t commit.
 
 *Outcome:* the final was re-exported (190.917 s). Gates 1–11 passed, and gate 12 failed for the same toolkit reason (see FRICTIONAL.md, gate 12).
+
+### Prompt 14: Resubmission (Go harness, OmniSQL-Postgres in B10); re-render, final master, gates 1–12
+
+> Resubmission changes for agent-proving-ground. The pitch is being resubmitted. Replace these narrations word for word:
+>
+> B02: When it’s done, it will be a public GitHub repository: a Go harness, ten to twenty synthetic coding tasks with automatic checks, saved traces of every run, an evaluation log, and a failure analysis.
+> B06: It will show four skills from this course: a prompt contract for every task, an agent loop I write myself in Go with the Claude API, verification from deterministic checks, and evaluation I can repeat and compare across runs. It will be built for one laptop, not for production traffic.
+> B07: It will run locally, on kind, which is Kubernetes inside Docker, with one agent and tasks I write myself. It will not be a hosted or multi-user service. Cloud deployment can be added in the future.
+> B09: The real risk is learning Go and Kubernetes at the same time, so the evaluation never gets built. So I’ll build the harness and checks on plain Docker first, then move them onto kind by a fixed date. If I miss it, I’ll ship the Docker version and log why.
+> B10: I picked this project because it mixes skills I have with skills I want. In OmniSQL-Postgres, a public project of mine, I fine-tuned a text-to-SQL model and built the evaluation that measured it. Execution accuracy went from 23 to 69 percent on a held-out test set of 200 questions. Its infrastructure uses Docker, Terraform, and AWS. Go, Kubernetes, sandbox isolation, and trace design are new to me. I want to work on the infrastructure that AI agents run on, and building this is how I’ll learn it.
+>
+> Visual changes:
+>
+> B02: the repo tree stays the same.
+> B09: add a small “Go” label next to the Kubernetes wheel.
+> B10:
+> Have column: “LLM evaluation · Docker · Terraform · AWS”.
+> Under it, show the real URL github.com/tushar-patel28/omnisql-postgres and “23% → 69% execution accuracy (200 held-out)”, with a small label “public repo, checked 2026-10-22”.
+> New column: “Go · Kubernetes · sandbox isolation · trace design”.
+> Make sure the URL is large enough to read on a laptop.
+>
+> Then:
+>
+> Re-validate the sheet. Re-voice only B02, B06, B07, B09, and B10 with python3 sentence_audio.py --only …, update the cues, re-render, check the middle and last frames of those five beats, and confirm no late reveals.
+> Run ./art final youtube/brutalist/agent-proving-ground and gates 1–12. Gate 12 is expected to fail for the same toolkit reason. Stop on anything else.
+> Update fall-2026/tushar-p/final-project-film/:
+> Copy in the new mp4, beat_sheet.json, scenes.py, SHOTLIST.md, and the gate reports, with paths shortened as before.
+> README.md: update the SHA-256 and runtime, change “my earlier projects” to “my public OmniSQL-Postgres project” in the tense line, and change “Python” to “Go” in any project description.
+> SOURCES.md: add the OmniSQL repo and demo links, and the Anthropic Go SDK (github.com/anthropics/anthropic-sdk-go) as the planned SDK.
+> FACTCHECK.md: add two claims, each marked for me to verify. First, the 23% → 69% figure, against the OmniSQL README. Second, that the official Go SDK exists.
+> BUILD-PROMPT.md: add this as a new prompt entry.
+> Show me the diff. Don’t commit.
+
+*Outcome:* the final was re-exported (202.625 s). Kokoro read "AWS" as one word, so `sentence_audio.py` now voices it as "A-W-S"; the narration text and the screen keep "AWS". At a laptop-readable size the URL is about 10 units wide, too wide for one column, so B10's evidence sits in a full-width card under both columns, left-aligned under Have. Gates 1–11 passed, and gate 12 failed for the same toolkit reason (see FRICTIONAL.md, gate 12).
+
+Follow-up the same day: B10's stat was changed to "23% base → 69% fine-tuned execution accuracy (200 held-out)", FACTCHECK.md C4 and its OmniSQL-Postgres wording were updated, and only B10 was re-rendered; the final was re-exported (202.625 s), gates 1–11 passed again, and gate 12 failed for the same toolkit reason.
+
+### Prompt 15: B00 greeting, B01 opening line, B10 without the figure; re-render, final master, gates 1–12
+
+> More resubmission changes for agent-proving-ground. Narration word for word:
+>
+> 1. B00 narration: "Hi, I'm Tushar. Have you ever wondered, when an AI coding agent tells you it's done, whether it really is? Today, the honest answer is often: check it yourself. My final project will do that check for you." Visual: show "Tushar Patel" briefly at the top during the first sentence, then continue as before.
+>
+> 2. B01: replace "I'm Tushar, and this is Agent Proving Ground." with "This is Agent Proving Ground." Keep the rest of B01 unchanged.
+>
+> 3. B10 narration: "I picked this project because it mixes skills I have with skills I want. I've already built LLM evaluation and cloud infrastructure with Docker, Terraform, and AWS, in a public project you can check on GitHub. Go, Kubernetes, sandbox isolation, and trace design are new to me. I want to work on the infrastructure that AI agents run on, and building this is how I'll learn it."
+> B10 visual: keep the two columns (Have: LLM evaluation · Docker · Terraform · AWS / New: Go · Kubernetes · sandbox isolation · trace design). Remove the 23% → 69% stat. Under the Have column, in small but laptop-readable text: "Shown in my public project: OmniSQL-Postgres", the URL github.com/tushar-patel28/omnisql-postgres, and the label "public repo, checked 2026-10-22".
+>
+> 4. Re-validate the sheet. Re-voice B00, B01 and B10 with python3 sentence_audio.py --only (keep the AWS respelling). Update cues, re-render those three beats, check their middle and last frames, and confirm no late reveals.
+>
+> 5. Run ./art final youtube/brutalist/agent-proving-ground and gates 1–12. Gate 12 is expected to fail; stop on anything else.
+>
+> 6. Submission folder:
+> - Copy in the new mp4, beat_sheet.json, scenes.py, SHOTLIST.md and gate reports, with paths shortened.
+> - README.md: update the SHA-256, runtime and gate 10 figures.
+> - FACTCHECK.md: the film no longer shows 23% → 69%, so mark C7 as "brief only, not in film" and change the intro line back to "No numbers from outside sources appear on screen." Copy it to the reel folder too.
+> - SOURCES.md: in the OmniSQL row, remove the stat from the film description and note that the stat is in PROJECT-BRIEF.md only.
+> - BUILD-PROMPT.md: add this as a new entry, Prompt 15.
+>
+> Show me the diff. Don't commit.
+
+*Outcome:* the final was re-exported (194.542 s). At a laptop-readable size the URL (Menlo, about 7 units wide) is wider than the Have column, so the B10 block is left-aligned under Have and runs a little past the centre line; the divider stops above it. Gates 1–11 passed, and gate 12 failed for the same toolkit reason (see FRICTIONAL.md, gate 12).
+
+Follow-up the same day: B00 now opens on "Tushar Patel" alone, centred, during "Hi, I'm Tushar."; the top rail, Constructed label, bubble and "agent" label arrive as "Have you ever wondered" starts, and the label stays to the end of B00. Only B00 was re-rendered; the final was re-exported (194.542 s), gates 1–11 passed again, and gate 12 failed for the same toolkit reason.

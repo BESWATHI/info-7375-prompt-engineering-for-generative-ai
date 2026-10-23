@@ -14,7 +14,8 @@ own sentence. A cue phrase missing from the beat's narration raises, so a
 narration edit cannot silently desync a scene.
 
 Mock-up beats (B00 B02 B05 B08) carry the "Constructed — not built yet." pill
-in the top rail from the first frame to the last. Their contents are
+in the top rail for the whole mock-up: from the first frame to the last, except
+B00, whose opening name card comes before the mock-up. Their contents are
 illustrations of a plan, not output of running code.
 
 Layout law: Gate V samples each beat at 50% and 85% of its span and requires
@@ -202,13 +203,17 @@ def _bubble(w, h, x, y):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-#  B00 — Hook. The agent's "Task complete" beside a failing test run.
+#  B00 — Hook. "Tushar Patel" alone, centred, for the greeting; then the rail
+#  (with the Constructed pill) and the agent's "Task complete" beside a
+#  failing test run.
 # ─────────────────────────────────────────────────────────────────────────────
 class B00_ClaimVsTests(Scene):
 
     def construct(self):
         self.camera.background_color = BG
-        self.add(_rail(constructed=True))
+        rail = _rail(constructed=True)
+
+        name = _label("Tushar Patel", size=48, weight="BOLD").move_to(ORIGIN)
 
         bubble = _bubble(4.6, 2.3, -3.3, 0.25)
         who = _label("agent", size=20, color=SOFT).move_to([-3.3, 1.75, 0])
@@ -227,12 +232,17 @@ class B00_ClaimVsTests(Scene):
         check = _label("the check", size=24, color=SOFT)
         check.next_to(brace, DOWN, buff=0.18)
 
-        self.play(FadeIn(bubble), FadeIn(who), run_time=0.6)
+        # The name is alone on screen for the greeting ("Hi, I'm Tushar."). The
+        # mock-up, Constructed pill included, arrives as the question starts and
+        # stays to the last frame.
+        self.play(FadeIn(name), run_time=0.4)
+        _until(self, "B00", "Have you ever wondered")
+        self.play(FadeOut(name), FadeIn(rail), FadeIn(bubble), FadeIn(who), run_time=0.6)
         _until(self, "B00", "tells you it's done")
         self.play(Write(said), run_time=0.6)
         self.play(Create(tick), run_time=0.3)
 
-        _until(self, "B00", "Is it?")
+        _until(self, "B00", "whether it really is")
         self.play(FadeIn(run), FadeIn(src), run_time=0.4)
         self.play(FadeIn(fail), Create(x), run_time=0.5)
 
@@ -334,7 +344,7 @@ class B02_RepoTree(Scene):
         self.play(FadeIn(card), Write(root), run_time=0.7)
         self.play(Create(trunk), run_time=0.4)
 
-        for cue, row in zip(("Python harness", "ten to twenty", "saved traces",
+        for cue, row in zip(("Go harness", "ten to twenty", "saved traces",
                              "evaluation log", "failure analysis"), rows):
             _until(self, "B02", cue)
             self.play(Create(row[0]), FadeIn(row[1], shift=RIGHT * 0.2), run_time=0.45)
@@ -641,7 +651,7 @@ class B07_InAndOut(Scene):
         _until(self, "B07", "multi-user service")
         self.play(Create(strike), run_time=0.5)
 
-        _until(self, "B07", "Go and cloud deployment")
+        _until(self, "B07", "Cloud deployment")
         self.play(FadeIn(later), run_time=0.4)
         _hold(self, "B07")
 
@@ -704,8 +714,8 @@ class B08_FirstRun(Scene):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-#  B09 — Risk. The Kubernetes wheel looms over evals; Docker first -> kind,
-#  with a cutoff date and a fallback.
+#  B09 — Risk. The Kubernetes wheel, with a small Go chip beside it, looms
+#  over evals; Docker first -> kind, with a cutoff date and a fallback.
 # ─────────────────────────────────────────────────────────────────────────────
 class B09_DockerFirst(Scene):
 
@@ -726,6 +736,9 @@ class B09_DockerFirst(Scene):
                   color=SOFT) for t in angles],
         )
         k8s = _label("Kubernetes setup", size=22, color=SOFT).move_to([-3.5, -0.95, 0])
+        # Upper right of the wheel, clear of its rim dots and above the
+        # Docker-first row, so it reads as a second risk, not a flow step.
+        go = _chip("Go", size=24, color=SOFT).move_to([-1.4, 2.05, 0])
         evals = Rectangle(width=1.7, height=0.7, color=INK, stroke_width=2.5).move_to([-3.5, -2.05, 0])
         evals_gone = DashedVMobject(Rectangle(width=1.7, height=0.7, color=SOFT, stroke_width=2.5),
                                     num_dashes=20).move_to([-3.5, -2.05, 0])
@@ -755,8 +768,10 @@ class B09_DockerFirst(Scene):
 
         self.play(FadeIn(wheel), FadeIn(k8s), run_time=0.6)
         self.play(Create(evals), FadeIn(evals_t), run_time=0.4)
-        _until(self, "B09", "eating my time")
-        self.play(Rotate(wheel, angle=-PI / 2, about_point=w), run_time=1.3)
+        _until(self, "B09", "Go and Kubernetes")
+        self.play(FadeIn(go, shift=LEFT * 0.15), run_time=0.4)
+        _until(self, "B09", "at the same time")
+        self.play(Rotate(wheel, angle=-PI / 2, about_point=w), run_time=1.1)
         _until(self, "B09", "evaluation never gets built")
         self.play(ReplacementTransform(evals, evals_gone), evals_t.animate.set_color(SOFT),
                   run_time=0.6)
@@ -776,7 +791,9 @@ class B09_DockerFirst(Scene):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-#  B10 — Why this project. Have | New (layout after K12Fig05DiffVsTrack).
+#  B10 — Why this project. Have | New (layout after K12Fig05DiffVsTrack),
+#  with the public project named under Have. The divider stops above that
+#  block: the URL at a laptop-readable size (~7 units) runs past centre.
 # ─────────────────────────────────────────────────────────────────────────────
 class B10_HaveAndNew(Scene):
 
@@ -784,27 +801,41 @@ class B10_HaveAndNew(Scene):
         self.camera.background_color = BG
         self.add(_rail())
 
-        have_h = _label("Have", size=38, weight="BOLD").move_to([-3.1, 2.15, 0])
-        new_h = _label("New", size=38, weight="BOLD").move_to([3.1, 2.15, 0])
-        divider = Line([0.0, 2.55, 0], [0.0, -2.7, 0], color=SOFT, stroke_width=1.5)
+        have_h = _label("Have", size=36, weight="BOLD").move_to([-3.1, 2.4, 0])
+        new_h = _label("New", size=36, weight="BOLD").move_to([3.1, 2.4, 0])
+        new_h.align_to(have_h, UP)
+        divider = Line([0.0, 2.7, 0], [0.0, -0.6, 0], color=SOFT, stroke_width=1.5)
 
-        ys = (1.1, 0.2, -0.7, -1.6)
-        have = [_label(t, size=32).move_to([-3.1, y, 0]) for t, y in
-                zip(("agent workflows", "LLM evals", "Docker", "Terraform"), ys)]
-        new = [_label(t, size=32).move_to([3.1, y, 0]) for t, y in
-               zip(("Kubernetes", "sandbox isolation", "trace design"), ys)]
-        frame = RoundedRectangle(corner_radius=0.15, width=5.0, height=2.95, color=INK,
-                                 stroke_width=2.5).move_to([3.1, 0.2, 0])
-        asks = _label("what I want to build", size=24, color=SOFT).move_to([3.1, -1.75, 0])
+        ys = (1.65, 1.15, 0.65, 0.15)
+        have = [_label(t, size=30).move_to([-3.1, y, 0]) for t, y in
+                zip(("LLM evaluation", "Docker", "Terraform", "AWS"), ys)]
+        new = [_label(t, size=30).move_to([3.1, y, 0]) for t, y in
+               zip(("Go", "Kubernetes", "sandbox isolation", "trace design"), ys)]
+        frame = RoundedRectangle(corner_radius=0.15, width=4.6, height=2.2, color=INK,
+                                 stroke_width=2.5).move_to([3.1, 0.9, 0])
+        asks = _label("what I want to build", size=22, color=SOFT).move_to([3.1, -0.5, 0])
+
+        # The public project, left-aligned under the Have column.
+        shown = _left(_label("Shown in my public project: OmniSQL-Postgres", size=24), -5.9, -1.25)
+        url = _left(_mono("github.com/tushar-patel28/omnisql-postgres", size=20), -5.9, -1.8)
+        seen = _left(_label("public repo, checked 2026-10-22", size=18, color=SOFT), -5.9, -2.3)
 
         self.play(FadeIn(have_h), FadeIn(new_h), Create(divider), run_time=0.6)
-        for cue, item in zip(("agent workflows", "LLM evaluation harness", "Docker and",
-                              "Terraform"), have):
+
+        _until(self, "B10", "LLM evaluation")
+        self.play(FadeIn(have[0], shift=RIGHT * 0.2), run_time=0.4)
+        # "AWS," runs straight into "in a public project": 0.3 s fades keep it on cue.
+        for cue, item in zip(("Docker,", "Terraform,", "AWS,"), have[1:]):
             _until(self, "B10", cue)
-            self.play(FadeIn(item, shift=RIGHT * 0.2), run_time=0.4)
-        for cue, item in zip(("Kubernetes,", "sandbox isolation", "trace design"), new):
+            self.play(FadeIn(item, shift=RIGHT * 0.2), run_time=0.3)
+        _until(self, "B10", "in a public project")
+        self.play(FadeIn(shown, shift=RIGHT * 0.2), FadeIn(url, shift=RIGHT * 0.2), run_time=0.5)
+        _until(self, "B10", "check on GitHub")
+        self.play(FadeIn(seen), run_time=0.4)
+        # "Go," and "Kubernetes," are spoken 0.25 s apart: 0.3 s fades keep both on cue.
+        for cue, item in zip(("Go,", "Kubernetes,", "sandbox isolation", "trace design"), new):
             _until(self, "B10", cue)
-            self.play(FadeIn(item, shift=LEFT * 0.2), run_time=0.4)
+            self.play(FadeIn(item, shift=LEFT * 0.2), run_time=0.3)
 
         _until(self, "B10", "I want to work on the infrastructure")
         self.play(Create(frame), FadeIn(asks), run_time=0.6)

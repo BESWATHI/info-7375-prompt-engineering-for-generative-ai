@@ -8,7 +8,7 @@
     "voice_kokoro": "am_onyx",
     "aspect": "16:9",
     "clock": "narration",
-    "note": "Narration copied verbatim from BEAT-PLAN.md, except B04 and B10 (revised by the author 2026-10-13) and B12 (added by the author 2026-10-13); B06 and B07 last sentences revised by the author 2026-10-13; B06 last and B07 first sentences moved to future tense by the author 2026-10-14. Honesty checks before rendering: B04 E2B/Langfuse one-liners verified by the author; B00/B02/B05/B08 mock-ups show the Constructed label; no Claude responses shown (any added must be real and dated); every future feature uses 'will'.",
+    "note": "Narration copied verbatim from BEAT-PLAN.md, except B04 and B10 (revised by the author 2026-10-13) and B12 (added by the author 2026-10-13); B06 and B07 last sentences revised by the author 2026-10-13; B06 last and B07 first sentences moved to future tense by the author 2026-10-14. Honesty checks before rendering: B04 E2B/Langfuse one-liners verified by the author; B00/B02/B05/B08 mock-ups show the Constructed label; no Claude responses shown (any added must be real and dated); every future feature uses 'will'. Resubmission 2026-10-22: B02, B06, B07, B09 and B10 replaced word for word by the author (Go harness; OmniSQL-Postgres in B10). Second revision 2026-10-22: B00 and B10 replaced and B01's first sentence changed word for word by the author; B10 no longer shows the 23% → 69% figure.",
     "mockups": [
       "B00",
       "B02",
@@ -16,7 +16,7 @@
       "B08"
     ],
     "build": {
-      "at": "2026-10-14T00:22:50",
+      "at": "2026-10-22T19:55:29",
       "cut": "master",
       "filled": 13,
       "of": 13,
@@ -27,7 +27,7 @@
   "beats": [
     {
       "beat_id": "B00",
-      "narration_text": "An AI coding agent tells you it's done. Is it? Today, the honest answer is often: check it yourself. My final project will do that check for you.",
+      "narration_text": "Hi, I'm Tushar. Have you ever wondered, when an AI coding agent tells you it's done, whether it really is? Today, the honest answer is often: check it yourself. My final project will do that check for you.",
       "engine": "kokoro",
       "voice": "am_onyx",
       "estimated_duration_s": 10.7,
@@ -40,47 +40,47 @@
         "engine": "manim",
         "manim": "B00_ClaimVsTests",
         "production_viz": {
-          "mechanic": "Left: a chat bubble reading \"Task complete ✓\". Right: a red ✗ on \"tests failing\". Label: Constructed",
+          "mechanic": "During the first sentence only \"Tushar Patel\", centred (no rail, no Constructed label). Then the rail, bubble and Constructed label arrive and stay to the end. Left: a chat bubble reading \"Task complete ✓\". Right: a red ✗ on \"tests failing\". Label: Constructed",
           "label": "Constructed — not built yet.",
           "note": "mock-up: must show \"Constructed — not built yet.\" on screen"
         }
       },
-      "actual_duration_s": 10.37,
+      "actual_duration_s": 13.18,
       "audio_file": "mp3/beat-B00.mp3",
-      "render_duration_s": 10.375,
+      "render_duration_s": 13.208333333333334,
       "build": {
         "status": "MANIM",
         "src": "manim/B00.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {
-          "text": "An AI coding agent tells you it's done.",
-          "start_s": 0.055,
-          "end_s": 2.62
+          "text": "Hi, I'm Tushar.",
+          "start_s": 0.054,
+          "end_s": 1.379
         },
         {
-          "text": "Is it?",
-          "start_s": 3.05,
-          "end_s": 3.635
+          "text": "Have you ever wondered, when an AI coding agent tells you it's done, whether it really is?",
+          "start_s": 1.809,
+          "end_s": 6.439
         },
         {
           "text": "Today, the honest answer is often: check it yourself.",
-          "start_s": 4.055,
-          "end_s": 6.909
+          "start_s": 6.869,
+          "end_s": 9.723
         },
         {
           "text": "My final project will do that check for you.",
-          "start_s": 7.339,
-          "end_s": 9.79
+          "start_s": 10.153,
+          "end_s": 12.604
         }
       ],
       "sentence_pause_s": 0.35
     },
     {
       "beat_id": "B01",
-      "narration_text": "I'm Tushar, and this is Agent Proving Ground. It will run an AI coding agent on small tasks inside an isolated Kubernetes sandbox, record every step it takes, and check whether it actually did the task.",
+      "narration_text": "This is Agent Proving Ground. It will run an AI coding agent on small tasks inside an isolated Kubernetes sandbox, record every step it takes, and check whether it actually did the task.",
       "engine": "kokoro",
       "voice": "am_onyx",
       "estimated_duration_s": 13.8,
@@ -96,32 +96,32 @@
           "mechanic": "Three boxes in a row: Sandbox → Trace → Check"
         }
       },
-      "actual_duration_s": 12.8,
+      "actual_duration_s": 12.01,
       "audio_file": "mp3/beat-B01.mp3",
-      "render_duration_s": 12.833333333333334,
+      "render_duration_s": 12.041666666666666,
       "build": {
         "status": "MANIM",
         "src": "manim/B01.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {
-          "text": "I'm Tushar, and this is Agent Proving Ground.",
-          "start_s": 0.055,
-          "end_s": 2.737
+          "text": "This is Agent Proving Ground.",
+          "start_s": 0.076,
+          "end_s": 1.947
         },
         {
           "text": "It will run an AI coding agent on small tasks inside an isolated Kubernetes sandbox, record every step it takes, and check whether it actually did the task.",
-          "start_s": 3.167,
-          "end_s": 12.199
+          "start_s": 2.377,
+          "end_s": 11.408
         }
       ],
       "sentence_pause_s": 0.35
     },
     {
       "beat_id": "B02",
-      "narration_text": "When it's done, it will be a public GitHub repository: a Python harness, ten to twenty synthetic coding tasks with automatic checks, saved traces of every run, an evaluation log, and a failure analysis.",
+      "narration_text": "When it’s done, it will be a public GitHub repository: a Go harness, ten to twenty synthetic coding tasks with automatic checks, saved traces of every run, an evaluation log, and a failure analysis.",
       "engine": "kokoro",
       "voice": "am_onyx",
       "estimated_duration_s": 13.0,
@@ -139,20 +139,20 @@
           "note": "mock-up: must show \"Constructed — not built yet.\" on screen"
         }
       },
-      "actual_duration_s": 11.97,
+      "actual_duration_s": 11.78,
       "audio_file": "mp3/beat-B02.mp3",
-      "render_duration_s": 12.0,
+      "render_duration_s": 11.791666666666666,
       "build": {
         "status": "MANIM",
         "src": "manim/B02.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {
-          "text": "When it's done, it will be a public GitHub repository: a Python harness, ten to twenty synthetic coding tasks with automatic checks, saved traces of every run, an evaluation log, and a failure analysis.",
-          "start_s": 0.048,
-          "end_s": 11.37
+          "text": "When it’s done, it will be a public GitHub repository: a Go harness, ten to twenty synthetic coding tasks with automatic checks, saved traces of every run, an evaluation log, and a failure analysis.",
+          "start_s": 0.047,
+          "end_s": 11.17
         }
       ],
       "sentence_pause_s": 0.35
@@ -182,7 +182,7 @@
         "status": "MANIM",
         "src": "manim/B03.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {
@@ -238,7 +238,7 @@
         "status": "MANIM",
         "src": "manim/B04.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {
@@ -296,7 +296,7 @@
         "status": "MANIM",
         "src": "manim/B05.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {
@@ -319,7 +319,7 @@
     },
     {
       "beat_id": "B06",
-      "narration_text": "It will show four skills from this course: a prompt contract for every task, an agent loop I write myself with the Claude API, verification from deterministic checks, and evaluation I can repeat and compare across runs. It will be built for one laptop, not for production traffic.",
+      "narration_text": "It will show four skills from this course: a prompt contract for every task, an agent loop I write myself in Go with the Claude API, verification from deterministic checks, and evaluation I can repeat and compare across runs. It will be built for one laptop, not for production traffic.",
       "engine": "kokoro",
       "voice": "am_onyx",
       "estimated_duration_s": 18.0,
@@ -335,32 +335,32 @@
           "mechanic": "The loop from B01 with four tags around it: prompt contract · agent loop · verification · evaluation"
         }
       },
-      "actual_duration_s": 16.65,
+      "actual_duration_s": 17.05,
       "audio_file": "mp3/beat-B06.mp3",
-      "render_duration_s": 16.666666666666668,
+      "render_duration_s": 17.083333333333332,
       "build": {
         "status": "MANIM",
         "src": "manim/B06.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {
-          "text": "It will show four skills from this course: a prompt contract for every task, an agent loop I write myself with the Claude API, verification from deterministic checks, and evaluation I can repeat and compare across runs.",
+          "text": "It will show four skills from this course: a prompt contract for every task, an agent loop I write myself in Go with the Claude API, verification from deterministic checks, and evaluation I can repeat and compare across runs.",
           "start_s": 0.043,
-          "end_s": 12.388
+          "end_s": 12.788
         },
         {
           "text": "It will be built for one laptop, not for production traffic.",
-          "start_s": 12.818,
-          "end_s": 16.06
+          "start_s": 13.218,
+          "end_s": 16.46
         }
       ],
       "sentence_pause_s": 0.35
     },
     {
       "beat_id": "B07",
-      "narration_text": "It will run locally, on kind, which is Kubernetes inside Docker, with one agent and tasks I write myself. It will not be a hosted or multi-user service. Go and cloud deployment can be added in the future.",
+      "narration_text": "It will run locally, on kind, which is Kubernetes inside Docker, with one agent and tasks I write myself. It will not be a hosted or multi-user service. Cloud deployment can be added in the future.",
       "engine": "kokoro",
       "voice": "am_onyx",
       "estimated_duration_s": 14.2,
@@ -376,14 +376,14 @@
           "mechanic": "Two boxes. IN: laptop, kind, one agent, synthetic tasks. OUT: a cloud with users, crossed out"
         }
       },
-      "actual_duration_s": 13.23,
+      "actual_duration_s": 12.83,
       "audio_file": "mp3/beat-B07.mp3",
-      "render_duration_s": 13.25,
+      "render_duration_s": 12.833333333333334,
       "build": {
         "status": "MANIM",
         "src": "manim/B07.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {
@@ -397,9 +397,9 @@
           "end_s": 9.396
         },
         {
-          "text": "Go and cloud deployment can be added in the future.",
+          "text": "Cloud deployment can be added in the future.",
           "start_s": 9.826,
-          "end_s": 12.597
+          "end_s": 12.215
         }
       ],
       "sentence_pause_s": 0.35
@@ -431,7 +431,7 @@
         "status": "MANIM",
         "src": "manim/B08.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {
@@ -449,7 +449,7 @@
     },
     {
       "beat_id": "B09",
-      "narration_text": "The real risk is Kubernetes setup eating my time, so the evaluation never gets built. So I'll build the harness and checks on plain Docker first, then move them onto kind by a fixed date. If I miss it, I'll ship the Docker version and log why.",
+      "narration_text": "The real risk is learning Go and Kubernetes at the same time, so the evaluation never gets built. So I’ll build the harness and checks on plain Docker first, then move them onto kind by a fixed date. If I miss it, I’ll ship the Docker version and log why.",
       "engine": "kokoro",
       "voice": "am_onyx",
       "estimated_duration_s": 18.0,
@@ -462,40 +462,40 @@
         "engine": "manim",
         "manim": "B09_DockerFirst",
         "production_viz": {
-          "mechanic": "A large Kubernetes wheel looming over a small \"evals\" box. Then an arrow: Docker first → kind, with a calendar cutoff mark"
+          "mechanic": "A large Kubernetes wheel with a small \"Go\" label beside it, looming over a small \"evals\" box. Then an arrow: Docker first → kind, with a calendar cutoff mark"
         }
       },
-      "actual_duration_s": 14.86,
+      "actual_duration_s": 15.31,
       "audio_file": "mp3/beat-B09.mp3",
-      "render_duration_s": 14.875,
+      "render_duration_s": 15.333333333333334,
       "build": {
         "status": "MANIM",
         "src": "manim/B09.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {
-          "text": "The real risk is Kubernetes setup eating my time, so the evaluation never gets built.",
+          "text": "The real risk is learning Go and Kubernetes at the same time, so the evaluation never gets built.",
           "start_s": 0.043,
-          "end_s": 5.159
+          "end_s": 5.619
         },
         {
-          "text": "So I'll build the harness and checks on plain Docker first, then move them onto kind by a fixed date.",
-          "start_s": 5.572,
-          "end_s": 10.737
+          "text": "So I’ll build the harness and checks on plain Docker first, then move them onto kind by a fixed date.",
+          "start_s": 6.031,
+          "end_s": 11.196
         },
         {
-          "text": "If I miss it, I'll ship the Docker version and log why.",
-          "start_s": 11.167,
-          "end_s": 14.276
+          "text": "If I miss it, I’ll ship the Docker version and log why.",
+          "start_s": 11.626,
+          "end_s": 14.736
         }
       ],
       "sentence_pause_s": 0.35
     },
     {
       "beat_id": "B10",
-      "narration_text": "I picked this project because it mixes skills I have with skills I want. In earlier projects I built agent workflows, an LLM evaluation harness, and cloud infrastructure with Docker and Terraform. Kubernetes, sandbox isolation, and trace design are new to me. I want to work on the infrastructure that AI agents run on, and building this is how I’ll learn it.",
+      "narration_text": "I picked this project because it mixes skills I have with skills I want. I've already built LLM evaluation and cloud infrastructure with Docker, Terraform, and AWS, in a public project you can check on GitHub. Go, Kubernetes, sandbox isolation, and trace design are new to me. I want to work on the infrastructure that AI agents run on, and building this is how I'll learn it.",
       "engine": "kokoro",
       "voice": "am_onyx",
       "estimated_duration_s": 20.0,
@@ -508,17 +508,17 @@
         "engine": "manim",
         "manim": "B10_HaveAndNew",
         "production_viz": {
-          "mechanic": "Two columns. Have: agent workflows · LLM evals · Docker · Terraform. New: Kubernetes · sandbox isolation · trace design"
+          "mechanic": "Two columns. Have: LLM evaluation · Docker · Terraform · AWS; under it, small: \"Shown in my public project: OmniSQL-Postgres\", the URL github.com/tushar-patel28/omnisql-postgres and the label \"public repo, checked 2026-10-22\". New: Go · Kubernetes · sandbox isolation · trace design"
         }
       },
-      "actual_duration_s": 21.96,
+      "actual_duration_s": 23.31,
       "audio_file": "mp3/beat-B10.mp3",
-      "render_duration_s": 22.0,
+      "render_duration_s": 23.333333333333332,
       "build": {
         "status": "MANIM",
         "src": "manim/B10.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {
@@ -527,19 +527,19 @@
           "end_s": 3.739
         },
         {
-          "text": "In earlier projects I built agent workflows, an LLM evaluation harness, and cloud infrastructure with Docker and Terraform.",
+          "text": "I've already built LLM evaluation and cloud infrastructure with Docker, Terraform, and AWS, in a public project you can check on GitHub.",
           "start_s": 4.169,
-          "end_s": 11.458
+          "end_s": 12.498
         },
         {
-          "text": "Kubernetes, sandbox isolation, and trace design are new to me.",
-          "start_s": 11.883,
-          "end_s": 15.696
+          "text": "Go, Kubernetes, sandbox isolation, and trace design are new to me.",
+          "start_s": 12.928,
+          "end_s": 17.049
         },
         {
-          "text": "I want to work on the infrastructure that AI agents run on, and building this is how I’ll learn it.",
-          "start_s": 16.126,
-          "end_s": 21.259
+          "text": "I want to work on the infrastructure that AI agents run on, and building this is how I'll learn it.",
+          "start_s": 17.479,
+          "end_s": 22.613
         }
       ],
       "sentence_pause_s": 0.35
@@ -569,7 +569,7 @@
         "status": "MANIM",
         "src": "manim/B11.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {
@@ -620,7 +620,7 @@
         "status": "MANIM",
         "src": "manim/B12.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T00:22:50"
+        "at": "2026-10-22T19:55:29"
       },
       "sentences": [
         {

@@ -30,6 +30,13 @@ These on-screen details are made up for illustration. They appear only on beats 
 
 The other Constructed beats (B00, B02) are mock-ups of the plan: the agent's "Task complete" claim beside failing tests, and the planned repository tree.
 
+## Projects and SDKs named in the film
+
+| Item | Link | Beat | Note |
+|---|---|---|---|
+| OmniSQL-Postgres (my public project) | Repo: https://github.com/tushar-patel28/omnisql-postgres · Demo: https://omnisql-postgres.vercel.app | B10 | B10 shows the project name, its URL and "public repo, checked 2026-10-22". The 23% → 69% execution-accuracy figure is in PROJECT-BRIEF.md only, not in the film (FACTCHECK.md C7). Its README says the demo replays pre-recorded outputs rather than running the model live. |
+| Anthropic Go SDK | https://github.com/anthropics/anthropic-sdk-go | B02, B06 | The planned SDK for the Go agent loop that calls the Claude API (FACTCHECK.md C8). Nothing is built with it yet. |
+
 ## Alternatives looked at
 
 All on 2026-10-13:

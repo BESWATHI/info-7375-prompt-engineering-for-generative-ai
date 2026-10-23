@@ -44,6 +44,16 @@ PAUSE_S = 0.35
 MARGIN_S = 0.04
 TAIL_PAD_S = {"B12": 1.5}
 THRESH = 10 ** (-45 / 20)
+# Voice-only respellings: what Kokoro is given, never narration_text or the
+# screen. Kokoro reads "AWS" as one word ("oz" in a whisper transcript);
+# "A-W-S" transcribes back as "AWS" (checked 2026-10-22).
+SAY = {r"\bAWS\b": "A-W-S"}
+
+
+def spoken(sentence):
+    for pat, say in SAY.items():
+        sentence = re.sub(pat, say, sentence)
+    return kok.normalize_for_tts(sentence)
 
 
 def sentences_of(text):
@@ -72,7 +82,7 @@ def voice_beat(k, bid, text, voice, out_mp3):
     parts = sentences_of(text)
     segs, sr = [], None
     for i, s in enumerate(parts):
-        x, sr = k.create(kok.normalize_for_tts(s), voice=voice, speed=1.0, lang=lang)
+        x, sr = k.create(spoken(s), voice=voice, speed=1.0, lang=lang)
         x = np.asarray(x, dtype=np.float32)
         loud = np.where(np.abs(x) > THRESH)[0]
         m = int(MARGIN_S * sr)

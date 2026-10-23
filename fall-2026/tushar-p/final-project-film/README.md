@@ -4,13 +4,13 @@
 **Course:** INFO7375 Prompt Engineering, Final Project pitch film
 **Working title:** Agent Proving Ground
 **Target role:** Early-career Software Engineer, AI agent infrastructure / platform
-**Runtime:** 3:10 (190.917 s, 3840×2160, 24 fps)
+**Runtime:** 3:14 (194.542 s, 3840×2160, 24 fps)
 
 ## What the film is
 
-A 13-beat pitch for a project that does not exist yet. Agent Proving Ground will run an AI coding agent on small tasks inside an isolated Kubernetes sandbox, record every step it takes, and check whether it actually did the task. Every sentence about Agent Proving Ground’s features is in future tense, or sits inside a sentence framed with ‘will’ or ‘you’ll’ (B04, B08). The only things described as existing are this plan and my earlier projects (B10, B11). B08’s opening line describes the plan’s first step, not something that has run.
+A 13-beat pitch for a project that does not exist yet. Agent Proving Ground will run an AI coding agent on small tasks inside an isolated Kubernetes sandbox, record every step it takes, and check whether it actually did the task. Every sentence about Agent Proving Ground’s features is in future tense, or sits inside a sentence framed with ‘will’ or ‘you’ll’ (B04, B08). The only things described as existing are this plan and my public OmniSQL-Postgres project (B10, B11). B08’s opening line describes the plan’s first step, not something that has run.
 
-- **Mock-ups are labelled.** B00, B02, B05 and B08 show "Constructed — not built yet." in the top rail for the whole beat. Their contents illustrate the plan; they are not output from running code (see SOURCES.md, "Illustrative content").
+- **Mock-ups are labelled.** B00, B02, B05 and B08 show "Constructed — not built yet." in the top rail for the whole mock-up. Their contents illustrate the plan; they are not output from running code (see SOURCES.md, "Illustrative content").
 - **No Claude responses are shown**, and there is no product, brand or channel styling.
 
 ## Folder contents
@@ -22,7 +22,7 @@ A 13-beat pitch for a project that does not exist yet. Agent Proving Ground will
 | `BEAT-PLAN.md` | My human-readable beat plan (narration and visual per beat), which beat_sheet.json was built from |
 | `beat_sheet.json` | Narration, visual plan, measured durations and sentence start times (the source of truth for the build) |
 | `scenes.py` | Manim scenes, one class per beat (B00–B12) |
-| `sentence_audio.py` | Voices each beat one sentence at a time with Kokoro `am_onyx` and a 0.35 s pause between sentences |
+| `sentence_audio.py` | Voices each beat one sentence at a time with Kokoro `am_onyx` and a 0.35 s pause between sentences; voices "AWS" as "A-W-S" so Kokoro doesn't read it as one word |
 | `BUILD-PROMPT.md` | The prompts and commands that built it, in order |
 | `SOURCES.md` | Tools and licences, what I made, what Claude contributed, illustrative content, alternatives looked at |
 | `FRICTIONAL.md` | My dated log of what broke, what I decided, and why |
@@ -60,7 +60,7 @@ A 13-beat pitch for a project that does not exist yet. Agent Proving Ground will
 
    Without `--out` or `$ART_OUT`, the master is written to the toolkit's `renders/` folder.
 
-The submitted master's SHA-256 is `5baeba4c27efb153e0955e4af291aa1efeec0ec5152ab277232e9b1c77b92ac5`.
+The submitted master's SHA-256 is `3c0c67e121088abc2c24b4b9e36be515088e34e6ee4cce59ab9170cc290e2bf0`.
 
 ## Quality gates
 
@@ -84,9 +84,9 @@ Every gate in the toolkit was run against this reel and its final master, in ord
 - **Gate 6 warning:** the B05 warning comes from the gate's simulated Manim, which doesn't place the step chips and so sees an arrow outside the frame. Gate B, which checks the real layout, reports it clean.
 - **Gate 10:** the toolkit has no gate called "render integrity", so this check was done manually (`10_render_integrity.txt`). It confirms:
   - one H.264 3840×2160 24 fps video stream and one AAC audio stream
-  - the duration matches the timeline and 4,582 frames decode
+  - the duration matches the timeline and 4,669 frames decode
   - a full error-checked decode is clean
-  - the audio averages −25.8 dB and peaks at −4.5 dB
+  - the audio averages −25.9 dB and peaks at −4.5 dB
   - the SHA-256 matches the export receipt, and all 26 input files are unchanged since export
 - **Gate 12:** the toolkit's own smoke-test sample (`examples/_smoke`) has the slug `"_smoke"`, which the toolkit's safety check rejects because a slug must start with a letter or digit. The smoke script hardcodes that sample's path, so it couldn't be run against a corrected copy without editing the toolkit. I did not edit the toolkit (`12_smoke_scratch.txt`).
 
