@@ -1,6 +1,6 @@
 # INFO 7375 - Midterm Prep: Cheatsheet and Probable Questions
 
-**Prompt Engineering for Generative AI · Prof. Nik Bear Brown · Northeastern University · Fall 2026**
+**Prompt Engineering & Agentic AI · Prof. Nik Bear Brown · Northeastern University · Fall 2026**
 
 > This is a living study guide. Every section has a short cheatsheet, practice questions in the exam's format, and an answer key you can expand after you try.
 > Students are encouraged to contribute questions (see [Contributing](#contributing)).
