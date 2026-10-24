@@ -49,3 +49,19 @@ Before building, I recorded a snapshot of every toolkit file's git status and ti
 ## 2026-10-14 — Pauses: considered, not done
 I wanted a 1-second pause after every sentence. There are 64 sentences, so that would add about 64 s and push the film to about 4:21, over the 4-minute limit. A 0.5-second pause (about 3:49) would fit, but it means regenerating all the audio and re-rendering every beat, roughly 30–45 minutes, and there wasn't enough time before the deadline. I submitted the film as it is.
 - **Toolkit check at the end:** git status matches the pre-build snapshot exactly. The only file whose timestamp changed was `consumers.json`; its content was restored and its timestamp reset. No other project folder was edited. A copy of the beat sheet was added at `beat-sheets/sponsorsql/`, as a new file only.
+
+## 2026-10-24 — Revision: latest data, credits, ChatGPT test
+- **Data switched to the latest release.** The newest LCA file on the DOL page is FY2026 Q3 (determinations October 1, 2025 to June 30, 2026); Q4 isn't published yet. I downloaded `LCA_Disclosure_Data_FY2026_Q3.xlsx` (251,850,891 bytes, SHA-256 `f8ca8448…bd28b3`). It's kept out of the repository because it's over GitHub's 100 MB limit.
+- **Checked the real columns.** Read the file's header row (98 columns) with Python's standard library. EMPLOYER_NAME, JOB_TITLE, WORKSITE_CITY, WAGE_RATE_OF_PAY_FROM and TRADE_NAME_DBA are all there, so B02 and B08 now cite the FY2026 Q3 file instead of the FY2025 layout.
+- **Found personal contact columns.** The file includes employer contacts, attorneys and preparers, with names and emails. The scope now says the load step will drop them, and B07 has a new card, "contact columns dropped".
+- **Q3 can still change.** The DOL says some Q3 records may be revised, so the answer key will be tied to this exact file by its checksum.
+- **Credits corrected.** B00 now says "The script was written with Claude, and reviewed by me." The B12 narration and on-screen credit say the same.
+- **Ran one question through ChatGPT** (GPT-6, high mode), with the FY2026 Q3 record layout attached: certified H-1B Data Analyst cases with a Boston worksite.
+  - First reply: a DuckDB query and 15 assumptions, including that only the first worksite on each filing is checked. It hadn't run the query.
+  - Follow-up, asking it to run the query: it reported 40. That's its own query under the same assumptions, so the number is unchecked, and it is not my answer key.
+  - Both replies are saved word for word in `evals/chatgpt-test-2026-10-24.md`.
+  - B04 is rebuilt around this test, and Vanna.ai is marked "not tested yet".
+- **B10 updated.** It now lists three things that exist (brief, data file, ChatGPT test) and says nothing is loaded or built yet.
+- **Re-render.** Regenerated audio for B00, B04, B07, B10 and B12, and re-rendered B00, B02, B04, B06, B07, B10 and B12. Runtime went from 197.3 s to 210.8 s (3:31), still under 4 minutes. Every gate passed, with GATE V at 0 BLOCKER and 0 MAJOR.
+- **Found by looking at frames, not by any gate:** in B04, "its own run · unchecked" overlapped the page edge, and in B10 the "nothing loaded" caption ran into the divider. Fixed both and re-checked.
+- **Toolkit untouched.** As before, the renderer added rows about this film to the shared `consumers.json`. I removed them and reset the timestamp, and the toolkit's file list and git status match the pre-render snapshot exactly.

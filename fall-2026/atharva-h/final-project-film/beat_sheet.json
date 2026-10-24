@@ -8,12 +8,12 @@
     "brand": "claude",
     "engine": "kokoro",
     "voice_kokoro": "am_onyx",
-    "persona": "Atharva (author, first person; synthetic Kokoro voice, disclosed in B00 and B12)",
+    "persona": "Atharva (first person; script written with Claude and reviewed by the author; synthetic Kokoro voice, disclosed in B00 and B12)",
     "palette": "claude",
     "style_preset": "claude",
     "ground": "#FAF9F5",
     "greeting": "Atharva",
-    "note": "INFO 7375 Final Project Pitch Film. A pitch, not a build: nothing in SponsorSQL exists yet, so every project claim is future tense. The only things that exist are the project brief and the chosen data source (the DOL OFLC Performance Data page, opened 2026-10-13; FY2025 LCA record layout read 2026-10-14). No Claude response is shown anywhere; the cold-open composer output is labelled CONSTRUCTED on screen. Mock-ups are labelled CONSTRUCTED. Narrated in first person as the author; no instructor name, persona, handle or credit line. Built with the existing ai-explainer chassis (this checkout predates the show-tell skill); body beats follow show-tell spirit: one drawing per beat, labels only. Outro is a reel-local Manim scene because ClaudeTitleOutro hardcodes the instructor's handle.",
+    "note": "INFO 7375 Final Project Pitch Film. A pitch, not a build: nothing in SponsorSQL exists yet, so every project claim is future tense. REV 2 (2026-10-24): data switched to the latest release, FY2026 Q3 (determinations 2025-10-01 to 2026-06-30), downloaded and checksummed; credits corrected to 'written with Claude, reviewed by me'. No Claude response is shown anywhere; the cold-open composer output is labelled CONSTRUCTED on screen. Mock-ups are labelled CONSTRUCTED. Narrated in first person as the author; no instructor name, persona, handle or credit line. Built with the existing ai-explainer chassis (this checkout predates the show-tell skill); body beats follow show-tell spirit: one drawing per beat, labels only. Outro is a reel-local Manim scene because ClaudeTitleOutro hardcodes the instructor's handle.",
     "pronunciation_note": "Narration spells some terms phonetically for Kokoro (Sponsor S Q L, H one B, L C A, Duck D B, Vanna A I, Chat G P T, B I). On-screen text uses the normal spellings.",
     "source_brief": "../../final-project-film/PROJECT-BRIEF.md",
     "tags": [
@@ -26,7 +26,7 @@
       "LCA disclosure data"
     ],
     "build": {
-      "at": "2026-10-14T10:43:10",
+      "at": "2026-10-24T18:28:04",
       "cut": "master",
       "filled": 13,
       "of": 13,
@@ -41,7 +41,7 @@
       "beat_id": "B00",
       "act": "ASK",
       "estimated_duration_s": 12,
-      "narration_text": "Namaste. I'm Atharva, and this is the pitch for my final project. Nothing in it is built yet, so you'll hear the word will, a lot. The voice is synthetic. The words are mine.",
+      "narration_text": "Namaste. I'm Atharva, and this is the pitch for my final project. Nothing in it is built yet, so you'll hear the word will, a lot. The voice is synthetic. The script was written with Claude, and reviewed by me.",
       "new_visual_element": "Cold open: the question the project will answer, with a CONSTRUCTED placeholder reply",
       "shot": {
         "type": "REMOTION",
@@ -65,7 +65,7 @@
           "pattern": "ClaudeComposerAsk",
           "props": {
             "greeting": "Namaste, Atharva",
-            "command": "Which employers filed H-1B applications for Data Analyst jobs in Boston in fiscal 2025?",
+            "command": "Which employers filed H-1B applications for Data Analyst jobs in Boston in fiscal 2026?",
             "runningText": "writing SQL…",
             "output": [
               "CONSTRUCTED: not a real Claude reply.",
@@ -78,18 +78,18 @@
           },
           "rendered": {
             "out": "media/B00.mp4",
-            "at": "2026-10-14T13:33:09.151303+00:00"
+            "at": "2026-10-24T22:11:44.210386+00:00"
           }
         }
       },
-      "actual_duration_s": 10.03,
+      "actual_duration_s": 11.63,
       "audio_file": "mp3/beat-B00.mp3",
-      "render_duration_s": 10.041666666666666,
+      "render_duration_s": 11.666666666666666,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     },
     {
@@ -142,7 +142,7 @@
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "remotion:BrutalistHesitantWriter",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     },
     {
@@ -159,11 +159,11 @@
         "type": "GRAPHIC",
         "source": "own",
         "lane": "manim",
-        "visual_intent": "A spreadsheet drawn as a grid. Header row carries four real FY2025 field names. Rows stack downward faster and faster until the sheet overflows its frame. Source caption small.",
+        "visual_intent": "A spreadsheet drawn as a grid. Header row carries four real FY2026 Q3 column names. Rows stack downward faster and faster until the sheet overflows its frame. Source caption small.",
         "show": [
           {
             "at": 0.0,
-            "event": "label 'LCA disclosure file · FY2025' and source caption 'U.S. DOL, OFLC'"
+            "event": "label 'LCA disclosure file · FY2026 Q3' and source caption 'U.S. DOL, OFLC'"
           },
           {
             "at": "employer",
@@ -189,7 +189,7 @@
             "WORKSITE_CITY",
             "WAGE_RATE_OF_PAY_FROM"
           ],
-          "source": "LCA_Record_Layout_FY2025_Q4.pdf, read 2026-10-14",
+          "source": "Header row of LCA_Disclosure_Data_FY2026_Q3.xlsx (downloaded 2026-10-24, SHA-256 f8ca8448…bd28b3)",
           "values": "none shown; cells are blank bars"
         }
       },
@@ -200,7 +200,7 @@
         "status": "MANIM",
         "src": "manim/B02.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     },
     {
@@ -252,15 +252,15 @@
         "status": "MANIM",
         "src": "manim/B03.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     },
     {
       "beat_id": "B04",
       "act": "WHY CARE",
       "estimated_duration_s": 21,
-      "narration_text": "Tools like this already exist. I've looked at two. Chat G P T can write S Q L from a question, but its query isn't guaranteed to be right, so you check it yourself. Vanna A I is built for turning questions into S Q L, and its queries need checking too. I'm not claiming Sponsor S Q L will be more accurate. It will make its accuracy measurable, and its mistakes visible.",
-      "new_visual_element": "Three lanes: two answers with a question mark, one answer with a check and a failure log",
+      "narration_text": "Tools like this already exist, so I tested one. On October twenty-fourth, I gave Chat G P T the record layout, and one question. It wrote a careful query, and listed fifteen assumptions, like only checking the first worksite on each filing. When I asked it to run the query, it reported forty. But that was its own query, checking itself, and nobody has independently checked that number. I haven't tested Vanna A I this way. Sponsor S Q L will check every answer against one I worked out by hand.",
+      "new_visual_element": "ChatGPT lane shows the real test: a query, '15 assumptions', 'first worksite only', no count. Vanna lane dashed: not tested. SponsorSQL lane: check + failure log.",
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "Show-tell style: three simple lanes on cream."
@@ -269,38 +269,54 @@
         "type": "GRAPHIC",
         "source": "own",
         "lane": "manim",
-        "visual_intent": "Three columns. ChatGPT and Vanna.ai each emit an answer card with an ink '?' beside it (the user must check). SponsorSQL emits an answer card with a check, plus a small log page. No accuracy numbers anywhere.",
+        "visual_intent": "Three columns. ChatGPT: query page, then a '15 assumptions' chip and 'first worksite only' note from the real 2026-10-24 reply, then '40' with 'its own run · unchecked' (from the follow-up). Vanna.ai: dashed empty page, 'not tested yet'. SponsorSQL (proposed): page + terracotta check + failure log. Caption names the test and its date. No accuracy numbers.",
         "show": [
           {
             "at": 0.0,
-            "event": "column 'ChatGPT': answer card + '?'"
+            "event": "column 'ChatGPT': query page"
+          },
+          {
+            "at": "listed fifteen",
+            "event": "chip '15 assumptions' under the page"
+          },
+          {
+            "at": "first worksite",
+            "event": "mono note 'first worksite only'"
+          },
+          {
+            "at": "reported forty",
+            "event": "'40' lands beside the page with 'its own run · unchecked'"
           },
           {
             "at": "Vanna",
-            "event": "column 'Vanna.ai': answer card + '?'"
+            "event": "column 'Vanna.ai': dashed empty page, 'not tested yet'"
           },
           {
-            "at": "claiming",
-            "event": "column 'SponsorSQL (proposed)': answer card"
-          },
-          {
-            "at": "measurable",
-            "event": "a check lands on it and a 'failure log' page slides out (terracotta check)"
+            "at": "Sponsor S Q L will",
+            "event": "column 'SponsorSQL (proposed)': page, terracotta check, failure log"
           }
         ]
       },
       "graphic": {
         "engine": "manim",
-        "manim": "B04_Alternatives"
+        "manim": "B04_Alternatives",
+        "production_viz": {
+          "source": "sponsorsql/evals/chatgpt-test-2026-10-24.md (ChatGPT GPT-6 high, run by the author 2026-10-24, record layout attached)",
+          "quoted_facts": [
+            "15 assumptions",
+            "assumption 9: only the first worksite is examined",
+            "follow-up: reported 40 from its own run of its own query"
+          ]
+        }
       },
-      "actual_duration_s": 19.26,
+      "actual_duration_s": 28.2,
       "audio_file": "mp3/beat-B04.mp3",
-      "render_duration_s": 19.291666666666668,
+      "render_duration_s": 28.208333333333332,
       "build": {
         "status": "MANIM",
         "src": "manim/B04.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     },
     {
@@ -348,7 +364,7 @@
         "status": "MANIM",
         "src": "manim/B05.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     },
     {
@@ -385,7 +401,7 @@
           },
           {
             "at": "grounding",
-            "event": "tag 'source grounding' attaches to answer; a 'FY2025 · file · query' chip under it"
+            "event": "tag 'source grounding' attaches to answer; a 'FY2026 Q3 · file · query' chip under it"
           }
         ]
       },
@@ -400,14 +416,14 @@
         "status": "MANIM",
         "src": "manim/B06.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     },
     {
       "beat_id": "B07",
       "act": "SCOPE",
       "estimated_duration_s": 21,
-      "narration_text": "In, out, and first. In: one complete fiscal year, twenty twenty-five, loaded into Duck D B. Out: it won't predict sponsorship, or give legal advice. An L C A filing isn't a job offer, or an approved visa, and the tool will say so. First: ten questions, a hand-checked answer key, and a pass-fail table you can rerun.",
+      "narration_text": "In, out, and first. In: the latest file, fiscal twenty twenty-six through June, loaded into Duck D B, without its personal contact columns. Out: it won't predict sponsorship, or give legal advice. An L C A filing isn't a job offer, or an approved visa, and the tool will say so. First: ten questions, a hand-checked answer key, and a pass-fail table you can rerun.",
       "new_visual_element": "Three trays: IN, OUT, FIRST",
       "qc": {
         "sparse_by_design": true,
@@ -425,7 +441,7 @@
           },
           {
             "at": "Duck",
-            "event": "'FY2025 · DuckDB' card drops into IN"
+            "event": "'FY2026 Q3 · DuckDB' and 'contact columns dropped' cards drop into IN"
           },
           {
             "at": "sponsorship",
@@ -445,14 +461,14 @@
         "engine": "manim",
         "manim": "B07_InOutFirst"
       },
-      "actual_duration_s": 17.43,
+      "actual_duration_s": 19.33,
       "audio_file": "mp3/beat-B07.mp3",
-      "render_duration_s": 17.458333333333332,
+      "render_duration_s": 19.333333333333332,
       "build": {
         "status": "MANIM",
         "src": "manim/B07.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     },
     {
@@ -495,7 +511,7 @@
             "EXAMPLE DATA L.L.C."
           ],
           "label": "CONSTRUCTED: invented company, not from the data",
-          "field": "TRADE_NAME_DBA (FY2025 record layout)"
+          "field": "TRADE_NAME_DBA (header row of the FY2026 Q3 file)"
         }
       },
       "actual_duration_s": 18.15,
@@ -505,7 +521,7 @@
         "status": "MANIM",
         "src": "manim/B08.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     },
     {
@@ -553,15 +569,15 @@
         "status": "MANIM",
         "src": "manim/B09.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     },
     {
       "beat_id": "B10",
       "act": "EXISTS VS WILL",
       "estimated_duration_s": 17,
-      "narration_text": "So, exactly where this stands. Today, two things exist: my project brief, and the data source I picked, the Labor Department page listing the twenty twenty-five files. Nothing is downloaded or built. The database, the contract, the test set, the run logs, and the failure log, will exist.",
-      "new_visual_element": "TODAY shelf with two solid items; WILL EXIST shelf with five dashed outlines",
+      "narration_text": "So, exactly where this stands. Today, three things exist: my project brief, the latest data file, downloaded from the Labor Department, and my Chat G P T test. Nothing is loaded or built yet. The database, the contract, the test set, the run logs, and the failure log, will exist.",
+      "new_visual_element": "TODAY: three solid items (brief, data file, ChatGPT test); WILL EXIST: five dashed outlines",
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "Show-tell style: two shelves."
@@ -570,23 +586,31 @@
         "type": "GRAPHIC",
         "source": "own",
         "lane": "manim",
-        "visual_intent": "Left: TODAY with two solid pages (brief, data source). Right: WILL EXIST with five dashed ghost outlines that draw in one by one.",
+        "visual_intent": "Left: 'exists today' with three rows, each a small solid page plus label. Right: 'will exist' with five dashed ghost outlines that draw in one by one.",
         "show": [
           {
             "at": 0.0,
-            "event": "two headings: 'today', 'will exist'"
+            "event": "headings 'exists today' and 'will exist'"
           },
           {
-            "at": "brief",
-            "event": "solid page 'project brief' lands under today"
+            "at": "my project brief",
+            "event": "row 'project brief'"
           },
           {
-            "at": "source",
-            "event": "solid page 'data source' lands; terracotta check"
+            "at": "latest data file",
+            "event": "row 'data file · FY2026 Q3'"
           },
           {
-            "at": "database",
-            "event": "five dashed outlines draw under 'will exist': database, contract, test set, run logs, failure log"
+            "at": "test",
+            "event": "row 'ChatGPT test · 2026-10-24'"
+          },
+          {
+            "at": "Nothing is loaded",
+            "event": "'nothing loaded or built yet' with terracotta dot"
+          },
+          {
+            "at": "The database",
+            "event": "five dashed outlines: database, contract, test set, run logs, failure log"
           }
         ]
       },
@@ -594,14 +618,14 @@
         "engine": "manim",
         "manim": "B10_TodayAndWill"
       },
-      "actual_duration_s": 15.81,
+      "actual_duration_s": 15.72,
       "audio_file": "mp3/beat-B10.mp3",
-      "render_duration_s": 15.833333333333334,
+      "render_duration_s": 15.75,
       "build": {
         "status": "MANIM",
         "src": "manim/B10.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     },
     {
@@ -643,14 +667,14 @@
         "status": "VIDEO",
         "src": "media/B11.mp4",
         "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     },
     {
       "beat_id": "B12",
       "act": "OUTRO",
       "estimated_duration_s": 7,
-      "narration_text": "Sponsor S Q L. Plain-English questions, checked answers. Written by Atharva Hambir, and narrated by a synthetic voice.",
+      "narration_text": "Sponsor S Q L. Plain-English questions, checked answers. Written with Claude, reviewed by Atharva Hambir, and narrated by a synthetic voice.",
       "new_visual_element": "Title restate and author credit",
       "qc": {
         "sparse_by_design": true,
@@ -672,7 +696,7 @@
           },
           {
             "at": "Written",
-            "event": "credit: 'Atharva Hambir · INFO 7375 · pitch, nothing built yet' and 'Narration: Kokoro synthetic voice'"
+            "event": "credit: 'Atharva Hambir · INFO 7375 · a pitch, nothing built yet' and 'Script written with Claude, reviewed by me · narration: Kokoro synthetic voice'"
           }
         ]
       },
@@ -680,14 +704,14 @@
         "engine": "manim",
         "manim": "B12_Outro"
       },
-      "actual_duration_s": 7.74,
+      "actual_duration_s": 8.85,
       "audio_file": "mp3/beat-B12.mp3",
-      "render_duration_s": 7.75,
+      "render_duration_s": 8.875,
       "build": {
         "status": "MANIM",
         "src": "manim/B12.mp4",
         "filled_by": "manim",
-        "at": "2026-10-14T10:43:10"
+        "at": "2026-10-24T18:28:04"
       }
     }
   ]

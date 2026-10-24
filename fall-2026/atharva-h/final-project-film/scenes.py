@@ -6,8 +6,8 @@ examples carry a CONSTRUCTED label on screen. No numbers are invented: the only
 figures are the planned "10 questions" and the constructed 1-vs-3 count in B08,
 which is labelled CONSTRUCTED.
 
-Field names in B02 and B08 are copied from LCA_Record_Layout_FY2025_Q4.pdf
-(U.S. DOL OFLC, read 2026-10-14).
+Column names in B02 and B08 are copied from the header row of
+LCA_Disclosure_Data_FY2026_Q3.xlsx (U.S. DOL OFLC, downloaded 2026-10-24).
 
 Pacing: each scene reads its measured narration length and text from
 beat_sheet.json and lands events on spoken phrases (share of characters x
@@ -152,8 +152,8 @@ def pipeline():
 class B02_TheSpreadsheet(Scene):
     def construct(self):
         p = Pacer(self, "B02")
-        title = T("LCA disclosure file · FY2025", 40, weight="BOLD").to_edge(UP, buff=0.75).to_edge(LEFT, buff=1.0)
-        src = T("Source: U.S. Department of Labor, OFLC · field names from the FY2025 record layout",
+        title = T("LCA disclosure file · FY2026 Q3", 40, weight="BOLD").to_edge(UP, buff=0.75).to_edge(LEFT, buff=1.0)
+        src = T("Source: U.S. Department of Labor, OFLC · column names from the FY2026 Q3 file",
                 22, SOFT).to_edge(DOWN, buff=0.7)
         fit(src, 11.0)
         p.play(FadeIn(title), FadeIn(src), run_time=0.8)
@@ -236,35 +236,46 @@ class B04_Alternatives(Scene):
     def construct(self):
         p = Pacer(self, "B04")
         xs = [-4.3, 0.0, 4.3]
-        names = ["ChatGPT", "Vanna.ai", "SponsorSQL"]
-        cols = []
-        for x, n in zip(xs, names):
-            head = box(3.2, 1.0, n, 34).move_to([x, 2.0, 0])
-            ans = page(1.9, 1.7, 4).move_to([x - 0.35, -0.5, 0])
-            arr = Arrow(head.get_bottom(), ans.get_top(), buff=0.08, color=INK, stroke_width=5)
-            cols.append((head, arr, ans))
-        note = keep_in(T("my reading of each tool · not a tested comparison", 24, SOFT).to_edge(DOWN, buff=0.8))
+        heads = [box(3.2, 1.0, n, 34).move_to([x, 2.3, 0])
+                 for x, n in zip(xs, ["ChatGPT", "Vanna.ai", "SponsorSQL"])]
+        note = keep_in(T("ChatGPT test: GPT-6 (high), one question, FY2026 Q3 record layout attached, 2026-10-24",
+                         22, SOFT).to_edge(DOWN, buff=0.7))
+        fit(note, 11.5)
 
-        def show(i):
-            h, a, s = cols[i]
-            p.play(FadeIn(h), GrowArrow(a), FadeIn(s, shift=DOWN * 0.2), run_time=0.8)
+        def lane(i, dashed=False):
+            if dashed:
+                pg = DashedVMobject(Rectangle(width=1.9, height=1.6, color=SOFT, stroke_width=4), num_dashes=28)
+            else:
+                pg = page(1.9, 1.6, 4)
+            pg.move_to([xs[i], 0.35, 0])
+            arr = Arrow(heads[i].get_bottom(), pg.get_top(), buff=0.08, color=INK, stroke_width=5)
+            return pg, arr
 
-        show(0)
-        q1 = T("?", 72, INK, weight="BOLD").next_to(cols[0][2], RIGHT, buff=0.3)
-        p.play(FadeIn(q1, scale=0.6), FadeIn(note), run_time=0.5)
-        p.until("Vanna", 0.4)
-        show(1)
-        q2 = T("?", 72, INK, weight="BOLD").next_to(cols[1][2], RIGHT, buff=0.3)
-        p.play(FadeIn(q2, scale=0.6), run_time=0.5)
+        pg0, a0 = lane(0)
+        p.play(FadeIn(heads[0]), GrowArrow(a0), FadeIn(pg0, shift=DOWN * 0.2), FadeIn(note), run_time=0.9)
+        p.until("listed fifteen", 0.3)
+        chip15 = tag("15 assumptions", 26).next_to(pg0, DOWN, buff=0.3)
+        p.play(FadeIn(chip15, shift=UP * 0.2), run_time=0.6)
+        p.until("first worksite", 0.4)
+        fw = M("first worksite only", 22).next_to(chip15, DOWN, buff=0.2)
+        p.play(FadeIn(fw), run_time=0.5)
+        p.until("reported forty", 0.55)
+        q = T("40", 64, INK, weight="BOLD").next_to(pg0, RIGHT, buff=0.35).shift(UP * 0.3)
+        nc = VGroup(T("its own run", 24), T("unchecked", 24, weight="BOLD")).arrange(DOWN, buff=0.08, aligned_edge=LEFT)
+        nc.next_to(q, DOWN, buff=0.15).align_to(q, LEFT)
+        p.play(FadeIn(q, scale=0.6), FadeIn(nc), run_time=0.6)
 
-        p.until("I'm not claiming", 0.7)
-        show(2)
-        prop = T("(proposed)", 24, SOFT).next_to(cols[2][0], DOWN, buff=0.12).shift(RIGHT * 1.0)
-        p.play(FadeIn(prop), run_time=0.4)
+        p.until("Vanna", 0.75)
+        pg1, a1 = lane(1, dashed=True)
+        nt = T("not tested yet", 26).next_to(pg1, DOWN, buff=0.3)
+        p.play(FadeIn(heads[1]), GrowArrow(a1), Create(pg1), FadeIn(nt), run_time=0.9)
 
-        p.until("measurable", 0.88)
-        cm = check_mark(cols[2][2].get_right() + np.array([0.55, 0.35, 0]), 0.28)
-        log = page(1.0, 1.2, 3, fill=KRAFT).next_to(cols[2][2], DOWN, buff=0.25).shift(RIGHT * 0.9)
+        p.until("Sponsor S Q L will", 0.85)
+        pg2, a2 = lane(2)
+        prop = T("(proposed)", 24, SOFT).next_to(heads[2], DOWN, buff=0.12).shift(RIGHT * 1.0)
+        p.play(FadeIn(heads[2]), GrowArrow(a2), FadeIn(pg2, shift=DOWN * 0.2), FadeIn(prop), run_time=0.8)
+        cm = check_mark(pg2.get_right() + np.array([0.55, 0.35, 0]), 0.28)
+        log = page(1.0, 1.2, 3, fill=KRAFT).next_to(pg2, DOWN, buff=0.25).shift(RIGHT * 0.9)
         loglbl = T("failure log", 26).next_to(log, LEFT, buff=0.2)
         p.play(Create(cm), FadeIn(log, shift=RIGHT * 0.4), FadeIn(loglbl), run_time=0.9)
         p.finish()
@@ -334,7 +345,7 @@ class B06_FourSkills(Scene):
         p.play(FadeIn(c, shift=UP * 0.2), Create(tally), run_time=0.8)
         p.until("source grounding", 0.8)
         d = attach(boxes[2], "source grounding", above=False)
-        chip = keep_in(M("FY2025 · file · query", 24).next_to(d, DOWN, buff=0.2))
+        chip = keep_in(M("FY2026 Q3 · file · query", 24).next_to(d, DOWN, buff=0.2))
         dot = Dot(chip.get_left() + LEFT * 0.25, radius=0.1, color=ACC)
         p.play(FadeIn(d, shift=UP * 0.2), FadeIn(chip), FadeIn(dot, scale=0.4), run_time=0.8)
         p.finish()
@@ -369,7 +380,8 @@ class B07_InOutFirst(Scene):
             p.play(c.animate.move_to([x, y, 0]), run_time=0.7)
 
         p.until("Duck", 0.2)
-        drop(card("FY2025 · DuckDB"), xs[0], -1.1)
+        drop(card("FY2026 Q3 · DuckDB"), xs[0], -0.65)
+        drop(card("contact columns dropped", 3.0, 24), xs[0], -1.6)
 
         p.until("predict sponsorship", 0.38)
         c1, c2 = card("sponsorship prediction", 2.5, 24), card("legal advice", 2.5, 24)
@@ -472,28 +484,37 @@ class B09_HaveAndNew(Scene):
 class B10_TodayAndWill(Scene):
     def construct(self):
         p = Pacer(self, "B10")
-        div = DashedLine([-1.6, 2.9, 0], [-1.6, -2.9, 0], color=GHOST, stroke_width=3)
-        h_t = T("exists today", 38, weight="BOLD").move_to([-4.0, 2.6, 0])
-        h_w = T("will exist", 38, weight="BOLD").move_to([2.4, 2.6, 0])
+        div = DashedLine([-0.9, 2.9, 0], [-0.9, -2.9, 0], color=GHOST, stroke_width=3)
+        h_t = T("exists today", 38, weight="BOLD").move_to([-3.6, 2.6, 0])
+        h_w = T("will exist", 38, weight="BOLD").move_to([2.6, 2.6, 0])
         p.play(FadeIn(h_t), FadeIn(h_w), Create(div), run_time=0.8)
 
+        def item(y, text):
+            ic = page(0.75, 0.95, 3).move_to([-5.4, y, 0])
+            lb = fit(T(text, 30), 3.6).next_to(ic, RIGHT, buff=0.3)
+            return VGroup(ic, lb)
+
         p.until("my project brief", 0.2)
-        brief = VGroup(page(1.3, 1.6, 4), T("project brief", 28)).arrange(DOWN, buff=0.15).move_to([-5.0, 0.4, 0])
-        p.play(FadeIn(brief, shift=DOWN * 0.3), run_time=0.7)
-        p.until("the data source", 0.35)
-        data = VGroup(page(1.3, 1.6, 4), T("data source", 28)).arrange(DOWN, buff=0.15).move_to([-3.0, 0.4, 0])
-        cm = check_mark(np.array([-4.0, -1.6, 0]), 0.3)
-        built = T("nothing downloaded or built", 24, SOFT).move_to([-4.0, -2.4, 0])
-        p.play(FadeIn(data, shift=DOWN * 0.3), run_time=0.7)
-        p.until("Nothing is downloaded", 0.55)
-        p.play(Create(cm), FadeIn(built), run_time=0.7)
+        i1 = item(1.35, "project brief")
+        p.play(FadeIn(i1, shift=DOWN * 0.2), run_time=0.6)
+        p.until("latest data file", 0.3)
+        i2 = item(0.1, "data file · FY2026 Q3")
+        p.play(FadeIn(i2, shift=DOWN * 0.2), run_time=0.6)
+        p.until("test", 0.45)
+        i3 = item(-1.15, "ChatGPT test · 2026-10-24")
+        p.play(FadeIn(i3, shift=DOWN * 0.2), run_time=0.6)
+
+        p.until("Nothing is loaded", 0.55)
+        dot = Dot([-5.4, -2.45, 0], radius=0.11, color=ACC)
+        built = fit(T("nothing loaded or built yet", 26, SOFT), 3.6).next_to(dot, RIGHT, buff=0.3)
+        p.play(FadeIn(dot, scale=0.4), FadeIn(built), run_time=0.6)
 
         p.until("The database", 0.7)
         names = ["database", "contract", "test set", "run logs", "failure log"]
         ghosts = VGroup()
-        for i, n in enumerate(names):
-            col, rw = i % 3, i // 3
-            x, y = 0.4 + col * 2.1, 0.9 - rw * 2.4
+        for k, n in enumerate(names):
+            col, rw = k % 3, k // 3
+            x, y = 0.4 + col * 2.0, 0.9 - rw * 2.4
             outline = DashedVMobject(Rectangle(width=1.4, height=1.5, color=SOFT, stroke_width=4), num_dashes=24)
             outline.move_to([x, y, 0])
             ghosts.add(VGroup(outline, T(n, 26, SOFT).next_to(outline, DOWN, buff=0.12)))
@@ -517,7 +538,7 @@ class B12_Outro(Scene):
         rule = Line(LEFT * 5.6, RIGHT * 5.6, color=INK, stroke_width=3).next_to(sub, DOWN, buff=0.55)
         cred = VGroup(
             T("Atharva Hambir · INFO 7375 · a pitch, nothing built yet", 34),
-            T("Narration: Kokoro synthetic voice (am_onyx), script by the author", 30, SOFT),
+            T("Script written with Claude, reviewed by me · narration: Kokoro synthetic voice", 30, SOFT),
         ).arrange(DOWN, buff=0.25).next_to(rule, DOWN, buff=0.45)
         fit(cred, 11.5)
         p.until("checked answers", 0.25)

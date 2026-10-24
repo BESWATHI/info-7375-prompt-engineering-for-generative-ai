@@ -48,6 +48,17 @@ The film was built in Claude Code (Opus 5.5) from these instructions, given over
 
 > Build a 2–4 minute Brutalist pitch film for my INFO 7375 final project, SponsorSQL, from PROJECT-BRIEF.md. Use the existing brutalist.art checkout without changing any of its files. Put the reel in a new folder, youtube/atharva-sponsorsql-pitch/. Narrate in first person as me, with the free Kokoro voice, and say that the voice is synthetic. Don't use the instructor's name, persona, handle or credit line. Give each body beat one drawing with minimal labels, and let the voice carry the explanation. Everything in the project is future tense; label mock-ups and invented examples CONSTRUCTED on screen; show no Claude response. Run the toolkit's gates and fix any failure. Don't submit over a failed gate.
 
+## Revision prompt (2026-10-24)
+
+> Switch the film to the latest LCA release (FY2026 Q3): download it, record its checksum, and confirm the column names from its header row. Correct the credits to "written with Claude, reviewed by me" in B00 and B12. Rebuild B04 around my ChatGPT test (saved in evals/), and update B10's "exists today". Re-render only what changed, re-run the gates, look at the frames, and keep the toolkit untouched.
+
+Data file used:
+
+```bash
+curl -L -o LCA_Disclosure_Data_FY2026_Q3.xlsx "https://www.dol.gov//media/LCA_Disclosure_Data_FY2026_Q3.xlsx"
+shasum -a 256 LCA_Disclosure_Data_FY2026_Q3.xlsx   # f8ca8448a528671f784d3692923775a13741c99caec2816b2fe30c8885bd28b3
+```
+
 ## After the build: visual QC
 
 The gates check geometry, not content. Sample frames and look at them:
