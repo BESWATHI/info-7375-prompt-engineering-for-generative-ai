@@ -4,7 +4,7 @@ Pavithra Prasad · INFO 7375 · Final Project Pitch Film (resubmission)
 
 Prompts: `BUILD-PROMPT.md`, section 3 · Evidence: `evidence/` · Gate reports: `reports/`
 
-Commits in the course repo (`fall-2026/pavithra-p/final-project-film/`): `9f0c632` first posting (2026-10-13) · `33a9278` README credits (2026-10-13, the hash for the first grade) · resubmission: [ADD AFTER COMMIT]
+Commits in the course repo (`fall-2026/pavithra-p/final-project-film/`): `9f0c632` first posting (2026-10-13) · `33a9278` README credits (2026-10-13, the hash for the first grade) · `f3d68d5` resubmission (2026-10-24, the v5 files) · final commit: the hash given in the Canvas submission (it only adds this line)
 
 My key prompts, quoted short: "go with 3" (the voice) · "score it properly" (v4) · "can you try to remove that [small orange circle]" · "need 49+, no best-of-two … ask before any commit or push" (resubmission) · "add a picture to B14 and B15 the same safe way"
 
