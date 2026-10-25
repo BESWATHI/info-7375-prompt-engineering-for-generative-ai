@@ -28,3 +28,7 @@
 [art] build stamp → beat_sheet.json (22/22 filled)
 [art] wrote final-project-pitch/exports/dryrun-pitch.mp4  (232.9s, audio: per-beat timeline (source audio preserved), drawtext: no — PIL overlays)
 [art] slots: 22/22 filled — B00:MANIM B01:MANIM B02:MANIM B03:MANIM B04:MANIM B05:MANIM B06:MANIM B07:MANIM B08:MANIM B09:MANIM B10:MANIM B11:MANIM B12:MANIM B13:MANIM B14:MANIM B15:MANIM B16:MANIM B17:MANIM B18:MANIM B19:MANIM B20:MANIM B21:MANIM
+[loud] checking 22 beats for per-beat silence …
+[loud] PASS  -19.32 LUFS  tp=-4.84 dBTP
+[master] PASS  3840×2160  24fps  yuv420p  h264  232.9s
+[sharpness] GATE SHARPNESS PASS — 22 beats, median LV=385.0

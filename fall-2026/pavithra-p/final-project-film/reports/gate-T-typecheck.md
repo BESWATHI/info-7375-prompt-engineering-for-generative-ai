@@ -1,15 +1,15 @@
 # TYPECHECK.md — GATE T
 
-Reel: `dryrun-pitch`  |  Checked: 2026-10-13T19:38  |  Overall: PASS  |  Beats checked: 22  |  FAILs: 0
+Reel: `dryrun-pitch`  |  Checked: 2026-10-24T12:47  |  Overall: PASS  |  Beats checked: 22  |  FAILs: 0
 
 Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-height.  Contrast: 4.5:1 WCAG.  Kern threshold: 3.5× expected advance.  Wordy budget: 2 elements.
 
 | beat | lane | polarity | worst finding | status | fix |
 |------|------|----------|---------------|--------|-----|
 | B00 | manim | light | min-size §8.1: min text-run height 76px >= floor 41px | PASS | — |
-| B01 | manim | light | min-size §8.1: min text-run height 76px >= floor 41px | PASS | — |
-| B02 | manim | light | min-size §8.1: min text-run height 49px >= floor 41px (individual-char fallback at 2×) | PASS | — |
-| B03 | manim | light | min-size §8.1: min text-run height 66px >= floor 41px | PASS | — |
+| B01 | manim | light | min-size §8.1: min text-run height 57px >= floor 41px | PASS | — |
+| B02 | manim | light | min-size §8.1: min text-run height 88px >= floor 41px | PASS | — |
+| B03 | manim | light | min-size §8.1: min text-run height 49px >= floor 41px (individual-char fallback at 2×) | PASS | — |
 | B04 | manim | light | min-size §8.1: min text-run height 80px >= floor 41px | PASS | — |
 | B05 | manim | light | min-size §8.1: min text-run height 74px >= floor 41px | PASS | — |
 | B06 | manim | light | min-size §8.1: min text-run height 49px >= floor 41px (individual-char fallback at 2×) | PASS | — |
@@ -21,12 +21,12 @@ Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-heigh
 | B12 | manim | light | min-size §8.1: min text-run height 49px >= floor 41px (individual-char fallback at 2×) | PASS | — |
 | B13 | manim | light | min-size §8.1: min text-run height 60px >= floor 41px | PASS | — |
 | B14 | manim | light | min-size §8.1: min text-run height 80px >= floor 41px | PASS | — |
-| B15 | manim | light | min-size §8.1: min text-run height 59px >= floor 41px | PASS | — |
-| B16 | manim | light | min-size §8.1: min text-run height 80px >= floor 41px | PASS | — |
-| B17 | manim | light | min-size §8.1: min text-run height 65px >= floor 41px (individual-char fallback at 2×) | PASS | — |
+| B15 | manim | light | min-size §8.1: min text-run height 49px >= floor 41px | PASS | — |
+| B16 | manim | light | min-size §8.1: min text-run height 76px >= floor 41px | PASS | — |
+| B17 | manim | light | min-size §8.1: min text-run height 530px >= floor 41px | PASS | — |
 | B18 | manim | light | min-size §8.1: min text-run height 67px >= floor 41px (individual-char fallback at 2×) | PASS | — |
-| B19 | manim | light | min-size §8.1: min text-run height 49px >= floor 41px (individual-char fallback at 2×) | PASS | — |
-| B20 | manim | light | min-size §8.1: min text-run height 65px >= floor 41px (individual-char fallback at 2×) | PASS | — |
+| B19 | manim | light | min-size §8.1: min text-run height 47px >= floor 41px (individual-char fallback at 2×) | PASS | — |
+| B20 | manim | light | min-size §8.1: min text-run height 57px >= floor 41px (individual-char fallback at 2×) | PASS | — |
 | B21 | manim | light | min-size §8.1: min text-run height 67px >= floor 41px (individual-char fallback at 2×) | PASS | — |
 
 ---

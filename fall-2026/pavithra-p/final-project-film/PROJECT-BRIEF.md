@@ -51,8 +51,9 @@ A hiring manager or engineer for backend and platform roles. They read the READM
 
 ## Exists today
 
-- This brief, the beat sheet and the pitch film (final cut 2026-10-13, 3:53).
+- This brief, the beat sheet and the pitch film (resubmitted cut, October 2026, 3:53; first cut 2026-10-13).
 - One real Claude reply (screenshot, 2026-10-11) and my test of its preview (`evidence/`, re-run 2026-10-13).
+- Evidence for the skills I already have: PR #33 in the Reallocation Engine, 32 passing tests (re-run 2026-10-23, `evidence/`).
 - No DryRun code, tests, results or users.
 
 ## Will exist

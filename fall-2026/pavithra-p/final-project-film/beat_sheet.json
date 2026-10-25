@@ -28,7 +28,7 @@
     "bookend_exempt_reason": "INFO 7375 Final Project Pitch Film: the assignment says 'Narrate as yourself. Do not use the instructor's name, persona, or credit line.' So the house bookends are left out; B00 is my own intro and B21 my own close.",
     "audience": "hiring managers and engineers for backend and platform roles; INFO 7375 reviewers",
     "source_doc": "PROJECT-BRIEF.md (this folder)",
-    "honesty": "Pitch, not a build: nothing of DryRun exists yet. B02 quotes Claude's real command exactly (claude.ai, 2026-10-11) and paraphrases its preview advice, labelled as such; B03 is my real preview test (2026-10-11). B05 prediction, B06 simulation, B07 decision and B09 report are constructed and labelled on screen.",
+    "honesty": "Pitch, not a build: nothing of DryRun exists yet. B02 shows the real screenshot of Claude's reply (claude.ai, 2026-10-11), cropped; B03 my own Terminal lines from the 13 Oct re-run of the preview test, copied exactly; B19 PR #33's real test output (re-run 2026-10-23). B05 prediction, B06 simulation, B07 decision and B09 report are constructed and labelled on screen.",
     "tags": [
       "DryRun",
       "AI safety",
@@ -38,7 +38,7 @@
       "INFO 7375"
     ],
     "build": {
-      "at": "2026-10-13T19:41:04",
+      "at": "2026-10-24T12:49:45",
       "cut": "master",
       "filled": 22,
       "of": 22,
@@ -79,7 +79,7 @@
         "status": "MANIM",
         "src": "manim/B00.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -94,11 +94,11 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Four short phrases build the problem.",
+        "visual_intent": "Four phrases build the problem; beside them the AI's workstation hands a command to your folder, and the files leave it.",
         "manim": {
           "class": "B01_Problem"
         },
-        "motion_claim": "Four short phrases build the problem."
+        "motion_claim": "Four phrases build the problem; beside them the AI's workstation hands a command to your folder, and the files leave it."
       },
       "qc": {
         "sparse_by_design": true,
@@ -111,7 +111,7 @@
         "status": "MANIM",
         "src": "manim/B01.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -126,15 +126,45 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "REAL REPLY chip; my request; Claude's exact command in a code card; the preview advice, labelled paraphrased.",
+        "visual_intent": "REAL SCREENSHOT chip; the real screenshot, cropped: my request, then Claude's command outlined and its preview advice underlined as they are spoken.",
         "manim": {
           "class": "B02_RealReply"
         },
-        "motion_claim": "REAL REPLY chip; my request; Claude's exact command in a code card; the preview advice, labelled paraphrased."
+        "motion_claim": "REAL SCREENSHOT chip; the real screenshot, cropped: my request, then Claude's command outlined and its preview advice underlined as they are spoken."
       },
       "qc": {
         "sparse_by_design": true,
-        "sparse_reason": "Week 1-style phrase layout on a cream stage: short phrases timed to the narration, one drawing only where it explains the mechanism. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+        "sparse_reason": "Week 1-style phrase layout on a cream stage: short phrases timed to the narration, one drawing only where it explains the mechanism. Only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply.",
+        "contrast_regions": [
+          {
+            "label": "kicker and REAL SCREENSHOT chip",
+            "box": [
+              0.05,
+              0.06,
+              0.85,
+              0.255
+            ]
+          },
+          {
+            "label": "the real claude.ai screenshot",
+            "box": [
+              0.095,
+              0.28,
+              0.905,
+              0.735
+            ]
+          },
+          {
+            "label": "source footer",
+            "box": [
+              0.17,
+              0.84,
+              0.95,
+              0.915
+            ]
+          }
+        ],
+        "contrast_reason": "Real dark-mode claude.ai screenshot (evidence/claude-reply-2026-10-11.png), shown unaltered. Its dark-grey bubble on a near-black page is interface, not text. Each region that holds text is checked on its own; every region must pass and all other checks still run."
       },
       "actual_duration_s": 9.24,
       "audio_file": "mp3/beat-B02.mp3",
@@ -143,7 +173,7 @@
         "status": "MANIM",
         "src": "manim/B02.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -158,11 +188,11 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "TESTED chip; three file rows by age; the 7.5-day row is marked as missed.",
+        "visual_intent": "MY TERMINAL chip; my own Terminal lines from 13 Oct, copied exactly; three file rows by age; the 7.5-day row is marked as missed.",
         "manim": {
           "class": "B03_Tested"
         },
-        "motion_claim": "TESTED chip; three file rows by age; the 7.5-day row is marked as missed."
+        "motion_claim": "MY TERMINAL chip; my own Terminal lines from 13 Oct, copied exactly; three file rows by age; the 7.5-day row is marked as missed."
       },
       "qc": {
         "sparse_by_design": true,
@@ -175,7 +205,7 @@
         "status": "MANIM",
         "src": "manim/B03.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -207,7 +237,7 @@
         "status": "MANIM",
         "src": "manim/B04.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -239,7 +269,7 @@
         "status": "MANIM",
         "src": "manim/B05.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -271,7 +301,7 @@
         "status": "MANIM",
         "src": "manim/B06.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -303,7 +333,7 @@
         "status": "MANIM",
         "src": "manim/B07.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -335,7 +365,7 @@
         "status": "MANIM",
         "src": "manim/B08.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -367,7 +397,7 @@
         "status": "MANIM",
         "src": "manim/B09.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -399,7 +429,7 @@
         "status": "MANIM",
         "src": "manim/B10.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -414,11 +444,11 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Evaluation plan; empty counters marked NOT MEASURED YET.",
+        "visual_intent": "Evaluation plan; a queue of tasks with known answers; empty counters marked NOT MEASURED YET.",
         "manim": {
           "class": "B11_Measure"
         },
-        "motion_claim": "Evaluation plan; empty counters marked NOT MEASURED YET."
+        "motion_claim": "Evaluation plan; a queue of tasks with known answers; empty counters marked NOT MEASURED YET."
       },
       "qc": {
         "sparse_by_design": true,
@@ -431,7 +461,7 @@
         "status": "MANIM",
         "src": "manim/B11.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -446,11 +476,11 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Two alternatives, one phrase each.",
+        "visual_intent": "Two alternatives, one prop each: a checkpoint scanner for try, an evidence binder for the research benchmarks.",
         "manim": {
           "class": "B12_Alternatives"
         },
-        "motion_claim": "Two alternatives, one phrase each."
+        "motion_claim": "Two alternatives, one prop each: a checkpoint scanner for try, an evidence binder for the research benchmarks."
       },
       "qc": {
         "sparse_by_design": true,
@@ -463,7 +493,7 @@
         "status": "MANIM",
         "src": "manim/B12.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -495,7 +525,7 @@
         "status": "MANIM",
         "src": "manim/B13.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -510,11 +540,11 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Four skill chips appear as each is named; then the fair conclusion, and what is not claimed.",
+        "visual_intent": "Four skill chips appear as each is named; then the fair conclusion beside a review desk the evidence is brought to, and what is not claimed.",
         "manim": {
           "class": "B14_Skills"
         },
-        "motion_claim": "Four skill chips appear as each is named; then the fair conclusion, and what is not claimed."
+        "motion_claim": "Four skill chips appear as each is named; then the fair conclusion beside a review desk the evidence is brought to, and what is not claimed."
       },
       "qc": {
         "sparse_by_design": true,
@@ -527,7 +557,7 @@
         "status": "MANIM",
         "src": "manim/B14.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -542,11 +572,11 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "In scope, out of scope, first piece, and how you will know it ran.",
+        "visual_intent": "In scope (a folder), out of scope, first piece, and how you will know it ran: a test bench where the self-test plants a sample.",
         "manim": {
           "class": "B15_Scope"
         },
-        "motion_claim": "In scope, out of scope, first piece, and how you will know it ran."
+        "motion_claim": "In scope (a folder), out of scope, first piece, and how you will know it ran: a test bench where the self-test plants a sample."
       },
       "qc": {
         "sparse_by_design": true,
@@ -559,7 +589,7 @@
         "status": "MANIM",
         "src": "manim/B15.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -574,11 +604,11 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "The main risk and the plan.",
+        "visual_intent": "The main risk and the plan; an inspection lamp lowers onto one checkable task.",
         "manim": {
           "class": "B16_Intent"
         },
-        "motion_claim": "The main risk and the plan."
+        "motion_claim": "The main risk and the plan; an inspection lamp lowers onto one checkable task."
       },
       "qc": {
         "sparse_by_design": true,
@@ -591,7 +621,7 @@
         "status": "MANIM",
         "src": "manim/B16.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -606,11 +636,11 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Second risk; Version 1 will target Linux behaviour.",
+        "visual_intent": "Second risk; comparison trays labelled Mac and Linux, the Linux sample lifted; Version 1 will target Linux behaviour.",
         "manim": {
           "class": "B17_MacLinux"
         },
-        "motion_claim": "Second risk; Version 1 will target Linux behaviour."
+        "motion_claim": "Second risk; comparison trays labelled Mac and Linux, the Linux sample lifted; Version 1 will target Linux behaviour."
       },
       "qc": {
         "sparse_by_design": true,
@@ -623,7 +653,7 @@
         "status": "MANIM",
         "src": "manim/B17.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -638,11 +668,11 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Why this project.",
+        "visual_intent": "Why this project; my portfolio shelf and the empty slot beside it.",
         "manim": {
           "class": "B18_Why"
         },
-        "motion_claim": "Why this project."
+        "motion_claim": "Why this project; my portfolio shelf and the empty slot beside it."
       },
       "qc": {
         "sparse_by_design": true,
@@ -655,7 +685,7 @@
         "status": "MANIM",
         "src": "manim/B18.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -670,11 +700,11 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "Already know, with evidence, vs new to me.",
+        "visual_intent": "Already know, backed by PR #33's real test output, vs new to me.",
         "manim": {
           "class": "B19_Learning"
         },
-        "motion_claim": "Already know, with evidence, vs new to me."
+        "motion_claim": "Already know, backed by PR #33's real test output, vs new to me."
       },
       "qc": {
         "sparse_by_design": true,
@@ -687,7 +717,7 @@
         "status": "MANIM",
         "src": "manim/B19.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -702,11 +732,11 @@
       "shot": {
         "type": "GRAPHIC",
         "source": "own",
-        "visual_intent": "No DryRun code yet; four phase chips.",
+        "visual_intent": "No DryRun code yet; a sealed parcel; four phase chips.",
         "manim": {
           "class": "B20_Today"
         },
-        "motion_claim": "No DryRun code yet; four phase chips."
+        "motion_claim": "No DryRun code yet; a sealed parcel; four phase chips."
       },
       "qc": {
         "sparse_by_design": true,
@@ -719,7 +749,7 @@
         "status": "MANIM",
         "src": "manim/B20.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     },
     {
@@ -751,7 +781,7 @@
         "status": "MANIM",
         "src": "manim/B21.mp4",
         "filled_by": "manim",
-        "at": "2026-10-13T19:41:04"
+        "at": "2026-10-24T12:49:45"
       }
     }
   ]

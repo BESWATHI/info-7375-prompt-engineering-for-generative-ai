@@ -65,15 +65,22 @@ ART_HOME=$PWD python3 $REEL/build_scenes.py
 ./art final $REEL --height 2160 --out $REEL/exports
 ```
 
+**f. Sharpness on the delivered film** (v5). The toolkit's sharpness gate measures the review cut; this runs the same gate, unchanged, on `exports/dryrun-pitch.mp4`:
+
+```bash
+python3 $REEL/sharpness_on_final.py runtime/scripts/sharpness_check.py $REEL
+```
+
 ## 3. The prompts behind it
 
-The film was planned and built in Claude Code sessions from 2026-10-10 to 2026-10-13. These are the main prompts, quoted short:
+The film was planned and built in Claude Code sessions from 2026-10-10 to 2026-10-13, and revised for the resubmission on 2026-10-23. These are the main prompts, quoted short:
 
 - "give more unique ideas … score them … which is perfect n all and follows the course guidelines"
 - "okay go start now, create one new folder called final project pitch … give an intro of me and then start talking about the project"
 - "can u make it more soft the voice" → five local samples → "go with 3" (`af_heart`)
 - "first check whether all these changes are really needed or these are … just nitpicks" (GPT's review, checked point by point)
 - v4, 2026-10-13: "score it properly" → three rubric gaps; ChatGPT's film review checked against the file; "can you try to remove that [small orange circle]" and "make it a bit more clear about how the throwaway copy is being used" (with a reference image)
+- v5, 2026-10-23 (resubmission): "I'm resubmitting the DryRun pitch film (currently 47/50, need 49+, no best-of-two) … Follow the plan in §5 and the rules in §2. Ask before any commit or push." Narration unchanged; B02, B03 and B19 show real evidence, and nine text-only beats get a prop. Then: "add a picture to B14 and B15 the same safe way" (B11 too).
 
 **The real Claude reply in B02** came from a fresh claude.ai chat on 2026-10-11, with the prompt:
 
@@ -87,4 +94,4 @@ The film was planned and built in Claude Code sessions from 2026-10-10 to 2026-1
 | `mp3/` | Measured narration; the durations set every scene's length |
 | `scenes_body.py` → `scenes.py` | One Manim scene per beat (B00–B21) |
 | `FACTCHECK.md`, `SHOTLIST.md`, `PROMPTS.md` | Gate F paperwork, required before any render |
-| `evidence/` | The real Claude reply and its test |
+| `evidence/` | The real Claude reply (B02 shows the screenshot itself), its test (B03) and the PR #33 test run (B19) |

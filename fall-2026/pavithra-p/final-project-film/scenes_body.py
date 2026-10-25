@@ -1,6 +1,10 @@
-# ═════════════════════════════ DryRun pitch film v4: scenes ═════════════════════════════
+# ═════════════════════════════ DryRun pitch film v5: scenes ═════════════════════════════
 # Body of scenes.py. build_scenes.py writes scenes.py = iso_kit.py + iso_originals_25.py + this file,
 # because Gate A copies only scenes.py.
+#
+# v5 (resubmission, 2026-10-23): "shown, not asserted". B02 shows the real Claude screenshot, B03 my own
+# Terminal lines from 13 Oct, B19 the real PR #33 test output; the text-only beats (B01, B12, B16, B17,
+# B18, B20) get an approved prop that carries the idea. Narration, timing and labels are unchanged.
 #
 # v2 follows my Week 1 film: a course kicker top-left, short phrases (3-10 words) that appear when they
 # are spoken, honesty chips (REAL / TESTED / CONSTRUCTED), source footers, and drawings only where they
@@ -66,6 +70,53 @@ def terminal(cmd, x, y, w=4.0, h=0.78):
                     .move_to([x - w / 2 + 0.16 + 0.13 * i, y + h / 2 - 0.08, 0]) for i in range(3)])
     t = P(cmd, 22, font=MONO).move_to([x, y - 0.08, 0])
     return VGroup(card(w, h, x, y), bar, dots, t)
+
+
+def shell(lines, x, y, w, h, size=27):
+    """v5: a bigger terminal for real output: the same card and title bar, lines left-aligned in mono.
+    Returns (window, [line, ...]) so each line can appear when it is spoken."""
+    bar = Rectangle(width=w, height=0.2, fill_color=INK, fill_opacity=1, stroke_width=0).move_to([x, y + h / 2 - 0.1, 0])
+    dots = VGroup(*[Circle(radius=0.045, fill_color=CHIP, fill_opacity=1, stroke_width=0)
+                    .move_to([x - w / 2 + 0.2 + 0.16 * i, y + h / 2 - 0.1, 0]) for i in range(3)])
+    top = y + h / 2 - 0.2
+    gap = (h - 0.2) / (len(lines) + 1)
+    ts = [lx(P(s, size, font=MONO), x - w / 2 + 0.35, top - gap * (i + 1)) for i, s in enumerate(lines)]
+    return VGroup(card(w, h, x, y), bar, dots), ts
+
+
+EVID = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "evidence")
+
+
+def screenshot_strips(name, box, cuts, width, x, y):
+    """v5: a real screenshot from evidence/, cropped to `box` (px) and cut into horizontal strips at `cuts`
+    (px), so each part appears when it is spoken. Nothing is redrawn or retyped. Upscaled once with Lanczos
+    to the 4K pixel size. Gate A's sandbox has no evidence/ folder, so it gets plain blocks instead."""
+    import numpy as np
+    from PIL import Image
+    x0, y0, x1, y1 = box
+    edges = [y0, *cuts, y1]
+    s = width / (x1 - x0)                  # units per screenshot pixel
+    px = 3840 / 14.222                     # 4K pixels per unit
+    out = []
+    for a, b in zip(edges, edges[1:]):
+        h = (b - a) * s
+        cy = y + (y1 - y0) * s / 2 - (a - y0) * s - h / 2
+        try:
+            im = Image.open(_os.path.join(EVID, name)).convert("RGB").crop((x0, a, x1, b))
+            im = im.resize((round(width * px), round(h * px)), Image.LANCZOS)
+            m = ImageMobject(np.array(im))
+            m.stretch_to_fit_width(width)      # exact size for every strip, so the seams line up
+            m.stretch_to_fit_height(h)
+            m.move_to([x, cy, 0])
+        except Exception:
+            m = Rectangle(width=width, height=h, fill_color=DARK_L, fill_opacity=1, stroke_width=0).move_to([x, cy, 0])
+        out.append(m)
+    return out
+
+
+def lx(m, x0, y):
+    """Left-align a phrase at x0."""
+    return m.move_to([x0 + m.width / 2, y, 0])
 
 
 def at_xy(m, x, y):
@@ -155,46 +206,67 @@ class B00_Intro(Scene):
         c.finish()
 
 class B01_Problem(Scene):
+    """v5: the phrases move to a left column; on the right, the AI's workstation hands a command down to
+    your folder, and at "delete files" the files leave the folder."""
     def construct(self):
         c = Clock(self); chrome(self)
-        c.play(up(at_xy(P("AI assistants suggest terminal commands", 40), 0, 1.5)))
+        L = -6.1
+        desk = prop("agent-workstation", 1.9, 4.4, 1.2)
+        c.play(up(lx(P("AI assistants suggest terminal commands", 30), L, 1.5)), FadeIn(desk))
         c.at("coding agents")
-        c.play(up(at_xy(P("Coding agents run them", 40), 0, 0.6)))
+        crate = open_crate(1.7, 4.4, -1.45)
+        arrow = Arrow([4.4, 0.12, 0], [4.4, -0.5, 0], buff=0, color=INK, stroke_width=5, max_tip_length_to_length_ratio=0.35)
+        c.play(up(lx(P("Coding agents run them", 30), L, 0.6)),
+               desk.parts["tool"].animate.shift(desk.action_vectors["tool"]), GrowArrow(arrow), FadeIn(crate),
+               up(at_xy(P("your files", 26), 4.4, -2.65)), rt=0.5)
         c.at("One wrong character")
-        c.play(up(at_xy(P("One wrong character can delete files", 40, bold=True), 0, -0.4)))
+        c.play(up(lx(P("One wrong character can delete files", 30, bold=True), L, -0.4)),
+               FadeOut(crate.parts["context"], shift=UP * 0.4), up(at_xy(P("deleted", 26, bold=True), 4.4, -3.1)), rt=0.5)
         c.at("reading a command")
-        c.play(FadeIn(chip("THE PROBLEM", 0, 2.35)), up(at_xy(P("Reading a command ≠ knowing what it does", 40), 0, -1.4)))
+        c.play(FadeIn(chip("THE PROBLEM", -4.6, 2.35)), up(lx(P("Reading a command ≠ knowing what it does", 30), L, -1.4)))
         c.finish()
 
 
 class B02_RealReply(Scene):
+    """v5: the real screenshot (evidence/claude-reply-2026-10-11.png), cropped, never retyped. The whole reply is
+    on screen from the start; a light outline marks Claude's command when it is spoken, then a line marks its
+    preview advice. (Shown whole so GATE T's declared text regions are never empty; see qc in make_sheet.py.)"""
     def construct(self):
-        c = Clock(self); chrome(self, "command quoted exactly · screenshot in evidence/")
-        c.play(up(at_xy(P("I asked: delete .log files older than 7 days", 36), 0, 1.45)))
+        c = Clock(self); chrome(self, "real screenshot, cropped · evidence/claude-reply-2026-10-11.png")
+        W, Y, BOX = 11.6, -0.05, (300, 140, 1800, 615)
+        strips = screenshot_strips("claude-reply-2026-10-11.png", BOX, (322, 540), W, 0, Y)
+        s = W / (BOX[2] - BOX[0])
+        def at(px, py):                     # screenshot pixel -> scene point
+            return [-W / 2 + (px - BOX[0]) * s, Y + (BOX[3] - BOX[1]) * s / 2 - (py - BOX[1]) * s, 0]
+        frame = card(W + 0.16, (BOX[3] - BOX[1]) * s + 0.16, 0, Y)
+        c.play(FadeIn(chip("REAL SCREENSHOT · claude.ai · 11 Oct 2026", 0, 2.35)), FadeIn(frame), *[FadeIn(m) for m in strips], rt=0.6)
         c.at("It gave me this")
-        code = VGroup(at_xy(P('find logs -type f -name "*.log"', 34, font=MONO), 0, 0.34),
-                      at_xy(P("-mtime +7 -delete", 34, font=MONO), 0, -0.34))
-        c.play(FadeIn(card(10.6, 1.8, 0, 0.0)), up(code), rt=0.55)
+        (x0, y0), (x1, y1) = at(330, 446)[:2], at(1185, 506)[:2]
+        mark = RoundedRectangle(width=x1 - x0, height=y0 - y1, corner_radius=0.08, stroke_color=CHIP, stroke_width=5,
+                                fill_opacity=0).move_to([(x0 + x1) / 2, (y0 + y1) / 2, 0])
+        c.play(Create(mark), rt=0.5)
         c.at("told me to preview")
-        c.play(FadeIn(chip("REAL REPLY · claude.ai · 11 Oct 2026", 0, 2.35)),
-               up(at_xy(P("Paraphrased from the reply: preview first, without -delete", 32), 0, -1.55)))
+        c.play(Create(Line(at(324, 604), at(1494, 604), color=CHIP, stroke_width=5)), rt=0.45)
         c.finish()
 
 
 class B03_Tested(Scene):
+    """v5: my own Terminal lines from the 13 Oct re-run, copied exactly from evidence/mtime-test.md, then the
+    three test files by age and which one the preview missed."""
     def construct(self):
-        c = Clock(self); chrome(self, "evidence/mtime-test.md")
-        c.play(up(at_xy(P("Preview, without -delete, on a test folder", 34), 0, 1.5)))
-        rows = [("6.5 days old", -0.0), ("7.5 days old", -0.85), ("8.5 days old", -1.7)]
-        files = VGroup(*[Rectangle(width=0.42, height=0.55, fill_color=PAGE_TOP, fill_opacity=1, stroke_color=CARD_EDGE,
+        c = Clock(self); chrome(self, "lines copied exactly · evidence/mtime-test.md")
+        win, (cmd, res) = shell(['$ find logs -type f -name "*.log" -mtime +7', "logs/eight-and-a-half-days.log"], 0, 1.05, 11.8, 1.55)
+        c.play(FadeIn(chip("MY TERMINAL · 13 Oct 2026", 0, 2.35)), FadeIn(win), up(cmd), rt=0.5)
+        c.at("on my Mac")
+        rows = [("6.5 days old", -0.45), ("7.5 days old", -1.2), ("8.5 days old", -1.95)]
+        files = VGroup(*[Rectangle(width=0.38, height=0.5, fill_color=PAGE_TOP, fill_opacity=1, stroke_color=CARD_EDGE,
                                    stroke_width=2).move_to([-4.9, y, 0]) for _, y in rows])
-        c.play(FadeIn(chip("TESTED ON MY MAC · 11 Oct 2026", 0, 2.35)), FadeIn(files),
-               *[up(at_xy(P(a, 34), -2.6, y)) for a, y in rows], rt=0.55)
+        c.play(up(res), FadeIn(files), *[up(at_xy(P(a, 32), -2.7, y)) for a, y in rows], rt=0.55)
         c.at("seven and a half")
-        band = Rectangle(width=11.4, height=0.7, fill_color=CHIP, fill_opacity=1, stroke_width=0).move_to([0, -0.85, 0]).set_z_index(-1)
-        c.play(FadeIn(band), up(at_xy(P("not matched", 34), 2.0, 0.0)),
-               up(at_xy(P("missed: older than 7 days", 34, bold=True), 2.0, -0.85)),
-               up(at_xy(P("matched", 34), 2.0, -1.7)), rt=0.55)
+        band = Rectangle(width=11.4, height=0.62, fill_color=CHIP, fill_opacity=1, stroke_width=0).move_to([0, -1.2, 0]).set_z_index(-1)
+        c.play(FadeIn(band), up(at_xy(P("not matched", 32), 2.2, -0.45)),
+               up(at_xy(P("missed: older than 7 days", 32, bold=True), 2.2, -1.2)),
+               up(at_xy(P("matched", 32), 2.2, -1.95)), rt=0.55)
         c.finish()
 
 class B04_Copy(Scene):
@@ -310,31 +382,44 @@ class B10_Traps(Scene):
 
 
 class B11_Measure(Scene):
+    """v5: a queue of tasks with known answers; the next task moves up as each trap folder is named."""
     def construct(self):
         c = Clock(self); chrome(self)
         c.play(up(at_xy(P("Then I'll measure it", 40, bold=True), 0, 2.2)))
         c.at("tasks with known")
-        c.play(up(at_xy(P("Tasks with known correct results", 36), 0, 1.4)))
+        queue = prop("task-queue", 1.7, -4.9, 0.85)
+        c.play(FadeIn(queue), up(at_xy(P("Tasks with known correct results", 36), 0.6, 1.4)))
         c.at("across every trap folder")
-        c.play(up(at_xy(P("× every trap folder", 36), 0, 0.7)))
+        c.play(queue.parts["next-task"].animate.shift(queue.action_vectors["next-task"]), up(at_xy(P("× every trap folder", 36), 0.6, 0.7)))
         c.at("comparing Claude")
-        c.play(FadeIn(chip("Claude", -2.4, -0.1, size=32)), up(at_xy(P("vs", 30), 0, -0.1)),
-               FadeIn(chip("free local model", 2.6, -0.1, size=32)), rt=0.45)
+        c.play(FadeIn(chip("Claude", -1.8, -0.1, size=32)), up(at_xy(P("vs", 30), 0.6, -0.1)),
+               FadeIn(chip("free local model", 3.2, -0.1, size=32)), rt=0.45)
         c.at("did too much")
-        c.play(up(at_xy(P("Did too much: —", 34), -2.8, -1.2)), up(at_xy(P("Did too little: —", 34), 2.8, -1.2)))
+        c.play(up(at_xy(P("Did too much: —", 34), -2.2, -1.2)), up(at_xy(P("Did too little: —", 34), 3.4, -1.2)))
         c.at("or too little")
-        c.play(FadeIn(chip("PLANNED · NOT MEASURED YET", 0, -2.15)))
+        c.play(FadeIn(chip("PLANNED · NOT MEASURED YET", 0.6, -2.15)))
         c.finish()
 
 
 class B12_Alternatives(Scene):
     def construct(self):
+        # v5: one prop per alternative. try = a checkpoint that inspects a command's changes as they pass;
+        # the research benchmarks = a binder of recorded tasks that is opened and scored.
         c = Clock(self); chrome(self, "github.com/binpash/try · arXiv 2306.14898 · arXiv 2502.06858")
-        c.play(up(at_xy(P("try: previews a command's file changes", 38), 0, 1.25)))
-        c.play(up(at_xy(P("Linux only", 30), 0, 0.55)), rt=0.35)
+        scan = prop("checkpoint-scanner", 1.7, -3.3, 0.8)
+        c.play(FadeIn(scan), up(at_xy(P("try", 36, bold=True), -3.3, -0.55)))
+        c.at("preview a command")
+        c.play(scan.parts["parcel"].animate.shift(scan.action_vectors["parcel"]),
+               up(at_xy(P("previews a command's file changes", 26), -3.3, -1.1)), rt=0.5)
+        c.at("on Linux")
+        c.play(up(at_xy(P("Linux only", 26), -3.3, -1.6)), rt=0.35)
         c.at("Research benchmarks")
-        c.play(Create(rule(-0.1, 2.5)), up(at_xy(P("Research benchmarks: score AI commands offline", 38), 0, -0.85)), rt=0.5)
-        c.play(FadeIn(chip("WHAT ALREADY EXISTS", 0, 2.35)), up(at_xy(P("InterCode · NL2SH", 30), 0, -1.55)), rt=0.35)
+        binder = prop("evidence-binder", 1.5, 3.3, 0.75)
+        c.play(Create(Line([0, 1.6, 0], [0, -1.9, 0], color=INK, stroke_width=3)), FadeIn(binder),
+               up(at_xy(P("Research benchmarks", 36, bold=True), 3.3, -0.55)),
+               up(at_xy(P("score AI commands offline", 26), 3.3, -1.1)), rt=0.5)
+        c.play(FadeIn(chip("WHAT ALREADY EXISTS", 0, 2.35)), binder.parts["cover"].animate.shift(binder.action_vectors["cover"]),
+               up(at_xy(P("InterCode · NL2SH", 26), 3.3, -1.6)), rt=0.45)
         c.finish()
 
 
@@ -369,6 +454,8 @@ class B13_Different(Scene):
         c.finish()
 
 class B14_Skills(Scene):
+    """v5: the four skill chips as before; the fair conclusion now has a review desk, and the evidence is
+    brought onto it at "check an AI's work"."""
     def construct(self):
         c = Clock(self); chrome(self)
         c.play(up(at_xy(P("Course skills it will show", 42, bold=True), 0, 2.25)))
@@ -379,82 +466,110 @@ class B14_Skills(Scene):
             c.at(cue)
             c.play(FadeIn(chip(s, x, y, size=34, bold=False)), rt=0.4)
         c.at("A reviewer could")
-        c.play(Create(rule(-0.85, 3.0)), up(at_xy(P("Fair conclusion: I can check and measure an AI's work", 34, bold=True), 0, -1.55)), rt=0.5)
+        desk = prop("review-desk", 1.7, -4.8, -1.9)
+        paper = desk.parts["evidence"]
+        paper.shift(desk.action_vectors["evidence"])          # the evidence starts off the desk
+        c.play(Create(rule(-0.85, 3.0)), FadeIn(desk), up(lx(P("Fair conclusion:", 30, bold=True), -3.2, -1.3)),
+               up(lx(P("I can check and measure an AI's work", 30, bold=True), -3.2, -1.85)), rt=0.5)
+        c.at("check an AI's work")
+        c.play(paper.animate.shift(-desk.action_vectors["evidence"]), rt=0.5)
         c.at("not that Dry Run")
-        c.play(FadeIn(chip("NOT CLAIMED: DryRun makes commands safe", 0, -2.4, size=28)))
+        c.play(FadeIn(chip("NOT CLAIMED: DryRun makes commands safe", 1.0, -2.7, size=26)))
         c.finish()
 
 
 class B15_Scope(Scene):
+    """v5: the folder it checks; then a test bench where the self-test plants a sample, the change it must find."""
     def construct(self):
         c = Clock(self); chrome(self)
-        c.play(up(at_xy(P("It will only check files and folders", 38), 0, 1.9)))
+        X = -3.0
+        c.play(FadeIn(open_crate(1.6, -4.8, 1.45)), up(lx(P("It will only check files and folders", 30), X, 1.95)))
         c.at("Network calls")
-        c.play(up(at_xy(P("Out: network calls, outside services, databases", 36), 0, 1.0)))
+        c.play(up(lx(P("Out: network calls, outside services, databases", 28), X, 1.3)))
         c.at("The first piece")
-        c.play(FadeIn(chip("FIRST PIECE TO RUN", 0, 0.05)),
-               up(at_xy(P("one command → one copy → a change list", 36, bold=True), 0, -0.75)), rt=0.5)
+        bench = prop("experiment-bench", 2.0, -4.7, -1.35)
+        sample = bench.parts["sample"]
+        sample.shift(bench.action_vectors["sample"])          # lifted out until the self-test plants it
+        c.play(FadeIn(bench), FadeIn(chip("FIRST PIECE TO RUN", X + 2.2, 0.4)),
+               up(lx(P("one command → one copy → a change list", 30, bold=True), X, -0.3)), rt=0.5)
         c.at("You'll know it ran")
-        c.play(FadeIn(chip("HOW YOU'LL KNOW IT RAN", 0, -1.65)),
-               up(at_xy(P("its self-test finds the changes it planted", 34, bold=True), 0, -2.45)), rt=0.5)
+        c.play(sample.animate.shift(-bench.action_vectors["sample"]), FadeIn(chip("HOW YOU'LL KNOW IT RAN", X + 2.83, -1.2)),
+               up(lx(P("its self-test finds the changes it planted", 28, bold=True), X, -1.9)), rt=0.5)
         c.finish()
 
 
 class B16_Intent(Scene):
+    """v5: an inspection lamp lowers onto one task sheet: start small, with tasks that can be checked."""
     def construct(self):
         c = Clock(self); chrome(self)
-        c.play(up(at_xy(P("Hardest part: knowing what you meant", 42, bold=True), 0, 1.3)))
+        lamp = prop("inspection-lamp", 3.0, -4.6, -0.7)
+        c.play(up(at_xy(P("Hardest part: knowing what you meant", 40, bold=True), 0, 1.45)), FadeIn(lamp))
         c.at("I'll start with")
-        c.play(up(at_xy(P("I'll start with file tasks that can be checked", 36), 0, 0.0)))
+        c.play(lamp.parts["lamp-head"].animate.shift(lamp.action_vectors["lamp-head"]),
+               up(lx(P("I'll start with file tasks that can be checked", 28), -2.7, -0.05)), rt=0.5)
         c.at("report uncertainty")
-        c.play(FadeIn(chip("BIGGEST RISK", 0, 2.35)), up(at_xy(P("It will say \u201ccan't tell\u201d instead of guessing", 36), 0, -1.1)))
+        c.play(FadeIn(chip("BIGGEST RISK", 0, 2.35)), up(lx(P("It will say “can't tell” instead of guessing", 28), -2.7, -1.25)))
         c.finish()
 
 class B17_MacLinux(Scene):
+    """v5: two trays, one per toolset; at "the first version" the Linux sample is lifted out."""
     def construct(self):
         c = Clock(self); chrome(self)
-        c.play(up(at_xy(P("My Mac's tools ≠ Linux tools", 40), 0, 1.2)))
-        c.play(up(at_xy(P("Same command, different behaviour (e.g. sed -i)", 34), 0, 0.15)), rt=0.45)
+        trays = prop("comparison-trays", 2.4, -4.4, -0.75)
+        c.play(up(at_xy(P("My Mac's tools ≠ Linux tools", 40), 0, 1.5)), FadeIn(trays),
+               up(at_xy(P("Mac", 26, bold=True), -5.8, -2.2)), up(at_xy(P("Linux", 26, bold=True), -2.8, 0.6)))
+        c.play(up(lx(P("Same command, different behaviour", 30), -1.6, 0.0)), up(lx(P("(e.g. sed -i)", 30), -1.6, -0.55)), rt=0.45)
         c.at("so the first version")
-        c.play(FadeIn(chip("SECOND RISK", 0, 2.35)), up(at_xy(P("Version 1 will target Linux behaviour", 38, bold=True), 0, -1.1)))
+        c.play(FadeIn(chip("SECOND RISK", 0, 2.35)), trays.parts["sample-b"].animate.shift(trays.action_vectors["sample-b"] * 0.6),
+               up(lx(P("Version 1 will target Linux behaviour", 30, bold=True), -1.6, -1.6)))
         c.finish()
 
 class B18_Why(Scene):
+    """v5: my portfolio shelf, and the empty slot beside it that DryRun is meant to fill."""
     def construct(self):
         c = Clock(self); chrome(self)
-        c.play(up(at_xy(P("Why DryRun: a stronger portfolio", 42, bold=True), 0, 1.4)))
+        c.play(up(at_xy(P("Why DryRun: a stronger portfolio", 40, bold=True), 0, 1.75)))
         c.at("I've built web apps")
-        c.play(up(at_xy(P("Built before: web apps", 36), 0, 0.15)), rt=0.45)
+        c.play(FadeIn(prop("version-shelves", 2.3, -4.7, -0.55)), up(at_xy(P("my portfolio", 26), -4.7, -2.15)),
+               up(lx(P("Built before: web apps", 32), -0.6, 0.2)), rt=0.45)
         c.at("but nothing")
-        c.play(Create(rule(0.75, 2.6)), up(at_xy(P("Missing: a project that checks an AI's work", 36), 0, -0.8)))
+        slot = DashedVMobject(RoundedRectangle(width=1.8, height=2.1, corner_radius=0.15, stroke_color=INK, stroke_width=3),
+                              num_dashes=40).move_to([-2.2, -0.55, 0])
+        c.play(Create(slot), up(lx(P("Missing: a project", 32), -0.6, -0.7)), up(lx(P("that checks an AI's work", 32), -0.6, -1.25)))
         c.finish()
 
 
 class B19_Learning(Scene):
+    """v5: "already know" is backed by the real PR #33 test output (evidence/pr33-tests-2026-10-23.md)."""
     def construct(self):
         c = Clock(self); chrome(self)
-        c.play(FadeIn(chip("ALREADY KNOW", -3.2, 1.9)), up(at_xy(P("Python, testing", 36), -3.2, 0.95)),
-               up(at_xy(P("internship · PR #33 (32 tests)", 26), -3.2, 0.42)))
+        c.play(FadeIn(chip("ALREADY KNOW", -3.2, 2.3)), up(at_xy(P("Python, testing", 36), -3.2, 1.55)),
+               up(at_xy(P("internship · PR #33 (32 tests)", 26), -3.2, 1.05)))
+        c.at("thirty-two passing")
+        win, lines = shell(["Ran 32 tests in 0.775s", "OK"], -3.2, 0.0, 5.4, 1.45, size=26)
+        c.play(FadeIn(win), *[up(t) for t in lines], FadeIn(chip("REAL OUTPUT · PR #33 · 23 Oct 2026", -3.2, -1.2, size=24)), rt=0.5)
         c.at("I've used Docker")
-        c.play(up(at_xy(P("Docker", 36), -3.2, -0.25)), up(at_xy(P("Northeastern cloud project", 26), -3.2, -0.78)))
+        c.play(up(at_xy(P("Docker", 36), -3.2, -1.9)), up(at_xy(P("Northeastern cloud project", 26), -3.2, -2.4)))
         c.at("Sandboxing")
-        c.play(FadeIn(chip("NEW TO ME", 3.2, 1.9)), *[up(at_xy(P(s, 36), 3.2, y)) for s, y in
-                                                     (("sandboxing", 0.95), ("file diffing", 0.25), ("evaluation design", -0.45))], rt=0.5)
+        c.play(FadeIn(chip("NEW TO ME", 3.2, 2.3)), *[up(at_xy(P(s, 36), 3.2, y)) for s, y in
+                                                     (("sandboxing", 1.5), ("file diffing", 0.8), ("evaluation design", 0.1))], rt=0.5)
         c.at("mostly new learning")
-        c.play(up(at_xy(P("Mostly new learning", 40, bold=True), 0, -1.7)))
+        c.play(Create(Line([1.0, -0.65, 0], [5.4, -0.65, 0], color=INK, stroke_width=3)),
+               up(at_xy(P("Mostly new learning", 40, bold=True), 3.2, -1.3)), rt=0.45)
         c.finish()
 
 
 class B20_Today(Scene):
+    """v5: a sealed parcel: nothing is delivered yet; the four phases line up beside it."""
     def construct(self):
         c = Clock(self); chrome(self)
-        c.play(up(at_xy(P("Today: no DryRun code yet", 42, bold=True), 0, 1.6)))
+        c.play(up(at_xy(P("Today: no DryRun code yet", 40, bold=True), 0, 1.75)), FadeIn(prop("release-parcel", 2.6, -4.5, -0.8)))
         c.at("Everything in this film")
-        c.play(up(at_xy(P("Everything here is what I will build", 34), 0, 0.7)))
+        c.play(up(lx(P("Everything here is what I will build", 30), -2.4, 0.8)))
         c.at("in four phases")
-        c.play(*[FadeIn(chip(s, x, y, size=30, bold=False)) for s, x, y in
-                 (("1 · CLI core", -3.0, -0.45), ("2 · Claude Code hook + retry", 3.0, -0.45),
-                  ("3 · evaluation + report", -3.0, -1.45), ("4 · API · dashboard · CI", 3.0, -1.45))], rt=0.45)
+        c.play(*[FadeIn(chip(s, 1.4, y, size=26, bold=False)) for s, y in
+                 (("1 · CLI core", 0.05), ("2 · Claude Code hook + retry", -0.75),
+                  ("3 · evaluation + report", -1.55), ("4 · API · dashboard · CI", -2.35))], rt=0.45)
         c.finish()
 
 
