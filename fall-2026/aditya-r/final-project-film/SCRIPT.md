@@ -1,7 +1,29 @@
-# DayThread — pitch film script v3 (narration source for the film)
+# DayThread — pitch film script v4 (narration source for the film)
 
 `film/make_sheet.py` reads the `VO:` lines straight from this file, so this file is the one
-source of the narration. Earlier drafts: `drafts/SCRIPT-v1.md`, `drafts/SCRIPT-v2.md`.
+source of the narration. Earlier drafts: `drafts/SCRIPT-v1.md`, `drafts/SCRIPT-v2.md`,
+`drafts/SCRIPT-v3.md` (the version in the film submitted 2026-10-14).
+
+**Changes from v3 (2026-10-25, resubmission).** These are the minimum changes needed so the film
+no longer contradicts the two-day replay that was built and run during the revision
+(`replay/RESULTS.md`). The other 16 beats are unchanged, word for word.
+- **B04.** "That two-day replay is the first thing I'll make run." became "A first, minimal
+  version of that two-day replay ran during my revision." The old sentence was in future tense
+  for something that now exists. The drawing is unchanged and still captioned constructed.
+- **B15.** v3 said "no DayThread prototype or evaluation results yet", listed the replay as still
+  to build, and showed the on-screen label "no prototype · no results". That is out of date. v4:
+  - lists the replay as existing;
+  - states the prediction and the actual result, including that the prediction was wrong;
+  - drops the replay from the to-build list;
+  - replaces the label with "prediction: wrong";
+  - adds a bottom caption, "Replay run 2026-10-25 · synthetic data · fictional client".
+- **B04 drawing, forced by GATE T.** The longer B04 narration moved the clip midpoint, where GATE T
+  samples its frame, past the moment the Day 1 → Day 2 link is drawn. The checker then read the
+  dot-to-dot ink arc plus both page outlines as one text block overlapping a scribble (§8.6b). A
+  terracotta arc failed §8.3 contrast instead. The link now sits in the gap between the pages. The
+  meaning is the same, but it's less literal than the old arc.
+- The narration still says nothing beyond `replay/RESULTS.md`. It doesn't claim omission was
+  shown, or that the raw transcript improved follow-ups.
 
 **Changes from v2 (2026-10-14):**
 - **B10 split in two.** v2's 51-word line became B10 (skills) and B11 (evaluation), so no beat runs
@@ -28,6 +50,7 @@ source of the narration. Earlier drafts: `drafts/SCRIPT-v1.md`, `drafts/SCRIPT-v
   - Top band, every beat: *Synthesized voice reading Aditya's script*.
   - Bottom band, beats marked `[C]`: *Constructed — proposed workflow*.
   - Bottom band, B07: *From each company's own documentation, read 2026-10-14*.
+  - Bottom band, B15 (added in v4): *Replay run 2026-10-25 · synthetic data · fictional client*.
   - Headings and labels stay inside y ∈ [−2.45, 2.30].
 - **People.** None on screen.
 - **Branding.** No instructor identity, channel credit, or mascot.
@@ -64,9 +87,11 @@ VO: When the check-in ends, a separate check reads the original words and create
   item drops into the review queue. Labels: `separate check` · `review item`.
 
 ### B04 — day two: memory, and the first thing that runs [C]
-VO: On day two, the assistant asks about the tumble without the client repeating it, linked to the day-one words. That two-day replay is the first thing I'll make run.
-- Visual: the Day 2 page writes a question line, and an ink link draws back to Day 1's dot. A replay
-  button appears. Labels: `Day 1` · `Day 2` · `first to run`.
+VO: On day two, the assistant asks about the tumble without the client repeating it, linked to the day-one words. A first, minimal version of that two-day replay ran during my revision.
+- Visual: the Day 2 page writes a question line; both pages carry the tumble dot, and a short ink
+  link draws in the gap between them. A replay button appears. Labels: `Day 1` · `Day 2` ·
+  `first to run`. (v4: the link was a dot-to-dot arc; it was moved into the gap after it failed
+  GATE T at the new clip midpoint. See FRICTIONAL.md, 2026-10-25.)
 
 ### B05 — the coordinator's gate and the executor [C]
 VO: A coordinator opens a simple local review page showing the concern, its excerpts, and the proposed action, then approves, refuses, or defers. A separate executor acts only if that approval still matches; for the course, delivery is simulated.
@@ -124,9 +149,11 @@ VO: For this pitch, AI helped draft the material and check sources; I set requir
   `new` has four empty slots that fill with a drawer, a gate, a check, and a vault.
 
 ### B15 — what exists today vs. what I intend to build
-VO: Today there's this plan, this film, and a decision log, but no DayThread prototype or evaluation results yet. I intend to build the repository, the two-day replay, the review page, tests, and an evaluation report that shows where it fails.
-- Visual: two plinths. `today` holds three solid pages. `to build` holds only dashed ghost
-  outlines.
+VO: Today there's this plan, this film, a decision log, and that minimal replay, run with a fictional client. I predicted a summary told to focus on mood, meals and activities would drop the tumble; in five trials it never did, but most summaries changed what she meant about her daughter. I still intend to build the repository, the review page, the separate check, tests, and an evaluation report.
+- Visual: two plinths. `today` holds four solid pages (plan, film, log, and the replay page with
+  the tumble dot), then the label `prediction: wrong`. `to build` holds five dashed ghost outlines
+  (repository, review page, separate check, tests, evaluation). Bottom caption: *Replay run
+  2026-10-25 · synthetic data · fictional client*.
 
 ### BOUT — outro
 VO: This was DayThread, by Aditya Raj.

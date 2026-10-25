@@ -110,3 +110,58 @@ No stock images, no music, no generated images or video, and no Professor Bear p
 - Wrote `README.md`, `PROJECT-BRIEF.md`, `BUILD-PROMPT.md`, this file, `FACTCHECK.md`,
   `SHOTLIST.md`, the gate and check reports, and the `FRICTIONAL.md` entries. Aditya's own words
   in `FRICTIONAL.md` are quoted and attributed to Aditya.
+
+## Resubmission additions (2026-10-25)
+
+The two-day replay in `replay/` was built and run on 2026-10-25, during the class-wide
+resubmission. It did not exist when the film was submitted on 2026-10-14. Everything above this
+section describes the original film and is unchanged.
+
+**Software and models used by the replay:**
+
+| What | Used for | Licence / terms | How verified |
+|---|---|---|---|
+| Python 3.12.8 standard library (`sqlite3`, `subprocess`, `json`, …) | `replay.py`, `flags.py`, `make_review_sheet.py` | PSF License | `python3 --version` |
+| SQLite 3.51.0 | the run database `daythread.sqlite` | public domain | `sqlite3 --version` |
+| Claude Code CLI 2.1.241 | every experimental call (`claude -p`), logged in through Aditya's claude.ai account; no API key | Anthropic terms | `claude --version`, `claude auth status` |
+| `claude-opus-5` | generated all 10 summaries and 20 day-two openings | Anthropic terms | `modelUsage` in each call's JSON |
+| `claude-haiku-4-5-20251001` | called automatically by the CLI to generate session titles; its output is not used | Anthropic terms | debug log, `replay/preflight/HAIKU-TITLE-CALL.md` |
+
+No other AI tool or model was used. The local models installed on the machine were not used.
+
+**Data:** a synthetic fixture only (`replay/fixture/`). Peg Hollis is fictional. No real person,
+conversation or record.
+
+**Who contributed what (resubmission):**
+
+*Aditya Raj*
+- Chose to run the replay with Claude through the CLI.
+- Wrote the pre-run prediction (`replay/PRE-RUN.md` §1, verbatim).
+- Adopted the fixture and kept DayThread's mobility follow-up in it.
+- Corrected the evaluation notes on "fussing" and "nothing's broken".
+- Refined the scoring rules (ambiguous wording, omitted vs. softened vs. changed, invented
+  details, generic questions, "not tested").
+- Reviewed the results and the excerpts Claude presented (2026-10-25), and gave the judgments in
+  `replay/runs/20261025T135900/aditya_review.json` (aggregate A1–A4, rules R1–R5). Did not
+  separately re-score every cell of the review sheet.
+- Stated the takeaway (preserving an event does not guarantee preserving its meaning), the
+  limitation (one-sentence memory not achieved), and the proposed next test.
+- Asked for the minimum film corrections. Watched the rebuilt v4 film and approved it (2026-10-25):
+  "I watch the video, and I approve of it."
+- Authorized pushing the updated folder to the course repo, as for the original submission.
+
+*Claude (Claude Code, Opus 5.5, 2026-10-25)*
+- Checked the repository and that the CLI works.
+- Drafted the fixture transcript, the four prompts and the first version of the criteria.
+- Wrote `PRE-RUN.md`, `replay.py`, `flags.py`, `make_review_sheet.py` and `replay/README.md`.
+- Ran the preflight check and the 30-call experiment.
+- Diagnosed the Haiku title call.
+- Wrote the provisional scores (`claude_provisional.json`) and `RESULTS.md`.
+- Wrote the 2026-10-25 entries in `FRICTIONAL.md`, apart from Aditya's quoted prediction and
+  decisions. In the 14:59 entry, Claude organized Aditya's own review statements into first person
+  with light edits.
+- Applied Aditya's judgments to the matching review-sheet cells and rewrote `RESULTS.md` as final.
+- Film revision: wrote the B04 and B15 narration changes in `SCRIPT.md` (v4) and the B15 drawing
+  changes in `source/scenes_body.py`, regenerated the two narration clips with Kokoro, re-rendered
+  the two scenes, ran the toolkit gates and the final checks, updated `README.md`,
+  `PROJECT-BRIEF.md` and `FACTCHECK.md`, and built the revised ZIP.

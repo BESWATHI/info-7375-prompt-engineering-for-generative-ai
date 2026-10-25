@@ -2,7 +2,10 @@
 
 **Aditya Raj · INFO 7375 Prompt Engineering and Agentic AI · Fall 2026 · Target role: AI Engineer**
 
-DayThread is a **proposal**. No DayThread prototype or evaluation results exist yet.
+DayThread is a **proposal**. No DayThread prototype exists. The answers below are the original pitch
+(2026-10-14). **Revised 2026-10-25:** a minimal two-day replay was built and run on synthetic data
+during the resubmission (`replay/`). Its results are marked *Revision* in §5 and §6 and in the lists
+at the end.
 
 **1. What is it, and what will I deliver?**
 A proposed AI check-in assistant. It remembers conversations across days and turns concerning
@@ -48,6 +51,9 @@ prototype, but would not establish readiness for real care.
 - **First run:** one fictional client completes two simulated days. On day two the assistant
   retrieves something from day one without the client repeating it. I save the transcript and the
   source reference, and test that an unauthorized record change is rejected.
+- *Revision (2026-10-25):* a minimal version ran: one fictional client, a summary, and two day-two
+  openings per summary, 30 Claude CLI calls (`replay/README.md`). It did not include source-linked
+  memory, the separate check or the record-change test.
 
 **6. What specific failure could sink it, and how will I handle it?**
 The client mentions "just a little tumble" and the summary omits it, so later steps that rely on
@@ -55,6 +61,13 @@ the summary miss it. I will predict this failure and trigger it on purpose. A se
 raw transcript, kept apart from the summary, runs when each check-in ends and creates an internal
 review item. A coordinator must approve any outbound action, based on the exact evidence and action
 they reviewed. The checker could miss unfamiliar wording or raise false alarms, so I will test both.
+
+*Revision (2026-10-25):* I recorded a prediction first (`replay/PRE-RUN.md`): a summary limited to
+mood, meals and activities would drop the tumble in at least 3 of 5 trials. **It dropped it in 0 of
+5**, so my prediction was wrong for this fixture. What did go wrong: 9 of 10 summaries turned "I
+don't want my daughter fussing about it" into a disclosure prohibition, and some added unsupported
+facts. Preserving an event does not guarantee preserving its meaning, so unsupported inference is
+now the more concrete risk (`replay/RESULTS.md`).
 
 **7. Why did I choose it, and which skills are new versus already demonstrated?**
 Remembering yesterday is only part of the problem. Knowing when a person needs to see it, with the
@@ -67,11 +80,13 @@ evidence, is the part I find interesting. This is mainly a learning project.
 ---
 
 **Exists today:** this brief; the pitch film and its script, beat sheet and build files; the
-source notes (`SOURCES.md`); the decision log (`FRICTIONAL.md`). No DayThread code, prototype, test
-or evaluation result exists.
+source notes (`SOURCES.md`); the decision log (`FRICTIONAL.md`). *Revision (2026-10-25):* the
+minimal two-day replay (`replay/`: Python + SQLite runner, synthetic fixture, the prediction
+recorded before the run, 30 saved outputs, Aditya's review, `RESULTS.md`). No DayThread prototype,
+test suite or evaluation exists.
 
-**Will exist (planned, for the final project):** the DayThread repository; the two-day replay;
-SQLite memory with source links; the separate transcript check; the local review page with
+**Will exist (planned, for the final project):** the DayThread repository; the full two-day replay;
+SQLite memory with source links; meaning-preservation tests across several synthetic conversations; the separate transcript check; the local review page with
 approve / refuse / defer; the executor's match check with simulated delivery; tests (including the
 rejected record change); development and held-out cases with at least five deliberate failures; an
 evaluation report that states where it fails.

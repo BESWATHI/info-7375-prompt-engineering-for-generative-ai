@@ -66,7 +66,7 @@ sheet = {"metadata": {
                               "ClaudeTitleOutro, which hardcodes @NikBearBrown + mascot. bookend_check's outro rule "
                               "fails by design and is recorded in gate-reports/."),
     "audience": "INFO 7375 instructor/TAs and engineering hiring reviewers",
-    "source_doc": "../SCRIPT.md (v3); ../SOURCES.md (S1–S4 read by Aditya 2026-10-14)",
+    "source_doc": "../SCRIPT.md (v4, 2026-10-25); ../SOURCES.md (S1–S4 read by Aditya 2026-10-14)",
     "playlist": "INFO 7375 final project pitch", "chapter_number": 0,
     "tags": ["DayThread", "agentic AI", "human-in-the-loop", "INFO 7375", "pitch"]},
     "beats": B}

@@ -20,9 +20,9 @@ B03  (10.07 s)
   script: When the check-in ends, a separate check reads the original words and creates an internal review item. It could miss unfamiliar wording or raise false alarms, so I'll test both.
   heard:  When the check -in ends, a separate check reads the original words and creates an internal review item. It could miss unfamiliar wording or raise false alarms, so I'll test both.
 
-B04  (8.85 s)
-  script: On day two, the assistant asks about the tumble without the client repeating it, linked to the day-one words. That two-day replay is the first thing I'll make run.
-  heard:  On day two, the assistant asks about the tumble without the client repeating it, linked to the day one words. That two day replay is the first thing I'll make run.
+B04  (10.37 s)
+  script: On day two, the assistant asks about the tumble without the client repeating it, linked to the day-one words. A first, minimal version of that two-day replay ran during my revision.
+  heard:  On day two, the assistant asks about the tumble without the client repeating it, linked to the day one words. A first, minimal version of that two -day replay ran during my revision.
 
 B05  (14.34 s)
   script: A coordinator opens a simple local review page showing the concern, its excerpts, and the proposed action, then approves, refuses, or defers. A separate executor acts only if that approval still matches; for the course, delivery is simulated.
@@ -64,9 +64,9 @@ B14  (18.56 s)
   script: For this pitch, AI helped draft the material and check sources; I set requirements, required sources before any comparison, and cut overstated wording. New for me: persistent memory across conversations, permissions enforced in code, human approval tied to the evidence shown, and evaluation on cases kept separate from development.
   heard:  For this pitch, AI helped draft the material and check sources. I set requirements, required sources before any comparison, and cut overstated wording. New for me, persistent memory across conversations, permissions enforced in code, human approval tied to the evidence shown, and evaluation on cases kept separate from development.
 
-B15  (14.19 s)
-  script: Today there's this plan, this film, and a decision log, but no DayThread prototype or evaluation results yet. I intend to build the repository, the two-day replay, the review page, tests, and an evaluation report that shows where it fails.
-  heard:  Today there's this plan, this film, and a decision log but no day thread prototype or evaluation results yet. I intend to build the repository, the two -day replay, the review page, tests, and an evaluation report that shows where it fails.
+B15  (20.14 s)
+  script: Today there's this plan, this film, a decision log, and that minimal replay, run with a fictional client. I predicted a summary told to focus on mood, meals and activities would drop the tumble; in five trials it never did, but most summaries changed what she meant about her daughter. I still intend to build the repository, the review page, the separate check, tests, and an evaluation report.
+  heard:  Today there's this plan, this film, a decision log, and that minimal replay run with a fictional client. I predicted a summary told to focus on mood, meals and activities would drop the tumble. In five trials it never did, but most summaries changed what she meant about her daughter. I still intend to build the repository, the review page, the separate check, tests, and an evaluation report.
 
 BOUT  (3.79 s)
   script: This was DayThread, by Aditya Raj.

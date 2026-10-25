@@ -61,3 +61,13 @@ mkdir -p $P/_superseded/old && mv $P/manim $P/media $P/_superseded/old/ 2>/dev/n
   `make_original` from `iso_originals_25.py`, pasted into `film/scenes.py` by `film/assemble_scenes.py`.
 
 Rebuild instructions: `README.md` → "Rebuild (exact)".
+
+## 2026-10-25 — v4 rebuild for the resubmission (B04 and B15)
+
+- **No toolkit source files changed.** Verified after the final render: `git status` shows only the
+  pre-existing `setup` change (sha256 still `c33424dd…`), HEAD `519fcbb`.
+- GATE T failed twice on B04 during the rebuild (see `gate-reports/revision-attempts/`). It was
+  fixed in the film's own `scenes_body.py`, not by adding an exemption to
+  `runtime/scripts/type_check.py`.
+- New film-side helper: `source/final_checks.py`, which reruns the extra checks on the master. It
+  only calls the toolkit's `bookend_check.py`.

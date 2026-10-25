@@ -270,3 +270,55 @@ rsync -a <package>/fall-2026/aditya-r/final-project-film/ fall-2026/aditya-r/fin
 git add fall-2026/aditya-r/final-project-film      # no -f: the repo's .gitignore keeps *.mp3/*.mp4 out
 git commit && git push origin main                 # fast-forward, never forced
 ```
+
+## Resubmission (2026-10-25)
+
+**Tool:** Claude Code (model Opus 5.5), in VS Code, one session.
+
+### Aditya's prompts (summarized; key instructions quoted)
+
+1. **Check the submission and address the TA's feedback.** Aditya shared the assignment PDF, then
+   the TA's comment, and asked Claude to inspect the project and explain what the requested replay
+   means. Quoted instructions:
+   - "Do not simply generate a polished retrospective or invent experiences in my voice."
+   - "STOP after recording the prediction … Wait for my response before executing the replay."
+2. **Setup.** Use Claude through the existing authenticated CLI ("Do not use Ollama, Llama, Gemma,
+   or any other local model"; no separate billing; don't bypass nested-session restrictions).
+   Claude was to draft a fictional fixture, show an AI-assisted hypothesis for Aditya to replace in
+   Aditya's own words, and fix the criteria before running.
+3. **Prediction and run.** Aditya gave a prediction (verbatim in `replay/PRE-RUN.md` §1), adopted
+   the fixture with corrections to the evaluation notes, refined the criteria, and asked for 30
+   isolated calls with every output, error and retry kept: "Do not change prompts or inputs
+   mid-experiment to obtain the predicted result."
+4. **Review and finish.** Aditya gave a review (quoted in the 14:59 entry of `FRICTIONAL.md`;
+   stored in `replay/runs/20261025T135900/aditya_review.json`). Aditya asked for the documents to be
+   finalized, the minimum film corrections with a rebuild and gates, and the ZIP: "Do not add
+   experiments … Do not commit, push, or submit."
+
+### Commands (in order)
+
+```bash
+# CLI check (non-experimental)
+claude --version; claude auth status
+claude -p --safe-mode --tools "" --no-session-persistence --output-format json \
+  --model claude-opus-5 --effort medium --system-prompt "Reply with exactly the word OK and nothing else." "ping"
+# replay
+cd replay
+python3 -B replay.py --trials 5                       # runs/20261025T135900, 30/30 calls
+python3 -B flags.py runs/20261025T135900
+python3 -B make_review_sheet.py runs/20261025T135900  # rerun after aditya_review.json was added
+# Haiku diagnosis: one call on neutral text with --debug-file (see replay/preflight/HAIKU-TITLE-CALL.md)
+
+# film v4 (reel folder; env as above)
+python make_sheet.py
+rm -f mp3/raw/beat-B04.mp3 mp3/raw/beat-B15.mp3
+python ../../../../brutalist.art/runtime/scripts/generate_audio_kokoro.py . --only B04 B15
+python audio_post.py
+python assemble_scenes.py
+mv manim/B04.mp4 manim/B15.mp4 _superseded/2026-10-25-rerender/
+cd ~/Desktop/Brutalist
+./brutalist.art/art run   my-videos/youtube/daythread/film --height 2160
+./brutalist.art/art final my-videos/youtube/daythread/film --height 2160 --out my-videos/youtube/daythread/film/exports
+#   GATE T failed on B04 twice; scenes_body.py fixed; B04 removed from manim/ and both commands rerun
+cd my-videos/youtube/daythread/film && python final_checks.py
+```

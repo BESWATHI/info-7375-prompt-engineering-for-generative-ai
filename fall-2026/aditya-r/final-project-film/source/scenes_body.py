@@ -80,6 +80,8 @@ def captions(kind=None):
         g.add(CAP("Constructed — proposed workflow").move_to([0, -3.1, 0]))
     elif kind == "D":
         g.add(CAP("From each company’s own documentation, read 2026-10-14").move_to([0, -3.1, 0]))
+    elif kind == "R":
+        g.add(CAP("Replay run 2026-10-25 · synthetic data · fictional client").move_to([0, -3.1, 0]))
     return g
 
 
@@ -323,7 +325,11 @@ class B04_DayTwo(Scene):
         at_word(self, "two")
         span(self, FadeIn(d2.pg, shift=LEFT * 0.3), FadeIn(l2), rt=0.45)
         span(self, LaggedStart(*[Create(l) for l in d2.lines], lag_ratio=0.2), rt=0.8, rate_func=linear)
-        link = ArcBetweenPoints(np.array([d1.x0 - 0.24, d1.ys[1] + 0.12, 0]), np.array([d2.x0 - 0.2, d2.ys[1] + 0.12, 0]), angle=-PI / 2.6)
+        # v4 (2026-10-25): the link now sits in the gap between the pages instead of running dot to dot.
+        # Once the longer narration moved the clip midpoint past this draw, the dot-to-dot ink arc fused
+        # both page outlines into one "text" blob (GATE T §8.6b), and a terracotta arc failed §8.3 contrast.
+        gap_l, gap_r = D1_X + 1.2 + 0.25, D2_X - 1.2 - 0.25
+        link = ArcBetweenPoints(np.array([gap_l, d1.ys[1] + 0.12, 0]), np.array([gap_r, d2.ys[1] + 0.12, 0]), angle=-PI / 1.5)
         link.set_stroke(INK, 5)
         end = Dot([d2.x0 - 0.24, d2.ys[1], 0], radius=0.09, color=TERRA)
         at_word(self, "linked")
@@ -672,25 +678,24 @@ class B14_SkillsNewOld(Scene):
 
 class B15_TodayVsBuild(Scene):
     def construct(self):
-        self.add(captions())
-        p1, p2 = plinth(-3.3, -1.1, w=4.2), plinth(3.1, -1.1, w=5.2)
+        self.add(captions("R"))
+        p1, p2 = plinth(-3.3, -1.1, w=4.6), plinth(3.1, -1.1, w=5.2)
         l1, l2 = L("today", -3.3, 1.85), L("to build", 3.1, 1.85)
         span(self, FadeIn(p1), FadeIn(l1), rt=0.45)
-        today = VGroup(*[checkin_page(-4.55 + i * 1.25, 0.2, 1.0, 1.35, n=3, dot=None) for i in range(3)])
-        at_word(self, "plan")
-        span(self, FadeIn(today[0], shift=DOWN * 0.2), rt=0.3)
-        at_word(self, "film")
-        span(self, FadeIn(today[1], shift=DOWN * 0.2), rt=0.3)
-        at_word(self, "log")
-        span(self, FadeIn(today[2], shift=DOWN * 0.2), rt=0.3)
-        none = L("no prototype · no results", -3.3, -2.15)
-        at_word(self, "prototype")
-        span(self, FadeIn(none), rt=0.35)
+        # v4 (2026-10-25): a fourth page for the replay built during revision; it carries the tumble dot
+        today = VGroup(*[checkin_page(-4.95 + i * 1.1, 0.2, 0.86, 1.35, n=3, dot=(1 if i == 3 else None))
+                         for i in range(4)])
+        for w, pg in zip(("plan", "film", "log", "replay"), today):
+            at_word(self, w)
+            span(self, FadeIn(pg, shift=DOWN * 0.2), *([GrowFromCenter(pg.dot)] if pg.dot else []), rt=0.3)
+        verdict = L("prediction: wrong", -3.3, -2.15)
+        at_word(self, "never")
+        span(self, FadeIn(verdict), rt=0.35)
         ghosts = VGroup(*[DashedVMobject(Rectangle(width=0.82, height=1.15, color=INK, stroke_width=4), num_dashes=14)
                           .move_to([1.15 + i * 0.98, 0.2, 0]) for i in range(5)])
         at_word(self, "intend")
         span(self, FadeIn(p2), FadeIn(l2), rt=0.4)
-        for w, gh in zip(("repository", "replay", "review", "tests", "evaluation"), ghosts):
+        for w, gh in zip(("repository", "review", "check", "tests", "evaluation"), ghosts):
             at_word(self, w)
             span(self, Create(gh), rt=0.3)
         done(self)

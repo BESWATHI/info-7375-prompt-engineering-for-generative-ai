@@ -1,6 +1,6 @@
 # TYPECHECK.md — GATE T
 
-Reel: `daythread-pitch-film`  |  Checked: 2026-10-14T12:36  |  Overall: PASS  |  Beats checked: 18  |  FAILs: 0
+Reel: `daythread-pitch-film`  |  Checked: 2026-10-25T15:12  |  Overall: PASS  |  Beats checked: 18  |  FAILs: 0
 
 Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-height.  Contrast: 4.5:1 WCAG.  Kern threshold: 3.5× expected advance.  Wordy budget: 2 elements.
 

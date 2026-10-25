@@ -445,3 +445,291 @@ attribution slot.
 
 **Still open:** the toolkit's missing LICENSE file (recorded in `SOURCES.md`); the Canvas upload,
 which is Aditya's to do.
+
+---
+
+# Resubmission follow-up (added 2026-10-25, after grading)
+
+Everything above this line is the original log, submitted 2026-10-14 and left unchanged. Everything
+below was written during the class-wide resubmission. The two-day replay was **proposed** in the
+original film; it did not exist when the film was submitted. It is being built now.
+
+## 2026-10-25 13:57 EDT · Prediction recorded before the replay is built or run
+
+**Why this entry exists.** The TA's feedback on the original submission: "Main deductions:
+Frictional 3/5 (-2). Next step: write the build log for the two-day replay yourself, starting with
+your prediction of how the summary will drop the tumble, before you run it." The TA asked the whole
+class to resubmit.
+
+**State before this entry (checked by Claude on 2026-10-25):** no DayThread code, transcript,
+summarizer or replay existed anywhere: not in this folder, and not in `fall-2026/aditya-r/` on
+GitHub, where the only commits are the film's three from 2026-10-14. The "summary" in the 12:15 and
+12:35 entries above is a **drawn scribble in the film** that GATE T measured as text, not the output
+of a real summarizer.
+
+**My prediction (Aditya, my own words; written before any experimental call):**
+
+> I expect the constrained summary to omit the fall in at least 3 of the 5 trials because its
+> instructions prioritize mood, meals, and daily activities. I expect the normal summary to preserve
+> the fall in at least 4 of the 5 trials because the conversation includes both the incident and a
+> follow-up about mobility.
+>
+> For cases where the summary omits both the fall and its physical effects, I expect the
+> summary-only day-two opening to miss an explicit follow-up about the incident or those effects. I
+> expect the opening that also receives the raw transcript to ask an explicit follow-up in at least 4
+> of the 5 trials in each setting.
+>
+> These are my expectations for this fixture, not established failure rates. If the constrained
+> summaries retain the fall more often than I predicted, or access to the transcript does not produce
+> the expected follow-up, report that clearly.
+
+Claude had shown me a draft hypothesis labelled AI-assisted. The prediction above is my replacement
+for it.
+
+**Decisions I made for the test (Aditya):**
+- Use Claude through the authenticated Claude CLI for both the summaries and the day-two openings.
+  No local model, no separate API billing.
+- Use Claude's fictional Peg Hollis transcript as drafted, **including** DayThread's acknowledgment
+  and the mobility follow-up. Removing that exchange would make omission more likely.
+- Correct the evaluation notes. "I don't want my daughter fussing about it" means reluctance about
+  her daughter's reaction, not "don't tell my daughter". "Nothing's broken" is the client's
+  unverified statement, not a medical finding.
+- Tighten the scoring:
+  - "slipped" or "stumbled" alone is flagged as ambiguous, not passed;
+  - an omitted detail is scored separately from a softened or changed one;
+  - invented details are scored separately;
+  - a generic wellbeing question doesn't count as a follow-up;
+  - my conditional prediction is "not tested" if no summary drops both the fall and its effects.
+
+**What Claude contributed:**
+- checked the repository and that the CLI works;
+- drafted the fixture, the four prompts and the first version of the criteria;
+- wrote `replay/PRE-RUN.md`, which holds the final prediction, criteria, run plan and file hashes.
+
+**Simulated dates vs. real dates.** In the simulation, day 1 is 2026-11-02 and day 2 is 2026-11-03.
+Both days are replayed back to back on 2026-10-25.
+
+**Evidence:**
+- `replay/PRE-RUN.md`, sha256 `dd451892…793b`;
+- fixture and prompt hashes, listed in that file;
+- this entry, appended before the first experimental call.
+
+**Next step:** Claude implements `replay/replay.py` (Python + SQLite) and runs the 30 planned calls.
+
+## 2026-10-25 14:08 EDT · Replay built and run; results provisional, awaiting my review
+
+**Written by Claude.** This entry records what was built and what happened. My own observations and
+reflections come in a later entry, after I review the outputs.
+
+**Real time vs. simulated dates:**
+- The run executed on 2026-10-25, 13:59:00–14:02:00 EDT.
+- Inside the simulation, day 1 is 2026-11-02 and day 2 is 2026-11-03.
+
+**What Claude implemented (2026-10-25, 13:58–14:05):**
+- `replay/replay.py`, Python standard library + SQLite. It stores the day-1 transcript as a
+  check-in record, asks for a summary, then writes two day-2 openings per summary:
+  - A: summary only;
+  - B: summary plus the full raw transcript.
+- Every call is a fresh `claude -p --safe-mode --tools "" --no-session-persistence` session, run
+  from a new empty directory, with `--model claude-opus-5 --effort medium`.
+- The runner refuses to start if any fixture or prompt file differs from the hashes in
+  `replay/PRE-RUN.md`. Every attempt is kept: SQLite plus raw JSON in `calls/`.
+- `replay/flags.py`: keyword pre-flags. `replay/make_review_sheet.py`: the review sheet.
+
+**Execution sequence:**
+1. 13:58:56, config check (not experimental): a "ping" with the exact flags. Exit 0; model
+   `claude-opus-5`; 272 input tokens. File: `replay/preflight/ping_pinned_flags.json`.
+2. 13:59:00–14:02:00, `python3 -B replay.py --trials 5`. **30/30 calls succeeded on the first
+   attempt; no retries, no errors.** Run `replay/runs/20261025T135900/`.
+3. Inputs re-hashed after the run: unchanged. `PRE-RUN.md` unchanged (sha256 `dd451892…793b`).
+
+**Surprise in the run metadata, diagnosed:**
+- Every call's `modelUsage` listed `claude-haiku-4-5` as well as `claude-opus-5`.
+- One debug-logged call on neutral, non-fixture text showed the Haiku request is the CLI's
+  `generate_session_title`, sent at the same moment as the Opus request (`source=sdk`).
+- Opus wrote every summary and opening. The synthetic fixture text was also sent to Haiku for a
+  title, which was not used.
+- Details: `replay/preflight/HAIKU-TITLE-CALL.md`.
+
+**Results against my prediction (Claude's provisional scores, not yet my review;
+`replay/RESULTS.md`):**
+
+| | Predicted | Observed |
+|---|---|---|
+| P1 | constrained omits the fall ≥ 3/5 | **0/5 omitted — contradicted** |
+| P2 | normal keeps the fall ≥ 4/5 | 5/5 — supported |
+| P3 | dropped fall → A misses follow-up | **not tested** (no summary dropped it) |
+| P4 | B explicit follow-up ≥ 4/5 per setting | 5/5 and 5/5 — supported |
+
+**Not predicted (observed in the saved outputs):**
+- **One-sentence limit:** all 5 constrained outputs broke "exactly one sentence" by adding a note
+  paragraph. Two said they kept the fall against the instruction. These notes were passed to day
+  two as part of the summary, because the runner forwards the whole output.
+- **Daughter remark:** in 9/10 summaries, "I don't want my daughter fussing about it" became a
+  disclosure prohibition, e.g. "asked that her daughter not be told". This is the inference I had
+  corrected in the evaluation notes before the run.
+- **Invented details:** "has not sought medical assessment", "unwitnessed fall", "someone living
+  alone", and "Saturday evening" for a fall the simulation places on Sunday 2026-11-01.
+- **Real date:** the CLI gives the model the real date. 4/5 normal summaries noted that the
+  check-in date "is ahead of today's date (2026-10-25)".
+- **Word choice:** B openings used Peg's word "tumble" 10/10; A openings never did.
+
+**What this does and does not establish:**
+- Established: for this one synthetic transcript and this model, the fall survived every summary,
+  and day two followed up in all 20 openings.
+- Not established: that summaries are safe in general. The dropped-fall path was never triggered,
+  and five trials cannot rule out a low omission rate.
+- The failure observed was a different one: changed meaning and invented facts in the summary.
+
+**Changes or reruns:** none. The prompts, fixture and code were not changed after seeing the
+outputs.
+
+**Evidence:**
+- `replay/runs/20261025T135900/`: `daythread.sqlite`, `calls/*.json`, `run.log`, `manifest.json`,
+  `flags.json`, `claude_provisional.json`, `REVIEW-SHEET.md`;
+- `replay/RESULTS.md`.
+
+**Open:**
+- my review of all 30 outputs, which will be the final scores;
+- my reflections;
+- the next test. One candidate is a fixture where the tumble is harder to keep. Any new fixture
+  would need its own pre-run prediction, and its runs labelled separately.
+
+## 2026-10-25 14:59 EDT · My review: my prediction was wrong
+
+**Result first.** I predicted the constrained summary would drop the tumble in at least 3 of 5
+trials. **It dropped it in none of the 5.** My prediction was wrong for this fixture. The
+prediction stays exactly as I recorded it at 13:57 above. This experiment did not demonstrate
+omission.
+
+**What I reviewed (Aditya).** I read the results and the excerpts Claude presented: the results
+table, the quoted summaries and openings, and Claude's provisional scores. I gave the judgments
+below. I did not separately re-score every cell of the review sheet. Cells my judgments don't cover
+are marked "—" in `replay/runs/20261025T135900/REVIEW-SHEET.md`.
+
+**My reading of the outcomes (Aditya):**
+- The normal summaries kept the fall in all five trials, as I predicted.
+- My conditional prediction, about what happens after an omission, was **not tested**, because
+  omission never happened.
+- Both openings, A (summary only) and B (summary plus transcript), followed up in every trial. So
+  these results do not show that giving day two the raw transcript improved how often it followed
+  up. B's use of "tumble" is a wording difference, not necessarily better performance.
+
+**My judgments on specific outputs (Aditya):**
+- "I'd like to hear how that hip is doing" counts as an explicit follow-up. It asks for
+  information; it doesn't need a question mark.
+- "No suspected fractures" adds an assessment the transcript doesn't establish. I count it as an
+  unsupported change in certainty, not a fair paraphrase of Peg's "nothing's broken".
+- "Asked that her daughter not be told" changes the meaning of "I don't want my daughter fussing
+  about it". Reluctance about someone's reaction is not a disclosure prohibition. This happened in
+  9 of 10 summaries.
+- "Saturday evening" is a temporal error. The simulated Monday check-in puts "last night" on
+  Sunday.
+- "Unwitnessed", "living alone" and "has not sought medical assessment" are unsupported. The
+  fixture doesn't establish any of them.
+
+**What I take from it (Aditya).** Preserving an event does not guarantee preserving its meaning.
+This experiment makes unsupported inference a more concrete concern than the omission I first
+predicted.
+
+**A limitation I want recorded (Aditya).** The constrained outputs broke the one-sentence
+requirement: every one added a note paragraph. Keeping the fall was useful, but it means the
+day-two test did not receive strictly one-sentence memory. I'm recording this instead of removing
+the notes or rerunning the experiment.
+
+**Next test (proposed, not done).** Meaning preservation across several synthetic conversations:
+attribution, timing, uncertainty and family preferences.
+
+**How my review was applied (Claude):**
+- My judgments are stored as written in `replay/runs/20261025T135900/aditya_review.json`, labelled
+  A1–A4 and R1–R5.
+- Claude applied each judgment only to the items it covers, then regenerated `REVIEW-SHEET.md` and
+  rewrote `replay/RESULTS.md` as final.
+- Claude's provisional scores (`claude_provisional.json`) were not edited.
+
+## 2026-10-25 15:21 EDT · Film corrected (v4), rebuilt and re-gated
+
+**Written by Claude.** Aditya asked for the minimum film, script and beat-sheet changes needed to
+correct outdated claims, then a rebuild with the required gates.
+
+**What was out of date, and what changed (`SCRIPT.md`, "Changes from v3"):**
+- **B04:** said "That two-day replay is the first thing I'll make run", in future tense for
+  something that now exists. Now: "A first, minimal version of that two-day replay ran during my
+  revision."
+- **B15:** said "no DayThread prototype or evaluation results yet", listed the replay as still to
+  build, and displayed the label "no prototype · no results". It now:
+  - lists the replay as existing;
+  - states the prediction and that it never happened in five trials;
+  - says most summaries changed what Peg meant about her daughter;
+  - drops the replay from the to-build list;
+  - shows "prediction: wrong";
+  - adds the caption "Replay run 2026-10-25 · synthetic data · fictional client".
+- **Left alone on purpose:** B02 ("I'll predict that, then trigger it on purpose"). Triggering the
+  omission is still an unmet plan, and B15 reports the attempt.
+- The other 16 narration lines are word for word the same. Their audio files are byte-identical to
+  the 2026-10-14 build.
+
+**Sequence (Claude):**
+1. Backed up the 2026-10-14 build state to `film/_superseded/2026-10-14-final/` in the reel folder
+   (not packaged). Archived script v3 as `source/drafts/SCRIPT-v3.md`.
+2. `make_sheet.py`: only B04 and B15 lost their measured audio. Kokoro re-voiced the two beats
+   (10.37 s, 20.14 s). Their stale raw files were deleted first, because `audio_post.py` otherwise
+   reuses old raw audio. The machine transcripts matched the new lines.
+3. Low-res still of B15. The four pages crowded each other, so they were narrowed (0.86 wide).
+4. `art run` (B04 + B15 rendered at 4K): exit 0; Gate A and Gate B clean; Gate V 0/0.
+5. **`art final`: GATE T FAILED on B04** (§8.6b).
+   - B04's code hadn't changed, but its longer audio moved the clip midpoint (where GATE T samples)
+     past the moment the Day 1 → Day 2 ink arc is drawn.
+   - The arc joined both page outlines and the scribbles into one blob, which the checker read as a
+     text block overlapping a scribble. No real text overlapped.
+6. Drew the arc in terracotta and re-rendered B04. **GATE T FAILED again** (§8.3): the checker read
+   the terracotta arc as low-contrast accent text (2.74:1).
+7. Moved the link into the gap between the pages, as a short ink arc touching neither page. Checked
+   a low-res still, then re-rendered B04. `art run` exit 0, Gate V 0/0; **`art final`: GATE T PASS
+   on all 18 beats**. Verified master written.
+   - Trade-off: the link is less literal than the old dot-to-dot arc. Both pages still carry the
+     tumble dot.
+   - Not done: no toolkit exemption was added, and the timing wasn't shifted to dodge the sample
+     frame.
+8. Wrote `source/final_checks.py` and ran it on the master:
+   - 206.17 s; 3840×2160 at 24 fps; AAC 48 kHz stereo; −24.3 LUFS;
+   - full decode clean; longest internal pause 0.76 s;
+   - the transcript matches v4;
+   - `bookend_check` fails on the outro handle by design, as before.
+9. Claude inspected 54 beat frames and 34 cut frames.
+10. Updated `FACTCHECK.md` and `SHOTLIST.md` (rows for B04 and B15), and the beat sheet's B04
+    description field (narration, audio and build stamps untouched). Wrote
+    `gate-reports/FINAL-CHECKS.md` and `questions-coverage.md`.
+
+**Evidence:**
+- `gate-reports/` (v4);
+- `gate-reports/revision-attempts/`: `TYPECHECK-FAIL-B04.md`, `TYPECHECK-FAIL-B04-2.md`, and the
+  run and final logs;
+- the 2026-10-14 reports, moved unchanged to `gate-reports/original-2026-10-14/`.
+- Master SHA-256 `7914fc97…4f47`.
+- Toolkit: HEAD `519fcbb`, only the pre-existing `setup` change.
+
+**Not done:**
+- Aditya hasn't watched v4.
+- Nothing is committed, pushed or submitted.
+
+**Next (Claude):** build the revised ZIP from this folder and verify it.
+
+## 2026-10-25 16:30 EDT · I watched v4 and approved it; posting
+
+**Aditya, after watching the rebuilt film:** "I watch the video, and I approve of it." I also asked
+for the updated folder to be pushed to the course repo, in the same place as the original
+submission, and for the Canvas submission to be prepared.
+
+**What happens next (Claude; written before the push):**
+- Mirror this folder into `fall-2026/aditya-r/final-project-film/`. The repo's `.gitignore` still
+  keeps the 38 `.mp3`/`.mp4` files out.
+- Commit with the same author identity as the original submission, and push to `main` without
+  force. Other students' resubmissions on 2026-10-24 also went straight to `main`.
+- Build the Canvas ZIP from this same folder.
+
+The commit hash and the ZIP's SHA-256 can't be written into the files they cover, so they go in the
+Canvas submission text.
+
+Claude also replaced gendered pronouns it had used for me in three of today's files with my name or
+neutral wording.

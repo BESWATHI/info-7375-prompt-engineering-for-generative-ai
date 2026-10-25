@@ -1,87 +1,76 @@
 ## ffprobe
-index=0
 codec_name=h264
 codec_type=video
 width=3840
 height=2160
 pix_fmt=yuv420p
 r_frame_rate=24/1
-duration=198.666667
-nb_frames=4768
-index=1
+nb_frames=4948
 codec_name=aac
 codec_type=audio
 sample_rate=48000
 channels=2
 r_frame_rate=0/0
-duration=198.708000
-nb_frames=9316
-duration=198.708000
-size=22087344
-bit_rate=889238
+nb_frames=9666
+duration=206.166667
+size=22830610
 
-## sha256
-be9d096cca7525d938707551a6652d9434a7a1d13de467c81a89e4cd57a5e8eb  exports/daythread-pitch-film.mp4
+## loudness (ebur128 summary)
+Summary:
 
-## volumedetect
-[Parsed_volumedetect_0 @ 0x74b004fc0] mean_volume: -26.9 dB
-[Parsed_volumedetect_0 @ 0x74b004fc0] max_volume: -2.9 dB
-
-## loudness (EBU R128 summary)
-    I:         -24.2 LUFS
+  Integrated loudness:
+    I:         -24.3 LUFS
     Threshold: -34.6 LUFS
-    LRA:         5.6 LU
-    Threshold: -44.7 LUFS
 
-## silencedetect (-40 dB, >=0.6 s)
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 6.895125
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 7.692958 | silence_duration: 0.797833
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 17.759062
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 18.487104 | silence_duration: 0.728042
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 25.930563
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 26.692271 | silence_duration: 0.761708
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 34.771979
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 35.422667 | silence_duration: 0.650687
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 44.717104
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 45.503937 | silence_duration: 0.786833
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 53.728562
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 54.374125 | silence_duration: 0.645562
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 62.156167
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 62.864812 | silence_duration: 0.708646
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 68.122563
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 68.764021 | silence_duration: 0.641458
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 73.555917
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 74.183917 | silence_duration: 0.628
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 79.60375
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 80.287729 | silence_duration: 0.683979
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 91.758062
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 92.44875 | silence_duration: 0.690688
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 105.72775
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 106.511396 | silence_duration: 0.783646
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 116.753958
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 117.509875 | silence_duration: 0.755917
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 125.066708
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 125.751083 | silence_duration: 0.684375
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 133.25675
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 133.910229 | silence_duration: 0.653479
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 138.716604
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 139.377396 | silence_duration: 0.660792
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 145.392937
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 146.043312 | silence_duration: 0.650375
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 152.305708
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 153.007229 | silence_duration: 0.701521
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 161.457958
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 162.198167 | silence_duration: 0.740208
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 169.870688
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 170.665208 | silence_duration: 0.794521
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 180.060583
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 180.734187 | silence_duration: 0.673604
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 186.626854
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 187.439042 | silence_duration: 0.812187
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 194.302583
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 194.969 | silence_duration: 0.666417
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_start: 197.129687
-[Parsed_silencedetect_0 @ 0x8bec60a80] silence_end: 198.708 | silence_duration: 1.578313
+  Loudness range:
+    LRA:         5.8 LU
+    Threshold: -44.8 LUFS
+    LRA low:   -27.6 LUFS
+    LRA high:  -21.8 LUFS
+[out#0/null @ 0x992c049c0] video:2049KiB audio:38656KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame= 4948 fps=1566 q=-0.0 Lsize=N/A time=00:03:26.16 bitrate=N/A speed=65.3x elapsed=0:00:03.15
 
-## decode check (errors only)
-decoded with no errors
+## silences >= 0.6 s at -50 dB
+silence_start: 7.090833
+silence_end: 7.690917 | silence_duration: 0.600083
+silence_start: 17.780854
+silence_end: 18.452437 | silence_duration: 0.671583
+silence_start: 25.945854
+silence_end: 26.661583 | silence_duration: 0.715729
+silence_start: 34.813146
+silence_end: 35.418375 | silence_duration: 0.605229
+silence_start: 44.867937
+silence_end: 45.50275 | silence_duration: 0.634813
+silence_start: 63.691667
+silence_end: 64.361937 | silence_duration: 0.670271
+silence_start: 93.303479
+silence_end: 93.943771 | silence_duration: 0.640292
+silence_start: 107.3335
+silence_end: 108.005896 | silence_duration: 0.672396
+silence_start: 118.282417
+silence_end: 119.003646 | silence_duration: 0.721229
+silence_start: 126.6125
+silence_end: 127.248312 | silence_duration: 0.635813
+silence_start: 134.777042
+silence_end: 135.406104 | silence_duration: 0.629062
+silence_start: 140.262167
+silence_end: 140.873146 | silence_duration: 0.610979
+silence_start: 146.896729
+silence_end: 147.542438 | silence_duration: 0.645708
+silence_start: 153.848792
+silence_end: 154.503229 | silence_duration: 0.654438
+silence_start: 162.984292
+silence_end: 163.674937 | silence_duration: 0.690646
+silence_start: 171.402417
+silence_end: 172.158562 | silence_duration: 0.756146
+silence_start: 181.564792
+silence_end: 182.234 | silence_duration: 0.669208
+silence_start: 187.197917
+silence_end: 187.839438 | silence_duration: 0.641521
+silence_start: 201.750313
+silence_end: 202.425104 | silence_duration: 0.674792
+silence_start: 204.630354
+silence_end: 206.166667 | silence_duration: 1.536312
+
+## full decode
+exit 0; errors: none
