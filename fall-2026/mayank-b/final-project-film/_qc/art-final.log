@@ -1,6 +1,7 @@
-[typecheck] wrote /Users/mayank/Desktop/AgenticAI/Assignment_5/final-project-film/TYPECHECK.md
+[typecheck] wrote ~/Desktop/AgenticAI/Assignment_5/final-project-film/TYPECHECK.md
 [typecheck] §8.10 BIDEA: SKIP
-[typecheck] §8.10 BDEFS: SKIP
+[typecheck] §8.10 BWHO: SKIP
+[typecheck] §8.10 BKID: SKIP
 [typecheck] §8.10 B00: SKIP
 [typecheck] §8.10 B01: SKIP
 [typecheck] §8.10 B02: SKIP
@@ -14,12 +15,12 @@
 [typecheck] §8.10 B10: SKIP
 [typecheck] §8.10 B11: SKIP
 [typecheck] §8.10 B12: SKIP
-[typecheck] §8.10 B13: SKIP
 [typecheck] §8.10 BOUT: SKIP
 [typecheck] GATE T: PASS
-[art] motion histogram: graphic:14  remotion:3
+[art] compiled B10  VIDEO    12.8s  ← B10.mp4
+[art] motion histogram: hyperframes:15  remotion:2
 [art] SKIN LINT: BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk
 [art] SKIN LINT: BOUT: palette=claude but the outro is 'TcTitleOutro' — OUTRO LAW wants ClaudeTitleOutro
 [art] build stamp → beat_sheet.json (17/17 filled)
-[art] wrote final-project-film/source-check-pitch.mp4  (181.3s, audio: per-beat timeline (source audio preserved), drawtext: no — PIL overlays)
-[art] slots: 17/17 filled — BIDEA:VIDEO BDEFS:VIDEO B00:MANIM B01:MANIM B02:MANIM B03:MANIM B04:MANIM B05:MANIM B06:MANIM B07:MANIM B08:MANIM B09:MANIM B10:MANIM B11:MANIM B12:MANIM B13:MANIM BOUT:VIDEO
+[art] wrote ~/Desktop/AgenticAI/Assignment_5/final-project-film/source-check-pitch.mp4  (245.9s, audio: per-beat timeline (source audio preserved), drawtext: no — PIL overlays)
+[art] slots: 17/17 filled — BIDEA:VIDEO BWHO:VIDEO BKID:VIDEO B00:VIDEO B01:VIDEO B02:VIDEO B03:VIDEO B04:VIDEO B05:VIDEO B06:VIDEO B07:VIDEO B08:VIDEO B09:VIDEO B10:VIDEO B11:VIDEO B12:VIDEO BOUT:VIDEO

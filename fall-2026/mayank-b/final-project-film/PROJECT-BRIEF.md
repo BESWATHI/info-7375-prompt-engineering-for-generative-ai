@@ -1,9 +1,9 @@
 # Source Check for Support AI — Project Brief
 
-**Mayank B. · INFO 7375 Final Project · Target role: AI automation engineer · Brief written 2026-10-14**
+**Mayank Bhadrasen · INFO 7375 Final Project · solo project · Target role: AI automation engineer · Brief written 2026-10-14, revised 2026-10-22 for the resubmission**
 **Stack:** n8n (workflow and routing) · Python (the checker and its tests) · Claude (claim extraction under a prompt contract)
 
-**Status:** this is a pitch. Nothing in this project has been built yet. Every sentence about the tool uses "will".
+**Status (2026-10-25):** still a pitch, with one piece built: the deterministic checker and its tests in [`slice/`](slice/README.md) (21 tests pass; Claude extraction, the n8n workflow and the Slack queue are not built). Past tense only for that slice; every other sentence about the tool uses "will".
 
 ## 1. What is it?
 Source Check for Support AI will check a support chatbot's policy answer against the company's current policy documents before the answer reaches the customer, and hold it for a human when it can't find support.
@@ -19,7 +19,7 @@ It will stop a support bot from promising a refund, fee or eligibility rule that
 
 Alternatives I looked at, on 2026-10-14:
 - **Intercom Fin.** Its public page says it works from your policies, has "a full testing suite to run simulations, regression testing", and hands off to humans.
-- **Zendesk AI agents.** It answers from help-center articles and hands off to a live agent when no article matches. That description comes from third-party guides; I did not verify it in Zendesk's own documentation.
+- **Zendesk AI agents.** They answer from the help-center articles a company connects as knowledge sources, and escalate to a human agent when they can't answer (Zendesk's own help center docs, read 2026-10-25; v1 had to rely on a third-party guide).
 - **Manual review.** A support lead spot-checks bot transcripts, after the answers have already been sent.
 
 What I did not find on those public pages: a check of each policy answer, at send time, against the current dated version of the policy. Source Check will hold the answer for approval when the source is missing, outdated or contradicted, and log which policy version each answer relied on. It will be vendor-neutral, sitting between any bot and the customer.
@@ -45,7 +45,7 @@ A reviewer could fairly conclude that I design gates and measure them. They coul
 ## 5. What is in, what is out, what comes first?
 - **In:** policy answers (refunds, fees, eligibility) for one fictional company's synthetic help center, in English.
 - **Out:** it will **not** write answers or replace the support bot. It only checks answers that another bot drafted.
-- **First:** the Python checker plus one test, the Air Canada-shaped case. The answer says "claim after travel"; the policy says "before travel"; the result must be HOLD. Someone will know it ran because `pytest` passes and the run log shows HOLD with the cited policy line.
+- **First (built 2026-10-22):** the Python checker plus the Air Canada-shaped test. The answer says "claim after travel", the policy says "before travel", and the result is HOLD with the cited policy line. Two more condition flips from the TA's feedback ("within 90 days of purchase" vs "90 days after"; "within 24 hours of booking" vs "24 hours before departure") also return HOLD, and a matching answer returns PASS. `python3 -m pytest` in `slice/` passes 21 of 21 (2026-10-25). Two gaps I found in review were then closed: a claim with extra fields now breaks the contract, and a policy version dated in the future is ignored until it takes effect. Three deliberate breaks (ignore condition words, ignore dates, allow extra fields) make 6, 6 and 2 tests fail ([evidence](slice/evidence/)).
 
 ## 6. What could sink it?
 **Missed conditions.** The most dangerous error is a dropped timing or condition word ("after" instead of "before", "within 90 days"), which is exactly the shape of the Air Canada error. If Claude's claim extraction loses the condition, the checker could PASS a wrong answer.
@@ -71,6 +71,6 @@ It is a mix of showing off and learning.
 I picked it because Week 1 taught me that a fluent, confident output is not a checked one, and the Air Canada case shows what that costs a real company.
 
 ---
-**Exists today (2026-10-14):** this brief · the research notes and sources behind sections 2 and 6 · this pitch film · my earlier public repos listed in section 7 (evidence of skills, not of this project).
+**Exists today (2026-10-25):** this brief · the research notes and sources behind sections 2 and 6 · this pitch film (v3.1) · the deterministic checker, 9 synthetic cases and 21 passing tests in `slice/`, with saved output · my earlier public repos listed in section 7 (evidence of skills, not of this project).
 
-**Will exist:** the n8n workflow · the Python checker and its tests · the synthetic help center · the labelled evaluation set and log · the demo command · the README.
+**Will exist:** Claude claim extraction under the JSON contract · the n8n workflow · the Slack hold queue · the full synthetic help center · the labelled evaluation set, with the miss rate and hold rate measured · the final README.

@@ -38,3 +38,30 @@ $TK/art run . --height 1080            # renders scenes, Gates A/B/L/V, review c
 $TK/art final . --height 1080 --out .  # GATE T, then the clean master
 ```
 Never publishes.
+
+## v3 (2026-10-22): the resubmission prompt
+```
+I want you to go through the following feedbacks and make changes to the video accordingly, the old
+submission got me a score of 41/50 [professor's five points, the TA's comments, and the side note:
+"In every assignment log what did you do and what did claude do"]
+also start using hyperframes for editing videos, it might help
+```
+
+## Rebuild v3 (free, local, no keys)
+Prereqs as above, plus Node 22+ and HyperFrames (`npm i -D hyperframes@0.7.109`, or point `HYPERFRAMES_BIN` at it), plus the toolkit changes in `../brutalist-changes/`.
+
+```bash
+source ../../brutalist.art/.venv/bin/activate; TK=../../brutalist.art
+(cd slice && python3 -m pytest -v)                       # the slice: 15 passed
+python3 code/make_sheet.py                                # beat sheet v3
+python3 $TK/runtime/scripts/generate_audio_kokoro.py . < /dev/null
+#   pad BIDEA with 0.8 s lead and BOUT with 1.0 s tail (ffmpeg -nostdin adelay / apad), write durations back
+python3 $TK/runtime/scripts/align.py .                    # mp3/words.json: cue and caption timing
+python3 code/hf_scenes.py                                 # hyperframes/<BID>/index.html
+python3 $TK/runtime/scripts/hyperframes_scenes.py . --force   # -> media/<BID>.mp4 (lint, render, duration check)
+for b in BIDEA BOUT; do python3 $TK/runtime/scripts/remotion_scenes.py . --only $b --force; done
+$TK/art run . --height 1080                               # review cut + Gate V
+$TK/art final . --height 1080 --out .                     # GATE T + verified master, @Mayank on every frame
+python3 code/hf_edit.py                                   # caption edit project over the master
+hyperframes render hyperframes/_edit --output source-check-pitch-v3.mp4 --fps 24 --quality high
+```

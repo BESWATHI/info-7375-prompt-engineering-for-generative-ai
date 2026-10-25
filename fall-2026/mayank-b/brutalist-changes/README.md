@@ -37,3 +37,17 @@ git apply ../brutalist-changes/toolkit-changes.patch
 
 Then follow [../week-01-video/BUILD-PROMPT.md](../week-01-video/BUILD-PROMPT.md) from step 2
 (`build_props.py` regenerates the SVGs).
+
+## v3 additions (2026-10-22): `toolkit-changes-v3-handle-hyperframes.patch`
+
+Made for the pitch film resubmission, after the professor's feedback ("display @Mayank at all times"; "update Brutalist to add my name to all the videos I generate"). Separate from the patch above, so either applies on its own.
+
+| File | Change | Why |
+|---|---|---|
+| `runtime/scripts/compile.py` | `resolve_handle()` + `make_handle_png()`: the author handle is stamped bottom-right on **every frame** of every cut (review and final), cream on an ink pill, inside title-safe. Source order: `metadata.handle` (`"none"` turns it off), `$ART_HANDLE`, then `~/.config/brutalist/profile.json` `{"handle": "@Mayank"}` | the name is on every video without editing each beat sheet; the old `channel_title` showed only during the first beat |
+| `runtime/scripts/beat_plan.py` | a beat with `shot.hyperframes.composition` (or `shot.type: HYPERFRAMES`) is a pipeline beat, method `hyperframes`, slot `media/<BID>.mp4` | without it such beats fell through to "ask the human for a gen-AI clip" |
+| `runtime/scripts/run.sh` | runs `hyperframes_scenes.py` after the Remotion fill-in | HyperFrames beats render with the rest of the reel |
+| `runtime/scripts/hyperframes_scenes.py` | **new**: lint, render each composition to `media/<BID>.mp4` at the reel's fps, refuse a render more than 2 frames off the narration, stamp provenance (re-reading the sheet first so Remotion's stamps survive) | HyperFrames (HTML + GSAP) as a fill method next to Manim and Remotion |
+| `runtime/pronunciation/mayank.json` | **new**: voice-only respellings for Kokoro: Mayank → "Muh-yunk", Bhadrasen → "Buh-druh-sen", SWE- → "swee" | the screen and captions keep the real spelling |
+
+Checked: `resolve_handle` returns `@Mayank` from the profile, `''` for `"none"`, and the sheet's value when set. The pitch film v3 master was compiled with it (2026-10-22); the handle was measured on frames at 5, 12, 60, 120, 200 and 236 s. A first version overlaid a single-frame PNG that stopped at the first concat boundary; the PNG is now looped (`-loop 1`, `shortest=1`).
