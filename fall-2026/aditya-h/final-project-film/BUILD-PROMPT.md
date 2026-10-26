@@ -23,6 +23,12 @@ cp pronunciation/aditya.json ~/brutalist.art/runtime/pronunciation/
 ```
 
 ```bash
+python3 prepare_crops.py
+```
+
+(This needs Aditya's uncropped screenshots in `~/PEAI_Class/baseline-v2-originals/`. The crops it makes are already committed in `research/film-crops/`.)
+
+```bash
 python3 make_sheet.py
 ```
 
@@ -62,3 +68,13 @@ These are paraphrased to the instruction itself. The full session isn't included
 
 ## The baseline prompt (sent to plain Claude ×3 and ChatGPT ×1)
 See `research/baseline-prompt.md` for the exact text and the checks decided in advance.
+
+## Resubmission prompts (Aditya → Claude Code, 2026-10-25)
+10. "[Grader feedback pasted] Read this feedback… we need to fix this and resubmit."
+11. "[ProductLens script attached] Go through this and compare it against the assignment, let me know if any changes are required."
+12. "A. merge, do what you have to, fix and update it." Then: "the script needs to be simple and actually explain my project."
+13. "Here are the screenshots" (Aditya's own ChatGPT run), plus answers for FRICTIONAL in his own words.
+14. "Script approved. Build the film."
+
+## The v2 test prompt (run by Aditya himself)
+See `research/baseline-v2-prompt.md`.

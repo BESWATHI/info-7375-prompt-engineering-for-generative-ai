@@ -49,5 +49,16 @@
   test set with published scores, including where it fails. It also runs on your own source pack, for free. This
   is a difference in openness and length, not a claim of better quality.
 
+## 5. ValidatorAI (free AI idea validator), homepage only, 2026-10-25
+- validatorai.com describes itself as a tool to "validate startup, product and small business ideas", shows a live feed of
+  "Latest idea scores" (e.g. "E-commerce 78"), and promises an answer to "Is my business idea good?" in under 60 seconds.
+- Not run with a real idea (it asks for idea text; the homepage was enough to describe its focus).
+- **Takeaway for ProductLens:** ValidatorAI and DimeADozen score **whole ideas**. ProductLens aims at **one feature decision
+  in an existing product**, with per-claim labels and quote checks. That's a difference in focus, not a quality claim.
+
+## 6. ChatGPT again, run by Aditya himself (2026-10-25), subtler planted flaw
+See `baseline-v2-prompt.md`: it caught the misattributed Baymard claim immediately; one cited paragraph; almost no
+fact/guess labels; no numeric success threshold.
+
 ## Not yet looked at (do not cite in the film unless checked)
-- Dedicated "idea validator" AI tools. If Aditya wants a third comparison, try one hands-on first and record it here.
+- Version Lens (an AI co-pilot for PMs, surfaced by a 2026-10-25 web search). Not opened, so not cited.

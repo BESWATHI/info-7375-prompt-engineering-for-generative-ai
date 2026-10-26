@@ -1,72 +1,74 @@
-# PROJECT-BRIEF: AI Product Failure Lab
+# PROJECT-BRIEF: ProductLens AI
 
-Aditya Hasija · INFO7375 · Final project pitch · Draft 1, 2026-10-14
+Aditya Hasija · INFO7375 · Final project pitch (resubmission) · 2026-10-25
 Target role: **AI Product Manager / Product Manager**
 
 ## 1. What is it?
-A tool that runs a pre-mortem on a product idea and labels every claim as either *sourced* or *a guess*.
-When it's done, it will be a **GitHub repository** containing a small web app and a command-line runner. You give it an idea and a pack
-of public source documents. Four Claude agents (orchestrator, market, customer, risk) and an evaluator return a report
-with the top five failure risks, an evidence label on each claim, and three validation experiments. The repository will also hold
-a **test set** of synthetic ideas and an **evaluation log** that scores the tool against a plain chat assistant.
+ProductLens AI is a research assistant that helps a product manager decide whether to build a feature in a product that
+already exists, and what to test first. The PM describes the feature and the goal (for example, a one-page checkout for an
+online shoe store, to get more completed purchases) and attaches a few public articles. ProductLens will return a
+**one-page decision brief**: the biggest risks, the numbers to watch, and the first experiment to run, with **every claim
+labelled as backed by a source or as an assumption**.
+**The artifact when it's done:** a **GitHub repository** with a small web app, a command-line runner, a test set of made-up
+feature ideas with planted mistakes, and a score sheet showing how well it did.
 
 ## 2. Why would anyone care?
-It's for a PM holding a raw idea before there is a team or a budget. They need to know which risks rest on evidence and which rest on guesses.
-- **Plain chat assistants (tested 2026-10-14):** both gave sharp pre-mortems and both caught a fake statistic we planted.
-  Plain Claude (3 runs) cited **zero sources** while stating claims like "conversion typically happens at low single-digit
-  rates" as facts, and its format changed every run. Logged-out ChatGPT (1 run) did better: it attached web sources to 2 paragraphs and
-  labeled its thresholds "not benchmarks". Most of its claims were still unlabeled, and nothing checked the citations.
-- **Atlassian's pre-mortem play:** it needs 3–11 people and about 70 minutes, it targets delivery risk, and nothing checks the evidence.
-- **The difference:** every factual claim will either point to a passage that really exists in the source pack (checked by
-  code, not by the model) or be labeled *hypothesis*. The report format is fixed, so runs and ideas can be compared.
+A PM can already ask a chatbot. **On Oct 25 I tested that myself.** I gave ChatGPT the shoe-store idea plus a made-up
+claim attributed to a real source: "Baymard Institute research shows one-page checkouts always convert better." Baymard's
+own article says it depends. ChatGPT caught it immediately ("The premise is incorrect"), and its advice was solid. But only
+one paragraph had a source, it labelled almost nothing as fact or guess, and nothing checked that the source said what the
+sentence claimed (screenshots and notes: `research/baseline-v2-*`).
+- **DimeADozen** and **ValidatorAI** (homepages read Oct 14 and Oct 25) validate and score startup ideas.
+- **The difference:** ProductLens is for a narrower, everyday job, **one feature in an existing product**. Every claim
+  will carry a sourced/assumption label, and **code, not the model,** will check that each quoted passage really appears in its
+  source. The test scores will be public, including where it fails. I'm not claiming the other tools are worse; I didn't
+  buy their reports.
 
 ## 3. Who opens it, and what do they do?
-A **hiring manager for an AI PM role**. In the first 60 seconds they will read the README, open one real sample
-report, and see the evaluation table: the Failure Lab vs. plain chat on the same test ideas, including where the Failure Lab lost.
-The end user is a PM or founder who pastes in an idea and reads the report in about five minutes.
+**A hiring manager for an AI product role.** In the first minute they'll read the README, open one real sample brief, and
+see the score sheet: how often the checker caught the planted mistakes, misses included. The end user is a PM weighing a
+feature, who reads the brief in about five minutes.
 
 ## 4. What does it prove about me?
-That I can write a spec a machine follows and then measure whether it did. The course skills involved are **prompt contracts** (one
-versioned contract per agent with a Zod output schema), **agent loops** (an orchestrator plus an evaluator allowed one bounded retry),
-**source grounding** (citation checks against the pack), **verification and evaluation** (a planted-flaw test set
-scored against a baseline). The evidence will be versioned prompts, saved run logs, the evaluation table, and a FAILURES.md listing
-where it was wrong. A reviewer could fairly conclude I can scope an AI feature and evaluate it honestly. They could **not** conclude I'm a
-production ML engineer.
+That I can write clear instructions an AI has to follow, check its answers against sources, and measure how well it
+works. The course terms for these are **prompt contracts** (versioned instructions plus a schema each agent's output must
+pass), an **agent loop** (three agents plus a checker that can send one back, once), **source grounding** (quote checks
+in code), and **evaluation** (a planted-mistake test set and a score sheet). **The evidence will be** saved run logs, the
+score sheet, and a written list of where it failed. It **won't** prove I'm a machine learning engineer.
 
 ## 5. What's in, what's out, what comes first?
-- **In:** 4 agents + evaluator, evidence labels, citation check, 8–10 synthetic test ideas with source packs, a baseline comparison, a simple UI.
-- **Out (deliberately):** **no "chance of success" score.** It will never turn guesses into a probability. Also out: live web search,
-  accounts, financial models, PDF export.
-- **First to run:** the Risk agent plus the evaluator on one test idea, from the command line. *How you'd know it ran:* a JSON run log saved
-  in `runs/`, validated against the schema, with the evaluator's flags in it.
-- **Build constraint:** the whole thing will be built with Claude Code from my prompts, within two weeks. The prompts will be logged
-  in the repo.
+- **In:** three agents (market, customers, risks) plus a checker, decision briefs with labels, quote checks, 10 made-up
+  test ideas with planted mistakes, and a simple web app.
+- **Out (deliberately):** no **go / no-go verdict** (it suggests the test; people decide), no live company data, no real
+  A/B tests, no accounts.
+- **First to run:** one research agent on one feature idea, from the command line. **How you'd know it ran:** it saves a
+  JSON log, the log passes the schema check, and every quoted source is found in the attached article.
+- **Built** with Claude Code from my own prompts, in two weeks.
 
 ## 6. What could sink it?
-**The evaluator rubber-stamps.** It's the same model grading its own team, so it may wave weak claims through. Plain Claude already
-catches *obvious* planted flaws, so the test set will need subtler ones, such as a price that contradicts the audience or a plausible
-number with no source. *What I'll do:* measure the catch rate. If it's low, I'll move checks out of the model and into code
-(does the cited quote exist in the pack? does the claim contain a number with no citation?) and report the result either way.
+**A checker that agrees with everything:** it's the same AI grading its own team. My own test showed chatbots already
+catch the obvious made-up claims, so the test ideas will hide subtler mistakes. *What I'll do:* count how many planted
+mistakes it catches. If it misses too many, those checks move out of the model and into plain code, and I'll report the
+number either way.
 
 ## 7. Why this project?
-It's a mix of both reasons.
-- **Skills I already have:** product requirements and user flows, competitive analysis, risk management, and Next.js/React. Evidence: the WorkShip
-  requirements and wireframes (team of five), the SkillPort and portfolio repositories on GitHub (AdityaHasija37).
-- **New to me:** multi-agent orchestration, building an evaluation harness, schema-validated LLM output, and grounding checks.
-  I picked it to learn how to *measure* an AI feature, which is the part of AI product work I haven't done yet.
+It's a mix of learning something new and showing what I already do.
+- **Skills I have:** years in product roles writing requirements and doing research. Evidence on GitHub (AdityaHasija37):
+  **WorkShip** (requirements and wireframes, team of five), **SkillPort** (React/Node app), and **Touchline** (Next.js +
+  Supabase app).
+- **New to me:** building and testing AI agents: orchestration, evaluation design, and grounding checks.
+- **Why I changed from my first pitch:** in my words, "Because i wanted the project to be more suited for product managers
+  and it has more of a value proposition and better use cases this way. The earlier version was too close to a AI wrapper."
 
 ---
 **Exists today**
-- The idea and a blueprint doc (written with ChatGPT from my notes, 2026-10-14)
-- A baseline test of one synthetic idea: 3 plain-Claude runs and 1 logged-out ChatGPT run, with the prompt, outputs and a screenshot (`research/`, 2026-10-14)
-- Notes on the Atlassian pre-mortem play (`research/alternatives.md`)
+- The idea and two written outlines: the AI Product Failure Lab blueprint (Oct 14, written with ChatGPT) and the
+  ProductLens script (Oct 25, written by me and refined with ChatGPT)
+- First-pitch tests (Oct 14, run by Claude Code at my direction): 3 plain-Claude runs and 1 ChatGPT run (`research/`)
+- **My own test (Oct 25, run by me):** ChatGPT on the checkout idea with a planted Baymard claim, with screenshots (`research/baseline-v2-*`)
+- The first pitch film and its grade (archived)
 
 **Will exist**
-- Agent prompt contracts and Zod schemas
-- The orchestrator, evaluator and retry loop
-- The citation checker
-- 8–10 synthetic test ideas with planted flaws and source packs
-- The evaluation log vs. baseline
-- FAILURES.md
-- The web UI
-- The README with a sample report
+- The agent instructions and schemas, three agents plus the checker, and the quote checker
+- The 10-idea planted-mistake test set and the score sheet
+- Run logs, FAILURES.md, the web app, and a README with a sample brief

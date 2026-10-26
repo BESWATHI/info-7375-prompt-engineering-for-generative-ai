@@ -1,20 +1,21 @@
-# FACTCHECK: AI Product Failure Lab pitch film
+# FACTCHECK: ProductLens AI pitch film (v2)
 
-Every factual claim in the narration, checked 2026-10-14. Statements about the future ("will …") are plans, not facts; they're
+Every factual claim in the narration, checked 2026-10-25. Statements about the future ("will …") are plans, not facts; they're
 listed as EXEMPT, with the tense checked.
 
 | # | Beat | Claim | Verdict | Source | Fix |
 |---|---|---|---|---|---|
-| 1 | B04 | I gave plain Claude and ChatGPT the same idea with a planted fake statistic | PASS | research/baseline-prompt.md; baseline-claude-run1–3.md; baseline-chatgpt.md | Claude Code ran the tests at Aditya's direction (stated in SOURCES.md) |
-| 2 | B04 | Both caught the fake number | PASS | Claude 3/3 runs flag the 68% figure in their first section; ChatGPT "one important correction to your premise" | — |
-| 3 | B05 | In three runs, plain Claude cited no sources | PASS | 0 URLs and no named sources in run1–3 (grep checked) | — |
-| 4 | B05 | …yet stated unsourced claims as facts | PASS | e.g. run2: "Survey willingness-to-pay is consistently inflated"; run1: "Fitness apps already churn heavily" | First draft said "guesses as facts"; changed to "unsourced claims", which is observable |
-| 5 | B05 | ChatGPT attached sources to just two paragraphs | CORRECTED | baseline-chatgpt.md: chips "FitSpace +2", "Federal Trade Commission +1" | First draft said "cited two"; the chips bundle more than two sources |
-| 6 | B05 | ChatGPT left most claims unlabelled | PASS | baseline-chatgpt.md §2: labels only on thresholds, experiments, churn table | — |
-| 7 | B06 | DimeADozen's homepage promises hundred-page reports with hundreds of citations | PASS | dimeadozen.ai homepage, read 2026-10-14: "typically 100+ pages with 500+ URL citations" | Attributed to its homepage aloud; not verified by us |
-| 8 | B06 | I haven't bought one | PASS | research/alternatives.md §4 | — |
-| 9 | B15 | Years of requirements / gap analysis / challenging assumptions in product work | PASS | Aditya's portfolio source: "4+ years across B2B product & technology", Business Analysis skills list | Aditya to confirm wording |
-| 10 | B15 | WorkShip and SkillPort are on my GitHub | PASS | github.com/AdityaHasija37/Workship, /SkillPort (linked from the portfolio) | Aditya to confirm both repos are public |
-| 11 | B16 | Exists today: the idea, a blueprint drafted with ChatGPT, the chatbot tests | PASS | ~/Downloads blueprint docx (2026-10-14); research/ | — |
-| 12 | B01–B03, B07–B14, B16 | Everything about the Failure Lab's design | EXEMPT | Plans, all phrased "will"; drawings tagged "constructed" | Tense checked; fixed B03 "challenges" → "will challenge" |
-| 13 | B00 | "Most ideas don't fail on day one" | EXEMPT | Framing, not a statistic; no number is claimed | — |
+| 1 | B05 | "I tested it myself. On October 25th, I gave ChatGPT the shoe-store idea plus a made-up claim" | PASS | Aditya's screenshots, menu bar "Sun Oct 25 6:24 PM" (`research/baseline-v2-shot1.png`); SOURCES.md table | — |
+| 2 | B05 | Baymard is "a checkout research firm" | PASS | baymard.com (checkout usability research) | — |
+| 3 | B05 | "Their research says it depends" | PASS | Baymard, "One Page Checkouts – the Holy Grail of Checkout Usability?" (Apr 26, 2011): one-page wins often compare against a non-optimized multi-step checkout; users had "relatively few problems navigating between multiple steps" | Paraphrase of a dated article |
+| 4 | B06 | "It caught my made-up claim right away" | PASS | shot1: section 1 "Challenge the assumption…", "The premise is incorrect." | — |
+| 5 | B06 | "the advice was solid" | OPINION | Aditya's judgment of the answer | Spoken as opinion |
+| 6 | B06 | "only one paragraph had a source" | PASS | One citation chip ("Baymard +2") across all five screenshots | The chip bundles more than one link; "one paragraph", not "one source", is the precise claim. The film's on-screen label "1 source" refers to the one cited spot. |
+| 7 | B06 | "it rarely said which points were facts and which were guesses" | PASS | The only label is the "Illustrative impact calculator… Hypothetical… not a forecast" (shot4); risk, metric and test tables are unlabelled | "rarely", not "never" |
+| 8 | B07 | DimeADozen and ValidatorAI "already score whole startup ideas" | PASS | DimeADozen homepage ("Free Idea Score", validation reports, read Oct 14); ValidatorAI homepage ("Latest idea scores", "validate startup, product and small business ideas", read Oct 25) | — |
+| 9 | B15 | First pitch was "a pre-mortem tool for startup ideas" | PASS | archive-v1/PROJECT-BRIEF.md | — |
+| 10 | B16 | "years in product roles writing requirements and doing research" | PASS | Aditya: Expenzing (2021–22), BDO APM (2022–24), Massey co-op (2025); portfolio | Kept as "years", no number (the portfolio says 4+; a résumé count is about 3.5) |
+| 11 | B16 | WorkShip, SkillPort and Touchline are on GitHub | PASS | github.com/AdityaHasija37/Workship, /SkillPort, /touchline, all public (checked Oct 25) | — |
+| 12 | B17 | Exists: the idea, a written outline, my chatbot test | PASS | `research/`, SCRIPT-v2.md, the Oct 14 blueprint | — |
+| 13 | B02–B04, B07–B14 | Everything about how ProductLens works | EXEMPT | Plans, all phrased "will"; drawings tagged "constructed" | Tense checked |
+| 14 | — | ChatGPT's own numbers (17% / 40% "2026 abandonment data") | NOT USED | Not verified, so neither spoken nor shown (the crops leave that line out) | — |

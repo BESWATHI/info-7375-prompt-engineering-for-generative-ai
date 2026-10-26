@@ -1,30 +1,30 @@
-# Whisper check (faster-whisper small.en), 2026-10-14
+# Whisper check (faster-whisper small.en), v2, 2026-10-25
 
 | Beat | Words not heard | Transcript |
 |---|---|---|
-| BIDEA | hasija | Hi, I'm Aditya Hasidja. Every product starts with one question. Will it work? I think the more useful question is how it will fail. |
-| BDEFS | — | Two terms, a pre-mortem, you imagine the product has already failed and ask why, and an evaluator, an agent that checks the other agent's work. |
-| B00 | want, to | Most ideas don't fail on day one. They fail months later on an assumption nobody checked. I wanna catch that assumption before anyone builds. |
-| B01 | pre, mortem, labelled | I'm proposing the AI Product Failure Lab. A product manager gives it an idea in public sources, and it will return a premortem. Five failure risks, every claim labeled, and three tests to run first. |
-| B02 | — | It will live in a GitHub repository, a small web app, a test set of made-up product ideas, and a log that scores it. |
-| B03 | — | Inside, an orchestrator will pass the idea to market, customer, and risk agents. An evaluator will challenge what they found and can send one back once. One retry, never a loop. |
-| B04 | chatgpt | Before pitching it, I tested the obvious alternative, just asking a chatbot. I gave plain Claude and chat GPT the same idea with a fake statistic planted in it. Both caught the fake number. |
-| B05 | chatgpt, unlabelled | But in three runs, plain Claude cited no sources, yet stated claims as facts. Chat GPT sourced just two paragraphs and left most claims unlabeled. You can't tell evidence from guesses. |
-| B06 | dimeadozens, hundred | Paid tools exist, too. DIME, a dozen's homepage, promises 100-page validation reports with hundreds of citations. I haven't bought one, so I can't judge them. |
-| B07 | — | Here's what will be different. Every claim will get a label and code, not the model, will check each citation against the sources. The test scores will be public, including where it loses. |
-| B08 | readme | who opens it, a hiring manager for AI product roles. In the first minute, they'll read the read me, one real sample report, and the score table against plain chat. |
-| B09 | — | What should it prove? That I can write prompt contracts, instructions plus a schema each agent's output must pass, and then measure whether they held. It won't prove I'm a machine learning engineer. |
-| B10 | — | The evidence will be saved run logs, the score table, and a written list of where it failed. |
-| B11 | — | What comes first? The risk agent and the evaluator on one test idea from the command line. You'll know it ran when a run log appears that passes the schema check. |
-| B12 | — | What it will never do, give a percent chance of success, turning guesses into a probability. Live web search, accounts and forecasts are out too. |
-| B13 | — | What could sink it? The evaluator rubber stamps, the same model grading its own team. Chatbots already catch obvious fakes, so my test ideas will plant subtler flaws, like a price that contradicts the audience. |
-| B14 | — | so I'll count how many planted flaws it catches. If that number is low, I'll move checks out of the model and into plain code and report the result either way. |
-| B15 | — | Why this project? It's a mix. Requirements and challenging assumptions are years of my product work. Workship and Skillport are on my GitHub. New to me. Agent orchestration and evaluation design. |
-| B16 | chatgpt | So where it stands, what exists today? The idea, a blueprint I drafted with chat GPT and those chatbot tests, everything else I will build with Claude code in two weeks. |
-| BOUT | hasija | AI Product Failure Lab, Aditya Haseedjaw. |
+| BIDEA | hasija | Hi, I'm Aditya Hasidja. Product managers ask one question all the time. Should we build this feature? I think a better question is, what should we test first? |
+| B00 | — | Say you're a product manager at an online shoe store and your team wants a one-page checkout. |
+| B01 | — | Before you build it, you need to know what customers want, what other stores do, and what could go wrong. That research takes days, and a good-sounding idea isn't always a good decision. |
+| B02 | productlens | That's the job of my project, Product Lens AI. You type in the feature and the goal, say, more completed purchases and attach a few public articles. It will give back a one-page decision brief. |
+| B03 | — | The brief will list the biggest risks, the numbers to watch, like checkout completion and the first experiment to run. Every claim in it will be marked, backed by a source or an assumption. |
+| B04 | — | Inside, three AI agents will each take one angle, the market, the customers, and the risks. A fourth agent, the checker, compares their work to the sources and can send one back to fix it once. |
+| B05 | cant, chatgpt, baymard | Can a chatbot already do this? I tested it myself. On October 25th, I gave Chat GPT the shoe store idea plus a made up claim. Baymart, a checkout research firm, says one page checkouts always convert better. Their research says it depends. |
+| B06 | — | It caught my made-up claim right away, and the advice was solid. But only one paragraph had a source, and it rarely said which points were facts and which were guesses. |
+| B07 | dimeadozen, validatorai, productlens, labelled | That's the gap I'm aiming at. Tools like dime, a dozen, and validator AI already score whole startup ideas. Product lens is for one feature in a product that already exists with every claim labeled and checked. |
+| B08 | — | When it's done, it will be a GitHub repository with the app, a set of made-up test ideas, and a score sheet. |
+| B09 | — | If you're hiring for an AI product role, you'd open it and within a minute, see one sample brief and how often the checker caught planted mistakes, misses included. |
+| B10 | an | It should show that I can write clear instructions and AI has to follow, check its answers against sources, and measure how well it works. It won't show I'm a machine learning engineer. |
+| B11 | — | The first step is small. One agent, one feature idea run from the command line. You'll know it worked when it saves a log where every quoted source checks out. |
+| B12 | ab | It won't plug into company data, run real a slash b tests or say go or no go. It suggests the test, people decide. |
+| B13 | — | The biggest risk is a checker that agrees with everything, since it's the same AI grading its own team. |
+| B14 | ten | So I'll hide mistakes in 10 test ideas and count how many it catches. If it misses too many, those checks move into plain code. |
+| B15 | — | I changed this from my first pitch, a pre-mortem tool for startup ideas, because it was too close to an AI wrapper. I wanted something built for product managers, with real, everyday use. |
+| B16 | workship | Why this project? It's a mix. I've spent years in product roles, writing requirements, and doing research, and my work ship, Skillport, and Touchline projects are on GitHub. Building and testing AI agents is the new part. |
+| B17 | productlens, and | Today Product Lens is a plan, the idea, a written outline in my chatbot test, everything else I'll build with Claude Code in the next two weeks. |
+| BOUT | productlens, hasija | Product Lens AI, Aditya Haseedjaw. |
 
-## Verdict (reviewed by Claude, 2026-10-14)
-All 20 beats were voiced in full. Every "not heard" word is a spelling difference in the transcript, not a dropped or misspoken word:
-ChatGPT → "chat GPT", labelled → "labeled", pre-mortem → "premortem", README → "read me", "I want to" → "I wanna",
-DimeADozen's → "DIME, a dozen's", hundred-page → "100-page". "Hasija" is spoken via the voice-only rewrite "Ha-see-jah"
-(version A, picked by Aditya), so the transcript spells it as Whisper heard it.
+## Fixes and verdict (Claude Code, 2026-10-25)
+- **B12:** Kokoro read "A/B" as "a slash b". Added a voice-only rewrite ("A B") in `pronunciation/aditya.json` and re-voiced B12.
+- Everything else is spelling: ProductLens → "Product Lens", ChatGPT → "Chat GPT", DimeADozen → "dime, a dozen",
+  Baymard → "Baymart", WorkShip → "work ship", and "Hasija" is spoken via Aditya's chosen respelling (version A).
+- B05 "Can't" sounds close to "Can"; the question reads the same either way. No words are dropped.
