@@ -1,4 +1,4 @@
-"""Eight hand-fixed rule cases from CONTRACT.md, written before any agent code.
+"""Hand-fixed rule cases from CONTRACT.md: 1-8 before any agent code, 9-12 for Revision 2.
 
 Each expected verdict was decided by hand from the written rule (checks 1(a)/1(b),
 2, 3). These tests import rule.judge(title, location), which does not exist yet
@@ -22,6 +22,11 @@ CASES = [
     (6, "AI Research Lead", "New York, NY", NOT_RELEVANT),
     (7, "Analytics Engineer", "Remote - Germany", NOT_RELEVANT),
     (8, "ML Platform Engineer", "Seattle, Washington", RELEVANT),
+    # Cases 9-12 added for CONTRACT.md Revision 2 (2026-10-25, after the baseline).
+    (9, "Sr Data Engineer", "Remote - US", NOT_RELEVANT),
+    (10, "AI Transformation Leader", "San Francisco, California", NOT_RELEVANT),
+    (11, "Data Science Intern", "Mountain View, California", NOT_RELEVANT),
+    (12, "GenAI Engineer", "Remote - US", RELEVANT),
 ]
 
 
