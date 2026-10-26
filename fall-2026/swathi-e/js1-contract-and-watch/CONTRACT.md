@@ -35,16 +35,18 @@ A posting is RELEVANT only if all three checks pass. Checks are case-insensitive
 and match whole words.
 
 1. Role match: the title contains EITHER
-   (a) at least one of: Machine Learning, ML, AI, Artificial Intelligence,
-       Data Engineer, Data Engineering, Data Scientist, Analytics, Analyst;
+   (a) at least one of: Machine Learning, ML, AI, GenAI, Artificial Intelligence,
+       Data Engineer, Data Engineering, Data Scientist, Data Science,
+       Analytics, Analyst;
    OR
    (b) "Software Engineer" together with an early-career word:
        New Grad, Early Career, Entry, Associate
        (e.g. "New Grad Software Engineer" counts; "Software Engineer" alone
        or "New Grad Marketing" does not).
 
-2. Not too senior: the title does NOT contain any of:
-   Senior, Sr., Staff, Principal, Manager, Director, Head, Lead.
+2. Not too senior, not an internship: the title does NOT contain any of:
+   Senior, Sr., Sr, Staff, Principal, Manager, Director, Head, Lead, Leader,
+   Intern, Internship.
 
 3. Location: the location is in the United States (it names "United States",
    "USA", "US", or a US state), or it is Remote without naming a non-US country.
@@ -77,3 +79,18 @@ After working through eight example postings by hand, I decided that
 "New Grad Software Engineer"-type roles should count for Priya even without a
 data/AI word, because early-career software roles are realistic for her.
 Check 1 now has a second path, 1(b). Nothing else changed.
+
+## Revision 2 (2026-10-25, after the baseline, before the second run)
+When the rule was applied word for word to the real Databricks titles, some
+results were not what I meant, so I changed it:
+- "Sr" (no period), "Lead" and "Leader" titles are senior roles and not
+  relevant for early-career Priya, so "Sr" and "Leader" were added to check 2.
+- Intern and internship roles are not for Priya, who has graduated and is
+  looking for entry-level or new grad roles, so "Intern" and "Internship" were
+  added to check 2.
+- "GenAI" and "Data Science" are relevant data/AI words, so they were added to
+  check 1(a).
+- Whether a posting asks for 0-1 years of experience is in the job description,
+  not the title. My rule does not check it; Claude's judgment (labelled as a
+  judgment) will read the description for experience.
+Nothing else changed.
