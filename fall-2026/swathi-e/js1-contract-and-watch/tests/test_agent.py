@@ -180,7 +180,8 @@ class Watch(unittest.TestCase):
         self.assertTrue(summary["seeded"])
         self.assertEqual([r["posting_id"] for r in summary["report"]], [3])
         self.assertEqual(summary["report"][0]["rule"]["verdict"], rule.RELEVANT)
-        self.assertEqual(summary["claude_judge"], "not built in this layer")
+        self.assertEqual(summary["claude_judge"], "not_run")
+        self.assertEqual(summary["report"][0]["claude_judge"]["status"], "not_run")
 
     def test_same_response_twice_reports_nothing_new(self):
         self.run_file(self.first, 25)

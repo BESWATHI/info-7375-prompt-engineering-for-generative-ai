@@ -165,5 +165,69 @@ class JudgeRuns(unittest.TestCase):
         self.assertEqual((record["status"], record["judge_output"]), ("call_failed", None))
 
 
+class WatchWithJudge(unittest.TestCase):
+    """The watch gives each new posting both verdicts. Fetches and Claude replies are FAKES."""
+
+    def setUp(self):
+        import tempfile
+        import watch
+        self.watch = watch
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        self.paths = {"state_path": self.root / "state.json", "raw_dir": self.root / "raw",
+                      "report_dir": self.root / "reports", "judge_dir": self.root / "judge"}
+        board = lambda *jobs: json.dumps({"jobs": [{"id": i, "title": t, "location": {"name": "Remote - US"},
+                                                     "absolute_url": None} for i, t in jobs]}).encode()
+        (self.root / "first.json").write_bytes(board((1, "Data Engineer")))
+        (self.root / "second.json").write_bytes(board((1, "Data Engineer"), (2, "ML Engineer, New Grad")))
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def fake_fetch(self, posting_id):
+        path = self.root / f"job_{posting_id}.json"
+        path.write_text(json.dumps({"id": posting_id, "title": "ML Engineer, New Grad",
+                                    "location": {"name": "Remote - US"},
+                                    "content": "&lt;p&gt;" + DESCRIPTION + "&lt;/p&gt;"}))
+        return path
+
+    def run_twice(self, **judge_args):
+        self.watch.run(from_file=self.root / "first.json", **self.paths)
+        return self.watch.run(from_file=self.root / "second.json", **self.paths, **judge_args)
+
+    def test_default_run_never_calls_the_judge(self):
+        def refuse(*args, **kwargs):
+            raise AssertionError("watch must not fetch or call Claude without judge_live")
+        summary = self.run_twice(fetch_posting=refuse, runner=refuse)
+        entry = summary["report"][0]
+        self.assertEqual((entry["rule"]["source"], entry["claude_judge"]["status"]), ("written rule (record)", "not_run"))
+
+    def test_judge_live_adds_a_labelled_judgment_for_the_same_posting(self):
+        summary = self.run_twice(judge_live=True, fetch_posting=self.fake_fetch,
+                                 runner=fake_runner(envelope(fake_output()), []))
+        entry = summary["report"][0]
+        judged = entry["claude_judge"]
+        self.assertEqual((entry["posting_id"], judged["posting_id"]), (2, 2))
+        self.assertEqual((judged["label"], judged["status"], judged["verdict"]), ("judgment", "accepted", "relevant"))
+        self.assertTrue((self.watch.HERE / judged["record_file"]).exists() or Path(judged["record_file"]).exists())
+
+    def test_rejected_judgment_is_kept_next_to_the_rule_verdict(self):
+        summary = self.run_twice(judge_live=True, fetch_posting=self.fake_fetch,
+                                 runner=fake_runner(envelope("not json at all"), []))
+        judged = summary["report"][0]["claude_judge"]
+        self.assertEqual((judged["status"], judged["verdict"]), ("rejected", None))
+        self.assertEqual(summary["report"][0]["rule"]["verdict"], "relevant")
+
+    def test_judgment_attached_to_the_wrong_posting_is_caught(self):
+        postings = self.watch.parse_postings((self.root / "second.json").read_bytes())
+        report = self.watch.build_report(postings, TARGETS)
+        report[0]["claude_judge"] = {"status": "accepted", "posting_id": postings[1]["id"]}
+        self.assertTrue(self.watch.pairing_errors(postings, report, TARGETS))
+
+    def test_judge_report_requires_explicit_live_flag(self):
+        with self.assertRaises(SystemExit):
+            self.watch.main(["--judge-report", "any.json"])
+
+
 if __name__ == "__main__":
     unittest.main()
