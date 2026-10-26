@@ -59,9 +59,9 @@ def stamp(moment):
     return moment.strftime("%Y-%m-%dT%H-%M-%S%z")
 
 
-def save_raw(body, fetched_at, url, status, raw_dir=RAW_DIR):
+def save_raw(body, fetched_at, url, status, raw_dir=RAW_DIR, name=BOARD):
     raw_dir.mkdir(parents=True, exist_ok=True)
-    path = raw_dir / f"{BOARD}_{stamp(fetched_at)}.json"
+    path = raw_dir / f"{name}_{stamp(fetched_at)}.json"
     path.write_bytes(body)
     meta = {"url": url, "http_status": status, "fetched_at": fetched_at.isoformat(),
             "bytes": len(body), "sha256": hashlib.sha256(body).hexdigest()}

@@ -61,6 +61,11 @@ def validate_targets(data, resume):
              "targets: geography.current_location must be a non-empty string")
     _require(isinstance(geo.get("open_to_remote"), bool),
              "targets: geography.open_to_remote must be true or false")
+    visa = data.get("visa")
+    _require(isinstance(visa, dict), "targets: visa must be an object")
+    for key in ("type", "current_status"):
+        _require(isinstance(visa.get(key), str) and visa[key].strip(),
+                 f"targets: visa.{key} must be a non-empty string")
     return data
 
 
