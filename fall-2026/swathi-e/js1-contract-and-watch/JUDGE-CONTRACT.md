@@ -27,7 +27,7 @@ A posting is RELEVANT only if all of these hold:
 3. Work authorization: if the description requires US citizenship, a
    security clearance, or says it will not sponsor visas, it is NOT
    RELEVANT, because Priya is on F-1/OPT.
-4. Location: the job is in the United States or remote.
+4. Location: the job is in the United States, or Remote without naming a non-US country.
 
 If the description does not state any experience requirement, the judge
 decides on the title and the skills asked for, and must say
@@ -53,3 +53,7 @@ decides on the title and the skills asked for, and must say
   word for word in the posting's description (unless it is exactly
   "experience not stated" or "none stated").
 A rejected output is recorded as rejected, never repaired or guessed.
+
+## Revision (2026-10-26, before any live judge call)
+Rule 4 now limits Remote to the US, to match my title rule; 'Remote - Germany'
+would otherwise have passed.
