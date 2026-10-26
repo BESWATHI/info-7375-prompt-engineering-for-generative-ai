@@ -4,7 +4,7 @@ A posting is RELEVANT only if all of these hold:
 1. Role: the work fits Priya's target roles (AI/ML engineering, data engineering, or an early-career software engineering role).
 2. Experience: the description asks for 0-1 years of experience, or says entry level, new grad, or early career. If it asks for more than 1 year, it is NOT RELEVANT.
 3. Work authorization: if the description requires US citizenship, a security clearance, or says it will not sponsor visas, it is NOT RELEVANT, because Priya is on F-1/OPT.
-4. Location: the job is in the United States or remote.
+4. Location: the job is in the United States, or Remote without naming a non-US country.
 
 If the description does not state any experience requirement, decide on the title and the skills asked for, and say "experience not stated".
 
