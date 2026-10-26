@@ -34,9 +34,14 @@ The first run is a baseline and reports no postings as new.
 A posting is RELEVANT only if all three checks pass. Checks are case-insensitive
 and match whole words.
 
-1. Role match: the title contains at least one of:
-   Machine Learning, ML, AI, Artificial Intelligence, Data Engineer,
-   Data Engineering, Data Scientist, Analytics, Analyst.
+1. Role match: the title contains EITHER
+   (a) at least one of: Machine Learning, ML, AI, Artificial Intelligence,
+       Data Engineer, Data Engineering, Data Scientist, Analytics, Analyst;
+   OR
+   (b) "Software Engineer" together with an early-career word:
+       New Grad, Early Career, Entry, Associate
+       (e.g. "New Grad Software Engineer" counts; "Software Engineer" alone
+       or "New Grad Marketing" does not).
 
 2. Not too senior: the title does NOT contain any of:
    Senior, Sr., Staff, Principal, Manager, Director, Head, Lead.
@@ -46,9 +51,10 @@ and match whole words.
 
 Otherwise the posting is NOT RELEVANT.
 
-Early-career words (New Grad, Early Career, Entry, Associate) do not change the
-verdict on their own; a title still needs a check-1 word. When present, the
-justification notes them as an early-career signal.
+Early-career words (New Grad, Early Career, Entry, Associate) count only as
+described in check 1(b); on their own, or with any other title, they do not make
+a posting relevant. When present, the justification notes them as an
+early-career signal.
 
 Every verdict's justification must name the posting fields used (title, location)
 and the résumé fields they were compared with (Priya's target roles and location
@@ -65,3 +71,9 @@ A failure would be if my agent misses a new job that actually matches Priya's
 profile or marks an unsuitable job as relevant without giving a proper
 explanation. This would make the results unreliable and could cause Priya to
 miss a good opportunity or waste time on the wrong jobs.
+
+## Revision (2026-10-25, before any agent code)
+After working through eight example postings by hand, I decided that
+"New Grad Software Engineer"-type roles should count for Priya even without a
+data/AI word, because early-career software roles are realistic for her.
+Check 1 now has a second path, 1(b). Nothing else changed.
