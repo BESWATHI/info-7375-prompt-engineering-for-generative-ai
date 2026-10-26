@@ -99,6 +99,11 @@ class RuleBoundaries(unittest.TestCase):
         self.assertEqual(self.verdict("ML Engineer", "Remote - India"), rule.NOT_RELEVANT)
         self.assertEqual(self.verdict("ML Engineer", "Remote"), rule.RELEVANT)
 
+    def test_intern_fails_on_check_2_not_check_1(self):
+        # Hand-fixed case 11 passed before Revision 2 only because check 1 failed.
+        checks = rule.judge("Data Science Intern", "Mountain View, California", TARGETS)["checks"]
+        self.assertEqual((checks["role"], checks["not_too_senior"]), (True, False))
+
     def test_early_career_signal_is_noted(self):
         text = rule.judge("New Grad Software Engineer", "Seattle, Washington", TARGETS)["justification"]
         self.assertIn("Early-career signal", text)

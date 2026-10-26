@@ -1,4 +1,4 @@
-"""The written rule from CONTRACT.md (revision 1(b)), applied literally.
+"""The written rule from CONTRACT.md (Revision 2), applied literally.
 
 judge(title, location) returns a record anyone can recompute by hand:
 the verdict, which check decided it, and a justification that names the
@@ -18,10 +18,11 @@ RESUME_FIELDS = (
     "targets.geography.open_to_remote",
 )
 
-ROLE_TERMS = ("Machine Learning", "ML", "AI", "Artificial Intelligence", "Data Engineer",
-              "Data Engineering", "Data Scientist", "Analytics", "Analyst")
+ROLE_TERMS = ("Machine Learning", "ML", "AI", "GenAI", "Artificial Intelligence", "Data Engineer",
+              "Data Engineering", "Data Scientist", "Data Science", "Analytics", "Analyst")
 EARLY_CAREER_TERMS = ("New Grad", "Early Career", "Entry", "Associate")
-SENIOR_TERMS = ("Senior", "Sr.", "Staff", "Principal", "Manager", "Director", "Head", "Lead")
+SENIOR_TERMS = ("Senior", "Sr.", "Sr", "Staff", "Principal", "Manager", "Director", "Head", "Lead",
+                "Leader", "Intern", "Internship")
 US_TERMS = ("United States", "USA", "US")
 US_STATES = (
     "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
@@ -119,7 +120,7 @@ def judge(title, location, targets=None):
         role_text = f"check 1 passes via {role_path} on {', '.join(repr(t) for t in role_hits)}"
     else:
         role_text = "check 1 fails: no 1(a) term and no 1(b) 'Software Engineer' + early-career pair"
-    senior_text = ("check 2 passes: no seniority term" if senior_ok else
+    senior_text = ("check 2 passes: no seniority or internship term" if senior_ok else
                    f"check 2 fails on {', '.join(repr(t) for t in senior_hits)}")
     location_text = f"check 3 {'passes' if location_ok else 'fails'}: {location_reason}"
     parts = [
