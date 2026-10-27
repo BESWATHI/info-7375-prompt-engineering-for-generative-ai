@@ -17,6 +17,7 @@ written separately.
 | Could write | nothing | nothing | one path: `judge-record.json` in its temp folder |
 | Could send | the conversation, to Anthropic under my claude.ai account | its reply | a request to the allowed host, and its reply |
 | Enforced by | nothing beyond what I pasted | Claude Code permissions (`--tools Read`, `dontAsk`) | Claude Code permissions (`WebFetch(domain:…)`, one `Edit(…)` path, `dontAsk`) |
+| Authority needed | my claude.ai account | my Claude plan login through Claude Code, no API key (environment held only `HOME`, `USER`, `PATH`); Claude Code permissions given: `--tools Read`, `--allowedTools Read`, `--permission-mode dontAsk` | my Claude plan login through Claude Code, no API key (environment held only `HOME`, `USER`, `PATH`); Claude Code permissions given: `--tools WebFetch,Write`, `--allowedTools WebFetch(domain:boards-api.greenhouse.io)` and `Edit(…/judge-record.json)` for one file in its temp folder, `--permission-mode dontAsk` |
 | Actually did | not observable | 1 Read of `posting.txt` | 2 WebFetch calls to the posting URL, then 1 Write |
 | Refused calls | not applicable | none | none |
 | Files left | not applicable | `posting.txt` (unchanged) | `judge-record.json` |
