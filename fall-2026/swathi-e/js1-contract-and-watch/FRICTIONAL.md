@@ -26,3 +26,11 @@ I rejected the suggestion to monitor five boards because I wanted to get one boa
 
 Today was more tedious than I expected, but I learned a lot from actually reading the postings one by one. The biggest surprise was that some jobs looked like a really good match at first, but one small requirement completely changed the label, like the AI Engineer role that was a good fit except that it said it was not for new grads. It was also surprising that none of the 20 jobs I labeled were relevant. That made me realize that, in my 20, Databricks didn't have roles that fit someone with Priya’s background right now, even when the job titles sound promising.
 Claude Code also caught a couple of things I probably would have missed, especially the difference between just saying “Remote” and actually meaning remote in the US, and the fact that jobs I had already read should not go into the held-out set. One decision I made myself was that if experience is not clearly stated, I should look at the responsibilities and skills instead of automatically rejecting the job. The most frustrating part was honestly fixing the label sheet because I had to deal with the Numbers/CSV format, a typo, and the missing header before it was finally correct.
+
+## Oct 27, 2026
+
+What surprised me most was that just changing one sentence in my prompt made such a big difference. The baseline made the same mistake in 9 out of 10 held-out jobs, but the revised prompt didn't make that mistake at all. I was also surprised that the chat response had formatting issues that made it fail validation, while the agent used another model without me choosing it. This made me realize that giving AI more freedom doesn't always make it better.
+
+One thing I still couldn't figure out is how well my agent identifies good jobs, because all 20 postings I labeled were not relevant. In JS2, I would first improve my relevance rule so it looks at the actual job descriptions instead of just titles. I realized that titles alone can be misleading, and I don't want my agent to miss suitable opportunities or recommend the wrong ones.
+
+When Claude Code found mistakes in my sign-off, I was a little frustrated because I thought I was almost done. But it also made me realize how important it is to verify what I actually did instead of just assuming everything was correct.

@@ -72,9 +72,7 @@ reviewed by Swathi.
   `JUDGE-CONTRACT.md`, `LABELING-RULE.md`, `EXPERIMENT-PLAN.md`).
 - The experiment plan's suggestions: the sampling postings, the one prompt
   change, and measures A and B.
-- Compiling the tables and lists in `SIGNOFF.md` from our session records,
-  which I checked row by row.
 - For most of my 20 labels, Claude chat laid out the facts of each posting against my four checks; I made every label myself.
 - For FRICTIONAL.md, Claude chat gave me a list of what happened to write from, and made five factual corrections I approved; the entries are in my words.
 - For AUTONOMY-CHOICE.md, Claude chat asked guiding questions; both paragraphs are my words.
-- Claude chat drafted the SIGNOFF.md tables and lists from our session records and corrected lines after your checks; the closing paragraph is my words.
+- Claude chat drafted the SIGNOFF.md tables and lists from our session records and corrected lines after Claude Code's checks; the closing paragraph is my words.
