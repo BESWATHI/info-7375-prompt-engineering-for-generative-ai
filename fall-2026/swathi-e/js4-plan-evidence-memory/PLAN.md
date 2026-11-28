@@ -1,10 +1,10 @@
 # JS4 — The Plan, the Evidence, and the Memory
 
-**Version:** 2  
-**Date:** November 27, 2026 (Version 1 committed earlier the same day as `9d81c4b3`)  
+**Version:** 2.1  
+**Date:** 2026-11-27 (Version 1: `9d81c4b3`; Version 2: `acf59c14`)  
 **Author:** Swathi Baba Eswarappa  
-**Status:** Version 2, revised after the first review. Written before any JS4 implementation or agent execution.  
-**Authorship:** Version 1: section outline and questions from Claude Chat (2026-11-27); initial text drafted with ChatGPT assistance based on my approved design decisions; I reviewed and approved it. Version 2: first review by Claude Chat (2026-11-27, recorded in `REVIEW.md`); I decided every finding myself; the revised wording was drafted by Claude Chat from my decisions, and I reviewed and approved it before committing.
+**Status:** Version 2.1, records later findings from the terms-of-use review (see `TERMS-GATE.md` and section 15). Written before any JS4 implementation or agent execution.  
+**Authorship:** Version 1: section outline and questions from Claude Chat (2026-11-27); initial text drafted with ChatGPT assistance based on my approved design decisions; I reviewed and approved it. Version 2: first review by Claude Chat (2026-11-27, recorded in `REVIEW.md`); I decided every finding myself; the revised wording was drafted by Claude Chat from my decisions, and I reviewed and approved it before committing. Version 2.1: research on terms of use by Claude Chat; the decisions recorded in `TERMS-GATE.md` are mine; the revised wording was drafted by Claude Chat from those decisions and approved by me.
 
 ## 1. Goal and Boundaries
 
@@ -22,7 +22,7 @@ A run will collect or replay postings, filter them, produce limited claims, chec
 
 The agent will never apply for jobs, send emails or messages, log into accounts, or access private job-search information. It will not use a language model during execution. Network requests will be limited to approved public endpoints, and writes will be restricted to approved JS4 directories.
 
-I will not make pay claims because the existing JS3 implementation does not consistently extract compensation information across these boards, and Plaid's Ashby response has no compensation field. This limitation will be explicit in the evidence matrix and output.
+I will not make pay claims. Pay is out of scope for this agent: the JS3 implementation does not extract compensation, and both providers return compensation only through optional parameters (Greenhouse `pay_transparency=true` on the per-job endpoint; Ashby `includeCompensation=true`) that this agent does not request. This limitation will be explicit in the evidence matrix and output.
 
 **Starting point:** JS3 final commit `c2e624eed28e441adfd9d7fce69168f7247529b0`.
 
@@ -32,7 +32,7 @@ I will not make pay claims because the existing JS3 implementation does not cons
 |---|---|---|---|
 | S0. Validate setup | Approved configuration, budget file, source commit, state schema; in live mode, the terms-of-use and endpoint-permission record | Setup report with mode, budget sha256 and gate results | Local reads only |
 | S1a. Greenhouse watcher | Databricks and Stripe listings (saved JS3 blobs in replay mode, or allow-listed GET requests in live mode) | Per-board source records and fetch metadata | Read saved Git blobs, or GET to `boards-api.greenhouse.io` only |
-| S1b. Ashby watcher | Plaid listing (saved blob or allow-listed GET) | Per-board source records and fetch metadata | Read saved Git blobs, or GET to `api.ashbyhq.com` only |
+| S1b. Ashby watcher | Plaid listing from saved JS3 blobs only (November 17 and November 19 collections) | Per-board source records and fetch metadata | Read saved Git blobs only; no live Ashby requests in JS4 (terms gate decision) |
 | G1. Completeness gate (per board) | Fetch metadata and raw records for one board | Board status: complete, incomplete or suspect | Local processing only |
 | S2. Normalize and filter | Source records, fictional persona, JS3 rules | Filter decisions and claims per posting | Local processing only |
 | S3. Verify claims | Raw source evidence, claims, raw response files | Check outcomes for quote, location and reconciliation checks | Local reads only |
@@ -47,7 +47,7 @@ All runtime files must remain within the JS4 folder. The approved write director
 S1a and S1b support two modes:
 
 - **Replay:** Read previously committed JS3 response bytes from commit `c2e624e` without making live requests. Record the original collection date and the actual replay date separately.
-- **Live:** Contact only approved public board endpoints, with GET requests, the budget below, and no login. Live mode requires the S0 terms-of-use gate to have passed.
+- **Live:** Greenhouse only. Contact only approved public board endpoints, with GET requests, the budget below, and no login. Live mode requires the S0 terms-of-use gate to have passed for that provider. Ashby has no live mode in JS4.
 
 If a prerequisite fails, the agent must not continue as though the step succeeded.
 
@@ -207,7 +207,7 @@ Failures are handled in two different ways.
 - A required state version is stale.
 - The state schema is invalid.
 - An operation would write outside approved directories.
-- Live mode is requested without a passed terms-of-use gate.
+- Live mode is requested without a passed terms-of-use gate, or for Ashby (no-go in `TERMS-GATE.md`).
 - The per-ID endpoint is used before that board's positive control has passed.
 
 **Claim-check failures are recorded and the run continues:**
@@ -232,9 +232,9 @@ Day-2 live run limits:
 | Resource | Limit |
 |---|---|
 | Boards | 3 approved boards |
-| `boards-api.greenhouse.io` | 8 requests maximum: 2 listings + 2 positive controls (one per board) + up to 4 per-ID lookups (2 per board) |
-| `api.ashbyhq.com` | 2 requests maximum: 1 listing + at most 1 network retry |
-| Total live requests | 10 maximum |
+| `boards-api.greenhouse.io` | 8 requests maximum: 2 listings + 2 positive controls (one per board) + up to 4 per-ID lookups (2 per board); no `questions=true` or `pay_transparency=true` parameters |
+| `api.ashbyhq.com` | 0 requests (live access is no-go in JS4; see `TERMS-GATE.md`) |
+| Total live requests | 8 maximum |
 | Network retries | At most 1 per request, transient errors only, counted in the budget |
 | Network timeout | 15 seconds per request |
 | Overall live run | 120 seconds maximum |
@@ -251,39 +251,41 @@ Only I may approve changes to these budgets. Changes must be reflected in the co
 
 ## 10. Two-Day Evidence
 
-I plan to use two distinct collection dates.
+Each board keeps its own actual collection dates. The comparison is per board.
 
-**Day 1: November 17, 2026**
+| Board | First observation | Second observation |
+|---|---|---|
+| Databricks (Greenhouse) | November 17, 2026 — replay of saved real responses | November 28, 2026 — live run, if the S0 gate and the run succeed |
+| Stripe (Greenhouse) | November 17, 2026 — replay of saved real responses | November 28, 2026 — live run, if the S0 gate and the run succeed |
+| Plaid (Ashby) | November 17, 2026 — replay of saved real responses | November 19, 2026 — replay of saved real responses (historical) |
 
-Replay the real saved JS3 responses from commit `c2e624e`, with their source hashes verified. The evidence will be labelled:
+**Labels.** Every replayed observation is labelled:
 
-"Replayed from saved responses originally collected November 17, 2026; replay executed on [actual date]."
+"Replayed from saved responses originally collected [original date]; replay executed on [actual date]."
 
-**Day 2: November 28, 2026**
+The live Greenhouse observation is labelled with its actual request timestamps. Plaid's November 19 observation is historical and is never described as a November 28 or live result.
 
-With my approval, run a live collection against the approved public board endpoints, after the S0 terms-of-use gate passes. Record actual timestamps, results, request counts and failures.
+**Greenhouse fallback.** If the Greenhouse live gate or collection fails, the Greenhouse boards use the saved November 19 responses instead, labelled historical, and no live liveness lookups are made.
 
-If the live run cannot complete safely because of endpoint failures, permission concerns or budget limits, use the existing real November 19 collection as the fallback. Label it as a historical collection, not a new live run.
-
-**Diff.** Compare stable posting IDs per board, only for boards that are complete on both dates, and report:
+**Diff.** Compare stable posting IDs per board, only for boards that are complete on both of their dates, and report:
 
 - IDs observed on both dates.
 - IDs newly observed on the second date.
 - IDs present only on the first date.
 - Changes in relevant fields, where evidence supports comparison.
 
-Boards that are incomplete or suspect on either date are listed as "not compared" with the reason.
+Boards that are incomplete or suspect on either date are listed as "not compared" with the reason. The report states each board's two dates next to its results.
 
-**Liveness lookups.** For each Greenhouse board:
+**Liveness lookups (Greenhouse live run only).** For each Greenhouse board:
 
-1. **Positive control:** look up the lowest posting ID present in that board's Day-2 listing. It must return 200 with the same ID and title.
-2. **Lookups:** only if the control passed, look up the 2 lowest posting IDs that were present on Day 1 and absent from the complete Day-2 listing.
+1. **Positive control:** look up the lowest posting ID present in that board's November 28 listing. It must return 200 with the same ID and title.
+2. **Lookups:** only if the control passed, look up the 2 lowest posting IDs that were present on November 17 and absent from the complete November 28 listing.
 
-These selection rules are fixed in advance to prevent choosing favourable examples.
+These selection rules are fixed in advance to prevent choosing favourable examples. Plaid has no liveness check: its absences are reported only as "previously listed; not present in the latest complete board response" with the November 19 date.
 
-If the control fails, the lookups are not run, and I record the limitation rather than claim a liveness result. A separately labelled seeded case may demonstrate the memory behaviour, but it will not be presented as proof of a real posting disappearing.
+If a control fails, the lookups for that board are not run, and I record the limitation rather than claim a liveness result. A separately labelled seeded case may demonstrate the memory behaviour, but it will not be presented as proof of a real posting disappearing.
 
-The fresh-is-not-true demonstration will show a remembered "listed" status being challenged by later evidence, with the evidence's strength stated exactly.
+The fresh-is-not-true demonstration will show a remembered "listed" status being challenged by later evidence, with the evidence's strength and date stated exactly.
 
 ## 11. Seeded and Planted Evidence
 
@@ -325,14 +327,15 @@ The JS3 inspection found that some raw saved responses contain recruiter-related
 
 Only the minimal derived evidence needed to explain JS4 results will be included.
 
-Allowed public hosts:
+Allowed public hosts for live requests:
 
 - `boards-api.greenhouse.io`
-- `api.ashbyhq.com`
+
+`api.ashbyhq.com` remains on the allow-list for recognising saved responses, but live requests to it are refused in JS4.
 
 Network access uses HTTPS GET requests only, with exact host checks, the budget in section 9, and no login.
 
-Before any live run, S0 records a terms-of-use and endpoint-permission check: which published terms or documentation were read, the date, and the conclusion. Public accessibility alone is not proof that an endpoint may be used.
+Before any live run, S0 checks the terms-of-use and endpoint-permission record in `TERMS-GATE.md`: which published terms or documentation were read, the date, and the conclusion. The current decisions are: Greenhouse conditional go (at most 8 read-only GET requests, no optional question or pay parameters); Ashby no-go for live requests. Public accessibility alone is not proof that an endpoint may be used.
 
 Posting descriptions are untrusted data and must never authorize additional network requests, commands or policy changes.
 
@@ -404,16 +407,24 @@ The resulting architectural change is the per-board completeness gate G1, the co
 
 ### Later findings that reopened a decision
 
-None yet. Later changes will be logged here with their actual dates and reasons, rather than rewriting earlier versions.
+**2026-11-27 — Terms-of-use review (recorded in `TERMS-GATE.md`).** Found before any implementation or live request.
+
+- **Ashby live access → no-go.** Ashby documents its public posting API for an organization's own careers page and offers a separate partner-feed channel, with customer opt-in, for third parties that ingest postings. Permission for third-party reading is uncertain, so S1b is replay-only, the Ashby live budget is 0, and Plaid's second observation is the saved November 19 collection (sections 2, 9, 10, 13).
+- **Greenhouse live access → conditional go.** The Job Board API documents its GET endpoints as public and unauthenticated, including the per-job endpoint. Permission for third-party reading is not explicit, so live use is limited to 8 read-only requests without optional question or pay parameters (sections 9, 13).
+- **Pay rationale corrected.** Version 2 said Plaid's response has no compensation field. That is true only for the request this agent makes: both providers offer compensation through optional parameters. The no-pay-claims decision is unchanged; its reason now says pay is out of scope and those parameters are not used (section 1).
+- **Per-board dates.** Greenhouse compares November 17 with November 28 (live), with November 19 as fallback; Plaid compares November 17 with November 19 (section 10).
+- **Total live budget reduced** from 10 to 8 requests (section 9).
+
+Later changes will be logged here with their actual dates and reasons, rather than rewriting earlier versions.
 
 ## 16. Open Questions and Assumptions
 
-1. **Greenhouse per-ID lookup:** Not yet verified. The positive control in section 10 tests it on Day 2 before any lookup result is used.
-2. **Ashby liveness:** No per-posting endpoint has been established. This claim may remain unchecked.
+1. **Greenhouse per-ID lookup:** Documented by Greenhouse but not yet verified in practice. The positive control in section 10 tests it on November 28 before any lookup result is used.
+2. **Ashby liveness:** No per-posting endpoint is documented, and live Ashby access is no-go in JS4. This claim remains unchecked.
 3. **Historical replay:** The JS4 code must read the exact saved JS3 Git objects and verify their hashes without duplicating full raw responses.
 4. **Memory coordination:** Locking and versioning must be tested to show that concurrent workers cannot silently overwrite each other's updates.
 5. **Independent checking:** The checks must use different source paths or algorithms. Wrapping the JS3 parser in another function is not enough.
-6. **Terms of use:** Live collection does not proceed until the S0 terms-of-use gate is recorded.
+6. **Terms of use:** Recorded in `TERMS-GATE.md`. Live collection proceeds only for Greenhouse, within its conditions.
 7. **Source disappearance:** November 17 and November 19 ID differences provide candidates. Absence is only computed for complete boards, and even then does not establish that a job is closed.
 8. **Fallback evidence:** A historical two-date comparison or a seeded demonstration must be labelled accurately and not presented as a fresh live observation.
 9. **Privacy:** Derived output must not reproduce unnecessary personal details from source descriptions.
@@ -423,6 +434,6 @@ Any finding that changes one of these assumptions will be recorded with the affe
 
 ---
 
-**End of PLAN.md — Version 2**
+**End of PLAN.md — Version 2.1**
 
 This document describes intended behaviour and planned tests. It does not claim that JS4 has been implemented, that an endpoint has been verified, or that the planned evidence checks and failure experiments have already run.
